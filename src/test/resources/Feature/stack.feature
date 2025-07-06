@@ -72,7 +72,7 @@ Feature: Testing all the scenarios in stack module
 
   @Stackapplication
   Scenario: user navigates to application page in stack
-    Given user is in operations in stack page
+    Given user is in implementation page
     When user clicks on application link
     Then user sucessfully navigates to the applicaiton page
 
