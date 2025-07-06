@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Queue {
+public class Queue_sd {
 
 	@Given("queue module user signs into the portal using valid username {string} and password {string}")
 	public void queue_module_user_signs_into_the_portal_using_valid_username_and_password(String string,
