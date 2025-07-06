@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions;
 		monochrome = false, // console output color
 		tags = "@stack", // tags from feature file
 		features = { "src/test/resources/Feature" }, // location of feature files
-		glue = "stepDefinitions") // location of step definition files
+		glue = "stepDefinition") // location of step definition files
 
 public class TestRunner extends AbstractTestNGCucumberTests {
 
