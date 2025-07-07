@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Launch {
+public class Launch_sd {
 
 	@Given("the user is on Browser")
 	public void the_user_is_on_browser() {

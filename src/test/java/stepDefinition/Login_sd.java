@@ -3,7 +3,7 @@ package stepDefinition;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Login {
+public class Login_sd {
 
 	@When("user clicks on signin")
 	public void user_clicks_on_signin() {

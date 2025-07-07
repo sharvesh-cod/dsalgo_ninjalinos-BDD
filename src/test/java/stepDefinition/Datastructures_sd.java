@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Datastructures {
+public class Datastructures_sd {
 
 	@Given("The user is on the Home page after logged in")
 	public void the_user_is_on_the_home_page_after_logged_in() {

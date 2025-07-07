@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Home {
+public class Home_sd {
 
 	@When("the user clicks on Get started button")
 	public void the_user_clicks_on_get_started_button() {

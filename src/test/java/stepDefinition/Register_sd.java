@@ -3,7 +3,7 @@ package stepDefinition;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Register {
+public class Register_sd {
 
 	@When("the user enters valid inputs and clicks on register button")
 	public void the_user_enters_valid_inputs_and_clicks_on_register_button() {
