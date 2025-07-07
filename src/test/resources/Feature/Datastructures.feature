@@ -5,7 +5,7 @@ Feature: Datastructures Induction
     Given the user is on Home page
     
    Scenario: Verify that user is able to navigate to Data Structures - Introduction page
-    Given The user is on the Home page after logged in
+   
     When  The user clicks the Getting Started button in Data Structures - Introduction
     Then  The user should land on Data Structures- Introduction Page 
     
