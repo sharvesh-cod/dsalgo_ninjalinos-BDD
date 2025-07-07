@@ -6,8 +6,8 @@ import io.cucumber.java.en.When;
 
 public class Datastructures_sd {
 
-	@Given("the user clicks on get started button of Data structures after logged in with user credentials")
-	public void the_user_is_on_the_home_page_after_logged_in() {
+	@Given("the user clicks on the  get started button of Data structures after logged in with user credentials")
+	public void the_user_clicks_on_the_get_started_button_of_data_structures_after_logged_in_with_user_credentials() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
