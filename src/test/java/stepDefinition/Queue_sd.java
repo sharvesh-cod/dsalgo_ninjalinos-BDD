@@ -5,34 +5,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Queue_sd {
-
-	@Given("queue module user signs into the portal using valid username {string} and password {string}")
-	public void queue_module_user_signs_into_the_portal_using_valid_username_and_password(String string,
-			String string2) {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Given("queue module user is in home page of ds algo portal after signing in")
-	public void queue_module_user_is_in_home_page_of_ds_algo_portal_after_signing_in() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("user clicks on Get started button of queue module")
-	public void user_clicks_on_get_started_button_of_queue_module() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("user successfully navigates to the queue page in ds algo portal")
-	public void user_successfully_navigates_to_the_queue_page_in_ds_algo_portal() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Given("user is in queue page of ds algo portal")
-	public void user_is_in_queue_page_of_ds_algo_portal() {
+	@Given("user signs into the portal using valid username {string} and password {string} following which navigates to the queue page")
+	public void user_signs_into_the_portal_using_valid_username_and_password_following_which_navigates_to_the_queue_page(
+			String string, String string2) {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -50,7 +25,7 @@ public class Queue_sd {
 	}
 
 	@Given("user is in Implementation of queue in python page")
-	public void user_is_in_the_implementation_of_queue_in_python_page() {
+	public void user_is_in_implementation_of_queue_in_python_page() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -73,14 +48,14 @@ public class Queue_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("\\(QI)user clicks on Run button in Try here page without entering any code in the editor")
-	public void qi_user_clicks_on_run_button_in_try_here_page_without_entering_any_code_in_the_editor() {
+	@When("user clicks on Run button in Try here page without entering any code in the editor")
+	public void user_clicks_on_run_button_in_try_here_page_without_entering_any_code_in_the_editor() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@Then("\\(QI)user does not see any alert message saying code eitor is empty")
-	public void qi_user_does_not_see_any_alert_message_saying_code_eitor_is_empty() {
+	@Then("user does not see any alert message saying code eitor is empty")
+	public void user_does_not_see_any_alert_message_saying_code_eitor_is_empty() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -91,32 +66,32 @@ public class Queue_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("\\(QI)user clicks on Run button in Try here page after entering a code with error in the editor")
-	public void qi_user_clicks_on_run_button_in_try_here_page_after_entering_a_code_with_error_in_the_editor() {
+	@When("user clicks on Run button in Try here page after entering a code with error in the editor")
+	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_code_with_error_in_the_editor() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@Then("\\(QI)user gets an alert message about the error in code")
-	public void qi_user_gets_an_alert_message_about_the_error_in_code() {
+	@Then("user gets an alert message about the error in code")
+	public void user_gets_an_alert_message_about_the_error_in_code() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("\\(QI)user clicks on Run button in Try here page after entering a correct code in the editor")
-	public void qi_user_clicks_on_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor() {
+	@When("user clicks on Run button in Try here page after entering a correct code in the editor")
+	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@Then("\\(QI)user is able to see the output in the console")
-	public void qi_user_is_able_to_see_the_output_in_the_console() {
+	@Then("user is able to see the output in the console")
+	public void user_is_able_to_see_the_output_in_the_console() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
 
 	@Given("user is in implementation of queue in python page")
-	public void user_is_in_implementation_of_queue_in_python_page() {
+	public void user_is_in_the_implementation_of_queue_in_python_page() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -128,7 +103,7 @@ public class Queue_sd {
 	}
 
 	@Then("user sucessfully navigates to the implementation using collections.deque page")
-	public void user_sucessfully_navigates_to_the_implementation_using_collections_deque_page() {
+	public void user_sucessfully_navigates_to_implementation_using_collections_deque_page() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -153,42 +128,6 @@ public class Queue_sd {
 
 	@Given("user is in try here page of implementation using collections.deque page")
 	public void user_is_in_try_here_page_of_implementation_using_collections_deque_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("\\(QC)user clicks on Run button in Try here page without entering any code in the editor")
-	public void qc_user_clicks_on_run_button_in_try_here_page_without_entering_any_code_in_the_editor() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("\\(QC)user does not see any alert message saying code eitor is empty")
-	public void qc_user_does_not_see_any_alert_message_saying_code_eitor_is_empty() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("\\(QC)user clicks on Run button in Try here page after entering a code with error in the editor")
-	public void qc_user_clicks_on_run_button_in_try_here_page_after_entering_a_code_with_error_in_the_editor() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("\\(QC)user gets an alert message about the error in code")
-	public void qc_user_gets_an_alert_message_about_the_error_in_code() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("\\(QC)user clicks on Run button in Try here page after entering a correct code in the editor")
-	public void qc_user_clicks_on_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("\\(QC)user is able to see the output in the console")
-	public void qc_user_is_able_to_see_the_output_in_the_console() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -225,42 +164,6 @@ public class Queue_sd {
 
 	@Given("user is in try here page of Implementation using array page")
 	public void user_is_in_try_here_page_of_implementation_using_array_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("\\(QA)user clicks on Run button in Try here page without entering any code in the editor")
-	public void qa_user_clicks_on_run_button_in_try_here_page_without_entering_any_code_in_the_editor() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("\\(QA)user does not see any alert message saying code eitor is empty")
-	public void qa_user_does_not_see_any_alert_message_saying_code_eitor_is_empty() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("\\(QA)user clicks on Run button in Try here page after entering a code with error in the editor")
-	public void qa_user_clicks_on_run_button_in_try_here_page_after_entering_a_code_with_error_in_the_editor() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("\\(QA)user gets an alert message about the error in code")
-	public void qa_user_gets_an_alert_message_about_the_error_in_code() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("\\(QA)user clicks on Run button in Try here page after entering a correct code in the editor")
-	public void qa_user_clicks_on_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("\\(QA)user is able to see the output in the console")
-	public void qa_user_is_able_to_see_the_output_in_the_console() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -307,42 +210,6 @@ public class Queue_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("\\(QO)user clicks on Run button in Try here page without entering any code in the editor")
-	public void qo_user_clicks_on_run_button_in_try_here_page_without_entering_any_code_in_the_editor() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("\\(QO)user does not see any alert message saying code eitor is empty")
-	public void qo_user_does_not_see_any_alert_message_saying_code_eitor_is_empty() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("\\(QO)user clicks on Run button in Try here page after entering a code with error in the editor")
-	public void qo_user_clicks_on_run_button_in_try_here_page_after_entering_a_code_with_error_in_the_editor() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("\\(QO)user gets an alert message about the error in code")
-	public void qo_user_gets_an_alert_message_about_the_error_in_code() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("\\(QO)user clicks on Run button in Try here page after entering a correct code in the editor")
-	public void qo_user_clicks_on_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("\\(QO)user is able to see the output in the console")
-	public void qo_user_is_able_to_see_the_output_in_the_console() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
 	@Given("user is in queue page")
 	public void user_is_in_queue_page() {
 		// Write code here that turns the phrase above into concrete actions
@@ -356,13 +223,13 @@ public class Queue_sd {
 	}
 
 	@Then("user sucessfully navigates to the  ImplementationUsingCollections.deque page")
-	public void user_sucessfully_navigates_to_implementation_using_collections_deque_page() {
+	public void user_sucessfully_navigates_to_the_implementation_using_collections_deque_page() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("user clicks on  buttonimplementation using array")
-	public void user_clicks_on_buttonimplementation_using_array() {
+	@When("user clicks on  button implementation using array")
+	public void user_clicks_on_button_implementation_using_array() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -385,20 +252,20 @@ public class Queue_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@Given("queue user is in the home page of ds algo portal")
-	public void queue_user_is_in_the_home_page_of_ds_algo_portal() {
+	@Given("User is in operations in queue page")
+	public void user_is_in_operations_in_queue_page() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("user clicks on Data Structures dropdown and clicks on queue")
-	public void user_clicks_on_data_structures_dropdown_and_clicks_on_queue() {
+	@When("user clicks on the practice questions link in queue module")
+	public void user_clicks_on_the_practice_questions_link_in_queue_module() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@Then("user sucessfully navigates to the queue page")
-	public void user_sucessfully_navigates_to_the_queue_page() {
+	@Then("user sucessfully navigates to practice questions of queue module however the page is empty")
+	public void user_sucessfully_navigates_to_practice_questions_of_queue_module_however_the_page_is_empty() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
