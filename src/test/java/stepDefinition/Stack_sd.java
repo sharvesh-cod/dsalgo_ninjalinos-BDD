@@ -3,9 +3,8 @@ package stepDefinition;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.CommonMethods;
 
-public class Stack_sd extends CommonMethods {
+public class Stack_sd {
 
 	@Given("user signs into the portal using valid username {string} and password {string} following which navigates to the stack page")
 	public void user_signs_into_the_portal_using_valid_username_and_password_following_which_navigates_to_the_stack_page(
