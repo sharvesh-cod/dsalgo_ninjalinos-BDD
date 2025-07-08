@@ -6,19 +6,19 @@ import io.cucumber.java.en.When;
 
 public class Tree_sd {
 
-	@Given("The user is logged in and on the Tree page")
-	public void the_user_is_logged_in_and_on_the_tree_page() {
+	@Given("the user is in Tree page after logged in")
+	public void the_user_is_in_tree_page_after_logged_in() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user clicks overview of tree")
-	public void the_user_clicks_overview_of_tree() {
+	@When("The user scroll down in tree page")
+	public void the_user_scroll_down_in_tree_page() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@Then("The user should see the following links:")
+	@Then("The user should see the following links")
 	public void the_user_should_see_the_following_links(io.cucumber.datatable.DataTable dataTable) {
 		// Write code here that turns the phrase above into concrete actions
 		// For automatic transformation, change DataTable to one of
@@ -30,8 +30,8 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user clicks {string} link")
-	public void the_user_clicks_link(String string) {
+	@When("The user clicks Overview of Trees link")
+	public void the_user_clicks_overview_of_trees_link() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -42,8 +42,8 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user clicks {string} in Overview of Trees")
-	public void the_user_clicks_in_overview_of_trees(String string) {
+	@When("The user clicks Try here in Overview of Trees")
+	public void the_user_clicks_try_here_in_overview_of_trees() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -54,8 +54,14 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user clicks {string} without entering code")
-	public void the_user_clicks_without_entering_code(String string) {
+	@Given("The user in tryEditor page")
+	public void the_user_in_try_editor_page() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Run without entering code")
+	public void the_user_clicks_run_without_entering_code() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -66,8 +72,8 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user enters valid Python code and clicks {string}")
-	public void the_user_enters_valid_python_code_and_clicks(String string) {
+	@When("The user clicks Run after entering valid code")
+	public void the_user_clicks_run_after_entering_valid_code() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -78,8 +84,14 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user enters invalid Python code and clicks {string}")
-	public void the_user_enters_invalid_python_code_and_clicks(String string) {
+	@When("The user clicks run after entering invalid code")
+	public void the_user_clicks_run_after_entering_invalid_code() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Terminologies link")
+	public void the_user_clicks_terminologies_link() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -90,8 +102,20 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user clicks {string} in Terminologies")
-	public void the_user_clicks_in_terminologies(String string) {
+	@When("The user clicks Try here in Terminologies")
+	public void the_user_clicks_try_here_in_terminologies() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Run after entering invalid code")
+	public void the_user_clicks_run_after_entering_invalidcode() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Types of Tree link")
+	public void the_user_clicks_types_of_tree_link() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -102,8 +126,14 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user clicks {string} in Types of Tree")
-	public void the_user_clicks_in_types_of_tree(String string) {
+	@When("The user clicks Try here in Types of Tree")
+	public void the_user_clicks_try_here_in_types_of_tree() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Tree Traversals link")
+	public void the_user_clicks_tree_traversals_link() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -114,8 +144,38 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user clicks {string} in Tree Traversals")
-	public void the_user_clicks_in_tree_traversals(String string) {
+	@When("The user clicks Try here in Tree Traversals")
+	public void the_user_clicks_try_here_in_tree_traversals() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user enters valid Python code, clicks Run")
+	public void the_user_enters_valid_python_code_clicks_run() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user enters invalid Python code and clicks Run")
+	public void the_user_enters_invalid_python_code_and_clicks_run() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Traversals-Illustration link")
+	public void the_user_clicks_traversals_illustration_link() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user enters valid Python code and clicks Run")
+	public void the_user_enters_valid_python_code_and_clicks_run() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Binary Trees link")
+	public void the_user_clicks_binary_trees_link() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -126,8 +186,20 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
+	@When("The user clicks Types of Binary Tree link")
+	public void the_user_clicks_types_of_binary_tree_link() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
 	@Then("The user should be navigated to the Types of Binary Tree page")
 	public void the_user_should_be_navigated_to_the_types_of_binary_tree_page() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Implementation of Python link")
+	public void the_user_clicks_implementation_of_python_link() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -138,8 +210,20 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
+	@When("The user clicks Binary Tree Traversals link")
+	public void the_user_clicks_binary_tree_traversals_link() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
 	@Then("The user should be navigated to the Binary Tree Traversals page")
 	public void the_user_should_be_navigated_to_the_binary_tree_traversals_page() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Applications of Binary Trees link")
+	public void the_user_clicks_applications_of_binary_trees_link() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -150,8 +234,14 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user clicks {string} in Applications of Binary Trees")
-	public void the_user_clicks_in_applications_of_binary_trees(String string) {
+	@When("The user clicks Try here in Applications of Binary Trees")
+	public void the_user_clicks_try_here_in_applications_of_binary_trees() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Binary Search link")
+	public void the_user_clicks_binary_search_link() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -162,8 +252,14 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user clicks {string} in Binary Search")
-	public void the_user_clicks_in_binary_search(String string) {
+	@When("The user clicks Try here in Binary Search")
+	public void the_user_clicks_try_here_in_binary_search() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Implementation of BST link")
+	public void the_user_clicks_implementation_of_bst_link() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -174,8 +270,14 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user clicks {string} in Implementation of BST")
-	public void the_user_clicks_in_implementation_of_bst(String string) {
+	@When("The user clicks Try here in Implementation of BST")
+	public void the_user_clicks_try_here_in_implementation_of_bst() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("The user clicks Practice Questions link")
+	public void the_user_clicks_practice_questions_link() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
@@ -186,14 +288,8 @@ public class Tree_sd {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	@Given("The user is on the Practice Questions page")
-	public void the_user_is_on_the_practice_questions_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("The user should see all listed questions")
-	public void the_user_should_see_all_listed_questions() {
+	@Then("The user should see the practice questions")
+	public void the_user_should_see_the_practice_questions() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
