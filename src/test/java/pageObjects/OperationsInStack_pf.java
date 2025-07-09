@@ -12,13 +12,13 @@ public class OperationsInStack_pf {
 	Actions action = new Actions(driver);
 
 	@FindBy(xpath = "//a[text()='Implementation']")
-	WebElement implementationStackLInk;
+	WebElement implementationStackLink;
 
 	@FindBy(xpath = "//a[text()='Applications']")
 	WebElement applicationStackLink;
 
 	@FindBy(xpath = "//*[text()='Practice Questions']")
-	WebElement practiceQ;
+	WebElement stackPracticeQ;
 
 	@FindBy(xpath = "//div[2]/following::*/div[2]/a")
 	WebElement tryHereStack;
@@ -32,8 +32,8 @@ public class OperationsInStack_pf {
 
 	public void implementation_stack() {
 
-		action.scrollToElement(implementationStackLInk).perform();
-		action.click(implementationStackLInk).perform();
+		action.scrollToElement(implementationStackLink).perform();
+		action.click(implementationStackLink).perform();
 	}
 
 	public void appliation_stack() {
@@ -44,8 +44,8 @@ public class OperationsInStack_pf {
 
 	public void practice_stack() {
 
-		action.scrollToElement(practiceQ).perform();
-		action.click(practiceQ).perform();
+		action.scrollToElement(stackPracticeQ).perform();
+		action.click(stackPracticeQ).perform();
 	}
 
 	public void tryhere_stack() {
