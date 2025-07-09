@@ -27,27 +27,27 @@ public class CodeEditor_pf {
 
 	}
 
-	public void txtEditor_invalidCode(WebElement ele) {
+	public void txtEditor_invalidCode() {
 
-		action.scrollToElement(ele).perform();
-		action.sendKeys("prin('Hello World')").perform();
+		action.scrollToElement(textEditor).perform();
+		textEditor.sendKeys("prin('Hello World')");
 	}
 
-	public void txtEditor_correctCode(WebElement ele) {
+	public void txtEditor_correctCode() {
 
-		action.scrollToElement(ele).perform();
-		action.sendKeys("print('Hello World')").perform();
+		action.scrollToElement(textEditor).perform();
+		textEditor.sendKeys("print('Hello World')");
 	}
 
-	public void runStack(WebElement ele) {
+	public void runStack() {
 
-		action.scrollToElement(ele).perform();
-		action.click(ele).perform();
+		action.scrollToElement(runBtn).perform();
+		action.click(runBtn).perform();
 	}
 
-	public void output(WebElement ele) {
+	public void output() {
 
-		action.scrollToElement(ele).perform();
+		action.scrollToElement(outputTxt).perform();
 		// ele.getText(); can be used if required
 		// here we may write code to capture the screenshot of the output after clicking
 		// on run button

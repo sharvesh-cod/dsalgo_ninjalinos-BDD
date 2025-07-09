@@ -30,10 +30,28 @@ public class OperationsInStack_pf {
 
 	}
 
-	public OperationsInStack_pf(WebElement ele) {
+	public void implementation_stack() {
 
-		action.scrollToElement(ele).perform();
-		action.click(ele).perform();
+		action.scrollToElement(implementationStackLInk).perform();
+		action.click(implementationStackLInk).perform();
+	}
+
+	public void appliation_stack() {
+
+		action.scrollToElement(applicationStackLink).perform();
+		action.click(applicationStackLink).perform();
+	}
+
+	public void practice_stack() {
+
+		action.scrollToElement(practiceQ).perform();
+		action.click(practiceQ).perform();
+	}
+
+	public void tryhere_stack() {
+
+		action.scrollToElement(tryHereStack).perform();
+		action.click(tryHereStack).perform();
 	}
 
 }

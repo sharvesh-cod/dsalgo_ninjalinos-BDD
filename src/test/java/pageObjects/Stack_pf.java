@@ -18,7 +18,7 @@ public class Stack_pf {
 	WebElement implementationStackBtn;
 
 	@FindBy(xpath = "//a[text()='Applications']")
-	WebElement pplicationStackBtn;
+	WebElement applicationStackBtn;
 
 	public Stack_pf(WebDriver driver) {
 
@@ -27,10 +27,22 @@ public class Stack_pf {
 
 	}
 
-	public Stack_pf(WebElement ele) {
+	public void opreations_stack_btn() {
 
-		action.scrollToElement(ele).perform();
-		action.click(ele).perform();
+		action.scrollToElement(operationsStackBtn).perform();
+		action.click(operationsStackBtn).perform();
+	}
+
+	public void implementation_stack_btn() {
+
+		action.scrollToElement(implementationStackBtn).perform();
+		action.click(implementationStackBtn).perform();
+	}
+
+	public void application_stack_btn() {
+
+		action.scrollToElement(applicationStackBtn).perform();
+		action.click(applicationStackBtn).perform();
 	}
 
 }
