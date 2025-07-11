@@ -6,10 +6,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import hooks.Hooks;
+
 public class Queue_pf {
 
 	private WebDriver driver;
-	Actions action = new Actions(driver);
+	Actions action;
 
 	@FindBy(xpath = "//a[text()='Implementation of Queue in Python']")
 	WebElement implementationQueuePythonBtn;
@@ -23,9 +25,16 @@ public class Queue_pf {
 	@FindBy(xpath = "//a[text()='Queue Operations']")
 	WebElement queueOperationsBtn;
 
-	public Queue_pf(WebDriver driver) {
+	@FindBy(xpath = "//*[text()='Practice Questions']")
+	WebElement queuePracticeQ;
 
-		this.driver = driver;
+	@FindBy(xpath = "//div[2]/following::*/div[2]/a")
+	WebElement tryHereQueue;
+
+	public Queue_pf(Hooks hooks) {
+
+		driver = hooks.getDriver();
+		action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 
 	}
@@ -52,6 +61,23 @@ public class Queue_pf {
 
 		action.scrollToElement(queueOperationsBtn).perform();
 		action.click(queueOperationsBtn).perform();
+	}
+
+	public void practice_queue() {
+
+		action.scrollToElement(queuePracticeQ).perform();
+		action.click(queuePracticeQ).perform();
+	}
+
+	public void tryhere_queue() {
+
+		action.scrollToElement(tryHereQueue).perform();
+		action.click(tryHereQueue).perform();
+	}
+
+	public String url() {
+		String currentPageUrl = driver.getCurrentUrl();
+		return currentPageUrl;
 	}
 
 }

@@ -25,6 +25,12 @@ public class Stack_pf {
 	@FindBy(xpath = "//a[text()='Applications']")
 	WebElement applicationStackBtn;
 
+	@FindBy(xpath = "//*[text()='Practice Questions']")
+	WebElement stackPracticeQ;
+
+	@FindBy(xpath = "//div[2]/following::*/div[2]/a")
+	WebElement tryHereStack;
+
 	public Stack_pf(Hooks hooks) {
 
 		driver = hooks.getDriver();
@@ -55,6 +61,18 @@ public class Stack_pf {
 
 		action.scrollToElement(applicationStackBtn).perform();
 		action.click(applicationStackBtn).perform();
+	}
+
+	public void practice_stack() {
+
+		action.scrollToElement(stackPracticeQ).perform();
+		action.click(stackPracticeQ).perform();
+	}
+
+	public void tryhere_stack() {
+
+		action.scrollToElement(tryHereStack).perform();
+		action.click(tryHereStack).perform();
 	}
 
 	public String url() {

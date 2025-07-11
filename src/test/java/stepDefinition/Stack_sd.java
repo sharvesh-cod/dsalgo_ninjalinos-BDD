@@ -10,21 +10,18 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.CodeEditor_pf;
 import pageObjects.LoginPage;
-import pageObjects.OperationsInStack_pf;
 import pageObjects.Stack_pf;
 
 public class Stack_sd {
 	private WebDriver driver;
 	private Stack_pf stackpf;
 	private LoginPage loginpage;
-	private OperationsInStack_pf opInStack;
 	private CodeEditor_pf codeeditor;
 
 	public Stack_sd(Hooks hooks) {
 		this.driver = hooks.getDriver();
 		this.stackpf = new Stack_pf(hooks);
 		this.loginpage = new LoginPage(hooks);
-		this.opInStack = new OperationsInStack_pf(hooks);
 		this.codeeditor = new CodeEditor_pf(hooks);
 	}
 
@@ -62,13 +59,13 @@ public class Stack_sd {
 
 	@When("user clicks on try here button in operations in stack page")
 	public void user_clicks_on_try_here_button_in_operations_in_stack_page() {
-		opInStack.tryhere_stack();
+		stackpf.tryhere_stack();
 		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user successfully navigates to code editor of the operations in stack page")
 	public void user_successfully_navigates_to_code_editor_of_the_operations_in_stack_page() {
-		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", opInStack.url());
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", stackpf.url());
 
 		// throw new io.cucumber.java.PendingException();
 	}
