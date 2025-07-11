@@ -9,11 +9,10 @@ Feature: User Login
     Given User launches the browser, navigates to "https://dsportalapp.herokuapp.com/"
     And the user click the get started button
 
-  @ValidLogin
-  Scenario: Successfull Login with Valid Credentials
-    When User clikc the signin button
-    Then User should navigated to login page 
-    When User provides the valid username "ninjalinos@work.com", valid password "sdet218920@"
-    And User should click the login button 
-    Then User should see the message "You are logged in" 
-
+@ValidLogin
+Scenario: Successful Login with Valid Credentials
+  When User click the signin button
+  Then User should be navigated to login page
+  When User provides the valid credentails "ninjalinos@work.com" "sdet218920@"
+  And  User should click the login button 
+  Then User should see the message "You are logged in"

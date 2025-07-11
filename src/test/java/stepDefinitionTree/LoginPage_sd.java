@@ -1,4 +1,4 @@
-package stepDefinition;
+package stepDefinitionTree;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

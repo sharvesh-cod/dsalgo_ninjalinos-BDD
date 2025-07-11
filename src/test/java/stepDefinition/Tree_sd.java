@@ -1,10 +1,16 @@
 package stepDefinition;
 
+import driverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageObjects.LoginPage;
+import pageObjects.Tree_pf;
 
 public class Tree_sd {
+
+	private LoginPage loginPage = new LoginPage(DriverFactory.getBrowser());
+	private Tree_pf treePage;
 
 	@Given("the user is in Tree page after logged in")
 	public void the_user_is_in_tree_page_after_logged_in() {
