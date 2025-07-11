@@ -71,11 +71,11 @@ public class Tree_pf {
 	@FindBy(xpath = "//button[text()='Run']")
 	WebElement runButton;
 
+	@FindBy(css = "div.CodeMirror-measure")
+	WebElement textEditor;
+
 	@FindBy(id = "output")
 	WebElement outputTxt;
-
-	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]")
-	WebElement textEditor;
 
 	@FindBy(xpath = "//*[text()='Practice Questions']")
 
