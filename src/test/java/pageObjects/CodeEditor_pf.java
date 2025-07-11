@@ -6,6 +6,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import hooks.Hooks;
+
 public class CodeEditor_pf {
 
 	private WebDriver driver;
@@ -20,9 +22,9 @@ public class CodeEditor_pf {
 	@FindBy(id = "output")
 	WebElement outputTxt;
 
-	public CodeEditor_pf(WebDriver driver) {
+	public CodeEditor_pf(Hooks hooks) {
 
-		this.driver = driver;
+		driver = hooks.getDriver();
 		action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 

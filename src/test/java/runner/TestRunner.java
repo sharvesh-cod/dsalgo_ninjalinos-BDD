@@ -9,7 +9,8 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(plugin = { "pretty", "html:target/dsAlgo_Ninjalinos_BDD.html" }, // reporting purpose
 		monochrome = false, // console output color
-		tags = "@stack", features = { "src/test/resources/Feature" }, // location of feature files
+		tags = "@Stackoperations or @StackoperationsCodeEditor or @StackoperationsTryingEmptyEditor", features = {
+				"src/test/resources/Feature" }, // location of feature files
 		glue = { "hooks", "stepDefinition" }) // location of step definition files
 
 public class TestRunner extends AbstractTestNGCucumberTests {

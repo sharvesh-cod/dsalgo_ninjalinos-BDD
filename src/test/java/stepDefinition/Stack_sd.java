@@ -22,10 +22,10 @@ public class Stack_sd {
 
 	public Stack_sd(Hooks hooks) {
 		this.driver = hooks.getDriver();
-		this.stackpf = new Stack_pf(driver);
-		this.loginpage = new LoginPage(driver);
-		this.opInStack = new OperationsInStack_pf(driver);
-		this.codeeditor = new CodeEditor_pf(driver);
+		this.stackpf = new Stack_pf(hooks);
+		this.loginpage = new LoginPage(hooks);
+		this.opInStack = new OperationsInStack_pf(hooks);
+		this.codeeditor = new CodeEditor_pf(hooks);
 	}
 
 	@Given("user signs into the portal using valid username and password following which navigates to the stack page")
@@ -40,7 +40,6 @@ public class Stack_sd {
 	@When("user clicks on operations in stack button of Stack module")
 	public void user_clicks_on_operations_in_stack_button_of_stack_module() {
 
-		stackpf.stack_btn();
 		stackpf.opreations_stack_btn();
 		// throw new io.cucumber.java.PendingException();
 	}
@@ -56,7 +55,6 @@ public class Stack_sd {
 	@Given("user is in operations in stack page")
 	public void user_is_in_operations_in_stack_page() {
 
-		stackpf.stack_btn();
 		stackpf.opreations_stack_btn();
 
 		// throw new io.cucumber.java.PendingException();

@@ -6,6 +6,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import hooks.Hooks;
+
 public class LoginPage {
 
 	private WebDriver driver;
@@ -33,9 +35,9 @@ public class LoginPage {
 
 	}
 
-	public LoginPage(WebDriver driver) {
+	public LoginPage(Hooks hooks) {
 
-		this.driver = driver;
+		driver = hooks.getDriver();
 		action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 

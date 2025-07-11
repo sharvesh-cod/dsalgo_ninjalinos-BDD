@@ -6,6 +6,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import hooks.Hooks;
+
 public class OperationsInStack_pf {
 
 	private WebDriver driver;
@@ -23,9 +25,9 @@ public class OperationsInStack_pf {
 	@FindBy(xpath = "//div[2]/following::*/div[2]/a")
 	WebElement tryHereStack;
 
-	public OperationsInStack_pf(WebDriver driver) {
+	public OperationsInStack_pf(Hooks hooks) {
 
-		this.driver = driver;
+		driver = hooks.getDriver();
 		action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 
