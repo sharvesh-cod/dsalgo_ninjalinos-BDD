@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
 
 	private WebDriver driver;
-	Actions action = new Actions(driver);
+	private Actions action;
 
 	@FindBy(className = "btn")
 	WebElement launchBtn;
@@ -33,15 +33,16 @@ public class LoginPage {
 
 	}
 
-	public LoginPage(WebDriver driver, Actions action) {
+	public LoginPage(WebDriver driver) {
 
 		this.driver = driver;
-		this.action = action;
+		action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 
 	}
 
 	public void launch() {
+		driver.get("https://dsportalapp.herokuapp.com/");
 		launchBtn.click();
 
 	}

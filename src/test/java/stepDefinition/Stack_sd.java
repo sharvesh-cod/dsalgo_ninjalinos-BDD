@@ -2,32 +2,35 @@ package stepDefinition;
 
 import static org.testng.Assert.assertEquals;
 
+import org.openqa.selenium.WebDriver;
+
 import hooks.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageObjects.CodeEditor_pf;
 import pageObjects.LoginPage;
 import pageObjects.OperationsInStack_pf;
 import pageObjects.Stack_pf;
 
 public class Stack_sd {
-	private final Hooks hooks;
-	private final Stack_pf stackpf;
-	private final LoginPage loginpage;
-	private final OperationsInStack_pf opInStack;
+	private WebDriver driver;
+	private Stack_pf stackpf;
+	private LoginPage loginpage;
+	private OperationsInStack_pf opInStack;
+	private CodeEditor_pf codeeditor;
 
 	public Stack_sd(Hooks hooks) {
-		this.hooks = hooks;
-		hooks.initChromeDriver();
-		this.stackpf = new Stack_pf(hooks.getDriver(), hooks.getAction());
-		this.loginpage = new LoginPage(hooks.getDriver(), hooks.getAction());
-		this.opInStack = new OperationsInStack_pf(hooks.getDriver(), hooks.getAction());
-
+		this.driver = hooks.getDriver();
+		this.stackpf = new Stack_pf(driver);
+		this.loginpage = new LoginPage(driver);
+		this.opInStack = new OperationsInStack_pf(driver);
+		this.codeeditor = new CodeEditor_pf(driver);
 	}
 
 	@Given("user signs into the portal using valid username and password following which navigates to the stack page")
 	public void user_signs_into_the_portal_using_valid_username_and_password_following_which_navigates_to_the_stack_page() {
-		hooks.initChromeDriver();
+
 		loginpage.launch();
 		loginpage.login();
 		stackpf.stack_btn();
@@ -36,6 +39,7 @@ public class Stack_sd {
 
 	@When("user clicks on operations in stack button of Stack module")
 	public void user_clicks_on_operations_in_stack_button_of_stack_module() {
+
 		stackpf.stack_btn();
 		stackpf.opreations_stack_btn();
 		// throw new io.cucumber.java.PendingException();
@@ -51,6 +55,7 @@ public class Stack_sd {
 
 	@Given("user is in operations in stack page")
 	public void user_is_in_operations_in_stack_page() {
+
 		stackpf.stack_btn();
 		stackpf.opreations_stack_btn();
 

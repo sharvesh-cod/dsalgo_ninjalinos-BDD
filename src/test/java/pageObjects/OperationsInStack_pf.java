@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class OperationsInStack_pf {
 
 	private WebDriver driver;
-	Actions action = new Actions(driver);
+	private Actions action;
 
 	@FindBy(xpath = "//a[text()='Implementation']")
 	WebElement implementationStackLink;
@@ -23,10 +23,10 @@ public class OperationsInStack_pf {
 	@FindBy(xpath = "//div[2]/following::*/div[2]/a")
 	WebElement tryHereStack;
 
-	public OperationsInStack_pf(WebDriver driver, Actions action) {
+	public OperationsInStack_pf(WebDriver driver) {
 
 		this.driver = driver;
-		this.action = action;
+		action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 
 	}

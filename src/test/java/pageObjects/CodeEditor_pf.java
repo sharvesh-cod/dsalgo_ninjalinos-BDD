@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class CodeEditor_pf {
 
 	private WebDriver driver;
-	Actions action = new Actions(driver);
+	private Actions action;
 
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]")
 	WebElement textEditor;
@@ -23,6 +23,7 @@ public class CodeEditor_pf {
 	public CodeEditor_pf(WebDriver driver) {
 
 		this.driver = driver;
+		action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 
 	}
@@ -39,7 +40,7 @@ public class CodeEditor_pf {
 		textEditor.sendKeys("print('Hello World')");
 	}
 
-	public void runStack() {
+	public void run() {
 
 		action.scrollToElement(runBtn).perform();
 		action.click(runBtn).perform();

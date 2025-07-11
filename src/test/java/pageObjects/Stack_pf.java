@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class Stack_pf {
 
 	private WebDriver driver;
-	Actions action = new Actions(driver);
+	private Actions action;
 
 	@FindBy(xpath = "//h5[text()='Stack']/../../..//a[text()='Get Started']")
 	WebElement stackBtn; // temporarily adding this web element
@@ -23,10 +23,10 @@ public class Stack_pf {
 	@FindBy(xpath = "//a[text()='Applications']")
 	WebElement applicationStackBtn;
 
-	public Stack_pf(WebDriver driver, Actions action) {
+	public Stack_pf(WebDriver driver) {
 
 		this.driver = driver;
-		this.action = action;
+		action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 
 	}
