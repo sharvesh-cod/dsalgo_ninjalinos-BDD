@@ -11,6 +11,9 @@ public class Stack_pf {
 	private WebDriver driver;
 	Actions action = new Actions(driver);
 
+	@FindBy(xpath = "//h5[text()='Stack']/../../..//a[text()='Get Started']")
+	WebElement stackBtn; // temporarily adding this web element
+
 	@FindBy(xpath = "//a[text()='Operations in Stack']")
 	WebElement operationsStackBtn;
 
@@ -20,11 +23,18 @@ public class Stack_pf {
 	@FindBy(xpath = "//a[text()='Applications']")
 	WebElement applicationStackBtn;
 
-	public Stack_pf(WebDriver driver) {
+	public Stack_pf(WebDriver driver, Actions action) {
 
 		this.driver = driver;
+		this.action = action;
 		PageFactory.initElements(driver, this);
 
+	}
+
+	public void stack_btn() {
+
+		action.scrollToElement(stackBtn).perform();
+		action.click(stackBtn).perform();
 	}
 
 	public void opreations_stack_btn() {
@@ -43,6 +53,11 @@ public class Stack_pf {
 
 		action.scrollToElement(applicationStackBtn).perform();
 		action.click(applicationStackBtn).perform();
+	}
+
+	public String url() {
+		String currentPageUrl = driver.getCurrentUrl();
+		return currentPageUrl;
 	}
 
 }

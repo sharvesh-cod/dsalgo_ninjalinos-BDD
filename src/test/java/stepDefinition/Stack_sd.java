@@ -1,64 +1,91 @@
 package stepDefinition;
 
+import static org.testng.Assert.assertEquals;
+
+import hooks.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageObjects.LoginPage;
+import pageObjects.OperationsInStack_pf;
+import pageObjects.Stack_pf;
 
 public class Stack_sd {
+	private final Hooks hooks;
+	private final Stack_pf stackpf;
+	private final LoginPage loginpage;
+	private final OperationsInStack_pf opInStack;
 
-	@Given("user signs into the portal using valid username {string} and password {string} following which navigates to the stack page")
-	public void user_signs_into_the_portal_using_valid_username_and_password_following_which_navigates_to_the_stack_page(
-			String string, String string2) {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public Stack_sd(Hooks hooks) {
+		this.hooks = hooks;
+		hooks.initChromeDriver();
+		this.stackpf = new Stack_pf(hooks.getDriver(), hooks.getAction());
+		this.loginpage = new LoginPage(hooks.getDriver(), hooks.getAction());
+		this.opInStack = new OperationsInStack_pf(hooks.getDriver(), hooks.getAction());
+
+	}
+
+	@Given("user signs into the portal using valid username and password following which navigates to the stack page")
+	public void user_signs_into_the_portal_using_valid_username_and_password_following_which_navigates_to_the_stack_page() {
+		hooks.initChromeDriver();
+		loginpage.launch();
+		loginpage.login();
+		stackpf.stack_btn();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@When("user clicks on operations in stack button of Stack module")
 	public void user_clicks_on_operations_in_stack_button_of_stack_module() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		stackpf.stack_btn();
+		stackpf.opreations_stack_btn();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user successfully navigates to the operations in stack page")
 	public void user_successfully_navigates_to_the_operations_in_stack_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
+		assertEquals("https://dsportalapp.herokuapp.com/stack/operations-in-stack/", stackpf.url());
+
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Given("user is in operations in stack page")
 	public void user_is_in_operations_in_stack_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		stackpf.stack_btn();
+		stackpf.opreations_stack_btn();
+
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@When("user clicks on try here button in operations in stack page")
 	public void user_clicks_on_try_here_button_in_operations_in_stack_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		opInStack.tryhere_stack();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user successfully navigates to code editor of the operations in stack page")
 	public void user_successfully_navigates_to_code_editor_of_the_operations_in_stack_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", opInStack.url());
+
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Given("user is in try here page of operations in stack page")
 	public void user_is_in_try_here_page_of_operations_in_stack_page() {
 		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@When("user clicks on Run button in Try here page without entering any code in the editor")
 	public void user_clicks_on_run_button_in_try_here_page_without_entering_any_code_in_the_editor() {
 		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user does not see any alert message saying code eitor is empty")
 	public void user_does_not_see_any_alert_message_saying_code_eitor_is_empty() {
 		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@When("user clicks on Run button in Try here page after entering a code with error in the editor")

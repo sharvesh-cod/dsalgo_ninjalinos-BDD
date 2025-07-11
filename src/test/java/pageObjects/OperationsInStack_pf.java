@@ -23,9 +23,10 @@ public class OperationsInStack_pf {
 	@FindBy(xpath = "//div[2]/following::*/div[2]/a")
 	WebElement tryHereStack;
 
-	public OperationsInStack_pf(WebDriver driver) {
+	public OperationsInStack_pf(WebDriver driver, Actions action) {
 
 		this.driver = driver;
+		this.action = action;
 		PageFactory.initElements(driver, this);
 
 	}
@@ -52,6 +53,11 @@ public class OperationsInStack_pf {
 
 		action.scrollToElement(tryHereStack).perform();
 		action.click(tryHereStack).perform();
+	}
+
+	public String url() {
+		String currentPageUrl = driver.getCurrentUrl();
+		return currentPageUrl;
 	}
 
 }

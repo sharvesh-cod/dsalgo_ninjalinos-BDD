@@ -2,7 +2,7 @@
 Feature: Testing all the scenarios in stack module
 
   Background: The user clicks on the get started button of stack module after signing in to the ds algo portal
-    Given user signs into the portal using valid username "ninjalinos@work.com" and password "sdet218920@" following which navigates to the stack page
+    Given user signs into the portal using valid username and password following which navigates to the stack page
 
   
   @Stackoperations
