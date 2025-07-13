@@ -1,5 +1,7 @@
 package pageObjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -12,6 +14,7 @@ import utils.ConfigReader;
 public class LoginPage {
 
 	ConfigReader config;
+	String browser;
 
 	private WebDriver driver;
 	private Actions action;
@@ -34,28 +37,31 @@ public class LoginPage {
 	@FindBy(xpath = "//*[text()='Sign out']")
 	WebElement signOut;
 
-	public LoginPage() {
+//	public LoginPage() {
+//
+//	}
 
-	}
+	public LoginPage(Hooks hooks) throws IOException {
 
-	public LoginPage(Hooks hooks) {
-
-		driver = hooks.getDriver();
-		action = new Actions(driver);
+//		this.browser = obj.return_browser();
+//		this.driver = obj.initBrowser(browser);
+		this.driver = hooks.getDriver_fromHooks();
+		this.action = new Actions(driver);
+		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
 
 	}
 
 	public void launch() {
-		driver.get(config.testUrl());
+		driver.get(config.get_prop_value("testurl"));
 		launchBtn.click();
 
 	}
 
 	public void login() {
 		signinBtn.click();
-		userName.sendKeys(config.userName());
-		pwd.sendKeys(config.pwd());
+		userName.sendKeys(config.get_prop_value("username"));
+		pwd.sendKeys(config.get_prop_value("password"));
 		logInBtn.click();
 
 	}

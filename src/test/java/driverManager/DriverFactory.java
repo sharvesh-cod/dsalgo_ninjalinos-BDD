@@ -19,7 +19,7 @@ public class DriverFactory {
 
 	public DriverFactory(ConfigReader config) throws IOException {
 
-		this.browser = config.browserName();
+		this.browser = config.get_prop_value("browser");
 	}
 
 	// Initialize WebDriver based on browser name

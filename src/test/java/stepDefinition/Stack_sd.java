@@ -2,6 +2,8 @@ package stepDefinition;
 
 import static org.testng.Assert.assertEquals;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 
 import hooks.Hooks;
@@ -17,9 +19,12 @@ public class Stack_sd {
 	private Stack_pf stackpf;
 	private LoginPage loginpage;
 	private CodeEditor_pf codeeditor;
+	String browser;
 
-	public Stack_sd(Hooks hooks) {
-		this.driver = hooks.getDriver();
+	public Stack_sd(Hooks hooks) throws IOException {
+//		this.browser = obj.return_browser();
+//		this.driver = obj.initBrowser(browser);
+		this.driver = hooks.getDriver_fromHooks();
 		this.stackpf = new Stack_pf(hooks);
 		this.loginpage = new LoginPage(hooks);
 		this.codeeditor = new CodeEditor_pf(hooks);

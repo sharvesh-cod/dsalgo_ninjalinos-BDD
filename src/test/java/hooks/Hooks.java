@@ -42,12 +42,8 @@ public class Hooks {
 		}
 	}
 
-	public WebDriver getDriver() {
+	public WebDriver getDriver_fromHooks() {
 		return driver;
 	}
-
-	// public Actions getAction() {
-	// return action;
-	// }
 
 }

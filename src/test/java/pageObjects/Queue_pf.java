@@ -12,6 +12,7 @@ public class Queue_pf {
 
 	private WebDriver driver;
 	Actions action;
+	String browser;
 
 	@FindBy(xpath = "//a[text()='Implementation of Queue in Python']")
 	WebElement implementationQueuePythonBtn;
@@ -33,8 +34,10 @@ public class Queue_pf {
 
 	public Queue_pf(Hooks hooks) {
 
-		driver = hooks.getDriver();
-		action = new Actions(driver);
+//		this.browser = obj.return_browser();
+//		this.driver = obj.initBrowser(browser);
+		this.driver = hooks.getDriver_fromHooks();
+		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 
 	}

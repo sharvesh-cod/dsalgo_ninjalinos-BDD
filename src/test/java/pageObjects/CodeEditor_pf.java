@@ -12,6 +12,7 @@ public class CodeEditor_pf {
 
 	private WebDriver driver;
 	private Actions action;
+	String browser;
 
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]")
 	WebElement textEditor;
@@ -24,8 +25,10 @@ public class CodeEditor_pf {
 
 	public CodeEditor_pf(Hooks hooks) {
 
-		driver = hooks.getDriver();
-		action = new Actions(driver);
+//		this.browser = obj.return_browser();
+//		this.driver = obj.initBrowser(browser);
+		this.driver = hooks.getDriver_fromHooks();
+		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 
 	}

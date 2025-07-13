@@ -12,6 +12,7 @@ public class Stack_pf {
 
 	private WebDriver driver;
 	private Actions action;
+	String browser;
 
 	@FindBy(xpath = "//h5[text()='Stack']/../../..//a[text()='Get Started']")
 	WebElement stackBtn; // temporarily adding this web element
@@ -33,8 +34,10 @@ public class Stack_pf {
 
 	public Stack_pf(Hooks hooks) {
 
-		driver = hooks.getDriver();
-		action = new Actions(driver);
+//		this.browser = obj.return_browser();
+//		this.driver = obj.initBrowser(browser);
+		this.driver = hooks.getDriver_fromHooks();
+		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 
 	}
