@@ -1,27 +1,38 @@
 package hooks;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
+import driverManager.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import utils.ConfigReader;
+import utils.GetProperty;
 
 public class Hooks {
 
 	private WebDriver driver;
+	// ConfigReader configreader;
+
+//	public Hooks(DriverFactory obj) {
+//		driver = obj.return_driver();
+//	}
+	DriverFactory obj = new DriverFactory();
 
 	// private Actions action;
 	@Before
 	public void setup() {
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
+		// WebDriverManager.chromedriver().setup();
+
 		// action = new Actions(driver);
-		// driver.get("https://dsportalapp.herokuapp.com/");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		// driver.get(configreader.testUrl());
+//		driver.manage().deleteAllCookies();
+//		driver.manage().window().maximize();
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		ConfigReader reader = new ConfigReader();
+		GetProperty prop = new GetProperty(reader);
+		String browser = prop.browserName();
+
+		obj.initBrowser(browser);
 
 	}
 

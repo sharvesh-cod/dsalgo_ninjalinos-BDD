@@ -1,19 +1,22 @@
 package utils;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 public class ConfigReader {
+	private Properties prop;
 
-	public void fileReader() throws IOException {
-//		FileInputStream  fis = new FileInputStream ("C:\\Testleaf-1\\Selenium\\Eclipse\\eclipse\\Ninjalinos\\src\\test\\resources\\config\\config.properties");
-//		Properties	prop = new Properties();
-//		prop.load(fis);
-//		System.out.println(prop.getProperty("broswer"));	
+	public ConfigReader() throws IOException {
+		prop = new Properties();
+		FileInputStream fis = new FileInputStream("src/test/resources/config/config.properties"); // Use relative path
+																									// if possible
+		prop.load(fis);
+
 	}
 
-	public static void main(String[] args) throws IOException {
-		ConfigReader rf = new ConfigReader();
-		rf.fileReader();
+	public Properties getProperties() {
+		return prop;
 	}
 
 }

@@ -7,8 +7,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import hooks.Hooks;
+import utils.GetProperty;
 
 public class LoginPage {
+
+	GetProperty getprop;
 
 	private WebDriver driver;
 	private Actions action;
@@ -44,15 +47,15 @@ public class LoginPage {
 	}
 
 	public void launch() {
-		driver.get("https://dsportalapp.herokuapp.com/");
+		driver.get(getprop.testUrl());
 		launchBtn.click();
 
 	}
 
 	public void login() {
 		signinBtn.click();
-		userName.sendKeys("ninjalinos@work.com");
-		pwd.sendKeys("sdet218920@");
+		userName.sendKeys(getprop.userName());
+		pwd.sendKeys(getprop.pwd());
 		logInBtn.click();
 
 	}
