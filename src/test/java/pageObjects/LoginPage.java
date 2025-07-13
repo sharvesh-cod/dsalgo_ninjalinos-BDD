@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import hooks.Hooks;
+import driverManager.Passing_Driver;
 import utils.ConfigReader;
 
 public class LoginPage {
@@ -41,11 +41,11 @@ public class LoginPage {
 //
 //	}
 
-	public LoginPage(Hooks hooks) throws IOException {
+	public LoginPage(Passing_Driver passdr) throws IOException {
 
 //		this.browser = obj.return_browser();
 //		this.driver = obj.initBrowser(browser);
-		this.driver = hooks.getDriver_fromHooks();
+		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 
-import hooks.Hooks;
+import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -21,13 +21,13 @@ public class Stack_sd {
 	private CodeEditor_pf codeeditor;
 	String browser;
 
-	public Stack_sd(Hooks hooks) throws IOException {
+	public Stack_sd(Passing_Driver passdr) throws IOException {
 //		this.browser = obj.return_browser();
 //		this.driver = obj.initBrowser(browser);
-		this.driver = hooks.getDriver_fromHooks();
-		this.stackpf = new Stack_pf(hooks);
-		this.loginpage = new LoginPage(hooks);
-		this.codeeditor = new CodeEditor_pf(hooks);
+		this.driver = passdr.getDriver();
+		this.stackpf = new Stack_pf(passdr);
+		this.loginpage = new LoginPage(passdr);
+		this.codeeditor = new CodeEditor_pf(passdr);
 	}
 
 	@Given("user signs into the portal using valid username and password following which navigates to the stack page")

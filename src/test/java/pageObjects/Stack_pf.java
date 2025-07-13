@@ -6,7 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import hooks.Hooks;
+import driverManager.Passing_Driver;
 
 public class Stack_pf {
 
@@ -32,11 +32,11 @@ public class Stack_pf {
 	@FindBy(xpath = "//div[2]/following::*/div[2]/a")
 	WebElement tryHereStack;
 
-	public Stack_pf(Hooks hooks) {
+	public Stack_pf(Passing_Driver passdr) {
 
 //		this.browser = obj.return_browser();
 //		this.driver = obj.initBrowser(browser);
-		this.driver = hooks.getDriver_fromHooks();
+		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 

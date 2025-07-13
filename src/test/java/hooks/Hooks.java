@@ -4,7 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 
-import driverManager.DriverFactory;
+import driverManager.Passing_Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
@@ -12,11 +12,11 @@ public class Hooks {
 
 	private WebDriver driver;
 	// ConfigReader configreader;
-	String browser;
+	// String browser;
 
-	public Hooks(DriverFactory obj) {
-		this.browser = obj.return_browser();
-		this.driver = obj.initBrowser(browser);
+	public Hooks(Passing_Driver passdr) {
+		// this.browser = obj.return_browser();
+		this.driver = passdr.getDriver();
 	}
 
 	// private Actions action;
@@ -42,8 +42,8 @@ public class Hooks {
 		}
 	}
 
-	public WebDriver getDriver_fromHooks() {
-		return driver;
-	}
+//	public WebDriver getDriver_fromHooks() {
+//		return driver;
+//	}
 
 }

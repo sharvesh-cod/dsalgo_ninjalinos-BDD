@@ -6,7 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import hooks.Hooks;
+import driverManager.Passing_Driver;
 
 public class CodeEditor_pf {
 
@@ -23,11 +23,11 @@ public class CodeEditor_pf {
 	@FindBy(id = "output")
 	WebElement outputTxt;
 
-	public CodeEditor_pf(Hooks hooks) {
+	public CodeEditor_pf(Passing_Driver passdr) {
 
 //		this.browser = obj.return_browser();
 //		this.driver = obj.initBrowser(browser);
-		this.driver = hooks.getDriver_fromHooks();
+		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 
