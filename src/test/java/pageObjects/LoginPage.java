@@ -7,11 +7,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import hooks.Hooks;
-import utils.GetProperty;
+import utils.ConfigReader;
 
 public class LoginPage {
 
-	GetProperty getprop;
+	ConfigReader config;
 
 	private WebDriver driver;
 	private Actions action;
@@ -47,15 +47,15 @@ public class LoginPage {
 	}
 
 	public void launch() {
-		driver.get(getprop.testUrl());
+		driver.get(config.testUrl());
 		launchBtn.click();
 
 	}
 
 	public void login() {
 		signinBtn.click();
-		userName.sendKeys(getprop.userName());
-		pwd.sendKeys(getprop.pwd());
+		userName.sendKeys(config.userName());
+		pwd.sendKeys(config.pwd());
 		logInBtn.click();
 
 	}

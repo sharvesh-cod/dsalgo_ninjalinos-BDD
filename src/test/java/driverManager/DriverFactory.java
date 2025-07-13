@@ -1,7 +1,6 @@
 package driverManager;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import utils.GetProperty;
+import utils.ConfigReader;
 
 public class DriverFactory {
 
@@ -18,13 +17,13 @@ public class DriverFactory {
 	private WebDriver driver;
 	String browser;
 
-	public DriverFactory(GetProperty getprop) throws IOException {
+	public DriverFactory(ConfigReader config) throws IOException {
 
-		this.browser = getprop.browserName();
+		this.browser = config.browserName();
 	}
 
 	// Initialize WebDriver based on browser name
-	public void initBrowser(String browser) {
+	public WebDriver initBrowser(String browser) {
 
 		// System.out.println("Initializing browser: " + browser);
 
@@ -53,14 +52,21 @@ public class DriverFactory {
 //		getBrowser().manage().window().maximize();
 //		getBrowser().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-		driver.manage().deleteAllCookies();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//		driver.manage().deleteAllCookies();
+//		driver.manage().window().maximize();
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+		return driver;
 
 	}
 
-	public WebDriver return_driver() {
-		return driver;
+//	public WebDriver return_driver() {
+//	
+	// return driver;
+//	}
+
+	public String return_browser() {
+		return browser;
 	}
 
 	// used to ge the driver with ThreadLocal for parallel testing
