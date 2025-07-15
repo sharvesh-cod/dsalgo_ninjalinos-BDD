@@ -7,8 +7,10 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(plugin = { "pretty", "html:target/dsAlgo_Ninjalinos_BDD.html" }, // reporting purpose
 		monochrome = false, // console output color
-
-		features = { "src/test/resources/Feature/loginPage.feature" }, // location of feature files
+		tags = "@verifyingTreeHomePage or @TreeOverview or @OverviewTreeTryHere or   @OverviewTreeWithoutCode or @OverviewTreeValidCode or @OverviewTreeInValidCode or @Terminologiespage", features = {
+				"src/test/resources/Feature/tree.feature" }, // location
+		// of
+		// feature files
 		glue = { "stepDefinitionTree", "hooks" }) // location of step definition files
 
 public class TestRunner extends AbstractTestNGCucumberTests {

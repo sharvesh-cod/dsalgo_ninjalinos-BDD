@@ -9,8 +9,8 @@ public class ConfigReader {
 
 	public Properties initProp() throws IOException {
 		prop = new Properties();
-		FileInputStream fis = new FileInputStream("src/test/resources/config/config.properties"); // Use relative path
-																									// if possible
+		FileInputStream fis = new FileInputStream("./src/test/resources/config/config.properties");
+		// if possible
 		prop.load(fis);
 		return prop;
 	}

@@ -30,9 +30,10 @@ public class DsAlgoHooks {
 
 	@Before(order = 1)
 	public void launchBrowser() {
-		String browsName = prop.getProperty("browser");
+		String browserName = prop.getProperty("browser");
 		driverFactory = new DriverFactory();
-		driver = driverFactory.initBrowser(browsName);
+		driver = driverFactory.initBrowser(browserName);
+
 	}
 
 	@After(order = 1)
@@ -49,8 +50,9 @@ public class DsAlgoHooks {
 	}
 
 	@After(order = 0)
-
 	public void closeBrowser() {
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 }

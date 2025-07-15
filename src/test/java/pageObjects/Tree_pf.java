@@ -13,89 +13,106 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import driverManager.DriverFactory;
 
 public class Tree_pf {
 
 	private WebDriver driver;
 	private Wait<WebDriver> wait;
+	private Actions action;
 
-	Actions action = new Actions(driver);
-
-	@FindBy(xpath = "//h5[text()='Tree']/../../..//a[text()='Get Started']")
-	WebElement getStartedButton;
-
-	@FindBy(xpath = "//a[text()='Overview of Trees']")
+	@FindBy(xpath = "//h5[text()='Tree']/../../..//a[contains(text(),'Get Started' )]")
+	WebElement treegetStartedButton;
+	@FindBy(xpath = "//a[contains(text(),'Overview of Trees')]")
 	WebElement overviewOfTree;
+	@FindBy(xpath = "//a[text()='Sign in']")
+	private WebElement signin;
+	@FindBy(id = "id_username")
+	private WebElement usernameField;
+	@FindBy(id = "id_password")
+	private WebElement passwordField;
+	@FindBy(xpath = "//input[@type='submit']")
+	private WebElement loginButton;
+	@FindBy(xpath = "//button[text()='Get Started']")
+	WebElement loginGetStarted;
 
-	@FindBy(xpath = "//a[text()='Terminologies']")
+	@FindBy(xpath = "//a[contains(text(),'Terminologies']")
 	WebElement terminologies;
-
-	@FindBy(xpath = "//a[text()='Types of Trees']")
+	@FindBy(xpath = "//a[contains(text(),'Types of Trees']")
 	WebElement typeofTrees;
-
-	@FindBy(xpath = "//a[text()='Tree Traversals']")
+	@FindBy(xpath = "//a[contains(text(),'Tree Traversals']")
 	WebElement traversals;
-
-	@FindBy(xpath = "//a[text()='Traversals-Illustration']")
+	@FindBy(xpath = "//a[contains(text(),'Traversals-Illustration']")
 	WebElement traIllustration;
-
-	@FindBy(xpath = "//a[text()='Binary Trees']")
+	@FindBy(xpath = "//a[contains(text(),'Binary Trees']")
 	WebElement binaryTrees;
-
-	@FindBy(xpath = "//a[text()='Types of Binary']")
+	@FindBy(xpath = "//a[contains(text(),'Types of Binary']")
 	WebElement typofBinary;
-
 	@FindBy(xpath = "//a[text()='Implementation in Python']")
 	WebElement impPython;
-
 	@FindBy(xpath = "//a[text()='Binary Tree Traversals']")
 	WebElement binaryTraversal;
-
 	@FindBy(xpath = "//a[text()='Applications of Binary trees']")
 	WebElement appofBinary;
-
 	@FindBy(xpath = "//a[text()='Implementation of Binary Trees']")
 	WebElement impOfBinary;
-
 	@FindBy(xpath = "//a[text()='Binary Search']")
 	WebElement binarySearch;
 	@FindBy(xpath = "//a[text()='Implementation of BST']")
 	WebElement impOfBST;
-
 	@FindBy(tagName = "a")
 	List<WebElement> treeLinks;
-
-	@FindBy(xpath = "//a[@class='btn btn-info']")
+	@FindBy(xpath = "//a[contains(text(),'Try here')]")
 	WebElement tryHereButton;
-
 	@FindBy(xpath = "//button[text()='Run']")
 	WebElement runButton;
-
-	@FindBy(css = "div.CodeMirror-measure")
+	@FindBy(xpath = "//div[@class='CodeMirror-measure']//span")
 	WebElement textEditor;
-
 	@FindBy(id = "output")
 	WebElement outputTxt;
-
 	@FindBy(xpath = "//*[text()='Practice Questions']")
-
 	WebElement practQuestTree;
 
-	public void Tree_pf(WebDriver driver) {
-		this.driver = driver;
+	public Tree_pf() {
+		// DsAlgoHooks hooks = new DsAlgoHooks();
+		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(driver, this);
+		action = new Actions(driver);
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	}
 
-	public void clickGetStartedTree() {
-		action.scrollToElement(getStartedButton).perform();
-		action.click(getStartedButton).perform();
+	// background given
+	public void background_getToTree() throws InterruptedException {
+		driver.get("https://dsportalapp.herokuapp.com/");
+		loginGetStarted.click();
+		signin.click();
+		usernameField.sendKeys("ninjalinos@work.com");
+		passwordField.sendKeys("sdet218920@");
+		loginButton.click();
+		wait.until(ExpectedConditions.visibilityOf(treegetStartedButton));
+		action.scrollToElement(treegetStartedButton).perform();
+		action.click(treegetStartedButton).perform();
 
 	}
 
 	public void practice_Tree() {
-
 		action.scrollToElement(practQuestTree).perform();
 		action.click(practQuestTree).perform();
+	}
+
+	public String outputText() {
+
+		String OuputResult = outputTxt.getText();
+		System.out.println(OuputResult);
+
+		return OuputResult;
+	}
+
+	public void scrollDownTree() {
+
+		action.scrollToElement(overviewOfTree).perform();
 	}
 
 	public void verifyLinks() {
@@ -115,48 +132,45 @@ public class Tree_pf {
 
 	}
 
-	public void navigate_OverviewofTree() {
-
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
+	public void click_Overview() {
 		action.scrollToElement(overviewOfTree).perform();
 		action.click(overviewOfTree).perform();
-		wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(5))
-				.ignoring(NoSuchElementException.class);
-
 		wait.until(ExpectedConditions.urlContains("/tree/overview-of-trees/"));
-		String afterNavigation = driver.getCurrentUrl();
-		System.out.println("check after click" + afterNavigation);
 	}
 
+	public String navigate_OverviewofTree() {
+		String afterNavigation = driver.getCurrentUrl();
+		System.out.println("check after click" + afterNavigation);
+
+		return afterNavigation;
+	}
+
+//given for TryHere
 	public void click_TryEditor() {
-		tryHereButton.click();
+		action.scrollToElement(tryHereButton).perform();
+		action.click(tryHereButton).perform();
 		wait.until(ExpectedConditions.urlContains("/tryEditor"));
 	}
 
-	public String tryEditorPage(String tryEditorUrl) {
-		String afterNavigation = driver.getCurrentUrl();
-		System.out.println("Check the url of TryEditor Page" + afterNavigation);
-		return tryEditorUrl;
-	}
-
 	public void clickRun_WithOutCode() {
-		runButton.click();
+		action.scrollToElement(runButton).perform();
+		action.click(runButton).perform();
 	}
 
 	public void txtEditor_correctCode() {
 
 		action.scrollToElement(textEditor).perform();
-		textEditor.sendKeys("print('Hello World')");
+		action.sendKeys(textEditor, "print('Hello World')").perform();
+
 	}
 
 	public void txtEditor_invalidCode() {
 
 		action.scrollToElement(textEditor).perform();
-		textEditor.sendKeys("('Hello World';)");
+		action.sendKeys(textEditor, "pnt('Hello World');").perform();
 	}
 
-	public void navigate_Terminilogy() {
+	public void click_Terminilogy() {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
 				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
 		String currentUrl = driver.getCurrentUrl();
@@ -164,6 +178,10 @@ public class Tree_pf {
 		action.scrollToElement(terminologies).perform();
 		action.click(terminologies).perform();
 		wait.until(ExpectedConditions.urlContains("/tree/terminologies/"));
+	}
+
+	public void navigate_To_Terminilogy() {
+
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
 
@@ -296,7 +314,6 @@ public class Tree_pf {
 		wait.until(ExpectedConditions.urlContains("/binary-search-trees/"));
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
-
 	}
 
 	public void Implement_OfBst() {
@@ -309,17 +326,10 @@ public class Tree_pf {
 		wait.until(ExpectedConditions.urlContains("/implementation-of-bst/"));
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
-
 	}
 
-	// @T67
-//	  Scenario: Navigate to Practice Questions page
-//	    When The user clicks Practice Questions link
-//	    Then The user should be navigated to the Practice Questions page
-//
-//	  @T68
-//	  Scenario: View Practice Questions
-//	   When The user clicks Practice Questions link
-//	   Then The user should see the practice questions  
+	public void getErrMsg_NoCode() {
+		System.out.println("No Error Alert Found, report bug");
+	}
 
 }

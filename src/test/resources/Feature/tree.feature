@@ -8,389 +8,374 @@ Feature: Tree Module in DsAlgo portal
   Background: 
     Given the user is in Tree page after logged in
 
-  @T01
-  Scenario: Verify the links in Tree module
-    When The user scroll down in tree page
-    Then The user should see the following links
-      | Overview of trees              |
-      | Terminologies                  |
-      | Types of Tree                  |
-      | Tree Traversals                |
-      | Traversals-Illustration        |
-      | Binary Trees                   |
-      | Types of Binary                |
-      | Implementation in Python       |
-      | Binary Tree Traversals         |
-      | Applications of Binary trees   |
-      | Implementation of Binary Trees |
-      | Binary Search                  |
-      | Implementation of BST          |
+   @verifyingTreeHomePage
+   Scenario: Verify if user can see all the links available in the page
+    When The user scroll down the page
+    Then User should view all the links available in page
 
-  @T02
-  Scenario: Navigate to Overview of Trees page
-    When The user clicks Overview of Trees link
-    Then The user should be navigated to the Overview of Trees page
+   @TreeOverview
+   Scenario: Verify that the user is able to navigate to Overview of Tree page
+    When user clicks on overview button of Tree module
+    Then user successfully navigates to the Overview of Tree page
 
-  @T03
-  Scenario: Navigate to text editor in Overview of Trees
-    When The user clicks Try here in Overview of Trees
-    Then The user should be navigated to the text editor
+   @OverviewTreeTryHere
+   Scenario: Verify user is able to open Try here page from operations in tree overview page
+    Given The user in the overview page of tree module
+    When user clicks on try here button in Overview of Tree page
+    Then user successfully navigates to code editor of the Overview of Tree page
 
-  @T04
+  @OverviewTreeWithoutCode
   Scenario: Run without code in Overview of Trees
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T05
+  @OverviewTreeValidCode
   Scenario: Run with valid code in Overview of Trees
     Given The user in tryEditor page
     When The user clicks Run after entering valid code
     Then The output should be displayed in the console
 
-  @T06
+  @OverviewTreeInValidCode
   Scenario: Run with invalid code in Overview of Trees
     Given The user in tryEditor page
     When The user clicks run after entering invalid code
     Then An alert message should appear
 
-  @T07
-  Scenario: Navigate to Terminologies page
+  @Terminologiespage
+  Scenario: Navigate to Terminologies page 
+   Given The user in Tree Home Page
     When The user clicks Terminologies link
     Then The user should be navigated to the Terminologies page
 
-  @T08
+  @TerminologiesTryHere
   Scenario: Navigate to text editor in Terminologies
     When The user clicks Try here in Terminologies
     Then The user should be navigated to the text editor
 
-  @T09
+  @TerminologiesWithoutCode
   Scenario: Run without code in Terminologies
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T10
+  @TerminologiesValidCode
   Scenario: Run with valid code in Terminologies
     Given The user in tryEditor page
     When The user clicks Run after entering valid code
     Then The output should be displayed in the console
 
-  @T11
+  @TerminologiesInValidCode
   Scenario: Run with invalid code in Terminologies
     Given The user in tryEditor page
     When The user clicks Run after entering invalid code
     Then An alert message should appear
 
-  @T12
+  @TypesofTrees
   Scenario: Navigate to Types of Tree page
     When The user clicks Types of Tree link
     Then The user should be navigated to the Types of Tree page
 
-  @T13
+  @TypesofTreeTryHere
   Scenario: Navigate to text editor in Types of Tree
     When The user clicks Try here in Types of Tree
     Then The user should be navigated to the text editor
 
-  @T14
+  @TypesofTreeWithoutCode
   Scenario: Run without code in Types of Tree
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T15
+  @TypesofTreeValidCode
   Scenario: Run with valid code in Types of Tree
     Given The user in tryEditor page
     When The user clicks Run after entering valid code
     Then The output should be displayed in the console
 
-  @T16
+  @TypesofTreeInValidCode
   Scenario: Run with invalid code in Types of Tree
     Given The user in tryEditor page
     When The user clicks Run after entering invalid code
     Then An alert message should appear
 
-  @T17
+  @TreeTraversalspage
   Scenario: Navigate to Tree Traversals page
     When The user clicks Tree Traversals link
     Then The user should be navigated to the Tree Traversals page
 
-  @T18
+  @TreeTraversalTryHere
   Scenario: Navigate to text editor in Tree Traversals
     When The user clicks Try here in Tree Traversals
     Then The user should be navigated to the text editor
 
-  @T19
+  @TreeTraversalWithoutCode
   Scenario: Run without code in Tree Traversals
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T20
+  @TreeTraversalValidCode
   Scenario: Run with valid code in Tree Traversals
     Given The user in tryEditor page
     When The user enters valid Python code, clicks Run
     Then The output should be displayed in the console
 
-  @T21
+  @TreeTraversalInValidCode
   Scenario: Run with invalid code in Tree Traversals
     Given The user in tryEditor page
     When The user enters invalid Python code and clicks Run
     Then An alert message should appear
 
-  @T22
+  @TraversalsIllustration
   Scenario: Navigate to Traversals-Illustration page
     When The user clicks Traversals-Illustration link
     Then The user should be navigated to the Tree Traversals page
 
-  @T23
+  @TraversalsIllustrationTryHere
   Scenario: Navigate to text editor in Traversals-Illustration
     When The user clicks Try here in Tree Traversals
     Then The user should be navigated to the text editor
 
-  @T24
+  @TraversalsIllustrationWithoutCode
   Scenario: Run without code in Traversals-Illustration
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T25
+  @TraversalsIllustrationValidCode
   Scenario: Run with valid code in Traversals-Illustration
     When The user enters valid Python code and clicks Run
     Then The output should be displayed in the console
 
-  @T26
+  @TraversalsIllustrationInValidCode
   Scenario: Run with invalid code in Traversals-Illustration
     When The user enters invalid Python code and clicks Run
     Then An alert message should appear
 
-  @T27
+  @BinaryTreespage
   Scenario: Navigate to Binary Trees page
     When The user clicks Binary Trees link
     Then The user should be navigated to the Binary Trees page
 
-  @T28
+  @BinaryTreesTryHere
   Scenario: Navigate to text editor in Binary Trees
     When The user clicks Try here in Tree Traversals
     Then The user should be navigated to the text editor
 
-  @T29
+  @BinaryTreesWithoutCode
   Scenario: Run without code in Binary Trees
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T30
+  @BinaryTreesValidCode
   Scenario: Run with valid code in Binary Trees
     When The user enters valid Python code and clicks Run
     Then The output should be displayed in the console
 
-  @T31
+  @BinaryTreesInValidCode
   Scenario: Run with invalid code in Binary Trees
     When The user enters invalid Python code and clicks Run
     Then An alert message should appear
 
-  @T32
+  @TypesofBinaryTreepage
   Scenario: Navigate to Types of Binary Tree page
     When The user clicks Types of Binary Tree link
     Then The user should be navigated to the Types of Binary Tree page
 
-  @T33
+  @TypesofBinaryTreeTryHere
   Scenario: Navigate to text editor in Types of Binary Tree
     When The user clicks Try here in Tree Traversals
     Then The user should be navigated to the text editor
 
-  @T34
+  @TypesofBinaryTreeWithoutCode
   Scenario: Run without code in Types of Binary Tree
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T35
+  @TypesofBinaryTreeValidCode
   Scenario: Run with valid code in Types of Binary Tree
     Given The user in tryEditor page
     When The user enters valid Python code and clicks Run
     Then The output should be displayed in the console
 
-  @T36
+  @TypesofBinaryTreeInValidCode
   Scenario: Run with invalid code in Types of Binary Tree
     Given The user in tryEditor page
     When The user enters invalid Python code and clicks Run
     Then An alert message should appear
 
-  @T37
+  @ImplementationofPython
   Scenario: Navigate to Implementation of Python page
     When The user clicks Implementation of Python link
     Then The user should be navigated to the Implementation of Python page
 
-  @T38
+  @ImplementationofPythonTryHere
   Scenario: Navigate to text editor in Implementation of Python
     When The user clicks Try here in Tree Traversals
     Then The user should be navigated to the text editor
 
-  @T39
+  @ImplementationofPythonWithoutCode
   Scenario: Run without code in Implementation of Python
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T40
+  @ImplementationofPythonValidCode
   Scenario: Run with valid code in Implementation of Python
     Given The user in tryEditor page
     When The user enters valid Python code and clicks Run
     Then The output should be displayed in the console
 
-  @T41
+  @ImplementationofPythonInValidCode
   Scenario: Run with invalid code in Implementation of Python
     Given The user in tryEditor page
     When The user enters invalid Python code and clicks Run
     Then An alert message should appear
 
-  @T42
+  @BinaryTreeTraversalspage
   Scenario: Navigate to Binary Tree Traversals page
     When The user clicks Binary Tree Traversals link
     Then The user should be navigated to the Binary Tree Traversals page
 
-  @T43
+  @BinaryTreeTraversalTryHere
   Scenario: Navigate to text editor in Binary Tree Traversals
     When The user clicks Try here in Tree Traversals
     Then The user should be navigated to the text editor
 
-  @T44
+  @BinaryTreeTraversalWithoutCode
   Scenario: Run without code in Binary Tree Traversals
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T45
+  @BinaryTreeTraversalValidCode
   Scenario: Run with valid code in Binary Tree Traversals
     Given The user in tryEditor page
     When The user enters valid Python code and clicks Run
     Then The output should be displayed in the console
 
-  @T46
+  @BinaryTreeTraversalInValidCode
   Scenario: Run with invalid code in Binary Tree Traversals
     Given The user in tryEditor page
     When The user enters invalid Python code and clicks Run
     Then An alert message should appear
 
-  @T47
+  @AppBinaryTrees
   Scenario: Navigate to Applications of Binary Trees page
     When The user clicks Applications of Binary Trees link
     Then The user should be navigated to the Applications of Binary Trees  page
 
-  @T48
+  @AppBinaryTreeTryHere
   Scenario: Navigate to text editor in Applications of Binary Trees
     When The user clicks Try here in Applications of Binary Trees
     Then The user should be navigated to the text editor
 
-  @T49
+  @AppBinaryTreeWithoutCode
   Scenario: Run without code in Applications of Binary Trees
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T50
+  @AppBinaryTreeValidCode
   Scenario: Run with valid code in Applications of Binary Trees
     Given The user in tryEditor page
     When The user enters valid Python code and clicks Run
     Then The output should be displayed in the console
 
-  @T51
+  @AppBinaryTreeInValidCode
   Scenario: Run with invalid code in Applications of Binary Trees
     Given The user in tryEditor page
     When The user enters invalid Python code and clicks Run
     Then An alert message should appear
 
-  @T52
+  @ImplementOfBinaryTree
   Scenario: Navigate to Implementation of Binary Trees page
     When The user clicks Try here in Tree Traversals
     Then The user should be navigated to the text editor
 
-  @T53
+  @ImplementOfBinaryTreeTryHere
   Scenario: Navigate to text editor in Implementation of Binary Trees page
     When The user clicks Try here in Tree Traversals
     Then The user should be navigated to the text editor
 
-  @T54
+  @ImplementOfBinaryTreeWithoutCode
   Scenario: Run without code in Implementation of Binary Trees
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T55
+  @ImplementOfBinaryTreeValidCode
   Scenario: Run with valid code in Implementation of Binary Trees
     Given The user in tryEditor page
     When The user enters valid Python code and clicks Run
     Then The output should be displayed in the console
 
-  @T56
+  @ImplementOfBinaryTreeInValidCode
   Scenario: Run with invalid code in Implementation of Binary Trees
     Given The user in tryEditor page
     When The user enters invalid Python code and clicks Run
     Then An alert message should appear
 
-  @T57
+  @BinarySearch
   Scenario: Navigate to Binary Search
     When The user clicks Binary Search link
     Then The user should be navigated to the Binary Search page
 
-  @T58
+  @BinarySearchTryHere
   Scenario: Navigate to text editor in Binary Search
     When The user clicks Try here in Binary Search
     Then The user should be navigated to the text editor
 
-  @T59
+  @BinarySearchwithoutCode
   Scenario: Run without code in Binary Search
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T60
+  @BinarySearchValidCode
   Scenario: Run with valid code in Binary Search
     Given The user in tryEditor page
     When The user enters valid Python code and clicks Run
     Then The output should be displayed in the console
 
-  @T61
+  @BinarySearchInValidCode
   Scenario: Run with invalid code in Binary Search
     Given The user in tryEditor page
     When The user enters invalid Python code and clicks Run
     Then An alert message should appear
 
-  @T62
+  @ImplementationofBST
   Scenario: Navigate to Implementation of BST
     When The user clicks Implementation of BST link
     Then The user should be navigated to the Implementation of BST page
 
-  @T63
+  @ImplementationofBSTTryHere
   Scenario: Navigate to text editor in Implementation of BST
     When The user clicks Try here in Implementation of BST
     Then The user should be navigated to the text editor
 
-  @T64
+  @ImplementationofBSTWithoutCode
   Scenario: Run without code in Implementation of BST
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @T65
+  @ImplementationofBSTValidCode
   Scenario: Run with valid code in Implementation of BST
     Given The user in tryEditor page
     When The user enters valid Python code and clicks Run
     Then The output should be displayed in the console
 
-  @T66
+  @ImplementationofBSTInValidCode
   Scenario: Run with invalid code in Implementation of BST
     Given The user in tryEditor page
     When The user enters invalid Python code and clicks Run
     Then An alert message should appear
 
-  @T67
-  Scenario: Navigate to Practice Questions page
-    When The user clicks Practice Questions link
-    Then The user should be navigated to the Practice Questions page
-
-  @T68
-  Scenario: View Practice Questions
-   When The user clicks Practice Questions link
-   Then The user should see the practice questions  
-  	
+#@TreePracticeQuestionlink
+  #Scenario: Verify that the user is able to navigate to practice questions from Tree module
+   #Given user is in Tree sections page 
+    #When user clicks on the practice questions link in Tree module
+    #Then user sucessfully navigates to practice questions of Tree module
+    #And  user find blank page

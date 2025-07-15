@@ -9,10 +9,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class DriverFactory {
+
+	public WebDriver driver;
 	// ThreadLocal WebDriver for parallel testing
 	public static ThreadLocal<WebDriver> tldriver = new ThreadLocal();
-
 	// Initialize WebDriver based on browser name
+
 	public WebDriver initBrowser(String browser) {
 
 		System.out.println("Initializing browser: " + browser);
@@ -30,14 +32,18 @@ public class DriverFactory {
 		else if (browser.equalsIgnoreCase("firefox")) {
 			tldriver.set(new FirefoxDriver());
 		}
-		getBrowser().manage().deleteAllCookies();
-		getBrowser().manage().window().maximize();
-		getBrowser().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		return getBrowser();
+		WebDriver wd = getDriver();
+		wd.manage().deleteAllCookies();
+		wd.manage().window().maximize();
+		wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		return wd;
 	}
 
-	// used to ge the driver with ThreadLocal for parallel testing
-	public static WebDriver getBrowser() {
+	// used to get the driver with ThreadLocal for parallel testing
+	// thread local is used to make sure that each thread(test cases) getting its
+	// own isolated webdriver instance
+
+	public static synchronized WebDriver getDriver() {
 
 		if (Objects.isNull(tldriver.get())) {
 			throw new IllegalStateException("WebDriver not initialized for the current thread.");
