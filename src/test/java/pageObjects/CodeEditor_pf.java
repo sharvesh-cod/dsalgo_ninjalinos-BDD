@@ -1,5 +1,7 @@
 package pageObjects;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -13,8 +15,10 @@ public class CodeEditor_pf {
 	private WebDriver driver;
 	private Actions action;
 	String browser;
+	Alert alert;
+	JavascriptExecutor js;
 
-	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]")
+	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]/div")
 	WebElement textEditor;
 
 	@FindBy(xpath = "//button[text()='Run']")
@@ -29,20 +33,22 @@ public class CodeEditor_pf {
 //		this.driver = obj.initBrowser(browser);
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
+		js = (JavascriptExecutor) driver;
+
 		PageFactory.initElements(driver, this);
 
 	}
 
 	public void txtEditor_invalidCode() {
+		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
+				+ "editor.setValue('prin(hello world\")');");
 
-		action.scrollToElement(textEditor).perform();
-		textEditor.sendKeys("prin('Hello World')");
 	}
 
 	public void txtEditor_correctCode() {
 
-		action.scrollToElement(textEditor).perform();
-		textEditor.sendKeys("print('Hello World')");
+		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
+				+ "editor.setValue('print(\"hello world\")');");
 	}
 
 	public void run() {
@@ -54,9 +60,17 @@ public class CodeEditor_pf {
 	public void output() {
 
 		action.scrollToElement(outputTxt).perform();
+		System.out.println(outputTxt.getText());
 		// ele.getText(); can be used if required
 		// here we may write code to capture the screenshot of the output after clicking
 		// on run button
+	}
+
+	public void handle_alert() {
+		alert = driver.switchTo().alert();
+		System.out.println(alert.getText());
+		alert.accept();
+
 	}
 
 	// have to add code to handle alert while giving invalid code
