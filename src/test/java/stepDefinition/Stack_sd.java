@@ -117,45 +117,45 @@ public class Stack_sd {
 	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor() {
 		codeeditor.txtEditor_correctCode();
 		codeeditor.run();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user is able to see the output in the console")
 	public void user_is_able_to_see_the_output_in_the_console() {
 		// can add code for screenshot later
 		codeeditor.output();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@When("user clicks on Implementation link")
 	public void user_clicks_on_implementation_link() {
 		stackpf.implementation_stack_btn();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user sucessfully navigates to the Implementation page")
 	public void user_sucessfully_navigates_to_the_implementation_page() {
 		assertEquals("https://dsportalapp.herokuapp.com/stack/implementation/", stackpf.url());
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Given("user is in implementation page")
 	public void user_is_in_implementation_page() {
 		stackpf.opreations_stack_btn();
 		stackpf.implementation_stack_btn();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@When("user clicks on try here button in implementation page")
 	public void user_clicks_on_try_here_button_in_implementation_page() {
 		stackpf.tryhere_stack();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user successfully navigates to the code editor of implementation page")
 	public void user_successfully_navigates_to_the_code_editor_of_implementation_page() {
 		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", stackpf.url());
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Given("user is in try here page of implementation page")
@@ -163,7 +163,7 @@ public class Stack_sd {
 		stackpf.opreations_stack_btn();
 		stackpf.implementation_stack_btn();
 		stackpf.tryhere_stack();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Given("user is in try here page of implementaiton page")
@@ -171,100 +171,100 @@ public class Stack_sd {
 		stackpf.opreations_stack_btn();
 		stackpf.implementation_stack_btn();
 		stackpf.tryhere_stack();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@When("user clicks on application link")
 	public void user_clicks_on_application_link() {
 		stackpf.application_stack_btn();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user sucessfully navigates to the applicaiton page")
 	public void user_sucessfully_navigates_to_the_applicaiton_page() {
 		assertEquals("https://dsportalapp.herokuapp.com/stack/stack-applications/", stackpf.url());
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Given("user is in applicaiton page")
 	public void user_is_in_applicaiton_page() {
 		stackpf.opreations_stack_btn();
 		stackpf.application_stack_btn();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@When("user clicks on try here button in application page")
 	public void user_clicks_on_try_here_button_in_application_page() {
 		stackpf.tryhere_stack();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user successfully navigates to the code editor of application page")
 	public void user_successfully_navigates_to_the_code_editor_of_application_page() {
 		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", stackpf.url());
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Given("user is in try here page of applicaiton page")
 	public void user_is_in_try_here_page_of_applicaiton_page() {
 		stackpf.application_stack_btn();
 		stackpf.tryhere_stack();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Given("user is in try here page of application page")
 	public void user_is_in_try_here_page_of_application_page() {
 		stackpf.application_stack_btn();
 		stackpf.tryhere_stack();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Given("user is in stack page")
 	public void user_is_in_stack_page() {
 		assertEquals("https://dsportalapp.herokuapp.com/stack/", stackpf.url());
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@When("user clicks on Implementation button")
 	public void user_clicks_on_implementation_button() {
 		stackpf.implementation_stack_btn();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user sucessfully navigates to the  Implementation page")
 	public void user_sucessfully_navigates_to_implementation_page() {
 		assertEquals("https://dsportalapp.herokuapp.com/stack/implementation/", stackpf.url());
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@When("user clicks on Application button")
 	public void user_clicks_on_application_button() {
 		stackpf.application_stack_btn();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user sucessfully navigates to the Application page")
 	public void user_sucessfully_navigates_to_the_application_page() {
 		assertEquals("https://dsportalapp.herokuapp.com/stack/stack-applications/", stackpf.url());
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Given("user is in the application page")
 	public void user_is_in_the_application_page() {
 		stackpf.application_stack_btn();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@When("user clicks on the practice questions link in stack module")
 	public void user_clicks_on_the_practice_questions_link_in_stack_module() {
 		stackpf.practice_stack();
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("user sucessfully navigates to practice questions of stack module however the page is empty")
 	public void user_sucessfully_navigates_to_practice_questions_of_stack_module_however_the_page_is_empty() {
 		assertEquals("https://dsportalapp.herokuapp.com/stack/practice", stackpf.url());
-		throw new io.cucumber.java.PendingException();
+		// throw new io.cucumber.java.PendingException();
 	}
 
 }

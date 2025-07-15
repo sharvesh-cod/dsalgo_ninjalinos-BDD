@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 
 import driverManager.Passing_Driver;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 public class Hooks {
@@ -32,14 +33,14 @@ public class Hooks {
 
 	}
 
-//	@After
-//	public void tearDriver() {
-//
-//		if (driver != null) {
-//			driver.quit();
-//			driver = null;
-//		}
-	// }
+	@After
+	public void tearDriver() {
+
+		if (driver != null) {
+			driver.quit();
+			driver = null;
+		}
+	}
 
 //	public WebDriver getDriver_fromHooks() {
 //		return driver;
