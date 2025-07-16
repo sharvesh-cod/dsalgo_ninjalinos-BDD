@@ -52,13 +52,15 @@ public class CodeEditor_pf {
 	}
 
 	public void run() {
-
+		// ((JavascriptExecutor)
+		// driver).executeScript("arguments[0].scrollIntoView(true);", runBtn);
 		action.scrollToElement(runBtn).perform();
 		action.click(runBtn).perform();
 	}
 
 	public void output() {
-
+		// ((JavascriptExecutor)
+		// driver).executeScript("arguments[0].scrollIntoView(true);", outputTxt);
 		action.scrollToElement(outputTxt).perform();
 		System.out.println(outputTxt.getText());
 		// ele.getText(); can be used if required

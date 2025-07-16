@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -43,8 +44,17 @@ public class DriverFactory {
 		else if (browser.equalsIgnoreCase("firefox")) {
 			// tldriver.set(new FirefoxDriver());
 			driver = new FirefoxDriver();
-			WebDriverManager.firefoxdriver().setup();
-		} else {
+			// WebDriverManager.firefoxdriver().setup();
+		}
+
+		else if (browser.equalsIgnoreCase("edge")) {
+			// tldriver.set(new FirefoxDriver());
+			// WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+
+		}
+
+		else {
 			throw new IllegalArgumentException("Unsupported Browser:" + browser);
 
 		}

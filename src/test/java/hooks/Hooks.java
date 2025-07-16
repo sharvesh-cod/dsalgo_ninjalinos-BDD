@@ -5,7 +5,6 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 
 import driverManager.Passing_Driver;
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 public class Hooks {
@@ -29,18 +28,19 @@ public class Hooks {
 
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
+		// driver.manage().window().setSize(new Dimension(1920, 1080));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 	}
 
-	@After
-	public void tearDriver() {
-
-		if (driver != null) {
-			driver.quit();
-			driver = null;
-		}
-	}
+//	@After
+//	public void tearDriver() {
+//
+//		if (driver != null) {
+//			driver.quit();
+//			driver = null;
+//		}
+//	}
 
 //	public WebDriver getDriver_fromHooks() {
 //		return driver;
