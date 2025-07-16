@@ -14,15 +14,19 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.CodeEditor_pf;
+import pageObjects.CommonMethods;
 import pageObjects.LoginPage;
 import pageObjects.Stack_pf;
+import utils.ConfigReader;
 
 public class Stack_sd {
 	private WebDriver driver;
 	private Stack_pf stackpf;
 	private LoginPage loginpage;
 	private CodeEditor_pf codeeditor;
-	String browser;
+	String browserName;
+	ConfigReader config;
+	CommonMethods common;
 
 	public Stack_sd(Passing_Driver passdr) throws IOException {
 //		this.browser = obj.return_browser();
@@ -31,6 +35,9 @@ public class Stack_sd {
 		this.stackpf = new Stack_pf(passdr);
 		this.loginpage = new LoginPage(passdr);
 		this.codeeditor = new CodeEditor_pf(passdr);
+		this.config = new ConfigReader();
+		this.browserName = config.get_prop_value("browser");
+		this.common = new CommonMethods(passdr);
 
 	}
 
@@ -111,7 +118,8 @@ public class Stack_sd {
 	}
 
 	@Then("user does not see any alert message saying code eitor is empty")
-	public void user_does_not_see_any_alert_message_saying_code_eitor_is_empty() {
+	public void user_does_not_see_any_alert_message_saying_code_eitor_is_empty() throws IOException {
+		common.bug_screenshot("StackEmptyCodeEditor", browserName);
 		System.out.println("No alert message seen when clicking on run without entering code");// will later have code
 																								// here to take a
 																								// screenshot
@@ -316,9 +324,11 @@ public class Stack_sd {
 	}
 
 	@Then("user sucessfully navigates to practice questions of stack module however the page is empty")
-	public void user_sucessfully_navigates_to_practice_questions_of_stack_module_however_the_page_is_empty() {
+	public void user_sucessfully_navigates_to_practice_questions_of_stack_module_however_the_page_is_empty()
+			throws IOException {
 		waitForTenSec("/practice");
 		assertEquals("https://dsportalapp.herokuapp.com/stack/practice", stackpf.url());
+		common.bug_screenshot("StackPracticeQuestions", browserName);
 		// throw new io.cucumber.java.PendingException();
 	}
 
