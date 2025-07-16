@@ -10,8 +10,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(plugin = { "pretty", "html:target/dsAlgo_Ninjalinos_BDD.html" }, // reporting purpose
 		monochrome = false, // console output color
 //		tags = " @Stackoperations or @StackoperationsCodeEditor or @StackoperationsTryingEmptyEditor or @StackoperationsTryingCodeWithError or @StackoperationsTryingCorrectCode or @Stackimplementation or @StackimplementationCodeEditor",
-		tags = "@Stackoperations or @StackoperationsCodeEditor or @StackoperationsTryingEmptyEditor or @StackoperationsTryingCodeWithError", features = {
-				"src/test/resources/Feature" }, // location
+		tags = "@stack", features = { "src/test/resources/Feature" }, // location
 		// of
 		// feature
 		// files
@@ -20,7 +19,7 @@ import io.cucumber.testng.CucumberOptions;
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 	@Override
-	@DataProvider(parallel = false)
+	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
 
 		return super.scenarios();

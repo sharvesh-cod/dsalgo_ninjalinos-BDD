@@ -1,12 +1,17 @@
 package pageObjects;
 
+import java.time.Duration;
+
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
 
@@ -17,6 +22,7 @@ public class CodeEditor_pf {
 	String browser;
 	Alert alert;
 	JavascriptExecutor js;
+	WebDriverWait wait;
 
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]/div")
 	WebElement textEditor;
@@ -34,19 +40,21 @@ public class CodeEditor_pf {
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		js = (JavascriptExecutor) driver;
-
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		PageFactory.initElements(driver, this);
 
 	}
 
 	public void txtEditor_invalidCode() {
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
+
 		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 				+ "editor.setValue('prin(hello world\")');");
 
 	}
 
 	public void txtEditor_correctCode() {
-
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 				+ "editor.setValue('print(\"hello world\")');");
 	}

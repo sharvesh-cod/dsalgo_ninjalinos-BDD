@@ -69,17 +69,13 @@ public class Stack_pf {
 	}
 
 	public void implementation_stack_btn() {
-		// ((JavascriptExecutor)
-		// driver).executeScript("arguments[0].scrollIntoView(true);",
-		// implementationStackBtn);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", implementationStackBtn);
 		action.scrollToElement(implementationStackBtn).perform();
 		action.click(implementationStackBtn).perform();
 	}
 
 	public void application_stack_btn() {
-		// ((JavascriptExecutor)
-		// driver).executeScript("arguments[0].scrollIntoView(true);",
-		// applicationStackBtn);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", applicationStackBtn);
 		action.scrollToElement(applicationStackBtn).perform();
 		action.click(applicationStackBtn).perform();
 	}
