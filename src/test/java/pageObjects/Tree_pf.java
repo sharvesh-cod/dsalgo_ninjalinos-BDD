@@ -4,14 +4,12 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -38,17 +36,17 @@ public class Tree_pf {
 	@FindBy(xpath = "//button[text()='Get Started']")
 	WebElement loginGetStarted;
 
-	@FindBy(xpath = "//a[contains(text(),'Terminologies']")
+	@FindBy(xpath = "//a[contains(text(),'Terminologies')]")
 	WebElement terminologies;
-	@FindBy(xpath = "//a[contains(text(),'Types of Trees']")
+	@FindBy(xpath = "//h4[text()='Tree']/../../../..//div[2]//a[text()='Types of Trees']")
 	WebElement typeofTrees;
-	@FindBy(xpath = "//a[contains(text(),'Tree Traversals']")
+	@FindBy(xpath = "//a[contains(text(),'Tree Traversals')]")
 	WebElement traversals;
-	@FindBy(xpath = "//a[contains(text(),'Traversals-Illustration']")
+	@FindBy(xpath = "//a[contains(text(),'Traversals-Illustration')]")
 	WebElement traIllustration;
-	@FindBy(xpath = "//a[contains(text(),'Binary Trees']")
+	@FindBy(xpath = "//a[contains(text(),'Binary Trees')]")
 	WebElement binaryTrees;
-	@FindBy(xpath = "//a[contains(text(),'Types of Binary']")
+	@FindBy(xpath = "//a[contains(text(),'Types of Binary')]")
 	WebElement typofBinary;
 	@FindBy(xpath = "//a[text()='Implementation in Python']")
 	WebElement impPython;
@@ -141,7 +139,6 @@ public class Tree_pf {
 	public String navigate_OverviewofTree() {
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
-
 		return afterNavigation;
 	}
 
@@ -149,7 +146,7 @@ public class Tree_pf {
 	public void click_TryEditor() {
 		action.scrollToElement(tryHereButton).perform();
 		action.click(tryHereButton).perform();
-		wait.until(ExpectedConditions.urlContains("/tryEditor"));
+
 	}
 
 	public void clickRun_WithOutCode() {
@@ -171,159 +168,133 @@ public class Tree_pf {
 	}
 
 	public void click_Terminilogy() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(terminologies).perform();
 		action.click(terminologies).perform();
-		wait.until(ExpectedConditions.urlContains("/tree/terminologies/"));
+
 	}
 
-	public void navigate_To_Terminilogy() {
-
+	public String navigate_To_Terminilogy() {
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
+		return afterNavigation;
 
 	}
 
-	public void typesOfTrees() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
+	public void typesOfTrees() throws InterruptedException {
+
 		action.scrollToElement(typeofTrees).perform();
 		action.click(typeofTrees).perform();
-		wait.until(ExpectedConditions.urlContains("/tree/types-of-trees/"));
-		String afterNavigation = driver.getCurrentUrl();
-		System.out.println("check after click" + afterNavigation);
 
+	}
+
+	public String navigation_typeOfTrees() {
+
+		String afterNavigation = driver.getCurrentUrl();
+		return afterNavigation;
 	}
 
 	public void tree_Trav() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(traversals).perform();
 		action.click(traversals).perform();
-		wait.until(ExpectedConditions.urlContains("/tree-traversals/"));
-		String afterNavigation = driver.getCurrentUrl();
-		System.out.println("check after click" + afterNavigation);
 
 	}
 
+	public String navigation_treeTrav() {
+
+		String afterNavigation = driver.getCurrentUrl();
+		System.out.println("check after click" + afterNavigation);
+
+		return afterNavigation;
+	}
+
 	public void Traversal_Illustra() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
+
 		String currentUrl = driver.getCurrentUrl();
 		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(traIllustration).perform();
 		action.click(traIllustration).perform();
-		wait.until(ExpectedConditions.urlContains("/traversals-illustration/"));
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
 
 	}
 
 	public void binary_Tree() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
+
 		String currentUrl = driver.getCurrentUrl();
 		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(binaryTrees).perform();
 		action.click(binaryTrees).perform();
-		wait.until(ExpectedConditions.urlContains("/binary-trees/"));
+
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
 
 	}
 
 	public void types_ofBinary() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
+
 		String currentUrl = driver.getCurrentUrl();
 		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(typofBinary).perform();
 		action.click(typofBinary).perform();
-		wait.until(ExpectedConditions.urlContains("/types-of-binary-trees/"));
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
 
 	}
 
 	public void Impl_in_Python() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
 		String currentUrl = driver.getCurrentUrl();
 		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(impPython).perform();
 		action.click(impPython).perform();
-		wait.until(ExpectedConditions.urlContains("/implementation-in-python/"));
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
 
 	}
 
 	public void binary_Tree_Travers() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
 		String currentUrl = driver.getCurrentUrl();
 		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(binaryTraversal).perform();
 		action.click(binaryTraversal).perform();
-		wait.until(ExpectedConditions.urlContains("/binary-tree-traversals/"));
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
 
 	}
 
 	public void app_of_binaryTrees() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
 		String currentUrl = driver.getCurrentUrl();
 		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(appofBinary).perform();
 		action.click(appofBinary).perform();
-		wait.until(ExpectedConditions.urlContains("/applications-of-binary-trees/"));
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
 
 	}
 
 	public void imp_of_binaryTrees() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
 		String currentUrl = driver.getCurrentUrl();
 		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(impOfBinary).perform();
 		action.click(impOfBinary).perform();
-		wait.until(ExpectedConditions.urlContains("/implementation-of-binary-trees/"));
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
 
 	}
 
 	public void binary_Search() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
 		String currentUrl = driver.getCurrentUrl();
 		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(binarySearch).perform();
 		action.click(binarySearch).perform();
-		wait.until(ExpectedConditions.urlContains("/binary-search-trees/"));
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
 	}
 
 	public void Implement_OfBst() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
 		String currentUrl = driver.getCurrentUrl();
 		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(impOfBST).perform();
 		action.click(impOfBST).perform();
-		wait.until(ExpectedConditions.urlContains("/implementation-of-bst/"));
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
 	}

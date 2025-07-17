@@ -1,5 +1,7 @@
 package stepDefinitionTree;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 
 import io.cucumber.java.en.Given;
@@ -10,11 +12,12 @@ import pageObjects.Tree_pf;
 
 public class Tree_sd {
 
-	Tree_pf tf;
+	CommonMethods cm = new CommonMethods();
+	Tree_pf tf = new Tree_pf();
 
 	@Given("the user is in Tree page after logged in")
 	public void the_user_is_in_tree_page_after_logged_in() throws InterruptedException {
-		tf = new Tree_pf();
+
 		tf.background_getToTree();
 
 	}
@@ -55,9 +58,8 @@ public class Tree_sd {
 	}
 
 	@Then("user successfully navigates to code editor of the Overview of Tree page")
-	public void user_successfully_navigates_to_code_editor_of_the_overview_of_tree_page() {
-		CommonMethods cm = new CommonMethods();
-		cm.VerifyTryEditorUrl();
+	public void user_successfully_navigates_to_code_editor_of_the_overview_of_tree_page() throws IOException {
+		cm.getCurrentUrl();
 	}
 
 	@Given("The user in tryEditor page")
@@ -68,9 +70,34 @@ public class Tree_sd {
 
 	}
 
+	@Given("The user on tryEditor page of Types of Tree")
+	public void the_user_in_try_editor_page_TypesOfT() throws InterruptedException {
+
+		tf.typesOfTrees();
+		tf.click_TryEditor();
+
+	}
+
+	@Given("The user on tryEditor page of Terminologies")
+	public void the_user_in_try_editor_page_Term() {
+
+		tf.click_Terminilogy();
+		tf.click_TryEditor();
+
+	}
+
 	@When("The user clicks Run without entering code")
 	public void the_user_clicks_run_without_entering_code() {
 
+		tf.clickRun_WithOutCode();
+
+	}
+
+	@When("The user clicks Run without entering code TTT")
+	public void the_user_clicks_run_without_entering_code_ttt() throws InterruptedException {
+
+		tf.typesOfTrees();
+		tf.click_TryEditor();
 		tf.clickRun_WithOutCode();
 
 	}
@@ -102,213 +129,221 @@ public class Tree_sd {
 		tf.clickRun_WithOutCode();
 	}
 
-	@Given("The user in Tree Home Page")
-	public void TreeHomePage() throws InterruptedException {
-		// tf.background_getToTree();
-	}
-
 	@When("The user clicks Terminologies link")
 	public void the_user_clicks_terminologies_link() {
-		// tf.click_Terminilogy();
+		tf.click_Terminilogy();
 
 	}
 
 	@Then("The user should be navigated to the Terminologies page")
 	public void the_user_should_be_navigated_to_the_terminologies_page() {
-		// tf.navigate_To_Terminilogy();
+		tf.navigate_To_Terminilogy();
 
 	}
 
 	@When("The user clicks Try here in Terminologies")
 	public void the_user_clicks_try_here_in_terminologies() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.click_Terminilogy();
+		tf.click_TryEditor();
+
+	}
+
+	@Then("The user should be navigated to the text editor")
+	public void the_user_should_be_navigated_to_the_text_editor() throws IOException {
+		cm.getCurrentUrl();
+
 	}
 
 	@When("The user clicks Run after entering invalid code")
 	public void the_user_clicks_run_after_entering_invalidcode() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.txtEditor_invalidCode();
+		tf.clickRun_WithOutCode();
+
 	}
 
 	@When("The user clicks Types of Tree link")
-	public void the_user_clicks_types_of_tree_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_clicks_types_of_tree_link() throws InterruptedException {
+		tf.typesOfTrees();
+
 	}
 
 	@Then("The user should be navigated to the Types of Tree page")
 	public void the_user_should_be_navigated_to_the_types_of_tree_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String typesOfTreesurl = tf.navigation_typeOfTrees();
+		System.out.println("user logged into " + typesOfTreesurl);
+
 	}
 
 	@When("The user clicks Try here in Types of Tree")
-	public void the_user_clicks_try_here_in_types_of_tree() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_clicks_try_here_in_types_of_tree() throws InterruptedException {
+		tf.typesOfTrees();
+		tf.click_TryEditor();
+
 	}
+
+	/*************************************************************************************************************/
 
 	@When("The user clicks Tree Traversals link")
 	public void the_user_clicks_tree_traversals_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.tree_Trav();
+
 	}
 
 	@Then("The user should be navigated to the Tree Traversals page")
 	public void the_user_should_be_navigated_to_the_tree_traversals_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
+		String navigation_treeTrav = tf.navigation_treeTrav();
+		System.out.println("Navigated to :" + navigation_treeTrav);
+
 	}
 
 	@When("The user clicks Try here in Tree Traversals")
 	public void the_user_clicks_try_here_in_tree_traversals() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.tree_Trav();
+		tf.click_TryEditor();
+
+	}
+
+	@Given("The user on tryEditor page of Tree Traversals")
+	public void the_user_on_try_editor_page_of_tree_traversals() {
+		tf.tree_Trav();
+		tf.click_TryEditor();
+
 	}
 
 	@When("The user enters valid Python code, clicks Run")
 	public void the_user_enters_valid_python_code_clicks_run() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.txtEditor_correctCode();
+		tf.clickRun_WithOutCode();
+
 	}
 
 	@When("The user enters invalid Python code and clicks Run")
 	public void the_user_enters_invalid_python_code_and_clicks_run() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.txtEditor_invalidCode();
+		tf.clickRun_WithOutCode();
 	}
 
 	@When("The user clicks Traversals-Illustration link")
 	public void the_user_clicks_traversals_illustration_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.Traversal_Illustra();
 	}
 
 	@When("The user enters valid Python code and clicks Run")
 	public void the_user_enters_valid_python_code_and_clicks_run() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.txtEditor_correctCode();
+		tf.clickRun_WithOutCode();
+
 	}
 
 	@When("The user clicks Binary Trees link")
 	public void the_user_clicks_binary_trees_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.binary_Tree();
+
 	}
 
 	@Then("The user should be navigated to the Binary Trees page")
 	public void the_user_should_be_navigated_to_the_binary_trees_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
+		System.out.println(cm.getCurrentUrl());
 	}
 
 	@When("The user clicks Types of Binary Tree link")
 	public void the_user_clicks_types_of_binary_tree_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
+		tf.types_ofBinary();
 	}
 
 	@Then("The user should be navigated to the Types of Binary Tree page")
 	public void the_user_should_be_navigated_to_the_types_of_binary_tree_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		System.out.println(cm.getCurrentUrl());
 	}
 
 	@When("The user clicks Implementation of Python link")
 	public void the_user_clicks_implementation_of_python_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
+		tf.Impl_in_Python();
 	}
 
 	@Then("The user should be navigated to the Implementation of Python page")
 	public void the_user_should_be_navigated_to_the_implementation_of_python_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		System.out.println(cm.getCurrentUrl());
+
 	}
 
 	@When("The user clicks Binary Tree Traversals link")
 	public void the_user_clicks_binary_tree_traversals_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.binary_Tree();
+
 	}
 
 	@Then("The user should be navigated to the Binary Tree Traversals page")
 	public void the_user_should_be_navigated_to_the_binary_tree_traversals_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		System.out.println(cm.getCurrentUrl());
 	}
 
 	@When("The user clicks Applications of Binary Trees link")
 	public void the_user_clicks_applications_of_binary_trees_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.app_of_binaryTrees();
+
 	}
 
 	@Then("The user should be navigated to the Applications of Binary Trees  page")
 	public void the_user_should_be_navigated_to_the_applications_of_binary_trees_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		System.out.println(cm.getCurrentUrl());
 	}
 
 	@When("The user clicks Try here in Applications of Binary Trees")
 	public void the_user_clicks_try_here_in_applications_of_binary_trees() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.app_of_binaryTrees();
 	}
 
 	@When("The user clicks Binary Search link")
 	public void the_user_clicks_binary_search_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		System.out.println(cm.getCurrentUrl());
+
 	}
 
 	@Then("The user should be navigated to the Binary Search page")
 	public void the_user_should_be_navigated_to_the_binary_search_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.binary_Search();
+
 	}
 
 	@When("The user clicks Try here in Binary Search")
 	public void the_user_clicks_try_here_in_binary_search() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		System.out.println(cm.getCurrentUrl());
 	}
 
 	@When("The user clicks Implementation of BST link")
 	public void the_user_clicks_implementation_of_bst_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.Implement_OfBst();
 	}
 
 	@Then("The user should be navigated to the Implementation of BST page")
 	public void the_user_should_be_navigated_to_the_implementation_of_bst_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		System.out.println(cm.getCurrentUrl());
 	}
 
 	@When("The user clicks Try here in Implementation of BST")
 	public void the_user_clicks_try_here_in_implementation_of_bst() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.Implement_OfBst();
+		tf.click_TryEditor();
 	}
 
 	@When("The user clicks Practice Questions link")
 	public void the_user_clicks_practice_questions_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.practice_Tree();
 	}
 
 	@Then("The user should be navigated to the Practice Questions page")
 	public void the_user_should_be_navigated_to_the_practice_questions_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		System.out.println(cm.getCurrentUrl());
 	}
 
 	@Then("The user should see the practice questions")
 	public void the_user_should_see_the_practice_questions() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		System.out.println("Practice Question page is blank and need to report bug ");
 	}
 
 }

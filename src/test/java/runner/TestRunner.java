@@ -7,8 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(plugin = { "pretty", "html:target/dsAlgo_Ninjalinos_BDD.html" }, // reporting purpose
 		monochrome = false, // console output color
-		tags = "@verifyingTreeHomePage or @TreeOverview or @OverviewTreeTryHere or   @OverviewTreeWithoutCode or @OverviewTreeValidCode or @OverviewTreeInValidCode or @Terminologiespage", features = {
-				"src/test/resources/Feature/tree.feature" }, // location
+		tags = "@TT2", features = { "src/test/resources/Feature/tree.feature" }, // location
 		// of
 		// feature files
 		glue = { "stepDefinitionTree", "hooks" }) // location of step definition files
@@ -20,6 +19,9 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	public Object[][] scenarios() {
 
 		return super.scenarios();
+
+		// " @TypesofTrees or @TypesofTreeTryHere or @TypesofTreeWithoutCode or
+		// @TypesofTreeValidCode or @TypesofTreeInValidCode"
 	}
 
 }

@@ -42,88 +42,87 @@ Feature: Tree Module in DsAlgo portal
     When The user clicks run after entering invalid code
     Then An alert message should appear
 
-  @Terminologiespage
+  @Terminologiespage @TER1
   Scenario: Navigate to Terminologies page 
-   Given The user in Tree Home Page
     When The user clicks Terminologies link
     Then The user should be navigated to the Terminologies page
 
-  @TerminologiesTryHere
+  @TerminologiesTryHere @TER1
   Scenario: Navigate to text editor in Terminologies
     When The user clicks Try here in Terminologies
     Then The user should be navigated to the text editor
 
-  @TerminologiesWithoutCode
+  @TerminologiesWithoutCode @TER1
   Scenario: Run without code in Terminologies
-    Given The user in tryEditor page
+    Given The user on tryEditor page of Terminologies
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @TerminologiesValidCode
+  @TerminologiesValidCode @TER1
   Scenario: Run with valid code in Terminologies
     Given The user in tryEditor page
     When The user clicks Run after entering valid code
     Then The output should be displayed in the console
 
-  @TerminologiesInValidCode
+  @TerminologiesInValidCode @TER1
   Scenario: Run with invalid code in Terminologies
     Given The user in tryEditor page
     When The user clicks Run after entering invalid code
     Then An alert message should appear
 
-  @TypesofTrees
+  @TypesofTrees @TT1
   Scenario: Navigate to Types of Tree page
     When The user clicks Types of Tree link
     Then The user should be navigated to the Types of Tree page
 
-  @TypesofTreeTryHere
+  @TypesofTreeTryHere @TT1
   Scenario: Navigate to text editor in Types of Tree
     When The user clicks Try here in Types of Tree
     Then The user should be navigated to the text editor
 
-  @TypesofTreeWithoutCode
+  @TypesofTreeWithoutCode @TT1
   Scenario: Run without code in Types of Tree
-    Given The user in tryEditor page
+    Given The user on tryEditor page of Types of Tree
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @TypesofTreeValidCode
+  @TypesofTreeValidCode @TT1
   Scenario: Run with valid code in Types of Tree
-    Given The user in tryEditor page
+    Given The user on tryEditor page of Types of Tree
     When The user clicks Run after entering valid code
     Then The output should be displayed in the console
 
-  @TypesofTreeInValidCode
+  @TypesofTreeInValidCode @TT1
   Scenario: Run with invalid code in Types of Tree
-    Given The user in tryEditor page
+    Given The user on tryEditor page of Types of Tree
     When The user clicks Run after entering invalid code
     Then An alert message should appear
 
-  @TreeTraversalspage
+  @TreeTraversalspage   @TT2
   Scenario: Navigate to Tree Traversals page
     When The user clicks Tree Traversals link
     Then The user should be navigated to the Tree Traversals page
 
-  @TreeTraversalTryHere
+  @TreeTraversalTryHere @TT2
   Scenario: Navigate to text editor in Tree Traversals
     When The user clicks Try here in Tree Traversals
     Then The user should be navigated to the text editor
 
-  @TreeTraversalWithoutCode
+  @TreeTraversalWithoutCode @TT2
   Scenario: Run without code in Tree Traversals
-    Given The user in tryEditor page
+    Given The user on tryEditor page of Tree Traversals
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @TreeTraversalValidCode
+  @TreeTraversalValidCode  @TT2
   Scenario: Run with valid code in Tree Traversals
-    Given The user in tryEditor page
+    Given The user on tryEditor page of Tree Traversals
     When The user enters valid Python code, clicks Run
     Then The output should be displayed in the console
 
-  @TreeTraversalInValidCode
+  @TreeTraversalInValidCode  @TT2
   Scenario: Run with invalid code in Tree Traversals
-    Given The user in tryEditor page
+    Given The user on tryEditor page of Tree Traversals
     When The user enters invalid Python code and clicks Run
     Then An alert message should appear
 
@@ -134,7 +133,7 @@ Feature: Tree Module in DsAlgo portal
 
   @TraversalsIllustrationTryHere
   Scenario: Navigate to text editor in Traversals-Illustration
-    When The user clicks Try here in Tree Traversals
+    When The user clicks Try here in Tree Traversals-Illustration
     Then The user should be navigated to the text editor
 
   @TraversalsIllustrationWithoutCode
