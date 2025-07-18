@@ -47,22 +47,16 @@ public class TryEditorPage_pf {
 // we have to Implement Data Driven with excel to enter code
 
 	public void tryEditor_validCode() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(codeEditor));
 		action.scrollToElement(codeEditor).perform();
 		action.sendKeys(codeEditor, "print('Hello World')").perform();
 	}
 
 	public void tryEditor_invalidCode() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(codeEditor));
 		action.scrollToElement(codeEditor).perform();
 		action.sendKeys(codeEditor, "abc").perform();
 	}
 
 	public void clickRun() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(runButton));
 		action.scrollToElement(runButton).perform();
 		action.click(runButton).perform();
 		// runButton.click();
@@ -73,7 +67,6 @@ public class TryEditorPage_pf {
 	}
 
 	public String outputText() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(outputTxt));
 		String OutputResult = outputTxt.getText();
 		// System.out.println(OutputResult);
@@ -96,5 +89,57 @@ public class TryEditorPage_pf {
 			return null;
 		}
 	}
+
+//*****************************************************************************************
+//	public void tryEditor_validCode() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(codeEditor));
+//		action.scrollToElement(codeEditor).perform();
+//		action.sendKeys(codeEditor, "print('Hello World')").perform();
+//	}
+//
+//	public void tryEditor_invalidCode() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(codeEditor));
+//		action.scrollToElement(codeEditor).perform();
+//		action.sendKeys(codeEditor, "abc").perform();
+//	}
+//
+//	public void clickRun() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(runButton));
+//		action.scrollToElement(runButton).perform();
+//		action.click(runButton).perform();
+//		// runButton.click();
+//	}
+//
+//	public void getErrMsg_NoCode() {
+//		System.out.println("No Error Alert Found, report bug");
+//	}
+//
+//	public String outputText() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.visibilityOf(outputTxt));
+//		String OutputResult = outputTxt.getText();
+//		// System.out.println(OutputResult);
+//		return OutputResult;
+//	}
+//
+//	// New method to handle alert and return alert message text
+//	public String alertMsg() {
+//		try {
+//			// Wait until alert is present
+//			Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+//			// Get alert text
+//			String alertText = alert.getText();
+//			// Accept (close) the alert
+//			alert.accept();
+//			return alertText;
+//
+//		} catch (Exception e) {
+//			System.out.println("No alert appeared: " + e.getMessage());
+//			return null;
+//		}
+//	}
 
 }

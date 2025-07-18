@@ -177,6 +177,7 @@ public class Array_sd {
 
 	@When("The user clicks Try Here button in Arrays Using List page")
 	public void the_user_clicks_try_here_button_in_arrays_using_list_page() throws InterruptedException {
+		waitForTenSec("/arrays-using-list/");
 		array_pf.clickTryHere();
 		Thread.sleep(2000);
 
@@ -184,6 +185,7 @@ public class Array_sd {
 
 	@When("The user clicks Basic Operations in Lists")
 	public void the_user_clicks_basic_operations_in_lists() {
+		waitForTenSec("/array");
 		array_pf.clickBasicOperations();
 
 	}
@@ -196,12 +198,14 @@ public class Array_sd {
 
 	@Given("The user is on the Basic Operations in Lists page")
 	public void the_user_is_on_the_basic_operations_in_lists_page() {
+		waitForTenSec("/array");
 		array_pf.clickBasicOperations();
 
 	}
 
 	@When("The user clicks Try Here button in Basic Operations in Lists page")
 	public void the_user_clicks_try_here_button_in_basic_operations_in_lists_page() throws InterruptedException {
+		waitForTenSec("/basic-operations-in-lists/");
 		array_pf.clickTryHere();
 		Thread.sleep(2000);
 
@@ -209,12 +213,14 @@ public class Array_sd {
 
 	@When("The user clicks Applications of Array")
 	public void the_user_clicks_applications_of_array() {
+		waitForTenSec("/array");
 		array_pf.clickApplicationsOfArray();
 
 	}
 
 	@Then("The user should be navigated to Applications of Array page")
 	public void the_user_should_be_navigated_to_applications_of_array_page() {
+		waitForTenSec("/applications-of-array/");
 		String url = array_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/array/applications-of-array/", url);
 
@@ -222,12 +228,14 @@ public class Array_sd {
 
 	@Given("The user is on the Applications of Array page")
 	public void the_user_is_on_the_applications_of_array_page() {
+		waitForTenSec("/array");
 		array_pf.clickApplicationsOfArray();
 
 	}
 
 	@When("The user clicks Try Here button in Applications of Array page")
 	public void the_user_clicks_try_here_button_in_applications_of_array_page() throws InterruptedException {
+		waitForTenSec("/applications-of-array/");
 		array_pf.clickTryHere();
 		Thread.sleep(2000);
 
@@ -235,12 +243,14 @@ public class Array_sd {
 
 	@Given("The user is in the Arrays in Python page after Sign in")
 	public void the_user_is_in_the_arrays_in_python_page_after_sign_in() {
+		waitForTenSec("/array");
 		array_pf.clickArraysInPython();
 
 	}
 
 	@When("The user clicks Practice Questions button")
 	public void the_user_clicks_practice_questions_button() throws InterruptedException {
+		waitForTenSec("/arrays-in-python/");
 		array_pf.clickPracticeQuestionsLink();
 		Thread.sleep(2000);
 
@@ -248,6 +258,7 @@ public class Array_sd {
 
 	@Then("The user should be redirected to Practice page")
 	public void the_user_should_be_redirected_to_practice_page() {
+		waitForTenSec("/array/practice");
 		String url = array_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/array/practice", url);
 
@@ -255,24 +266,28 @@ public class Array_sd {
 
 	@Given("The user is on the practice question page from arrays in python")
 	public void the_user_is_on_the_practice_question_page_from_arrays_in_python() {
+		waitForTenSec("/array");
 		array_pf.clickArraysInPython();
 		array_pf.clickPracticeQuestionsLink();
 	}
 
 	@When("The user clicks the Search the array link")
 	public void the_user_clicks_the_search_the_array_link() throws InterruptedException {
+		waitForTenSec("/array/practice");
 		array_pf.clickSearchTheArray();
 		Thread.sleep(5000);
 	}
 
 	@Then("The user should be redirected to Question1 page contains a question, try Editor with Run and Submit buttons")
 	public void the_user_should_be_redirected_to_question1_page_contains_a_question_try_editor_with_run_and_submit_buttons() {
+		waitForTenSec("question/1");
 		String url = array_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/question/1", url);
 	}
 
 	@Given("The user is on the practice question1 editor")
 	public void the_user_is_on_the_practice_question1_editor() throws InterruptedException {
+		waitForTenSec("/array");
 		array_pf.clickArraysInPython();
 		array_pf.clickPracticeQuestionsLink();
 		array_pf.clickSearchTheArray();
@@ -307,6 +322,7 @@ public class Array_sd {
 
 	@When("The user clicks run button after writing invalid code in editor")
 	public void user_clicks_run_button_after_writing_invalid_code_in_editor() {
+		waitForTenSec("/question/");
 		array_pf.tryEditor_invalidCode_practiceQ();
 		tryeditorpage.clickRun();
 		tryeditorpage.alertMsg();
@@ -314,6 +330,7 @@ public class Array_sd {
 
 	@When("The user clicks run button after writing valid code in question1 editor")
 	public void the_user_clicks_run_button_after_writing_valid_code_in_question1_editor() {
+		waitForTenSec("question/1");
 		array_pf.tryEditor_validCode_practiceQ1();
 		tryeditorpage.clickRun();
 
@@ -328,12 +345,14 @@ public class Array_sd {
 
 	@When("The user clicks Submit button after writing invalid code in editor")
 	public void the_user_clicks_submit_button_after_writing_invalid_code_in_editor() {
+		waitForTenSec("/question/");
 		array_pf.tryEditor_invalidCode_practiceQ();
 		array_pf.clickSubmit();
 	}
 
 	@When("The user clicks Submit button after writing valid code in question1 editor")
 	public void the_user_clicks_submit_button_after_writing_valid_code_in_question1_editor() {
+		waitForTenSec("question/1");
 		array_pf.tryEditor_validCode_practiceQ1();
 		array_pf.clickSubmit();
 	}
@@ -348,17 +367,20 @@ public class Array_sd {
 
 	@When("The user clicks the Max Consecutive ones link")
 	public void the_user_clicks_the_max_consecutive_ones_link() {
+		waitForTenSec("/array/practice");
 		array_pf.clickMaxConsecutiveOnes();
 	}
 
 	@Then("The user should be redirected to Question2 page contains a question, try Editor with Run and Submit buttons")
 	public void the_user_should_be_redirected_to_question2_page_contains_a_question_try_editor_with_run_and_submit_buttons() {
+		waitForTenSec("question/2");
 		String url = array_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/question/2", url);
 	}
 
 	@Given("The user is on the practice question2 editor")
 	public void the_user_is_on_the_practice_question2_editor() {
+		waitForTenSec("/array");
 		array_pf.clickArraysInPython();
 		array_pf.clickPracticeQuestionsLink();
 		array_pf.clickMaxConsecutiveOnes();
@@ -366,6 +388,7 @@ public class Array_sd {
 
 	@When("The user clicks run button after writing valid code in question2 editor")
 	public void the_user_clicks_run_button_after_writing_valid_code_in_question2_editor() {
+		waitForTenSec("question/2");
 		array_pf.tryEditor_validCode_practiceQ2();
 		tryeditorpage.clickRun();
 
@@ -380,23 +403,27 @@ public class Array_sd {
 
 	@When("The user clicks Submit button after writing valid code in question2 editor")
 	public void the_user_clicks_submit_button_after_writing_valid_code_in_question2_editor() {
+		waitForTenSec("question/2");
 		array_pf.tryEditor_validCode_practiceQ2();
 		array_pf.clickSubmit();
 	}
 
 	@When("The user clicks the Find Numbers with even number of digits link")
 	public void the_user_clicks_the_find_numbers_with_even_number_of_digits_link() {
+		waitForTenSec("/array/practice");
 		array_pf.clickEvenNumberDigits();
 	}
 
 	@Then("The user should be redirected to Question3 page contains a question, try Editor with Run and Submit buttons")
 	public void the_user_should_be_redirected_to_question3_page_contains_a_question_try_editor_with_run_and_submit_buttons() {
+		waitForTenSec("question/3");
 		String url = array_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/question/3", url);
 	}
 
 	@Given("The user is on the practice question3 editor")
 	public void the_user_is_on_the_practice_question3_editor() {
+		waitForTenSec("/array");
 		array_pf.clickArraysInPython();
 		array_pf.clickPracticeQuestionsLink();
 		array_pf.clickEvenNumberDigits();
@@ -404,6 +431,7 @@ public class Array_sd {
 
 	@When("The user clicks run button after writing valid code in question3 editor")
 	public void the_user_clicks_run_button_after_writing_valid_code_in_question3_editor() {
+		waitForTenSec("question/3");
 		array_pf.tryEditor_validCode_practiceQ3();
 		tryeditorpage.clickRun();
 	}
@@ -417,17 +445,20 @@ public class Array_sd {
 
 	@When("The user clicks Submit button after writing valid code in question3 editor")
 	public void the_user_clicks_submit_button_after_writing_valid_code_in_question3_editor() {
+		waitForTenSec("question/3");
 		array_pf.tryEditor_validCode_practiceQ3();
 		array_pf.clickSubmit();
 	}
 
 	@When("The user clicks the Squares Of a Sorted Array link")
 	public void the_user_clicks_the_squares_of_a_sorted_array_link() {
+		waitForTenSec("/array/practice");
 		array_pf.clickSquaresOfSortedArray();
 	}
 
 	@Then("The user should be redirected to Question4 page contains a question, try Editor with Run and Submit buttons")
 	public void the_user_should_be_redirected_to_question4_page_contains_a_question_try_editor_with_run_and_submit_buttons() {
+		waitForTenSec("question/4");
 		String url = array_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/question/4", url);
 
@@ -435,6 +466,7 @@ public class Array_sd {
 
 	@Given("The user is on the practice question4 editor")
 	public void the_user_is_on_the_practice_question4_editor() {
+		waitForTenSec("/array");
 		array_pf.clickArraysInPython();
 		array_pf.clickPracticeQuestionsLink();
 		array_pf.clickSquaresOfSortedArray();
@@ -442,6 +474,7 @@ public class Array_sd {
 
 	@When("The user clicks run button after writing valid code in question4 editor")
 	public void the_user_clicks_run_button_after_writing_valid_code_in_question4_editor() {
+		waitForTenSec("question/4");
 		array_pf.tryEditor_validCode_practiceQ4();
 		tryeditorpage.clickRun();
 	}
@@ -455,6 +488,7 @@ public class Array_sd {
 
 	@When("The user clicks Submit button after writing valid code in question4 editor")
 	public void the_user_clicks_submit_button_after_writing_valid_code_in_question4_editor() {
+		waitForTenSec("question/4");
 		array_pf.tryEditor_validCode_practiceQ4();
 		array_pf.clickSubmit();
 	}

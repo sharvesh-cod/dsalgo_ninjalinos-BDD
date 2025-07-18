@@ -2,14 +2,12 @@ package pageObjects;
 
 import java.time.Duration;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
@@ -81,92 +79,64 @@ public class Array_pf {
 	WebElement submitBtn; // OUTPUT ID LOCATOR IS SAME TOO
 
 	public void clickArrayGetStarted() {
-
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrayGetStarted); // FOR
-																											// FIREFOX
-
 		action.scrollToElement(arrayGetStarted).perform();
 		action.click(arrayGetStarted).perform();
 
 	}
 
 	public void clickArraysInPython() {
-
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arraysInPythonLink); // FIREFOX
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(arraysInPythonLink));
-
-		action.moveToElement(arraysInPythonLink).perform(); // safer than scrollToElement
+		action.scrollToElement(arraysInPythonLink).perform();
 		action.click(arraysInPythonLink).perform();
+
 	}
 
 	public void clickArraysUsingList() {
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arraysUsingListLink);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(arraysUsingListLink));
-
-		action.moveToElement(arraysUsingListLink).perform();
+		action.scrollToElement(arraysUsingListLink).perform();
 		action.click(arraysUsingListLink).perform();
+
 	}
 
 	public void clickBasicOperations() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(basicOperationsLink));
-
-		action.moveToElement(basicOperationsLink).perform();
+		action.scrollToElement(basicOperationsLink).perform();
 		action.click(basicOperationsLink).perform();
 	}
 
 	public void clickApplicationsOfArray() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(applicationsOfArrayLink));
-		action.moveToElement(applicationsOfArrayLink).perform();
+		action.scrollToElement(applicationsOfArrayLink).perform();
 		action.click(applicationsOfArrayLink).perform();
 	}
 
 	public void clickPracticeQuestionsLink() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionsLink));
-		action.moveToElement(practiceQuestionsLink).perform();
+		action.scrollToElement(practiceQuestionsLink).perform();
 		action.click(practiceQuestionsLink).perform();
 
 	}
 
 	public void clickTryHere() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(tryHereLink));
-		action.moveToElement(tryHereLink).perform();
+		action.scrollToElement(tryHereLink).perform();
 		action.click(tryHereLink).perform();
 	}
 
 	// PRACTICE QUESTIONS PAGE LINK
 	public void clickSearchTheArray() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(searchTheArrayLink));
-		action.moveToElement(searchTheArrayLink).perform();
+		action.scrollToElement(searchTheArrayLink).perform();
 		action.click(searchTheArrayLink).perform();
 
 	}
 
 	public void clickMaxConsecutiveOnes() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(maxConsecutiveOnesLink));
-		action.moveToElement(maxConsecutiveOnesLink).perform();
+		action.scrollToElement(maxConsecutiveOnesLink).perform();
 		action.click(maxConsecutiveOnesLink).perform();
 	}
 
 	public void clickEvenNumberDigits() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(evenNumberDigitsLink));
-		action.moveToElement(evenNumberDigitsLink).perform();
+		action.scrollToElement(evenNumberDigitsLink).perform();
 		action.click(evenNumberDigitsLink).perform();
 
 	}
 
 	public void clickSquaresOfSortedArray() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(squaresOfSortedArrayLink));
-		action.moveToElement(squaresOfSortedArrayLink).perform();
+		action.scrollToElement(squaresOfSortedArrayLink).perform();
 		action.click(squaresOfSortedArrayLink).perform();
 
 	}
@@ -177,8 +147,6 @@ public class Array_pf {
 //				+ "        print(\"Element Found\")\n" + "    else:\n" + "        print(\"Not Found\")\n" + "\n"
 //				+ "# Example usage:\n" + "search([12, 23, 45, 67, 6, 90], 12)\n"
 //				+ "search([12, 23, 45, 67, 6, 90], 25) #";
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
 
 		String validCode1 = "print 'hello'";
 		action.scrollToElement(practiceQuestionEditor).perform();
@@ -191,9 +159,6 @@ public class Array_pf {
 	}
 
 	public void tryEditor_validCode_practiceQ2() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
-
 		String validCode2 = "print 'hello'";
 		action.scrollToElement(practiceQuestionEditor).perform();
 		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
@@ -204,8 +169,6 @@ public class Array_pf {
 	}
 
 	public void tryEditor_validCode_practiceQ3() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
 		String validCode3 = "print 'hello'";
 		action.scrollToElement(practiceQuestionEditor).perform();
 		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
@@ -215,8 +178,6 @@ public class Array_pf {
 	}
 
 	public void tryEditor_validCode_practiceQ4() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
 		String validCode4 = "print 'hello'";
 		action.scrollToElement(practiceQuestionEditor).perform();
 		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
@@ -226,17 +187,13 @@ public class Array_pf {
 	}
 
 	public void tryEditor_invalidCode_practiceQ() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
 
-		action.moveToElement(practiceQuestionEditor).perform();
+		action.scrollToElement(practiceQuestionEditor).perform();
 		action.sendKeys(practiceQuestionEditor, "abc").perform();
 	}
 
 	public void clickSubmit() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
-		action.moveToElement(submitBtn).perform();
+		action.scrollToElement(submitBtn).perform();
 		action.click(submitBtn).perform();
 
 	}
@@ -245,6 +202,174 @@ public class Array_pf {
 		String afterNavigation = driver.getCurrentUrl();
 		return afterNavigation;
 	}
+
+//	***********************************************************************************
+
+//	public void clickArrayGetStarted() {
+//
+//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrayGetStarted); // FOR
+//																											// FIREFOX
+//
+//		action.scrollToElement(arrayGetStarted).perform();
+//		action.click(arrayGetStarted).perform();
+//
+//	}
+//
+//	public void clickArraysInPython() {
+//
+//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arraysInPythonLink); // FIREFOX
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(arraysInPythonLink));
+//
+//		action.moveToElement(arraysInPythonLink).perform(); // safer than scrollToElement
+//		action.click(arraysInPythonLink).perform();
+//	}
+//
+//	public void clickArraysUsingList() {
+//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arraysUsingListLink);
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(arraysUsingListLink));
+//
+//		action.moveToElement(arraysUsingListLink).perform();
+//		action.click(arraysUsingListLink).perform();
+//	}
+//
+//	public void clickBasicOperations() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(basicOperationsLink));
+//
+//		action.moveToElement(basicOperationsLink).perform();
+//		action.click(basicOperationsLink).perform();
+//	}
+//
+//	public void clickApplicationsOfArray() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(applicationsOfArrayLink));
+//		action.moveToElement(applicationsOfArrayLink).perform();
+//		action.click(applicationsOfArrayLink).perform();
+//	}
+//
+//	public void clickPracticeQuestionsLink() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionsLink));
+//		action.moveToElement(practiceQuestionsLink).perform();
+//		action.click(practiceQuestionsLink).perform();
+//
+//	}
+//
+//	public void clickTryHere() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(tryHereLink));
+//		action.moveToElement(tryHereLink).perform();
+//		action.click(tryHereLink).perform();
+//	}
+//
+//	// PRACTICE QUESTIONS PAGE LINK
+//	public void clickSearchTheArray() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(searchTheArrayLink));
+//		action.moveToElement(searchTheArrayLink).perform();
+//		action.click(searchTheArrayLink).perform();
+//
+//	}
+//
+//	public void clickMaxConsecutiveOnes() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(maxConsecutiveOnesLink));
+//		action.moveToElement(maxConsecutiveOnesLink).perform();
+//		action.click(maxConsecutiveOnesLink).perform();
+//	}
+//
+//	public void clickEvenNumberDigits() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(evenNumberDigitsLink));
+//		action.moveToElement(evenNumberDigitsLink).perform();
+//		action.click(evenNumberDigitsLink).perform();
+//
+//	}
+//
+//	public void clickSquaresOfSortedArray() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(squaresOfSortedArrayLink));
+//		action.moveToElement(squaresOfSortedArrayLink).perform();
+//		action.click(squaresOfSortedArrayLink).perform();
+//
+//	}
+//
+//	public void tryEditor_validCode_practiceQ1() {
+//
+////		String validCode1 = "def search(lst, value):\n" + "    if value in lst:\n"
+////				+ "        print(\"Element Found\")\n" + "    else:\n" + "        print(\"Not Found\")\n" + "\n"
+////				+ "# Example usage:\n" + "search([12, 23, 45, 67, 6, 90], 12)\n"
+////				+ "search([12, 23, 45, 67, 6, 90], 25) #";
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
+//
+//		String validCode1 = "print 'hello'";
+//		action.scrollToElement(practiceQuestionEditor).perform();
+//
+//		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
+//				.sendKeys("a").keyUp(Keys.COMMAND).sendKeys(Keys.BACK_SPACE).perform();
+//
+//		action.sendKeys(practiceQuestionEditor, validCode1).perform();
+//
+//	}
+//
+//	public void tryEditor_validCode_practiceQ2() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
+//
+//		String validCode2 = "print 'hello'";
+//		action.scrollToElement(practiceQuestionEditor).perform();
+//		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
+//				.sendKeys("a").keyUp(Keys.COMMAND).sendKeys(Keys.BACK_SPACE).perform();
+//
+//		action.sendKeys(practiceQuestionEditor, validCode2).perform();
+//
+//	}
+//
+//	public void tryEditor_validCode_practiceQ3() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
+//		String validCode3 = "print 'hello'";
+//		action.scrollToElement(practiceQuestionEditor).perform();
+//		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
+//				.sendKeys("a").keyUp(Keys.COMMAND).sendKeys(Keys.BACK_SPACE).perform();
+//		action.sendKeys(practiceQuestionEditor, validCode3).perform();
+//
+//	}
+//
+//	public void tryEditor_validCode_practiceQ4() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
+//		String validCode4 = "print 'hello'";
+//		action.scrollToElement(practiceQuestionEditor).perform();
+//		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
+//				.sendKeys("a").keyUp(Keys.COMMAND).sendKeys(Keys.BACK_SPACE).perform();
+//		action.sendKeys(practiceQuestionEditor, validCode4).perform();
+//
+//	}
+//
+//	public void tryEditor_invalidCode_practiceQ() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
+//
+//		action.moveToElement(practiceQuestionEditor).perform();
+//		action.sendKeys(practiceQuestionEditor, "abc").perform();
+//	}
+//
+//	public void clickSubmit() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
+//		action.moveToElement(submitBtn).perform();
+//		action.click(submitBtn).perform();
+//
+//	}
+//
+//	public String getURL() {
+//		String afterNavigation = driver.getCurrentUrl();
+//		return afterNavigation;
+//	}
 
 	// For writing question can we use codeEditor and run button from Try Editor
 	// page
