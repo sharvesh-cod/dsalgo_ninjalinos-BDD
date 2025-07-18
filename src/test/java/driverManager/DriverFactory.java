@@ -1,55 +1,124 @@
 package driverManager;
 
-import java.time.Duration;
+import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import utils.ConfigReader;
 
 public class DriverFactory {
+	private WebDriver driver;
+	String browser;
 
-	// ThreadLocal for parallel test execution
-	private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
+	public DriverFactory(ConfigReader config) throws IOException {
 
-	// Initialize driver based on browser name
-	public WebDriver initDriver(String browser) { // creates a browser per thread
+		this.browser = config.get_prop_value("browser");
+	}
 
-		System.out.println("Launching browser: " + browser);
+	// Initialize WebDriver based on browser name
+	public WebDriver initBrowser(String browser) {
+
+		// System.out.println("Initializing browser: " + browser);
 
 		if (browser.equalsIgnoreCase("chrome")) {
-			tlDriver.set(new ChromeDriver());
-		} else if (browser.equalsIgnoreCase("firefox")) {
-			tlDriver.set(new FirefoxDriver());
-		} else if (browser.equalsIgnoreCase("edge")) {
-			tlDriver.set(new EdgeDriver());
-		} else {
-			System.out.println("Invalid browser name: " + browser + ". Defaulting to Chrome.");
-			tlDriver.set(new ChromeDriver());
+
+			driver = new ChromeDriver();
+			WebDriverManager.chromedriver().setup();
+
 		}
 
-		getDriver().manage().window().maximize();
-		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+		else if (browser.equalsIgnoreCase("Safari")) {
+			// tldriver.set(new SafariDriver());
+			driver = new SafariDriver();
 
-		return getDriver(); // returns driver for that thread
-	}
-
-	// Get driver instance for current thread
-	public static WebDriver getDriver() { // NOTICE THAT THIS IS A STATIC METHOD
-		return tlDriver.get();
-	}
-
-	// Quit driver for current thread
-	public static void quitDriver() { // STATIC METHOD
-		if (tlDriver.get() != null) {
-			tlDriver.get().quit();
-			tlDriver.remove();
 		}
+
+		else if (browser.equalsIgnoreCase("firefox")) {
+			// tldriver.set(new FirefoxDriver());
+			driver = new FirefoxDriver();
+			// WebDriverManager.firefoxdriver().setup();
+		}
+
+		else if (browser.equalsIgnoreCase("edge")) {
+			// tldriver.set(new FirefoxDriver());
+			// WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+
+		}
+
+		else {
+			throw new IllegalArgumentException("Unsupported Browser:" + browser);
+
+		}
+		return driver;
+
+	}
+
+	public String return_browser() {
+		return browser;
 	}
 }
 
-//ORIGINAL RAW CODE FOR DRIVER FACTORY 
+// ***************************************************************************************
+// CODE FOR PARALLEL EXECUTION USING THREAD LOCAL AND DRIVER FACTORY
+//package driverManager;
+//
+//import java.time.Duration;
+//
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.safari.SafariDriver;
+//
+//public class DriverFactory {
+//
+//	// ThreadLocal for parallel test execution
+//	private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
+//
+//	// Initialize driver based on browser name
+//	public WebDriver initDriver(String browser) { // creates a browser per thread
+//
+//		System.out.println("Launching browser: " + browser);
+//
+//		if (browser.equalsIgnoreCase("chrome")) {
+//			tlDriver.set(new ChromeDriver());
+//		} else if (browser.equalsIgnoreCase("firefox")) {
+//			tlDriver.set(new FirefoxDriver());
+//		} else if (browser.equalsIgnoreCase("safari")) {
+//			tlDriver.set(new SafariDriver());
+//		} else {
+//			System.out.println("Invalid browser name: " + browser + ". Defaulting to Chrome.");
+//			tlDriver.set(new ChromeDriver());
+//		}
+//
+//		getDriver().manage().window().maximize();
+//		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//		getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+//
+//		return getDriver(); // returns driver for that thread
+//	}
+//
+//	// Get driver instance for current thread
+//	public static WebDriver getDriver() { // NOTICE THAT THIS IS A STATIC METHOD
+//		return tlDriver.get();
+//	}
+//
+//	// Quit driver for current thread
+//	public static void quitDriver() { // STATIC METHOD
+//		if (tlDriver.get() != null) {
+//			tlDriver.get().quit();
+//			tlDriver.remove();
+//		}
+//	}
+//}
+//***************************************************************************************
+
+//ORIGINAL RAW CODE FOR DRIVER FACTORY FOR NON PARALLEL
 //package driverManager;
 //
 //import java.time.Duration;

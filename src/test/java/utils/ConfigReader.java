@@ -5,26 +5,24 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigReader {
+	private Properties prop;
+	FileInputStream fis;
 
-	private static Properties prop;
+	public ConfigReader() throws IOException {
+		prop = new Properties();
+		this.fis = new FileInputStream("src/test/resources/config/config.properties"); // Use relative path
+																						// if possible
+		prop.load(fis);
 
-	static {
-		try {
-			FileInputStream fis = new FileInputStream("src/test/resources/config/config.properties");
-			prop = new Properties();
-			prop.load(fis);
-		} catch (IOException e) {
-			e.printStackTrace();
-			throw new RuntimeException("Could not load config.properties");
-		}
 	}
 
-	public static String get(String key) {
-		return prop.getProperty(key);
+	public String get_prop_value(String key) {
+		String prop_value = prop.getProperty(key);
+		return prop_value;
 	}
 }
 
-//VIDHYA'S CODE (ORIGINAL)
+//******************MY ORIGINAL CODE******************************
 //package utils;
 //
 //import java.io.FileInputStream;
@@ -32,14 +30,21 @@ public class ConfigReader {
 //import java.util.Properties;
 //
 //public class ConfigReader {
-//	private Properties prop;
 //
-//	public Properties initProp() throws IOException {
-//		prop = new Properties();
-//		FileInputStream fis = new FileInputStream("src/test/resources/config/config.properties");
-//		// if possible
-//		prop.load(fis);
-//		return prop;
+//	private static Properties prop;
+//
+//	static {
+//		try {
+//			FileInputStream fis = new FileInputStream("src/test/resources/config/config.properties");
+//			prop = new Properties();
+//			prop.load(fis);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			throw new RuntimeException("Could not load config.properties");
+//		}
 //	}
 //
+//	public static String get(String key) {
+//		return prop.getProperty(key);
+//	}
 //}

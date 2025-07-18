@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import driverManager.DriverFactory;
+import driverManager.Passing_Driver;
 
 public class TryEditorPage_pf {
 
@@ -20,11 +20,12 @@ public class TryEditorPage_pf {
 	private Actions action;
 	WebDriverWait wait;
 
-	public TryEditorPage_pf() {
-		this.driver = DriverFactory.getDriver();
+	public TryEditorPage_pf(Passing_Driver passdr) {
+		this.driver = passdr.getDriver();
+		this.action = new Actions(driver);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		PageFactory.initElements(driver, this);
-		action = new Actions(driver);
+
 	}
 
 //	public TryEditorPage_pf(WebDriver driver) {
@@ -46,16 +47,22 @@ public class TryEditorPage_pf {
 // we have to Implement Data Driven with excel to enter code
 
 	public void tryEditor_validCode() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(codeEditor));
 		action.scrollToElement(codeEditor).perform();
 		action.sendKeys(codeEditor, "print('Hello World')").perform();
 	}
 
 	public void tryEditor_invalidCode() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(codeEditor));
 		action.scrollToElement(codeEditor).perform();
 		action.sendKeys(codeEditor, "abc").perform();
 	}
 
 	public void clickRun() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(runButton));
 		action.scrollToElement(runButton).perform();
 		action.click(runButton).perform();
 		// runButton.click();
@@ -66,6 +73,7 @@ public class TryEditorPage_pf {
 	}
 
 	public String outputText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(outputTxt));
 		String OutputResult = outputTxt.getText();
 		// System.out.println(OutputResult);

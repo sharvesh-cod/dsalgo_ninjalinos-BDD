@@ -1,6 +1,6 @@
 package pageObjects;
 
-import java.time.Duration;
+import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,21 +9,24 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import driverManager.DriverFactory;
+import driverManager.Passing_Driver;
+import utils.ConfigReader;
 
 public class LoginPage {
 
+	ConfigReader config;
+	String browser;
+
 	private WebDriver driver;
-	// private Actions action;
-	Actions action;
+	private Actions action;
 	WebDriverWait wait;
 
-	public LoginPage() {
+	public LoginPage(Passing_Driver passdr) throws IOException {
 		// DsAlgoHooks hooks = new DsAlgoHooks();
-		this.driver = DriverFactory.getDriver();
+		this.driver = passdr.getDriver();
+		this.action = new Actions(driver);
+		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
-		action = new Actions(driver);
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	}
 
 //	public LoginPage(WebDriver driver) {

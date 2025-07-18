@@ -2,32 +2,54 @@ package stepDefinition;
 
 import static org.testng.Assert.assertEquals;
 
+import java.io.IOException;
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.Array_pf;
 import pageObjects.LoginPage;
 import pageObjects.TryEditorPage_pf;
+import utils.ConfigReader;
 
 public class Array_sd {
 
-	LoginPage loginpage;
-	Array_pf array_pf;
-	TryEditorPage_pf tryeditorpage;
+	private WebDriver driver; // CODE CHANGES FOR FIREFOX
+	private LoginPage loginpage;
+	private Array_pf array_pf;
+	private TryEditorPage_pf tryeditorpage;
+	String browserName;
+	ConfigReader config;
+	// CommonMethods common;
 
-	public Array_sd() { // This is the constructor for your
-						// step definition class Array_sd.
-		// this.driver = DriverFactory.getDriver();
+	public Array_sd(Passing_Driver passdr) throws IOException { // This is the constructor for your
+		// step definition class Array_sd.
+		this.driver = passdr.getDriver();
 
-		this.array_pf = new Array_pf(); // Cucumber creates a new instance of this class every time it runs a
-										// scenario,
-										// and this constructor is called automatically at that time.
-		this.loginpage = new LoginPage();
-		this.tryeditorpage = new TryEditorPage_pf();
+		this.array_pf = new Array_pf(passdr); // Cucumber creates a new instance of this class every time it runs a
+		// scenario,
+		// and this constructor is called automatically at that time.
+		this.loginpage = new LoginPage(passdr);
+		this.tryeditorpage = new TryEditorPage_pf(passdr);
+		this.config = new ConfigReader();
+		this.browserName = config.get_prop_value("browser");
+		// this.common = new CommonMethods(passdr);
 	}
 	// NOTES: This is safe because Cucumber creates a new step definition instance
 	// per scenario by default
 	// — meaning each thread will get a fresh copy.
+
+	// CODE CHANGES FOR FIREFOX
+	private void waitForTenSec(String partialUrl) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.urlContains(partialUrl));
+	}
 
 	@Given("The user is in array page after logging in") // BACKGROUND
 	public void the_user_is_in_array_page_after_logging_in() {
@@ -40,12 +62,14 @@ public class Array_sd {
 
 	@When("The user clicks Array in Python")
 	public void the_user_clicks_array_in_python() {
+		waitForTenSec("/array");
 		array_pf.clickArraysInPython();
 		System.out.println("output 2");
 	}
 
 	@Then("The user should be navigated to Array in Python page")
 	public void the_user_should_be_navigated_to_array_in_python_page() {
+		waitForTenSec("/arrays-in-python/");
 		String url = array_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/array/arrays-in-python/", url);
 		System.out.println("output 3");
@@ -53,24 +77,27 @@ public class Array_sd {
 
 	@Given("The user is on the Arrays in Python page")
 	public void the_user_is_on_the_arrays_in_python_page() {
+		waitForTenSec("/array");
 		array_pf.clickArraysInPython();
 	}
 
 	@When("The user clicks Try Here button in Arrays in Python page")
 	public void the_user_clicks_try_here_button_in_arrays_in_python_page() throws InterruptedException {
-
+		waitForTenSec("/arrays-in-python/");
 		array_pf.clickTryHere();
 		Thread.sleep(2000);
 	}
 
 	@Then("The user should be redirected to a page having an try Editor with a Run button to test")
 	public void the_user_should_be_redirected_to_a_page_having_an_try_editor_with_a_run_button_to_test() {
+		waitForTenSec("/tryEditor");
 		String url = array_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", url);
 	}
 
 	@Given("The user is in the Try here page")
 	public void the_user_is_in_the_try_here_page() {
+		waitForTenSec("/array");
 		array_pf.clickArraysInPython();
 		array_pf.clickTryHere();
 
@@ -78,6 +105,7 @@ public class Array_sd {
 
 	@When("The user clicks the Run button without entering the code in the Editor")
 	public void the_user_clicks_the_run_button_without_entering_the_code_in_the_editor() throws InterruptedException {
+		waitForTenSec("/tryEditor");
 		tryeditorpage.clickRun();
 
 	}
@@ -89,6 +117,7 @@ public class Array_sd {
 
 	@When("The user clicks Run button after writing invalid code in editor")
 	public void the_user_clicks_run_button_after_writing_invalid_code_in_editor() {
+		waitForTenSec("/tryEditor");
 		tryeditorpage.tryEditor_invalidCode();
 		tryeditorpage.clickRun();
 		tryeditorpage.alertMsg();
@@ -103,6 +132,7 @@ public class Array_sd {
 
 	@When("The user clicks Run button after writing valid code in editor")
 	public void the_user_clicks_run_button_after_writing_valid_code_in_editor() throws InterruptedException {
+		waitForTenSec("/tryEditor");
 		tryeditorpage.tryEditor_validCode();
 		tryeditorpage.clickRun();
 		Thread.sleep(2000);
@@ -125,12 +155,14 @@ public class Array_sd {
 
 	@When("The user clicks Array Using List")
 	public void the_user_clicks_array_using_list() {
+		waitForTenSec("/array");
 		array_pf.clickArraysUsingList();
 
 	}
 
 	@Then("The user should be navigated to Array using List page")
 	public void the_user_should_be_navigated_to_array_using_list_page() {
+		waitForTenSec("/arrays-using-list/");
 		String url = array_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/array/arrays-using-list/", url);
 
@@ -138,6 +170,7 @@ public class Array_sd {
 
 	@Given("The user is on the Arrays Using List page")
 	public void the_user_is_on_the_arrays_using_list_page() {
+		waitForTenSec("/array");
 		array_pf.clickArraysUsingList();
 
 	}
@@ -259,8 +292,9 @@ public class Array_sd {
 	}
 
 	@When("The user clicks submit button without writing anything in editor")
-	public void the_user_clicks_submit_button_without_writing_anything_in_editor() {
+	public void the_user_clicks_submit_button_without_writing_anything_in_editor() throws InterruptedException {
 		array_pf.clickSubmit();
+		Thread.sleep(3000);
 	}
 
 	@Then("The user see an error message Error occurred during submission")
