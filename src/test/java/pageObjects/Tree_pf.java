@@ -56,9 +56,9 @@ public class Tree_pf {
 	WebElement appofBinary;
 	@FindBy(xpath = "//a[text()='Implementation of Binary Trees']")
 	WebElement impOfBinary;
-	@FindBy(xpath = "//a[text()='Binary Search']")
+	@FindBy(xpath = "//a[contains(text(),'Binary Search Trees')]")
 	WebElement binarySearch;
-	@FindBy(xpath = "//a[text()='Implementation of BST']")
+	@FindBy(xpath = "//a[contains(text(),'Implementation Of BST')]")
 	WebElement impOfBST;
 	@FindBy(tagName = "a")
 	List<WebElement> treeLinks;
@@ -101,15 +101,12 @@ public class Tree_pf {
 	}
 
 	public String outputText() {
-
 		String OuputResult = outputTxt.getText();
 		System.out.println(OuputResult);
-
 		return OuputResult;
 	}
 
 	public void scrollDownTree() {
-
 		action.scrollToElement(overviewOfTree).perform();
 	}
 
@@ -146,7 +143,6 @@ public class Tree_pf {
 	public void click_TryEditor() {
 		action.scrollToElement(tryHereButton).perform();
 		action.click(tryHereButton).perform();
-
 	}
 
 	public void clickRun_WithOutCode() {
@@ -155,14 +151,11 @@ public class Tree_pf {
 	}
 
 	public void txtEditor_correctCode() {
-
 		action.scrollToElement(textEditor).perform();
 		action.sendKeys(textEditor, "print('Hello World')").perform();
-
 	}
 
 	public void txtEditor_invalidCode() {
-
 		action.scrollToElement(textEditor).perform();
 		action.sendKeys(textEditor, "pnt('Hello World');").perform();
 	}
@@ -170,6 +163,7 @@ public class Tree_pf {
 	public void click_Terminilogy() {
 		action.scrollToElement(terminologies).perform();
 		action.click(terminologies).perform();
+		wait.until(ExpectedConditions.urlContains("/tree/terminologies/"));
 
 	}
 
@@ -181,14 +175,12 @@ public class Tree_pf {
 	}
 
 	public void typesOfTrees() throws InterruptedException {
-
 		action.scrollToElement(typeofTrees).perform();
 		action.click(typeofTrees).perform();
-
+		wait.until(ExpectedConditions.urlContains("/tree/types-of-trees/"));
 	}
 
 	public String navigation_typeOfTrees() {
-
 		String afterNavigation = driver.getCurrentUrl();
 		return afterNavigation;
 	}
@@ -196,111 +188,110 @@ public class Tree_pf {
 	public void tree_Trav() {
 		action.scrollToElement(traversals).perform();
 		action.click(traversals).perform();
+		wait.until(ExpectedConditions.urlContains("/tree/tree-traversals/"));
 
 	}
 
 	public String navigation_treeTrav() {
-
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
-
 		return afterNavigation;
 	}
 
 	public void Traversal_Illustra() {
-
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(traIllustration).perform();
 		action.click(traIllustration).perform();
+		// wait.until(ExpectedConditions.urlContains("/tree/traversals-illustration/"));
+
+	}
+
+	public String navigate_Trave_Ill() {
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
+		return afterNavigation;
 
 	}
 
 	public void binary_Tree() {
-
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(binaryTrees).perform();
 		action.click(binaryTrees).perform();
+		wait.until(ExpectedConditions.urlContains("/tree/binary-trees/"));
+	}
 
+	public String navigate_binaryTree() {
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
-
+		return afterNavigation;
 	}
 
 	public void types_ofBinary() {
-
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(typofBinary).perform();
 		action.click(typofBinary).perform();
+		wait.until(ExpectedConditions.urlContains("/tree/types-of-binary-trees/"));
+	}
+
+	public String navigate_typesOfBinary() {
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
-
+		return afterNavigation;
 	}
 
 	public void Impl_in_Python() {
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(impPython).perform();
 		action.click(impPython).perform();
+		wait.until(ExpectedConditions.urlContains("/tree/implementation-in-python/"));
+	}
+
+	public void navigat_Imp_in_Python() {
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
-
 	}
 
 	public void binary_Tree_Travers() {
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(binaryTraversal).perform();
 		action.click(binaryTraversal).perform();
+		wait.until(ExpectedConditions.urlContains("/tree/binary-tree-traversals/"));
+	}
+
+	public String navigate() {
 		String afterNavigation = driver.getCurrentUrl();
 		System.out.println("check after click" + afterNavigation);
-
+		return afterNavigation;
 	}
 
 	public void app_of_binaryTrees() {
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(appofBinary).perform();
 		action.click(appofBinary).perform();
-		String afterNavigation = driver.getCurrentUrl();
-		System.out.println("check after click" + afterNavigation);
 
 	}
 
 	public void imp_of_binaryTrees() {
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(impOfBinary).perform();
 		action.click(impOfBinary).perform();
-		String afterNavigation = driver.getCurrentUrl();
-		System.out.println("check after click" + afterNavigation);
 
 	}
 
 	public void binary_Search() {
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(binarySearch).perform();
 		action.click(binarySearch).perform();
-		String afterNavigation = driver.getCurrentUrl();
-		System.out.println("check after click" + afterNavigation);
+
 	}
 
 	public void Implement_OfBst() {
-		String currentUrl = driver.getCurrentUrl();
-		System.out.println(currentUrl + "The current page url");
 		action.scrollToElement(impOfBST).perform();
 		action.click(impOfBST).perform();
-		String afterNavigation = driver.getCurrentUrl();
-		System.out.println("check after click" + afterNavigation);
+
 	}
 
 	public void getErrMsg_NoCode() {
 		System.out.println("No Error Alert Found, report bug");
+	}
+
+	public void clickTryHere_travIllu() {
+
+		action.scrollToElement(traIllustration).perform();
+		action.click(traIllustration).perform();
+		action.click(tryHereButton).perform();
 	}
 
 }

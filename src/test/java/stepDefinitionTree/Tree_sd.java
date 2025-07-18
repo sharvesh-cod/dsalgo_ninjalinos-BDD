@@ -49,7 +49,6 @@ public class Tree_sd {
 	@Given("The user in the overview page of tree module")
 	public void the_user_in_the_overview_page_of_tree_module() {
 		tf.click_Overview();
-
 	}
 
 	@When("user clicks on try here button in Overview of Tree page")
@@ -88,7 +87,6 @@ public class Tree_sd {
 
 	@When("The user clicks Run without entering code")
 	public void the_user_clicks_run_without_entering_code() {
-
 		tf.clickRun_WithOutCode();
 
 	}
@@ -137,7 +135,8 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Terminologies page")
 	public void the_user_should_be_navigated_to_the_terminologies_page() {
-		tf.navigate_To_Terminilogy();
+		String navigate_To_Terminilogy = tf.navigate_To_Terminilogy();
+		System.out.println(navigate_To_Terminilogy);
 
 	}
 
@@ -189,11 +188,15 @@ public class Tree_sd {
 
 	}
 
+	@Then("The user should be navigated to the Traversals-Illustration page")
+	public void navigate_TraversalsIllustration() {
+		System.out.println(cm.getCurrentUrl());
+
+	}
+
 	@Then("The user should be navigated to the Tree Traversals page")
 	public void the_user_should_be_navigated_to_the_tree_traversals_page() {
-
-		String navigation_treeTrav = tf.navigation_treeTrav();
-		System.out.println("Navigated to :" + navigation_treeTrav);
+		tf.navigation_treeTrav();
 
 	}
 
@@ -225,8 +228,17 @@ public class Tree_sd {
 	}
 
 	@When("The user clicks Traversals-Illustration link")
-	public void the_user_clicks_traversals_illustration_link() {
+	public void the_user_clicks_traversals_illustration_link() throws InterruptedException {
 		tf.Traversal_Illustra();
+
+	}
+
+	@When("The user clicks Try here in Tree Traversals-Illustration")
+	public void the_user_clicks_try_here_in_tree_traversals_illustration() throws InterruptedException {
+		tf.Traversal_Illustra();
+		Thread.sleep(3000);
+		tf.click_TryEditor();
+
 	}
 
 	@When("The user enters valid Python code and clicks Run")
@@ -239,7 +251,18 @@ public class Tree_sd {
 	@When("The user clicks Binary Trees link")
 	public void the_user_clicks_binary_trees_link() {
 		tf.binary_Tree();
+	}
 
+	@Given("The user on tryEditor page of Binary Tree")
+	public void user_is_tryEditorBinaryTree() {
+		tf.binary_Tree();
+		tf.click_TryEditor();
+	}
+
+	@Given("The user on tryEditor page of Types of Binary Tree")
+	public void user_is_tryEditorTypesBinaryTree() {
+		tf.types_ofBinary();
+		tf.click_TryEditor();
 	}
 
 	@Then("The user should be navigated to the Binary Trees page")
@@ -300,19 +323,20 @@ public class Tree_sd {
 
 	@When("The user clicks Binary Search link")
 	public void the_user_clicks_binary_search_link() {
-		System.out.println(cm.getCurrentUrl());
+		tf.binary_Search();
 
 	}
 
 	@Then("The user should be navigated to the Binary Search page")
 	public void the_user_should_be_navigated_to_the_binary_search_page() {
-		tf.binary_Search();
-
+		cm.getCurrentUrl();
 	}
 
 	@When("The user clicks Try here in Binary Search")
 	public void the_user_clicks_try_here_in_binary_search() {
-		System.out.println(cm.getCurrentUrl());
+		tf.binary_Search();
+		tf.click_TryEditor();
+
 	}
 
 	@When("The user clicks Implementation of BST link")
@@ -344,6 +368,133 @@ public class Tree_sd {
 	@Then("The user should see the practice questions")
 	public void the_user_should_see_the_practice_questions() {
 		System.out.println("Practice Question page is blank and need to report bug ");
+	}
+
+	@Given("user is in Tree sections page")
+	public void user_is_in_tree_sections_page() {
+		tf.click_Overview();
+
+	}
+
+	@When("user clicks on the practice questions link in Tree module")
+	public void user_clicks_on_the_practice_questions_link_in_tree_module() {
+
+		tf.practice_Tree();
+
+	}
+
+	@Then("user sucessfully navigates to practice questions of Tree module")
+	public void user_sucessfully_navigates_to_practice_questions_of_tree_module() {
+		cm.getCurrentUrl();
+	}
+
+	@Then("user find blank page")
+	public void user_find_blank_page() {
+		System.out.println("Bug, Practice question are not available ");
+
+	}
+
+	@Given("The user on tryEditor page of Traversals-Illustration")
+	public void tryHereTrav_Ill() {
+		tf.clickTryHere_travIllu();
+
+	}
+
+	@When("The user clicks Try here on Types of Binary Tree link")
+	public void user_clicks_on_TryhereTypeOfBinaryTree() {
+		tf.types_ofBinary();
+		tf.click_TryEditor();
+
+	}
+
+	@Given("The user on tryEditor page of Binary Trees")
+	public void the_user_on_try_editor_page_of_binary_trees() {
+		tf.binary_Tree();
+		tf.click_TryEditor();
+
+	}
+
+	@When("The user clicks Try here in Implementation of Python page")
+	public void the_user_clicks_try_here_in_implementation_of_python_page() {
+		tf.Impl_in_Python();
+		tf.click_TryEditor();
+	}
+
+	@Given("The user in tryEditor page of Implementation of Python")
+	public void the_user_in_try_editor_page_of_implementation_of_python() {
+		tf.Impl_in_Python();
+		tf.click_TryEditor();
+	}
+
+	@When("The user clicks Try here in Binary Tree Traversals")
+	public void the_user_clicks_try_here_in_binary_tree_traversals() {
+		tf.binary_Tree_Travers();
+		tf.click_TryEditor();
+
+	}
+
+	@Given("The user on tryEditor page in Binary Tree Traversals")
+	public void the_user_on_try_editor_page_in_binary_tree_traversals() {
+		tf.binary_Tree_Travers();
+		tf.click_TryEditor();
+
+	}
+
+	@Given("The user on tryEditor page on Applications of Binary Trees")
+	public void the_user_on_try_editor_page_on_applications_of_binary_trees() {
+
+		tf.app_of_binaryTrees();
+		tf.click_TryEditor();
+
+	}
+
+	@When("The user clicks on Implementation of Binary Trees page")
+	public void the_user_clicks_on_implementation_of_binary_trees_page() {
+		tf.imp_of_binaryTrees();
+
+	}
+
+	@Then("The user should be navigated to Implementation of Binary Trees page")
+	public void the_user_should_be_navigated_to_implementation_of_binary_trees_page() {
+		cm.getCurrentUrl();
+
+	}
+
+	@When("The user clicks Try here on Implementation of Binary Trees page")
+	public void the_user_clicks_try_here_on_implementation_of_binary_trees_page() {
+		tf.imp_of_binaryTrees();
+		tf.click_TryEditor();
+	}
+
+	@Given("The user on tryEditor page of Implementation of Binary Trees")
+	public void the_user_on_try_editor_page_of_implementation_of_binary_trees() {
+		tf.imp_of_binaryTrees();
+		tf.click_TryEditor();
+	}
+
+	@Given("The user on tryEditor page of Binary Search")
+	public void the_user_on_try_editor_page_of_binary_search() {
+		tf.binary_Search();
+		tf.click_TryEditor();
+	}
+
+	@When("The user clicks Try here on Implementation of BST")
+	public void the_user_clicks_try_here_on_implementation_of_bst() {
+		tf.Implement_OfBst();
+		tf.click_TryEditor();
+	}
+
+	@Given("The user on tryEditor page of Implementation of BST")
+	public void the_user_on_try_editor_page_of_implementation_of_bst() {
+		tf.Implement_OfBst();
+		tf.click_TryEditor();
+
+	}
+
+	@Then("The user should be navigated to the text editor of Implementation of Binary Trees page")
+	public void the_user_should_be_navigated_to_the_text_editor_of_implementation_of_binary_trees_page() {
+		cm.getCurrentUrl();
+
 	}
 
 }
