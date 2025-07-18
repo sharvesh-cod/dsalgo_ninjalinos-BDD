@@ -10,8 +10,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(plugin = { "pretty", "html:target/dsAlgo_Ninjalinos_BDD.html" }, // reporting purpose
 		monochrome = false, // console output color
 //		tags = " @Stackoperations or @StackoperationsCodeEditor or @StackoperationsTryingEmptyEditor or @StackoperationsTryingCodeWithError or @StackoperationsTryingCorrectCode or @Stackimplementation or @StackimplementationCodeEditor",
-		tags = "@StackoperationsTryingEmptyEditor or @StackapplicationTryingEmptyEditor or @StackopenPracticeQuestions ", features = {
-				"src/test/resources/Feature" }, // location
+		tags = " @stack or @queue", features = { "src/test/resources/Feature" }, // location
 		// of
 		// feature
 		// files

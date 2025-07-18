@@ -2,7 +2,7 @@
 Feature: Testing all the scenarios in queue module
 
   Background: The user clicks on the get started button of queue module after signing in to the ds algo portal
-    Given user signs into the portal using valid username "ninjalinos@work.com" and password "sdet218920@" following which navigates to the queue page
+    Given user signs into the portal using valid username and password following which navigates to the queue page
     
 
   @queueImplementation
@@ -19,20 +19,20 @@ Feature: Testing all the scenarios in queue module
   @queueImplementationTryingEmptyEditor
   Scenario: Verify user receives error while clicking on Run button without typing in code(Implementation of queue in python)
     Given user is in try here page of Implementation of queue in python page
-    When user clicks on Run button in Try here page without entering any code in the editor
-    Then user does not see any alert message saying code eitor is empty
+    When user clicks on Run button in Try here page without entering any code in the editor queue
+    Then user does not see any alert message saying code eitor is empty queue
 
   @queueImplementationTryingCodeWithError
   Scenario: Verify user receives error while clicking on Run button after typing in a wrong python code(Implementation of queue in python)
     Given user is in try here page of Implementation of queue in python
-    When user clicks on Run button in Try here page after entering a code with error in the editor
-    Then user gets an alert message about the error in code
+    When user clicks on Run button in Try here of queue module after entering code with error in the editor
+    Then user gets an alert message about the error in code queue
 
   @queueImplementationTryingCorrectCode
   Scenario: Verify user is able to see output for a valid python code (Implementation of queue in python)
     Given user is in try here page of Implementation of queue in python
-    When user clicks on Run button in Try here page after entering a correct code in the editor
-    Then user is able to see the output in the console
+    When user clicks on Run button in Try here of queue module after entering a correct code in the editor
+    Then user is able to see the output in the queue try editor console
 
   @queueImplementationUsingCollection
   Scenario: Verify if user is able to navigate to Implementation using collections.deque page
@@ -49,20 +49,20 @@ Feature: Testing all the scenarios in queue module
   @queueImplementationUsingCollectionTryingEmptyEditor
   Scenario: Verify user receives error while clicking on Run button without typing in code(Implementation using collections.deque )
     Given user is in try here page of implementation using collections.deque page
-    When user clicks on Run button in Try here page without entering any code in the editor
-    Then user does not see any alert message saying code eitor is empty
+    When user clicks on Run button in Try here page without entering any code in the editor queue
+    Then user does not see any alert message saying code eitor is empty queue
 
   @queueImplementationUsingCollectionTryingCodeWithError
   Scenario: Verify user receives error while clicking on Run button after typing in a wrong python code(Implementation using collections.deque )
     Given user is in try here page of implementation using collections.deque page
-    When user clicks on Run button in Try here page after entering a code with error in the editor
-    Then user gets an alert message about the error in code
+    When user clicks on Run button in Try here of queue module after entering code with error in the editor
+    Then user gets an alert message about the error in code queue
 
   @queueImplementationUsingCollectionTryingCorrectCode
   Scenario: Verify user is able to see output for a valid python code (Implementation using collections.deque )
     Given user is in try here page of implementation using collections.deque page
-    When user clicks on Run button in Try here page after entering a correct code in the editor
-    Then user is able to see the output in the console
+    When user clicks on Run button in Try here of queue module after entering a correct code in the editor
+    Then user is able to see the output in the queue try editor console
 
   @queueImplementationUsingArray
   Scenario: Verify if user is able to navigate to Implementation using array page
@@ -79,20 +79,20 @@ Feature: Testing all the scenarios in queue module
   @queueImplementationUsingArrayTryingEmptyEditor
   Scenario: Verify user receives error while clicking on Run button without typing in code(Implementation using array )
     Given user is in try here page of Implementation using array page
-    When user clicks on Run button in Try here page without entering any code in the editor
-    Then user does not see any alert message saying code eitor is empty
+    When user clicks on Run button in Try here page without entering any code in the editor queue
+    Then user does not see any alert message saying code eitor is empty queue
 
   @queueImplementationUsingArrayTryingCodeWithError
   Scenario: Verify user receives error while clicking on Run button after typing in a wrong python code(Implementation using array )
     Given user is in try here page of Implementation using array page
-    When user clicks on Run button in Try here page after entering a code with error in the editor
-    Then user gets an alert message about the error in code
+    When user clicks on Run button in Try here of queue module after entering code with error in the editor
+    Then user gets an alert message about the error in code queue
 
   @queueImplementationUsingArrayTryingCorrectCode
   Scenario: Verify user is able to see output for a valid python code (Implementation using array)
     Given user is in try here page of Implementation using array page
-    When user clicks on Run button in Try here page after entering a correct code in the editor
-    Then user is able to see the output in the console
+    When user clicks on Run button in Try here of queue module after entering a correct code in the editor
+    Then user is able to see the output in the queue try editor console
     
       @queueOperations
   Scenario: Verify if user is able to navigate to Queue operations page
@@ -109,21 +109,21 @@ Feature: Testing all the scenarios in queue module
   @queueOperationsTryingEmptyEditor
   Scenario:Verify user receives error while clicking on Run button without typing in code(Queue operations ) 
     Given user is in try here page of queue operations page
-    When user clicks on Run button in Try here page without entering any code in the editor
-    Then user does not see any alert message saying code eitor is empty
+    When user clicks on Run button in Try here page without entering any code in the editor queue
+    Then user does not see any alert message saying code eitor is empty queue
 
   @queueOperationsTryingCodeWithError
   Scenario: Verify user receives error while clicking on Run button after typing in a wrong python code(Queue operations )
     Given user is in try here page of queue operations page
-    When user clicks on Run button in Try here page after entering a code with error in the editor
-    Then user gets an alert message about the error in code
+    When user clicks on Run button in Try here of queue module after entering code with error in the editor
+    Then user gets an alert message about the error in code queue
 
   @queueOperationsTryingCorrectCode
   Scenario: Verify user is able to see output for a valid python code (Queue operations)
     Given user is in try here page of queue operations page
-    When user clicks on Run button in Try here page after entering a correct code in the editor
-    Then user is able to see the output in the console
-
+    When user clicks on Run button in Try here of queue module after entering a correct code in the editor
+    Then user is able to see the output in the queue try editor console
+    
   @queueopenImplementationUsingCollections.dequeFromqueuePage
   Scenario: Verify that the user is able to navigate to Implementation using collections.deque page from queue page
     Given user is in queue page
