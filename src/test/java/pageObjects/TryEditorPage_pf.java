@@ -1,46 +1,92 @@
 package pageObjects;
 
+import java.time.Duration;
+
+import org.openqa.selenium.Alert;
+//import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import driverManager.DriverFactory;
 
 public class TryEditorPage_pf {
 
-	WebDriver driver;
-	Actions action = new Actions(driver);
+	private WebDriver driver;
+	private Actions action;
+	WebDriverWait wait;
 
-	public TryEditorPage_pf(WebDriver driver) {
-		this.driver = driver;
+	public TryEditorPage_pf() {
+		this.driver = DriverFactory.getDriver();
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		PageFactory.initElements(driver, this);
+		action = new Actions(driver);
 	}
 
-	@FindBy(className = "input") // Check with others to know whether its correct id locator
+//	public TryEditorPage_pf(WebDriver driver) {
+//		this.driver = driver;
+//		this.action = new Actions(driver);
+//		PageFactory.initElements(driver, this);
+//	}
+
+	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]")
 	WebElement codeEditor;
 
 	@FindBy(xpath = "//button[text()='Run']")
 	WebElement runButton;
 
-	// we will have to check for dynamic output here
+	@FindBy(id = "output")
+	WebElement outputTxt;
 
-	public void enterCode(String code) {
-		codeEditor.clear();
-		codeEditor.sendKeys(code);
-	}
+	// we will have to check for dynamic output here
 // we have to Implement Data Driven with excel to enter code
+
+	public void tryEditor_validCode() {
+		action.scrollToElement(codeEditor).perform();
+		action.sendKeys(codeEditor, "print('Hello World')").perform();
+	}
+
+	public void tryEditor_invalidCode() {
+		action.scrollToElement(codeEditor).perform();
+		action.sendKeys(codeEditor, "abc").perform();
+	}
 
 	public void clickRun() {
 		action.scrollToElement(runButton).perform();
 		action.click(runButton).perform();
-		runButton.click();
+		// runButton.click();
 	}
 
-	public void checkOutput() {
-		// We have to check whether we are getting output according to the data entered
-		// dynamically
+	public void getErrMsg_NoCode() {
+		System.out.println("No Error Alert Found, report bug");
+	}
+
+	public String outputText() {
+		wait.until(ExpectedConditions.visibilityOf(outputTxt));
+		String OutputResult = outputTxt.getText();
+		// System.out.println(OutputResult);
+		return OutputResult;
+	}
+
+	// New method to handle alert and return alert message text
+	public String alertMsg() {
+		try {
+			// Wait until alert is present
+			Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+			// Get alert text
+			String alertText = alert.getText();
+			// Accept (close) the alert
+			alert.accept();
+			return alertText;
+
+		} catch (Exception e) {
+			System.out.println("No alert appeared: " + e.getMessage());
+			return null;
+		}
 	}
 
 }
-
-//create weblememnt for output
