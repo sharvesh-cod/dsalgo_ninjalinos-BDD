@@ -119,10 +119,13 @@ public class Stack_sd {
 
 	@Then("user does not see any alert message saying code eitor is empty")
 	public void user_does_not_see_any_alert_message_saying_code_eitor_is_empty() throws IOException {
-		common.bug_screenshot("StackEmptyCodeEditor", browserName);
-		System.out.println("No alert message seen when clicking on run without entering code");// will later have code
-																								// here to take a
-																								// screenshot
+		// common.bug_screenshot("StackEmptyCodeEditor", browserName);
+		// System.out.println("No alert message seen when clicking on run without
+		// entering code");// will later have code
+		// here to take a
+		// screenshot
+		assertEquals("Type code in the editor", codeeditor.alert_message());
+		codeeditor.handle_alert();
 		// throw new io.cucumber.java.PendingException();
 	}
 

@@ -2,11 +2,14 @@ package hooks;
 
 import java.time.Duration;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import driverManager.Passing_Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 
 public class Hooks {
 
@@ -34,7 +37,28 @@ public class Hooks {
 
 	}
 
-	@After
+	@After(order = 1)
+	public void tearDown(Scenario scenario) {
+
+		if (scenario.isFailed()) {
+			// take a screenshot
+			String screenshotName = scenario.getName().replaceAll(" ", "_");
+			byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+			scenario.attach(sourcePath, "image/png", screenshotName);
+
+//			File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//			try {
+//				FileUtils.copyFile(screenshotFile,
+//						new File("src/test/resources/reports/screenshots/" + screenshotName + ".png"));
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+
+		}
+
+	}
+
+	@After(order = 0)
 	public void tearDriver() {
 
 		if (driver != null) {

@@ -7,10 +7,11 @@ import io.cucumber.testng.CucumberOptions;
 
 //@RunWith(Cucumber.class) //Junit execution
 
-@CucumberOptions(plugin = { "pretty", "html:target/dsAlgo_Ninjalinos_BDD.html" }, // reporting purpose
+@CucumberOptions(plugin = { "pretty", "com.aventstack.chaintest.plugins.ChainTestCucumberListener:" }, // reporting
+																										// purpose//"html:target/dsAlgo_Ninjalinos_BDD.html",
 		monochrome = false, // console output color
 //		tags = " @Stackoperations or @StackoperationsCodeEditor or @StackoperationsTryingEmptyEditor or @StackoperationsTryingCodeWithError or @StackoperationsTryingCorrectCode or @Stackimplementation or @StackimplementationCodeEditor",
-		tags = " @stack or @queue", features = { "src/test/resources/Feature" }, // location
+		tags = " @StackoperationsTryingEmptyEditor", features = { "src/test/resources/Feature" }, // location
 		// of
 		// feature
 		// files

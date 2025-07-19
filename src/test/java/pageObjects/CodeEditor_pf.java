@@ -76,9 +76,15 @@ public class CodeEditor_pf {
 		// on run button
 	}
 
+	public String alert_message() {
+		alert = driver.switchTo().alert();
+		String alertMsg = alert.getText();
+		return alertMsg;
+	}
+
 	public void handle_alert() {
 		alert = driver.switchTo().alert();
-		System.out.println(alert.getText());
+
 		alert.accept();
 
 	}
