@@ -28,10 +28,9 @@ public class Array_sd {
 	ConfigReader config;
 	// CommonMethods common;
 
-	public Array_sd(Passing_Driver passdr) throws IOException { // This is the constructor for your
-		// step definition class Array_sd.
+	public Array_sd(Passing_Driver passdr) throws IOException { // This is the constructor for your step definition
+																// class Array_sd.
 		this.driver = passdr.getDriver();
-
 		this.array_pf = new Array_pf(passdr); // Cucumber creates a new instance of this class every time it runs a
 		// scenario,
 		// and this constructor is called automatically at that time.
@@ -99,6 +98,7 @@ public class Array_sd {
 	public void the_user_is_in_the_try_here_page() {
 		waitForTenSec("/array");
 		array_pf.clickArraysInPython();
+		waitForTenSec("/arrays-in-python/");
 		array_pf.clickTryHere();
 
 	}
@@ -148,6 +148,7 @@ public class Array_sd {
 
 	@Given("The user is in the Array page after sign in")
 	public void the_user_is_in_the_array_page_after_sign_in() {
+		waitForTenSec("/array");
 		String url = array_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/array/", url);
 

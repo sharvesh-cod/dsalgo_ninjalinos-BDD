@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(plugin = { "pretty", "html:target/cucumber-reports" }, // reporting purpose
 		glue = { "hooks", "stepDefinition" }, // location of step definition files
-		tags = "@array",
+		tags = "@array or @linkedList",
 		// tags = "@A1 or @A2 or @A3 or @A4 or @A5 or @A6 or @A7 or @A8 or @A9 or @A10
 		// or @A11 or @A12 or @A13 or @A14 or @A15 or @A16 or @A17 or @A18 or @A19 or
 		// @A20 or @A21 or @A22 or @A23 or @A24 or @A25 or @A26 or @A27 or @A28 or @A29

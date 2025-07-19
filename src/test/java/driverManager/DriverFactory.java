@@ -39,9 +39,21 @@ public class DriverFactory {
 		}
 
 		else if (browser.equalsIgnoreCase("firefox")) {
-			// tldriver.set(new FirefoxDriver());
+//			FirefoxProfile profile = new FirefoxProfile();
+//			profile.setPreference("browser.sessionstore.resume_from_crash", false); // prevents the popup
+//			profile.setPreference("browser.tabs.warnOnClose", false); // avoid close warning
+//			profile.setPreference("browser.startup.page", 0); // blank page
+//			profile.setPreference("browser.shell.checkDefaultBrowser", false); // no default browser check
+//
+//			FirefoxOptions options = new FirefoxOptions();
+//			options.setProfile(profile);
+//			options.setCapability("marionette", true);
+//			options.setBinary("/Applications/Firefox.app/Contents/MacOS/firefox"); // explicitly specify
+//
+//			driver = new FirefoxDriver(options);
+
 			driver = new FirefoxDriver();
-			// WebDriverManager.firefoxdriver().setup();
+
 		}
 
 		else if (browser.equalsIgnoreCase("edge")) {
