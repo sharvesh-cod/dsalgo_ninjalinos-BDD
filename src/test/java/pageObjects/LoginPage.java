@@ -37,14 +37,8 @@ public class LoginPage {
 	@FindBy(xpath = "//*[text()='Sign out']")
 	WebElement signOut;
 
-//	public LoginPage() {
-//
-//	}
-
 	public LoginPage(Passing_Driver passdr) throws IOException {
 
-//		this.browser = obj.return_browser();
-//		this.driver = obj.initBrowser(browser);
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		this.config = new ConfigReader();

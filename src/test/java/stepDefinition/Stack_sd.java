@@ -29,8 +29,7 @@ public class Stack_sd {
 	CommonMethods common;
 
 	public Stack_sd(Passing_Driver passdr) throws IOException {
-//		this.browser = obj.return_browser();
-//		this.driver = obj.initBrowser(browser);
+
 		this.driver = passdr.getDriver();
 		this.stackpf = new Stack_pf(passdr);
 		this.loginpage = new LoginPage(passdr);
@@ -73,7 +72,7 @@ public class Stack_sd {
 	public void user_successfully_navigates_to_the_operations_in_stack_page() {
 		waitForTenSec("/operations-in-stack/");
 		// waitForExactUrl("https://dsportalapp.herokuapp.com/stack/operations-in-stack/");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/operations-in-stack/", stackpf.url());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/operations-in-stack/", common.url());
 
 		// throw new io.cucumber.java.PendingException();
 	}
@@ -96,7 +95,7 @@ public class Stack_sd {
 	@Then("user successfully navigates to code editor of the operations in stack page")
 	public void user_successfully_navigates_to_code_editor_of_the_operations_in_stack_page() {
 		waitForTenSec("/tryEditor");
-		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", stackpf.url());
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", common.url());
 
 		// throw new io.cucumber.java.PendingException();
 	}
@@ -157,8 +156,8 @@ public class Stack_sd {
 
 	@Then("user is able to see the output in the console")
 	public void user_is_able_to_see_the_output_in_the_console() {
-		// can add code for screenshot later
-		codeeditor.output();
+		// have to include assert statement here
+		codeeditor.output_text();
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -172,7 +171,7 @@ public class Stack_sd {
 	@Then("user sucessfully navigates to the Implementation page")
 	public void user_sucessfully_navigates_to_the_implementation_page() {
 		waitForTenSec("/implementation/");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/implementation/", stackpf.url());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/implementation/", common.url());
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -196,7 +195,7 @@ public class Stack_sd {
 	@Then("user successfully navigates to the code editor of implementation page")
 	public void user_successfully_navigates_to_the_code_editor_of_implementation_page() {
 		waitForTenSec("/tryEditor");
-		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", stackpf.url());
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", common.url());
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -232,7 +231,7 @@ public class Stack_sd {
 	@Then("user sucessfully navigates to the applicaiton page")
 	public void user_sucessfully_navigates_to_the_applicaiton_page() {
 		waitForTenSec("/stack-applications/");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/stack-applications/", stackpf.url());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/stack-applications/", common.url());
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -255,7 +254,7 @@ public class Stack_sd {
 	@Then("user successfully navigates to the code editor of application page")
 	public void user_successfully_navigates_to_the_code_editor_of_application_page() {
 		waitForTenSec("/tryEditor");
-		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", stackpf.url());
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", common.url());
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -280,7 +279,7 @@ public class Stack_sd {
 	@Given("user is in stack page")
 	public void user_is_in_stack_page() {
 		waitForTenSec("/stack");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/", stackpf.url());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/", common.url());
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -294,7 +293,7 @@ public class Stack_sd {
 	@Then("user sucessfully navigates to the  Implementation page")
 	public void user_sucessfully_navigates_to_implementation_page() {
 		waitForTenSec("/implementation");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/implementation/", stackpf.url());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/implementation/", common.url());
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -308,7 +307,7 @@ public class Stack_sd {
 	@Then("user sucessfully navigates to the Application page")
 	public void user_sucessfully_navigates_to_the_application_page() {
 		waitForTenSec("/stack-applications/");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/stack-applications/", stackpf.url());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/stack-applications/", common.url());
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -330,8 +329,8 @@ public class Stack_sd {
 	public void user_sucessfully_navigates_to_practice_questions_of_stack_module_however_the_page_is_empty()
 			throws IOException {
 		waitForTenSec("/practice");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/practice", stackpf.url());
-		common.bug_screenshot("StackPracticeQuestions", browserName);
+		assertEquals("https://dsportalapp.herokuapp.com/stack/practice", common.url());
+		// common.bug_screenshot("StackPracticeQuestions", browserName);
 		// throw new io.cucumber.java.PendingException();
 	}
 

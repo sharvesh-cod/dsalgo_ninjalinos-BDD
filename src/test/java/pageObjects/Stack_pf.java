@@ -57,11 +57,8 @@ public class Stack_pf {
 	}
 
 	public void opreations_stack_btn() {
-		// wait.until(ExpectedConditions.visibilityOf(operationsStackBtn));
-		// wait.until(ExpectedConditions.elementToBeClickable(operationsStackBtn));
-		// ((JavascriptExecutor)
-		// driver).executeScript("arguments[0].scrollIntoView(true);",
-		// operationsStackBtn);
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", operationsStackBtn);
 		// ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,400);");
 		// operationsStackBtn.click();
 		action.scrollToElement(operationsStackBtn).perform();
@@ -81,8 +78,7 @@ public class Stack_pf {
 	}
 
 	public void practice_stack() {
-		// ((JavascriptExecutor)
-		// driver).executeScript("arguments[0].scrollIntoView(true);", stackPracticeQ);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", stackPracticeQ);
 		action.scrollToElement(stackPracticeQ).perform();
 		action.click(stackPracticeQ).perform();
 	}
@@ -93,13 +89,13 @@ public class Stack_pf {
 		action.click(tryHereStack).perform();
 	}
 
-	public String url() {
-		String currentPageUrl = driver.getCurrentUrl();
-		return currentPageUrl;
-	}
+//	public String url() {
+//		String currentPageUrl = driver.getCurrentUrl();
+//		return currentPageUrl;
+//	}
 
-	public void refreshElements() {
-		PageFactory.initElements(driver, this);
-	}
+//	public void refreshElements() {
+//		PageFactory.initElements(driver, this);
+//	}
 
 }

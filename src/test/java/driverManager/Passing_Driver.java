@@ -8,9 +8,9 @@ public class Passing_Driver {
 
 	String browser;
 
-	public Passing_Driver(DriverFactory obj) {
-		this.browser = obj.return_browser();
-		this.driver = obj.initBrowser(browser);
+	public Passing_Driver(DriverFactory driverObj) {
+		this.browser = driverObj.return_browser();
+		this.driver = driverObj.initBrowser(browser);
 	}
 
 	public WebDriver getDriver() {

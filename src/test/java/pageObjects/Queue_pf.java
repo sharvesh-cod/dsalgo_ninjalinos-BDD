@@ -42,8 +42,6 @@ public class Queue_pf {
 
 	public Queue_pf(Passing_Driver passdr) {
 
-//		this.browser = obj.return_browser();
-//		this.driver = obj.initBrowser(browser);
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
@@ -100,9 +98,9 @@ public class Queue_pf {
 		action.click(tryHereQueue).perform();
 	}
 
-	public String url() {
-		String currentPageUrl = driver.getCurrentUrl();
-		return currentPageUrl;
-	}
+//	public String url() {
+//		String currentPageUrl = driver.getCurrentUrl();
+//		return currentPageUrl;
+//	}
 
 }

@@ -35,8 +35,6 @@ public class CodeEditor_pf {
 
 	public CodeEditor_pf(Passing_Driver passdr) {
 
-//		this.browser = obj.return_browser();
-//		this.driver = obj.initBrowser(browser);
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		js = (JavascriptExecutor) driver;
@@ -66,14 +64,13 @@ public class CodeEditor_pf {
 		action.click(runBtn).perform();
 	}
 
-	public void output() {
+	public String output_text() {
 		// ((JavascriptExecutor)
 		// driver).executeScript("arguments[0].scrollIntoView(true);", outputTxt);
 		action.scrollToElement(outputTxt).perform();
-		System.out.println(outputTxt.getText());
-		// ele.getText(); can be used if required
-		// here we may write code to capture the screenshot of the output after clicking
-		// on run button
+		String outputText = outputTxt.getText();
+		return outputText;
+
 	}
 
 	public String alert_message() {
@@ -89,5 +86,4 @@ public class CodeEditor_pf {
 
 	}
 
-	// have to add code to handle alert while giving invalid code
 }
