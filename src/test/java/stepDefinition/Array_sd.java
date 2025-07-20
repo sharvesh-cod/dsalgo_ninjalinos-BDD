@@ -330,15 +330,15 @@ public class Array_sd {
 	}
 
 	@When("The user clicks run button after writing valid code in question1 editor")
-	public void the_user_clicks_run_button_after_writing_valid_code_in_question1_editor() {
+	public void the_user_clicks_run_button_after_writing_valid_code_in_question1_editor() throws InterruptedException {
 		waitForTenSec("question/1");
 		array_pf.tryEditor_validCode_practiceQ1();
 		tryeditorpage.clickRun();
-
+		Thread.sleep(5000);
 	}
 
 	@Then("The user should able to see output in the console question1")
-	public void the_user_should_able_to_see_output_in_the_console_question1() {
+	public void the_user_should_able_to_see_output_in_the_console_question1() throws InterruptedException {
 		String output = tryeditorpage.outputText();
 		assertEquals("hello", output);
 		System.out.println(output);

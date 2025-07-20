@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.safari.SafariDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -39,20 +41,18 @@ public class DriverFactory {
 		}
 
 		else if (browser.equalsIgnoreCase("firefox")) {
-//			FirefoxProfile profile = new FirefoxProfile();
-//			profile.setPreference("browser.sessionstore.resume_from_crash", false); // prevents the popup
-//			profile.setPreference("browser.tabs.warnOnClose", false); // avoid close warning
-//			profile.setPreference("browser.startup.page", 0); // blank page
-//			profile.setPreference("browser.shell.checkDefaultBrowser", false); // no default browser check
-//
-//			FirefoxOptions options = new FirefoxOptions();
-//			options.setProfile(profile);
-//			options.setCapability("marionette", true);
-//			options.setBinary("/Applications/Firefox.app/Contents/MacOS/firefox"); // explicitly specify
-//
-//			driver = new FirefoxDriver(options);
+			FirefoxProfile profile = new FirefoxProfile();
+			profile.setPreference("browser.sessionstore.resume_from_crash", false);
 
-			driver = new FirefoxDriver();
+			profile.setPreference("browser.sessionstore.enabled", false);
+			profile.setPreference("browser.sessionstore.max_tabs_undo", 0);
+
+			FirefoxOptions options = new FirefoxOptions();
+			options.setProfile(profile);
+
+			driver = new FirefoxDriver(options);
+
+			// driver = new FirefoxDriver();
 
 		}
 

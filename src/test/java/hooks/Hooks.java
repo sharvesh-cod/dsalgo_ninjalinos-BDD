@@ -27,10 +27,11 @@ public class Hooks {
 	}
 
 	@After
-	public void tearDriver() {
-
+	public void tearDriver() throws InterruptedException {
 		if (driver != null) {
+			Thread.sleep(3000);
 			driver.quit();
+			Thread.sleep(3000);
 			driver = null;
 		}
 	}

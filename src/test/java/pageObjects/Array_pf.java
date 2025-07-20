@@ -1,13 +1,17 @@
+//AS SUGGESTED BY CHATGPT FOR FIREFOX
+
 package pageObjects;
 
 import java.time.Duration;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
@@ -15,27 +19,18 @@ import driverManager.Passing_Driver;
 public class Array_pf {
 
 	private WebDriver driver;
-	private Actions action;
-	String browser;
-	WebDriverWait wait;
+	private WebDriverWait wait;
 
 	public Array_pf(Passing_Driver passdr) {
-
-		this.driver = passdr.getDriver(); // uses THREADLOCAL TO GET DRIVER
-		PageFactory.initElements(driver, this); // Initialize the elements defined in this Array_pf class using the
-												// driver provided.
-		this.action = new Actions(driver); // this refers to the current instance of the class.
+		this.driver = passdr.getDriver();
+		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	}
 
-//	public Array_pf(WebDriver driver) {       *****[Custom Constructor for Dependency Injection ]***********
-//		this.driver = driver;
-//		this.action = new Actions(driver); // Creates a new Actions object using the current WebDriver instance
-//		PageFactory.initElements(driver, this); // And assigns it to the action field of your class.
-//	}
+	// ========== Elements ==========
 
 	@FindBy(xpath = "//h5[text()='Array']/../a[text()='Get Started']")
-	WebElement arrayGetStarted; // ADDING NEW ELEMENT REMOVE IT AFTER MOCK TESTING
+	WebElement arrayGetStarted;
 
 	@FindBy(xpath = "//a[text()='Arrays in Python']")
 	WebElement arraysInPythonLink;
@@ -55,8 +50,7 @@ public class Array_pf {
 	@FindBy(xpath = "//a[contains(text(), 'Try here')]")
 	WebElement tryHereLink;
 
-	// PRACTICE QUESTIONS PAGE
-
+	// Practice Questions Page
 	@FindBy(xpath = "//a[text()='Search the array']")
 	WebElement searchTheArrayLink;
 
@@ -69,229 +63,265 @@ public class Array_pf {
 	@FindBy(xpath = "//a[contains(text(),'Squares')]")
 	WebElement squaresOfSortedArrayLink;
 
-	// FOR RUN BTN AND CODEEDITOR WE CAN USE THE SAME CODE AS THERE IN TRYEDITOR
-	// PAGE
-
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]")
 	WebElement practiceQuestionEditor;
 
-	@FindBy(css = "input[value='Submit']") // RUN BUTTON IS SAME FOR EDITOR ALSO
-	WebElement submitBtn; // OUTPUT ID LOCATOR IS SAME TOO
+	@FindBy(css = "input[value='Submit']")
+	WebElement submitBtn;
+
+	// ========== Helper ==========
+
+	private void safeClick(WebElement element) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+	}
+
+	// ========== Actions ==========
 
 	public void clickArrayGetStarted() {
-		action.scrollToElement(arrayGetStarted).perform();
-		action.click(arrayGetStarted).perform();
-
+		safeClick(arrayGetStarted);
 	}
 
 	public void clickArraysInPython() {
-		action.scrollToElement(arraysInPythonLink).perform();
-		action.click(arraysInPythonLink).perform();
-
+		safeClick(arraysInPythonLink);
 	}
 
 	public void clickArraysUsingList() {
-		action.scrollToElement(arraysUsingListLink).perform();
-		action.click(arraysUsingListLink).perform();
-
+		safeClick(arraysUsingListLink);
 	}
 
 	public void clickBasicOperations() {
-		action.scrollToElement(basicOperationsLink).perform();
-		action.click(basicOperationsLink).perform();
+		safeClick(basicOperationsLink);
 	}
 
 	public void clickApplicationsOfArray() {
-		action.scrollToElement(applicationsOfArrayLink).perform();
-		action.click(applicationsOfArrayLink).perform();
+		safeClick(applicationsOfArrayLink);
 	}
 
 	public void clickPracticeQuestionsLink() {
-		action.scrollToElement(practiceQuestionsLink).perform();
-		action.click(practiceQuestionsLink).perform();
-
+		safeClick(practiceQuestionsLink);
 	}
 
 	public void clickTryHere() {
-		action.scrollToElement(tryHereLink).perform();
-		action.click(tryHereLink).perform();
+		safeClick(tryHereLink);
 	}
 
-	// PRACTICE QUESTIONS PAGE LINK
 	public void clickSearchTheArray() {
-		action.scrollToElement(searchTheArrayLink).perform();
-		action.click(searchTheArrayLink).perform();
-
+		safeClick(searchTheArrayLink);
 	}
 
 	public void clickMaxConsecutiveOnes() {
-		action.scrollToElement(maxConsecutiveOnesLink).perform();
-		action.click(maxConsecutiveOnesLink).perform();
+		safeClick(maxConsecutiveOnesLink);
 	}
 
 	public void clickEvenNumberDigits() {
-		action.scrollToElement(evenNumberDigitsLink).perform();
-		action.click(evenNumberDigitsLink).perform();
-
+		safeClick(evenNumberDigitsLink);
 	}
 
 	public void clickSquaresOfSortedArray() {
-		action.scrollToElement(squaresOfSortedArrayLink).perform();
-		action.click(squaresOfSortedArrayLink).perform();
-
+		safeClick(squaresOfSortedArrayLink);
 	}
 
+	// General reusable method for valid code input
+//	public void enterValidCodeInPracticeEditor(String code) {
+//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", practiceQuestionEditor);
+//		wait.until(ExpectedConditions.visibilityOf(practiceQuestionEditor));
+//		practiceQuestionEditor.click();
+//
+//		// Clear and enter code using JavaScript
+//		((JavascriptExecutor) driver).executeScript(
+//				"var editor = arguments[0]; editor.innerText=''; editor.textContent=arguments[1];",
+//				practiceQuestionEditor, code);
+//	}
+	public void enterValidCodeInPracticeEditor(String code) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", practiceQuestionEditor);
+		wait.until(ExpectedConditions.visibilityOf(practiceQuestionEditor));
+		practiceQuestionEditor.click();
+
+		// Use Actions to clear and type code like a user
+		Actions actions = new Actions(driver);
+		actions.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND).sendKeys("a").keyUp(Keys.COMMAND)
+				.sendKeys(Keys.DELETE).sendKeys(code).perform();
+	}
+
+	// Old method 1 → now calls reusable
 	public void tryEditor_validCode_practiceQ1() {
+		String validCode1 = "print('hello')";
 
-//		String validCode1 = "def search(lst, value):\n" + "    if value in lst:\n"
-//				+ "        print(\"Element Found\")\n" + "    else:\n" + "        print(\"Not Found\")\n" + "\n"
-//				+ "# Example usage:\n" + "search([12, 23, 45, 67, 6, 90], 12)\n"
-//				+ "search([12, 23, 45, 67, 6, 90], 25) #";
-
-		String validCode1 = "print 'hello'";
-		action.scrollToElement(practiceQuestionEditor).perform();
-
-		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
-				.sendKeys("a").keyUp(Keys.COMMAND).sendKeys(Keys.BACK_SPACE).perform();
-
-		action.sendKeys(practiceQuestionEditor, validCode1).perform();
-
+		enterValidCodeInPracticeEditor(validCode1);
 	}
 
 	public void tryEditor_validCode_practiceQ2() {
 		String validCode2 = "print 'hello'";
-		action.scrollToElement(practiceQuestionEditor).perform();
-		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
-				.sendKeys("a").keyUp(Keys.COMMAND).sendKeys(Keys.BACK_SPACE).perform();
-
-		action.sendKeys(practiceQuestionEditor, validCode2).perform();
-
+		enterValidCodeInPracticeEditor(validCode2);
 	}
 
 	public void tryEditor_validCode_practiceQ3() {
 		String validCode3 = "print 'hello'";
-		action.scrollToElement(practiceQuestionEditor).perform();
-		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
-				.sendKeys("a").keyUp(Keys.COMMAND).sendKeys(Keys.BACK_SPACE).perform();
-		action.sendKeys(practiceQuestionEditor, validCode3).perform();
-
+		enterValidCodeInPracticeEditor(validCode3);
 	}
 
 	public void tryEditor_validCode_practiceQ4() {
 		String validCode4 = "print 'hello'";
-		action.scrollToElement(practiceQuestionEditor).perform();
-		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
-				.sendKeys("a").keyUp(Keys.COMMAND).sendKeys(Keys.BACK_SPACE).perform();
-		action.sendKeys(practiceQuestionEditor, validCode4).perform();
-
+		enterValidCodeInPracticeEditor(validCode4);
 	}
 
 	public void tryEditor_invalidCode_practiceQ() {
-
-		action.scrollToElement(practiceQuestionEditor).perform();
-		action.sendKeys(practiceQuestionEditor, "abc").perform();
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", practiceQuestionEditor);
+		practiceQuestionEditor.click();
+		practiceQuestionEditor.sendKeys("abc");
 	}
 
 	public void clickSubmit() {
-		action.scrollToElement(submitBtn).perform();
-		action.click(submitBtn).perform();
-
+		safeClick(submitBtn);
 	}
 
 	public String getURL() {
-		String afterNavigation = driver.getCurrentUrl();
-		return afterNavigation;
+		return driver.getCurrentUrl();
 	}
+}
 
-//	***********************************************************************************
+//***********************     ORIGINAL CODE             ****************************************
 
+//package pageObjects;
+//
+//import java.time.Duration;
+//
+//import org.openqa.selenium.Keys;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.interactions.Actions;
+//import org.openqa.selenium.support.FindBy;
+//import org.openqa.selenium.support.PageFactory;
+//import org.openqa.selenium.support.ui.WebDriverWait;
+//
+//import driverManager.Passing_Driver;
+//
+//public class Array_pf {
+//
+//	private WebDriver driver;
+//	private Actions action;
+//	String browser;
+//	WebDriverWait wait;
+//
+//	public Array_pf(Passing_Driver passdr) {
+//
+//		this.driver = passdr.getDriver(); // uses THREADLOCAL TO GET DRIVER
+//		PageFactory.initElements(driver, this); // Initialize the elements defined in this Array_pf class using the
+//												// driver provided.
+//		this.action = new Actions(driver); // this refers to the current instance of the class.
+//		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+//	}
+//
+////	public Array_pf(WebDriver driver) {       *****[Custom Constructor for Dependency Injection ]***********
+////		this.driver = driver;
+////		this.action = new Actions(driver); // Creates a new Actions object using the current WebDriver instance
+////		PageFactory.initElements(driver, this); // And assigns it to the action field of your class.
+////	}
+//
+//	@FindBy(xpath = "//h5[text()='Array']/../a[text()='Get Started']")
+//	WebElement arrayGetStarted; // ADDING NEW ELEMENT REMOVE IT AFTER MOCK TESTING
+//
+//	@FindBy(xpath = "//a[text()='Arrays in Python']")
+//	WebElement arraysInPythonLink;
+//
+//	@FindBy(xpath = "//a[text()='Arrays Using List']")
+//	WebElement arraysUsingListLink;
+//
+//	@FindBy(xpath = "//a[text()='Basic Operations in Lists']")
+//	WebElement basicOperationsLink;
+//
+//	@FindBy(xpath = "//a[text()='Applications of Array']")
+//	WebElement applicationsOfArrayLink;
+//
+//	@FindBy(xpath = "//a[text()='Practice Questions']")
+//	WebElement practiceQuestionsLink;
+//
+//	@FindBy(xpath = "//a[contains(text(), 'Try here')]")
+//	WebElement tryHereLink;
+//
+//	// PRACTICE QUESTIONS PAGE
+//
+//	@FindBy(xpath = "//a[text()='Search the array']")
+//	WebElement searchTheArrayLink;
+//
+//	@FindBy(xpath = "//a[text()='Max Consecutive Ones']")
+//	WebElement maxConsecutiveOnesLink;
+//
+//	@FindBy(xpath = "//a[text()='Find Numbers with Even Number of Digits']")
+//	WebElement evenNumberDigitsLink;
+//
+//	@FindBy(xpath = "//a[contains(text(),'Squares')]")
+//	WebElement squaresOfSortedArrayLink;
+//
+//	// FOR RUN BTN AND CODEEDITOR WE CAN USE THE SAME CODE AS THERE IN TRYEDITOR
+//	// PAGE
+//
+//	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]")
+//	WebElement practiceQuestionEditor;
+//
+//	@FindBy(css = "input[value='Submit']") // RUN BUTTON IS SAME FOR EDITOR ALSO
+//	WebElement submitBtn; // OUTPUT ID LOCATOR IS SAME TOO
+//
 //	public void clickArrayGetStarted() {
-//
-//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrayGetStarted); // FOR
-//																											// FIREFOX
-//
 //		action.scrollToElement(arrayGetStarted).perform();
 //		action.click(arrayGetStarted).perform();
 //
 //	}
 //
 //	public void clickArraysInPython() {
-//
-//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arraysInPythonLink); // FIREFOX
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(arraysInPythonLink));
-//
-//		action.moveToElement(arraysInPythonLink).perform(); // safer than scrollToElement
+//		action.scrollToElement(arraysInPythonLink).perform();
 //		action.click(arraysInPythonLink).perform();
+//
 //	}
 //
 //	public void clickArraysUsingList() {
-//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arraysUsingListLink);
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(arraysUsingListLink));
-//
-//		action.moveToElement(arraysUsingListLink).perform();
+//		action.scrollToElement(arraysUsingListLink).perform();
 //		action.click(arraysUsingListLink).perform();
+//
 //	}
 //
 //	public void clickBasicOperations() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(basicOperationsLink));
-//
-//		action.moveToElement(basicOperationsLink).perform();
+//		action.scrollToElement(basicOperationsLink).perform();
 //		action.click(basicOperationsLink).perform();
 //	}
 //
 //	public void clickApplicationsOfArray() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(applicationsOfArrayLink));
-//		action.moveToElement(applicationsOfArrayLink).perform();
+//		action.scrollToElement(applicationsOfArrayLink).perform();
 //		action.click(applicationsOfArrayLink).perform();
 //	}
 //
 //	public void clickPracticeQuestionsLink() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionsLink));
-//		action.moveToElement(practiceQuestionsLink).perform();
+//		action.scrollToElement(practiceQuestionsLink).perform();
 //		action.click(practiceQuestionsLink).perform();
 //
 //	}
 //
 //	public void clickTryHere() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(tryHereLink));
-//		action.moveToElement(tryHereLink).perform();
+//		action.scrollToElement(tryHereLink).perform();
 //		action.click(tryHereLink).perform();
 //	}
 //
 //	// PRACTICE QUESTIONS PAGE LINK
 //	public void clickSearchTheArray() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(searchTheArrayLink));
-//		action.moveToElement(searchTheArrayLink).perform();
+//		action.scrollToElement(searchTheArrayLink).perform();
 //		action.click(searchTheArrayLink).perform();
 //
 //	}
 //
 //	public void clickMaxConsecutiveOnes() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(maxConsecutiveOnesLink));
-//		action.moveToElement(maxConsecutiveOnesLink).perform();
+//		action.scrollToElement(maxConsecutiveOnesLink).perform();
 //		action.click(maxConsecutiveOnesLink).perform();
 //	}
 //
 //	public void clickEvenNumberDigits() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(evenNumberDigitsLink));
-//		action.moveToElement(evenNumberDigitsLink).perform();
+//		action.scrollToElement(evenNumberDigitsLink).perform();
 //		action.click(evenNumberDigitsLink).perform();
 //
 //	}
 //
 //	public void clickSquaresOfSortedArray() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(squaresOfSortedArrayLink));
-//		action.moveToElement(squaresOfSortedArrayLink).perform();
+//		action.scrollToElement(squaresOfSortedArrayLink).perform();
 //		action.click(squaresOfSortedArrayLink).perform();
 //
 //	}
@@ -302,8 +332,6 @@ public class Array_pf {
 ////				+ "        print(\"Element Found\")\n" + "    else:\n" + "        print(\"Not Found\")\n" + "\n"
 ////				+ "# Example usage:\n" + "search([12, 23, 45, 67, 6, 90], 12)\n"
 ////				+ "search([12, 23, 45, 67, 6, 90], 25) #";
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
 //
 //		String validCode1 = "print 'hello'";
 //		action.scrollToElement(practiceQuestionEditor).perform();
@@ -316,9 +344,6 @@ public class Array_pf {
 //	}
 //
 //	public void tryEditor_validCode_practiceQ2() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
-//
 //		String validCode2 = "print 'hello'";
 //		action.scrollToElement(practiceQuestionEditor).perform();
 //		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
@@ -329,8 +354,6 @@ public class Array_pf {
 //	}
 //
 //	public void tryEditor_validCode_practiceQ3() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
 //		String validCode3 = "print 'hello'";
 //		action.scrollToElement(practiceQuestionEditor).perform();
 //		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
@@ -340,8 +363,6 @@ public class Array_pf {
 //	}
 //
 //	public void tryEditor_validCode_practiceQ4() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
 //		String validCode4 = "print 'hello'";
 //		action.scrollToElement(practiceQuestionEditor).perform();
 //		action.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND) // Use CONTROL if Windows
@@ -351,17 +372,13 @@ public class Array_pf {
 //	}
 //
 //	public void tryEditor_invalidCode_practiceQ() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(practiceQuestionEditor));
 //
-//		action.moveToElement(practiceQuestionEditor).perform();
+//		action.scrollToElement(practiceQuestionEditor).perform();
 //		action.sendKeys(practiceQuestionEditor, "abc").perform();
 //	}
 //
 //	public void clickSubmit() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
-//		action.moveToElement(submitBtn).perform();
+//		action.scrollToElement(submitBtn).perform();
 //		action.click(submitBtn).perform();
 //
 //	}
@@ -370,8 +387,7 @@ public class Array_pf {
 //		String afterNavigation = driver.getCurrentUrl();
 //		return afterNavigation;
 //	}
-
-	// For writing question can we use codeEditor and run button from Try Editor
-	// page
-
-}
+//
+//
+//
+//}

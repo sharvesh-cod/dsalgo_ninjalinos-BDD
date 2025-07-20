@@ -4,6 +4,7 @@ package pageObjects;
 
 import java.time.Duration;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -29,7 +30,7 @@ public class LinkedListPage_pf {
 
 	// WebElements
 	@FindBy(xpath = "//h5[text()='Linked List']/../a[text()='Get Started']")
-	WebElement llGetStarted;
+	WebElement llGetStarted; // ADDING NEW ELEMENT REMOVE IT AFTER MOCK TESTING
 
 	@FindBy(xpath = "//a[text()='Introduction']")
 	public WebElement introductionLink;
@@ -60,7 +61,7 @@ public class LinkedListPage_pf {
 
 	// Helper method
 	private void safeClick(WebElement element) {
-		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
 
