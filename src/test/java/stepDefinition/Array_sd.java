@@ -61,13 +61,13 @@ public class Array_sd {
 	}
 
 	@When("The user clicks Run button after writing invalid code in editor")
-	public void the_user_clicks_run_button_after_writing_invalid_code_in_editor() {
+	public void clicks_run_button_after_writing_invalid_code_in_editor() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
 
 	@When("The user clicks Run button after writing valid code in editor")
-	public void the_user_clicks_run_button_after_writing_valid_code_in_editor() {
+	public void the_user_clicks_run_button_valid_code_in_editor() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}

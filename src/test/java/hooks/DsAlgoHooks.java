@@ -1,8 +1,10 @@
 package hooks;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -40,19 +42,33 @@ public class DsAlgoHooks {
 	public void tearDown(Scenario scenario) {
 
 		if (scenario.isFailed()) {
-			// take a screenshot
-			String screenshotName = scenario.getName().replaceAll(" ", "_");
-			byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-			scenario.attach(sourcePath, "image/png", screenshotName);
+			try {
+				// Create folder if it doesn't exist
+				String folderPath = System.getProperty("user.dir") + "/reports/screenshots/";
+				File screenshotDir = new File(folderPath);
+				if (!screenshotDir.exists()) {
+					screenshotDir.mkdirs(); // creates folder structure
+				}
+				// take a screenshot
+				String screenshotName = scenario.getName().replaceAll(" ", "_");
+				File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+				File destFile = new File(folderPath + screenshotName + ".png");
+
+				// Save file
+				FileUtils.copyFile(srcFile, destFile);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		}
 
 	}
 
-	@After(order = 0)
-	public void closeBrowser() {
-		if (driver != null) {
-			driver.quit();
-		}
-	}
+//	@After(order = 0)
+//	public void closeBrowser() {
+//		if (driver != null) {
+//			driver.quit();
+//		}
+//	}
 }

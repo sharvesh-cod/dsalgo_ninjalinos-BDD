@@ -8,22 +8,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DriverFactory {
 
 	public WebDriver driver;
+	public WebDriverWait wait;
 	// ThreadLocal WebDriver for parallel testing
 	public static ThreadLocal<WebDriver> tldriver = new ThreadLocal();
-	// Initialize WebDriver based on browser name
 
+	// Initialize WebDriver based on browser name
 	public WebDriver initBrowser(String browser) {
 
 		System.out.println("Initializing browser: " + browser);
 
 		if (browser.equalsIgnoreCase("chrome")) {
-
 			tldriver.set(new ChromeDriver());
-
 		}
 
 		else if (browser.equalsIgnoreCase("Safari")) {
@@ -40,13 +40,13 @@ public class DriverFactory {
 		WebDriver wd = getDriver();
 		wd.manage().deleteAllCookies();
 		wd.manage().window().maximize();
-		wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 		return wd;
 	}
 
 	// used to get the driver with ThreadLocal for parallel testing
 	// thread local is used to make sure that each thread(test cases) getting its
-	// own isolated webdriver instance
+	// own isolated web driver instance
 
 	public static synchronized WebDriver getDriver() {
 

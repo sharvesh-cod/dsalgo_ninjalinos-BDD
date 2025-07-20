@@ -161,7 +161,7 @@ Feature: Tree Module in DsAlgo portal
 
   @BinaryTreesTryHere @BT
   Scenario: Navigate to text editor in Binary Trees
-    When The user clicks Try here in Tree Traversals
+    When The user clicks Try here in BinaryTree page
     Then The user should be navigated to the text editor
 
   @BinaryTreesWithoutCode @BTC
@@ -383,4 +383,4 @@ Feature: Tree Module in DsAlgo portal
    Given user is in Tree sections page 
     When user clicks on the practice questions link in Tree module
     Then user sucessfully navigates to practice questions of Tree module
-    And  user find blank page
+    And  user find blank pageTree

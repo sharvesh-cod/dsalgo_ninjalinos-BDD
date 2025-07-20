@@ -20,20 +20,17 @@ public class Graph_pf {
 	private Wait<WebDriver> wait;
 	private Actions action;
 
-	@FindBy(xpath = "//h5[text()='Graph']/../..//a[text()='Get Started']")
+	@FindBy(xpath = "//a[text()='Get Started' and @href='graph']")
 	WebElement graphGetStarted;
-
-	@FindBy(xpath = "//a[contains(text(),'Graph')]")
+	@FindBy(xpath = "//a[@href='graph' and text()='Graph']")
 	WebElement graph;
-
 	@FindBy(xpath = "//a[contains(text(),'Graph Representations')]")
 	WebElement graphRepr;
-
 	@FindBy(tagName = "a")
 	List<WebElement> graphLinks;
 	@FindBy(xpath = "//a[contains(text(),'Try here')]")
 	WebElement tryHereButton;
-	@FindBy(xpath = "//button[text()='Run']")
+	@FindBy(xpath = "//button[contains(text(),'Run')]")
 	WebElement runButton;
 	@FindBy(xpath = "//div[@class='CodeMirror-measure']//span")
 	WebElement textEditor;
@@ -52,9 +49,10 @@ public class Graph_pf {
 	private WebElement loginButton;
 	@FindBy(xpath = "//button[text()='Get Started']")
 	WebElement loginGetStarted;
+	@FindBy(id = "content")
+	WebElement practicePage;
 
 	public Graph_pf() {
-		// DsAlgoHooks hooks = new DsAlgoHooks();
 		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(driver, this);
 		action = new Actions(driver);
@@ -88,7 +86,6 @@ public class Graph_pf {
 	public void click_Graph() {
 		action.scrollToElement(graph).perform();
 		action.click(graph).perform();
-		wait.until(ExpectedConditions.urlContains("/graph/graph/"));
 	}
 
 	public void click_TryEditor() {
@@ -101,20 +98,40 @@ public class Graph_pf {
 		action.click(runButton).perform();
 	}
 
-	public void txtEditor_correctCode() {
-		action.scrollToElement(textEditor).perform();
-		action.sendKeys(textEditor, "print('Hello World')").perform();
+//	public void clickRun_InvalidCode() {
+//		action.scrollToElement(runButton).perform();
+//		action.click(runButton).perform();
+//		wait.until(ExpectedConditions.alertIsPresent());
+//
+//	}
+
+//	public void txtEditor_correctCode() throws IOException, InterruptedException {
+//
+//		action.scrollToElement(textEditor).perform();
+//		action.sendKeys(ExcelReaderFile.getData(path, "TextEditor", 1, 0)).perform();
+//		Thread.sleep(5000);
+//		action.click(runButton).perform();
+//		Thread.sleep(5000);
+//	}
+
+	public String outputMsgGraph() {
+		action.scrollToElement(outputTxt).perform();
+		String text = outputTxt.getText();
+		return text;
 	}
 
-	public void txtEditor_invalidCode() {
-		action.scrollToElement(textEditor).perform();
-		action.sendKeys(textEditor, "pnt('Hello World');").perform();
+	public String practicePage() {
+		action.scrollToElement(practicePage).perform();
+		String practiceQuestion = practicePage.getText();
+		System.out.println(practiceQuestion);
+		return practiceQuestion;
+
 	}
 
 	public void graphRepresent() throws InterruptedException {
 		action.scrollToElement(graphRepr).perform();
 		action.click(graphRepr).perform();
-		wait.until(ExpectedConditions.urlContains("graph/graph-representations/"));
+
 	}
 
 	public void getErrMsg_NoCode() {

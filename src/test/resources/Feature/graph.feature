@@ -9,28 +9,28 @@ Background:
 	Given the user is in Graph page after logged in 
 	
 @G02
-Scenario: Verify that the user is able to navigate to Graph page 
-	When user clicks on Graph link on graph module 
-	Then user should navigate to Graph page 
+Scenario: Verify that the user is able to navigate to Graphlink page 
+	When user clicks on Graphlink on graph module 
+	Then user should navigate to Graphlink page 
 @G03	
 Scenario: Verify user is able to navigate to text editor on Graph section 
 	When user click on try here link on graph module 
 	Then user should navigate to text editor page of graph
 @G04
 Scenario: Run without code on Graph text editor
-  Given The user in tryEditor page of graph section
-	When  user click on run button without code
+  Given The user in tryEditor page of graphlink section
+	When user click on run button without code
 	Then user should be able to see alert message to enter the valid code
 @G05	
 Scenario: Verify if running with valid input, output should be printed in console
-  Given The user in tryEditor page of graph section  
+  Given The user in tryEditor page of graphlink section  
 	When user click button after entering the valid python code on the text editor 
 	Then user should be able to see ouput in the console
 @G06
-Scenario: After entering invalid input, user should see the alert message
-  Given The user in tryEditor page of graph section
-	When user click button after entering the invalid python code on the text editor 
-	Then user should be able to see alert message
+Scenario:  After entering invalid input, user should see the alert message
+  Given The user in tryEditor page of graphlink section
+	When user click button after entering the invalid python code on the text editor of graphlink 
+	Then user should be able to see alert message in window
 @G07
 Scenario: Navigate to Graph Representation 
 	When user click on Graph Representation link 
