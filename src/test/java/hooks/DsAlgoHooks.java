@@ -1,7 +1,9 @@
 package hooks;
 
+import java.io.File;
 import java.time.Duration;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -46,6 +48,25 @@ public class DsAlgoHooks {
 //			} catch (IOException e) {
 //				e.printStackTrace();
 //			}
+
+			try {
+				// Create folder if it doesn't exist
+				String folderPath = System.getProperty("user.dir") + "/reports/screenshots/";
+				File screenshotDir = new File(folderPath);
+				if (!screenshotDir.exists()) {
+					screenshotDir.mkdirs(); // creates folder structure
+				}
+				// take a screenshot
+				String savedScreenshot = scenario.getName().replaceAll(" ", "_");
+				File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+				File destFile = new File(folderPath + savedScreenshot + ".png");
+
+				// Save file
+				FileUtils.copyFile(srcFile, destFile);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		}
 

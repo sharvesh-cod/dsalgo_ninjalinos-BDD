@@ -27,6 +27,7 @@ public class Stack_sd {
 	String browserName;
 	// ConfigReader config;
 	CommonMethods common;
+	LoggerLoad log;
 
 	public Stack_sd(Passing_Driver passdr) throws IOException {
 
@@ -37,6 +38,7 @@ public class Stack_sd {
 		// this.config = new ConfigReader();
 		// this.browserName = config.get_prop_value("browser");
 		this.common = new CommonMethods(passdr);
+		this.log = new LoggerLoad();
 
 	}
 
@@ -112,7 +114,7 @@ public class Stack_sd {
 	@When("user clicks on Run button in Try here page without entering any code in the editor")
 	public void user_clicks_on_run_button_in_try_here_page_without_entering_any_code_in_the_editor() {
 		waitForTenSec("/tryEditor");
-		codeeditor.run();
+		codeeditor.clickRunBtn();
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -125,7 +127,7 @@ public class Stack_sd {
 		// screenshot
 		assertEquals("Type code in the editor", codeeditor.alert_message());
 		codeeditor.handle_alert();
-		LoggerLoad.error(
+		log.error(
 				"There is no alert message displayed when we click on run button without entering any code in the code editor in stack module");
 		// throw new io.cucumber.java.PendingException();
 	}
@@ -134,7 +136,7 @@ public class Stack_sd {
 	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_code_with_error_in_the_editor() {
 		waitForTenSec("/tryEditor");
 		codeeditor.txtEditor_invalidCode();
-		codeeditor.run();
+		codeeditor.clickRunBtn();
 //		codeeditor.handle_alert();
 		// throw new io.cucumber.java.PendingException();
 	}
@@ -152,7 +154,7 @@ public class Stack_sd {
 	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor() {
 		waitForTenSec("/tryEditor");
 		codeeditor.txtEditor_correctCode();
-		codeeditor.run();
+		codeeditor.clickRunBtn();
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -337,7 +339,7 @@ public class Stack_sd {
 																				// report the bug, which is, there are
 																				// not any links to practice questions
 																				// at all im stack module
-		LoggerLoad.error("There are no practice questions available in the stack module");
+		log.error("There are no practice questions available in the stack module");
 		// common.bug_screenshot("StackPracticeQuestions", browserName);
 		// throw new io.cucumber.java.PendingException();
 	}

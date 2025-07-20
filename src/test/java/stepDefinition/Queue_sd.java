@@ -29,6 +29,7 @@ public class Queue_sd {
 	String browserName;
 	// ConfigReader config;
 	CommonMethods common;
+	LoggerLoad log;
 
 	public Queue_sd(Passing_Driver passdr) throws IOException {
 
@@ -39,6 +40,7 @@ public class Queue_sd {
 		// this.config = new ConfigReader();
 		// this.browserName = config.get_prop_value("browser");
 		this.common = new CommonMethods(passdr);
+		this.log = new LoggerLoad();
 
 	}
 
@@ -110,7 +112,7 @@ public class Queue_sd {
 	@When("user clicks on Run button in Try here page without entering any code in the editor queue")
 	public void user_clicks_on_run_button_in_try_here_page_without_entering_any_code_in_the_editor_q() {
 		waitForTenSec("/tryEditor");
-		codeeditor.run();
+		codeeditor.clickRunBtn();
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -122,7 +124,7 @@ public class Queue_sd {
 		// entering code");
 		assertEquals("Type code in the editor", codeeditor.alert_message());
 		codeeditor.handle_alert();
-		LoggerLoad.error(
+		log.error(
 				"There is no alert message displayed when we click on run button without entering any code in the code editor in queue module");
 	}
 
@@ -140,7 +142,7 @@ public class Queue_sd {
 
 		waitForTenSec("/tryEditor");
 		codeeditor.txtEditor_invalidCode();
-		codeeditor.run();
+		codeeditor.clickRunBtn();
 
 		// throw new io.cucumber.java.PendingException();
 	}
@@ -157,7 +159,7 @@ public class Queue_sd {
 	public void user_clicks_on_the_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor_q() {
 		waitForTenSec("/tryEditor");
 		codeeditor.txtEditor_correctCode();
-		codeeditor.run();
+		codeeditor.clickRunBtn();
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -405,7 +407,7 @@ public class Queue_sd {
 		// report the bug, which is, there are
 		// not any links to practice questions
 		// at all im stack module
-		LoggerLoad.error("There are no practice questions available in the queue module");
+		log.error("There are no practice questions available in the queue module");
 	}
 
 }

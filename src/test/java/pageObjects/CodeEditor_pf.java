@@ -48,6 +48,18 @@ public class CodeEditor_pf {
 
 		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 				+ "editor.setValue('prin(hello world\")');");
+//		public void txtEditor_invalidCode() throws IOException {
+//			String path = configReader.get_prop_value("path");
+//			String data = ExcelReaderFile.getData(path, "textEditor", 1, 0);
+//			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
+//
+//			js.executeScript(
+//					"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
+//					data);
+//			action.scrollToElement(textEditor).perform();
+//			action.click(runBtn).perform();
+//
+//		}
 
 	}
 
@@ -55,9 +67,20 @@ public class CodeEditor_pf {
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 				+ "editor.setValue('print(\"Hello World\")');");
+//		public void txtEditor_correctCode() throws IOException, InterruptedException {
+//			String path = configReader.get_prop_value("path");
+//			String data = ExcelReaderFile.getData(path, "textEditor", 1, 1);
+//			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
+//
+//			js.executeScript(
+//					"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
+//					data);
+//			action.scrollToElement(textEditor).perform();
+//			action.click(runBtn).perform();
+//		}
 	}
 
-	public void run() {
+	public void clickRunBtn() {
 		// ((JavascriptExecutor)
 		// driver).executeScript("arguments[0].scrollIntoView(true);", runBtn);
 		action.scrollToElement(runBtn).perform();

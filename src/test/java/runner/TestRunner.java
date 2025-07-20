@@ -8,10 +8,10 @@ import io.cucumber.testng.CucumberOptions;
 //@RunWith(Cucumber.class) //Junit execution
 
 @CucumberOptions(plugin = { "pretty", "com.aventstack.chaintest.plugins.ChainTestCucumberListener:",
-		"html:target/dsAlgo_Ninjalinos_BDD.html" }, // reporting
+		"html:target/cucumberReport/dsAlgo_Ninjalinos_BDD.html" }, // cucumber reporting
 		// purpose
 		monochrome = false, // console output color
-		tags = "@StackimplementationCodeEditor", features = { "src/test/resources/Feature" }, // location
+		tags = "@StackoperationsTryingEmptyEditor", features = { "src/test/resources/Feature" }, // location
 		// of
 		// feature
 		// files

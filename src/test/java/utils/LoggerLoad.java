@@ -5,33 +5,33 @@ import org.apache.logging.log4j.Logger;
 
 public class LoggerLoad {
 
-	private static Logger logger = LogManager.getLogger();
+	private Logger logger = LogManager.getLogger();
 
-	public static void info(String message) {
+	public void info(String message) {
 
 		logger.info(message);
 
 	}
 
-	public static void warn(String message) {
+	public void warn(String message) {
 
 		logger.warn(message);
 
 	}
 
-	public static void error(String message) {
+	public void error(String message) {
 
 		logger.error(message);
 
 	}
 
-	public static void fatal(String message) {
+	public void fatal(String message) {
 
 		logger.fatal(message);
 
 	}
 
-	public static void debug(String message) {
+	public void debug(String message) {
 
 		logger.debug(message);
 
