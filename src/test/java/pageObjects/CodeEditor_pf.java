@@ -54,7 +54,7 @@ public class CodeEditor_pf {
 	public void txtEditor_correctCode() {
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
-				+ "editor.setValue('print(\"hello world\")');");
+				+ "editor.setValue('print(\"Hello World\")');");
 	}
 
 	public void run() {

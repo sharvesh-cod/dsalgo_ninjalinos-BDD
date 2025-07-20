@@ -17,7 +17,7 @@ import pageObjects.CodeEditor_pf;
 import pageObjects.CommonMethods;
 import pageObjects.LoginPage;
 import pageObjects.Stack_pf;
-import utils.ConfigReader;
+import utils.LoggerLoad;
 
 public class Stack_sd {
 	private WebDriver driver;
@@ -25,7 +25,7 @@ public class Stack_sd {
 	private LoginPage loginpage;
 	private CodeEditor_pf codeeditor;
 	String browserName;
-	ConfigReader config;
+	// ConfigReader config;
 	CommonMethods common;
 
 	public Stack_sd(Passing_Driver passdr) throws IOException {
@@ -34,8 +34,8 @@ public class Stack_sd {
 		this.stackpf = new Stack_pf(passdr);
 		this.loginpage = new LoginPage(passdr);
 		this.codeeditor = new CodeEditor_pf(passdr);
-		this.config = new ConfigReader();
-		this.browserName = config.get_prop_value("browser");
+		// this.config = new ConfigReader();
+		// this.browserName = config.get_prop_value("browser");
 		this.common = new CommonMethods(passdr);
 
 	}
@@ -125,6 +125,8 @@ public class Stack_sd {
 		// screenshot
 		assertEquals("Type code in the editor", codeeditor.alert_message());
 		codeeditor.handle_alert();
+		LoggerLoad.error(
+				"There is no alert message displayed when we click on run button without entering any code in the code editor in stack module");
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -157,7 +159,9 @@ public class Stack_sd {
 	@Then("user is able to see the output in the console")
 	public void user_is_able_to_see_the_output_in_the_console() {
 		// have to include assert statement here
-		codeeditor.output_text();
+		String outTxt = codeeditor.output_text();
+		assertEquals("Hello World", outTxt);
+
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -329,7 +333,11 @@ public class Stack_sd {
 	public void user_sucessfully_navigates_to_practice_questions_of_stack_module_however_the_page_is_empty()
 			throws IOException {
 		waitForTenSec("/practice");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/practice", common.url());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/", common.url());// Failing the scenario purposefully to
+																				// report the bug, which is, there are
+																				// not any links to practice questions
+																				// at all im stack module
+		LoggerLoad.error("There are no practice questions available in the stack module");
 		// common.bug_screenshot("StackPracticeQuestions", browserName);
 		// throw new io.cucumber.java.PendingException();
 	}

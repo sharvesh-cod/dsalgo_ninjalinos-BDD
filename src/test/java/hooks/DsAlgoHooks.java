@@ -11,11 +11,11 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
-public class Hooks {
+public class DsAlgoHooks {
 
 	private WebDriver driver;
 
-	public Hooks(Passing_Driver passdr) {
+	public DsAlgoHooks(Passing_Driver passdr) {
 
 		this.driver = passdr.getDriver();
 	}

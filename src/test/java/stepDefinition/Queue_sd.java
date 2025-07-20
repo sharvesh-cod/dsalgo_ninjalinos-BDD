@@ -18,7 +18,7 @@ import pageObjects.CodeEditor_pf;
 import pageObjects.CommonMethods;
 import pageObjects.LoginPage;
 import pageObjects.Queue_pf;
-import utils.ConfigReader;
+import utils.LoggerLoad;
 
 public class Queue_sd {
 
@@ -27,7 +27,7 @@ public class Queue_sd {
 	private LoginPage loginpage;
 	private CodeEditor_pf codeeditor;
 	String browserName;
-	ConfigReader config;
+	// ConfigReader config;
 	CommonMethods common;
 
 	public Queue_sd(Passing_Driver passdr) throws IOException {
@@ -36,8 +36,8 @@ public class Queue_sd {
 		this.queuepf = new Queue_pf(passdr);
 		this.loginpage = new LoginPage(passdr);
 		this.codeeditor = new CodeEditor_pf(passdr);
-		this.config = new ConfigReader();
-		this.browserName = config.get_prop_value("browser");
+		// this.config = new ConfigReader();
+		// this.browserName = config.get_prop_value("browser");
 		this.common = new CommonMethods(passdr);
 
 	}
@@ -118,7 +118,12 @@ public class Queue_sd {
 	public void user_does_not_see_any_alert_message_saying_code_eitor_is_empty_q() throws IOException {
 
 		// common.bug_screenshot("QueueEmptyCodeEditor", browserName);
-		System.out.println("No alert message seen when clicking on run without entering code");
+		// System.out.println("No alert message seen when clicking on run without
+		// entering code");
+		assertEquals("Type code in the editor", codeeditor.alert_message());
+		codeeditor.handle_alert();
+		LoggerLoad.error(
+				"There is no alert message displayed when we click on run button without entering any code in the code editor in queue module");
 	}
 
 	@Given("user is in try here page of Implementation of queue in python")
@@ -159,7 +164,8 @@ public class Queue_sd {
 	@Then("user is able to see the output in the queue try editor console")
 	public void user_is_able_to_see_output_in_the_console_q() {
 
-		codeeditor.output_text();
+		String outTxt = codeeditor.output_text();
+		assertEquals("Hello World", outTxt);
 		// have to add assert statement here
 		// throw new io.cucumber.java.PendingException();
 	}
@@ -395,7 +401,11 @@ public class Queue_sd {
 	@Then("user sucessfully navigates to practice questions of queue module however the page is empty")
 	public void user_sucessfully_navigates_to_practice_questions_of_queue_module_however_the_page_is_empty() {
 		waitForTenSec("/practice");
-		assertEquals("https://dsportalapp.herokuapp.com/queue/practice", common.url());
+		assertEquals("https://dsportalapp.herokuapp.com/queue/", common.url());// Failing the scenario purposefully to
+		// report the bug, which is, there are
+		// not any links to practice questions
+		// at all im stack module
+		LoggerLoad.error("There are no practice questions available in the queue module");
 	}
 
 }

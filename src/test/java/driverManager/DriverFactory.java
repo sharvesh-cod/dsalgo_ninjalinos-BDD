@@ -4,8 +4,11 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -17,41 +20,66 @@ public class DriverFactory {
 	// public static ThreadLocal<WebDriver> tldriver = new ThreadLocal();
 	private WebDriver driver;
 	String browser;
+	String headless;
 
 	public DriverFactory(ConfigReader config) throws IOException {
 
 		this.browser = config.get_prop_value("browser");
+		this.headless = config.get_prop_value("headless");
 	}
 
 	// Initialize WebDriver based on browser name
-	public WebDriver initBrowser(String browser) {
+	public WebDriver initBrowser(String browser, String headless) {
 
 		// System.out.println("Initializing browser: " + browser);
 
 		if (browser.equalsIgnoreCase("chrome")) {
-
-			driver = new ChromeDriver();
-			WebDriverManager.chromedriver().setup();
+			if (headless.equalsIgnoreCase("true")) {
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--headless=new");
+				driver = new ChromeDriver(options);
+				WebDriverManager.chromedriver().setup();
+			} else {
+				driver = new ChromeDriver();
+				WebDriverManager.chromedriver().setup();
+			}
 
 		}
 
 		else if (browser.equalsIgnoreCase("Safari")) {
+
 			// tldriver.set(new SafariDriver());
 			driver = new SafariDriver();
 
 		}
 
 		else if (browser.equalsIgnoreCase("firefox")) {
+			if (headless.equalsIgnoreCase("true")) {
+				FirefoxOptions options = new FirefoxOptions();
+				options.addArguments("--headless");
+				driver = new FirefoxDriver(options);
+
+			}
 			// tldriver.set(new FirefoxDriver());
-			driver = new FirefoxDriver();
+			else {
+				driver = new FirefoxDriver();
+			}
 			// WebDriverManager.firefoxdriver().setup();
 		}
 
 		else if (browser.equalsIgnoreCase("edge")) {
+			if (headless.equalsIgnoreCase("true")) {
+				EdgeOptions options = new EdgeOptions();
+				options.addArguments("--headless=new");
+				driver = new EdgeDriver(options);
+
+			}
+
 			// tldriver.set(new FirefoxDriver());
 			// WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
-
+			else {
+				driver = new EdgeDriver();
+			}
 		}
 
 		else {
@@ -77,6 +105,10 @@ public class DriverFactory {
 
 	public String return_browser() {
 		return browser;
+	}
+
+	public String return_headless_option() {
+		return headless;
 	}
 
 	// used to ge the driver with ThreadLocal for parallel testing
