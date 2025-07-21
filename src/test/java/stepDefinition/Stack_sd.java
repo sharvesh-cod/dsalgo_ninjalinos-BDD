@@ -125,10 +125,11 @@ public class Stack_sd {
 		// entering code");// will later have code
 		// here to take a
 		// screenshot
-		assertEquals("Type code in the editor", codeeditor.alert_message());
-		codeeditor.handle_alert();
 		log.error(
 				"There is no alert message displayed when we click on run button without entering any code in the code editor in stack module");
+		assertEquals("Type code in the editor", codeeditor.alert_message());
+		codeeditor.handle_alert();
+
 		// throw new io.cucumber.java.PendingException();
 	}
 
@@ -335,11 +336,12 @@ public class Stack_sd {
 	public void user_sucessfully_navigates_to_practice_questions_of_stack_module_however_the_page_is_empty()
 			throws IOException {
 		waitForTenSec("/practice");
+		log.error("There are no practice questions available in the stack module");
 		assertEquals("https://dsportalapp.herokuapp.com/stack/", common.url());// Failing the scenario purposefully to
 																				// report the bug, which is, there are
 																				// not any links to practice questions
 																				// at all im stack module
-		log.error("There are no practice questions available in the stack module");
+
 		// common.bug_screenshot("StackPracticeQuestions", browserName);
 		// throw new io.cucumber.java.PendingException();
 	}

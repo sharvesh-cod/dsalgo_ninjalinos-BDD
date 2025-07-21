@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.Alert;
@@ -14,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
+import utils.ExcelReaderFile;
 
 public class CodeEditor_pf {
 
@@ -43,41 +45,40 @@ public class CodeEditor_pf {
 
 	}
 
-	public void txtEditor_invalidCode() {
+//	public void txtEditor_invalidCode() {
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
+//
+//		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
+//				+ "editor.setValue('prin(hello world\")');");
+	public void txtEditor_invalidCode() throws IOException {
+		// String path = configReader.get_prop_value("path");
+		String path = "C:\\Users\\HP\\git\\dsalgo_ninjalinos-BDD\\src\\test\\resources\\testdata.xlsx";
+		String data = ExcelReaderFile.getData(path, "textEditor", 1, 0);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 
-		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
-				+ "editor.setValue('prin(hello world\")');");
-//		public void txtEditor_invalidCode() throws IOException {
-//			String path = configReader.get_prop_value("path");
-//			String data = ExcelReaderFile.getData(path, "textEditor", 1, 0);
-//			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
-//
-//			js.executeScript(
-//					"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
-//					data);
-//			action.scrollToElement(textEditor).perform();
-//			action.click(runBtn).perform();
-//
-//		}
+		js.executeScript(
+				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
+				data);
+		action.scrollToElement(textEditor).perform();
+		action.click(runBtn).perform();
 
 	}
 
-	public void txtEditor_correctCode() {
+//	public void txtEditor_correctCode() {
+//		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
+//		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
+//				+ "editor.setValue('print(\"Hello World\")');");
+	public void txtEditor_correctCode() throws IOException, InterruptedException {
+		// String path = configReader.get_prop_value("path");
+		String path = "C:\\Users\\HP\\git\\dsalgo_ninjalinos-BDD\\src\\test\\resources\\testdata.xlsx";
+		String data = ExcelReaderFile.getData(path, "textEditor", 1, 1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
-		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
-				+ "editor.setValue('print(\"Hello World\")');");
-//		public void txtEditor_correctCode() throws IOException, InterruptedException {
-//			String path = configReader.get_prop_value("path");
-//			String data = ExcelReaderFile.getData(path, "textEditor", 1, 1);
-//			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
-//
-//			js.executeScript(
-//					"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
-//					data);
-//			action.scrollToElement(textEditor).perform();
-//			action.click(runBtn).perform();
-//		}
+
+		js.executeScript(
+				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
+				data);
+		action.scrollToElement(textEditor).perform();
+		action.click(runBtn).perform();
 	}
 
 	public void clickRunBtn() {

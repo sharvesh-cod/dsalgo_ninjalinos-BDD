@@ -29,6 +29,7 @@ public class Queue_sd {
 	String browserName;
 	// ConfigReader config;
 	CommonMethods common;
+	// private Logger logger;
 	LoggerLoad log;
 
 	public Queue_sd(Passing_Driver passdr) throws IOException {
@@ -40,8 +41,8 @@ public class Queue_sd {
 		// this.config = new ConfigReader();
 		// this.browserName = config.get_prop_value("browser");
 		this.common = new CommonMethods(passdr);
+		// this.logger = LogManager.getLogger();
 		this.log = new LoggerLoad();
-
 	}
 
 	private void waitForTenSec(String partialUrl) {
@@ -122,10 +123,11 @@ public class Queue_sd {
 		// common.bug_screenshot("QueueEmptyCodeEditor", browserName);
 		// System.out.println("No alert message seen when clicking on run without
 		// entering code");
-		assertEquals("Type code in the editor", codeeditor.alert_message());
-		codeeditor.handle_alert();
 		log.error(
 				"There is no alert message displayed when we click on run button without entering any code in the code editor in queue module");
+		assertEquals("Type code in the editor", codeeditor.alert_message());
+		codeeditor.handle_alert();
+
 	}
 
 	@Given("user is in try here page of Implementation of queue in python")
@@ -403,11 +405,12 @@ public class Queue_sd {
 	@Then("user sucessfully navigates to practice questions of queue module however the page is empty")
 	public void user_sucessfully_navigates_to_practice_questions_of_queue_module_however_the_page_is_empty() {
 		waitForTenSec("/practice");
+		log.error("There are no practice questions available in the queue module");
 		assertEquals("https://dsportalapp.herokuapp.com/queue/", common.url());// Failing the scenario purposefully to
 		// report the bug, which is, there are
 		// not any links to practice questions
 		// at all im stack module
-		log.error("There are no practice questions available in the queue module");
+
 	}
 
 }
