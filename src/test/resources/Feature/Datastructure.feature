@@ -1,8 +1,9 @@
-@Datastructures-introduction
+@datastructures
+
 Feature: Datastructures Induction
 
   Background: Home page
-    Given the user clicks on the  get started button of Data structures after logged in with user credentials
+    Given the user clicks on get started button of Data structures after logged in with user credentials
     
    
    @time_complexity 

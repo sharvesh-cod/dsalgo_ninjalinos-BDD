@@ -1,9 +1,10 @@
-@Register
+@register
+
 Feature: registration  page
 
   Background: Home page
-    Given the user is on Home page
-    When  the user clicks on Register
+    Given the user is on Register page after clicking on registerlink from Home page
+   # When  the user clicks on Register
 
 @register_valid
   Scenario: register with valid inputs
@@ -20,5 +21,5 @@ Feature: registration  page
       |            |            |                  |        
       | ninjalinos |            |                  |             
       |            | djifejf    |                  |            
-      | @adf?/%    | jfijgisjgi |                  |    
-      | @adf?/%    | jfijgisjgi | giowehfidsjfoijd |        
+      | dfjeifj    | jfijgisjgi |                  |    
+      | dfjeifj     | jfijgisjgi | giowehfidsjfoijd |        
