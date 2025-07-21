@@ -51,10 +51,14 @@ public class Queue_sd {
 	}
 
 	@Given("user signs into the portal using valid username and password following which navigates to the queue page")
-	public void user_signs_into_the_portal_using_valid_username_and_password_following_which_navigates_to_the_queue_page() {
+	public void user_signs_into_the_portal_using_valid_username_and_password_following_which_navigates_to_the_queue_page()
+			throws IOException, InterruptedException {
 
 		loginpage.launch();
-		loginpage.login();
+		loginpage.signin_btn();
+		loginpage.user_name();
+		loginpage.password();
+		loginpage.login_btn();
 		queuepf.queue_btn();
 		// throw new io.cucumber.java.PendingException();
 	}
@@ -140,11 +144,11 @@ public class Queue_sd {
 	}
 
 	@When("user clicks on Run button in Try here of queue module after entering code with error in the editor")
-	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_code_with_error_in_the_editor_q() {
+	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_code_with_error_in_the_editor_q()
+			throws IOException, InterruptedException {
 
 		waitForTenSec("/tryEditor");
 		codeeditor.txtEditor_invalidCode();
-		codeeditor.clickRunBtn();
 
 		// throw new io.cucumber.java.PendingException();
 	}
@@ -158,10 +162,11 @@ public class Queue_sd {
 	}
 
 	@When("user clicks on Run button in Try here of queue module after entering a correct code in the editor")
-	public void user_clicks_on_the_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor_q() {
+	public void user_clicks_on_the_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor_q()
+			throws IOException, InterruptedException {
 		waitForTenSec("/tryEditor");
 		codeeditor.txtEditor_correctCode();
-		codeeditor.clickRunBtn();
+
 		// throw new io.cucumber.java.PendingException();
 	}
 

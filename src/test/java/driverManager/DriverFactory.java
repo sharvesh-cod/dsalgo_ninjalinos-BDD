@@ -35,11 +35,15 @@ public class DriverFactory {
 
 		if (browser.equalsIgnoreCase("chrome")) {
 			if (headless.equalsIgnoreCase("true")) {
+				// System.setProperty("webdriver.chrome.driver",
+				// "C:\\drivers\\chromedriver.exe");
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless=new");
 				driver = new ChromeDriver(options);
 				WebDriverManager.chromedriver().setup();
 			} else {
+				// System.setProperty("webdriver.chrome.driver",
+				// "C:\\drivers\\chromedriver.exe");
 				driver = new ChromeDriver();
 				WebDriverManager.chromedriver().setup();
 			}
@@ -55,6 +59,8 @@ public class DriverFactory {
 
 		else if (browser.equalsIgnoreCase("firefox")) {
 			if (headless.equalsIgnoreCase("true")) {
+				// System.setProperty("webdriver.gecko.driver", "C:\\drivers\\geckodriver.exe");
+
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
 				driver = new FirefoxDriver(options);
@@ -62,6 +68,8 @@ public class DriverFactory {
 			}
 			// tldriver.set(new FirefoxDriver());
 			else {
+				// System.setProperty("webdriver.gecko.driver", "C:\\drivers\\geckodriver.exe");
+
 				driver = new FirefoxDriver();
 			}
 			// WebDriverManager.firefoxdriver().setup();

@@ -1,20 +1,26 @@
 package pageObjects;
 
 import java.io.IOException;
+import java.time.Duration;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
 import utils.ConfigReader;
+import utils.ExcelReaderFile;
 
 public class LoginPage {
 
 	ConfigReader config;
 	String browser;
+	WebDriverWait wait;
+	JavascriptExecutor js;
 
 	private WebDriver driver;
 	private Actions action;
@@ -43,6 +49,8 @@ public class LoginPage {
 		this.action = new Actions(driver);
 		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		js = (JavascriptExecutor) driver;
 
 	}
 
@@ -52,10 +60,25 @@ public class LoginPage {
 
 	}
 
-	public void login() {
+	public void signin_btn() {
 		signinBtn.click();
-		userName.sendKeys(config.get_prop_value("username"));
-		pwd.sendKeys(config.get_prop_value("password"));
+	}
+
+	public void user_name() throws IOException, InterruptedException {
+		String path = config.get_prop_value("path");
+		String data = ExcelReaderFile.getData(path, "credentials", 1, 0);
+		userName.sendKeys(data);
+
+	}
+
+	public void password() throws IOException, InterruptedException {
+		String path = config.get_prop_value("path");
+		String data = ExcelReaderFile.getData(path, "credentials", 1, 1);
+		pwd.sendKeys(data);
+
+	}
+
+	public void login_btn() {
 		logInBtn.click();
 
 	}
@@ -64,5 +87,7 @@ public class LoginPage {
 		signOut.click();
 
 	}
+//	userName.sendKeys(config.get_prop_value("username"));
+//	pwd.sendKeys(config.get_prop_value("password"));
 
 }

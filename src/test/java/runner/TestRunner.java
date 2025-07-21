@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions;
 		"html:target/cucumberReport/dsAlgo_Ninjalinos_BDD.html" }, // cucumber reporting
 		// purpose
 		monochrome = false, // console output color
-		tags = "@StackoperationsTryingEmptyEditor", features = { "src/test/resources/Feature" }, // location
+		tags = "@StackoperationsCodeEditor", features = { "src/test/resources/Feature" }, // location
 		// of
 		// feature
 		// files

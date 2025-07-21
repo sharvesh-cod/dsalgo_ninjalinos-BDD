@@ -52,10 +52,15 @@ public class Stack_sd {
 //	}
 
 	@Given("user signs into the portal using valid username and password following which navigates to the stack page")
-	public void user_signs_into_the_portal_using_valid_username_and_password_following_which_navigates_to_the_stack_page() {
+	public void user_signs_into_the_portal_using_valid_username_and_password_following_which_navigates_to_the_stack_page()
+			throws IOException, InterruptedException {
 
 		loginpage.launch();
-		loginpage.login();
+		loginpage.signin_btn();
+		loginpage.user_name();
+		loginpage.password();
+		loginpage.login_btn();
+
 		stackpf.stack_btn();
 
 		// throw new io.cucumber.java.PendingException();
@@ -134,10 +139,11 @@ public class Stack_sd {
 	}
 
 	@When("user clicks on Run button in Try here page after entering a code with error in the editor")
-	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_code_with_error_in_the_editor() {
+	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_code_with_error_in_the_editor()
+			throws IOException, InterruptedException {
 		waitForTenSec("/tryEditor");
 		codeeditor.txtEditor_invalidCode();
-		codeeditor.clickRunBtn();
+
 //		codeeditor.handle_alert();
 		// throw new io.cucumber.java.PendingException();
 	}
@@ -152,10 +158,11 @@ public class Stack_sd {
 	}
 
 	@When("user clicks on Run button in Try here page after entering a correct code in the editor")
-	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor() {
+	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor()
+			throws IOException, InterruptedException {
 		waitForTenSec("/tryEditor");
 		codeeditor.txtEditor_correctCode();
-		codeeditor.clickRunBtn();
+
 		// throw new io.cucumber.java.PendingException();
 	}
 

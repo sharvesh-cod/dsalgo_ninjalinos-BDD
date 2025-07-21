@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
+import utils.ConfigReader;
 import utils.ExcelReaderFile;
 
 public class CodeEditor_pf {
@@ -25,6 +26,7 @@ public class CodeEditor_pf {
 	Alert alert;
 	JavascriptExecutor js;
 	WebDriverWait wait;
+	ConfigReader config;
 
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]/div")
 	WebElement textEditor;
@@ -35,13 +37,14 @@ public class CodeEditor_pf {
 	@FindBy(id = "output")
 	WebElement outputTxt;
 
-	public CodeEditor_pf(Passing_Driver passdr) {
+	public CodeEditor_pf(Passing_Driver passdr) throws IOException {
 
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		js = (JavascriptExecutor) driver;
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		PageFactory.initElements(driver, this);
+		this.config = new ConfigReader();
 
 	}
 
@@ -50,16 +53,17 @@ public class CodeEditor_pf {
 //
 //		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 //				+ "editor.setValue('prin(hello world\")');");
-	public void txtEditor_invalidCode() throws IOException {
-		// String path = configReader.get_prop_value("path");
-		String path = "C:\\Users\\HP\\git\\dsalgo_ninjalinos-BDD\\src\\test\\resources\\testdata.xlsx";
-		String data = ExcelReaderFile.getData(path, "textEditor", 1, 0);
+	public void txtEditor_invalidCode() throws IOException, InterruptedException {
+		String path = config.get_prop_value("path");
+		// String path =
+		// "C:\\Users\\HP\\git\\dsalgo_ninjalinos-BDD\\src\\test\\resources\\testdata\\testData.xlsx";
+		String data = ExcelReaderFile.getData(path, "textEditor", 1, 1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
 				data);
-		action.scrollToElement(textEditor).perform();
+		// action.scrollToElement(textEditor).perform();
 		action.click(runBtn).perform();
 
 	}
@@ -69,15 +73,16 @@ public class CodeEditor_pf {
 //		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 //				+ "editor.setValue('print(\"Hello World\")');");
 	public void txtEditor_correctCode() throws IOException, InterruptedException {
-		// String path = configReader.get_prop_value("path");
-		String path = "C:\\Users\\HP\\git\\dsalgo_ninjalinos-BDD\\src\\test\\resources\\testdata.xlsx";
-		String data = ExcelReaderFile.getData(path, "textEditor", 1, 1);
+		String path = config.get_prop_value("path");
+		// String path =
+		// "C:\\Users\\HP\\git\\dsalgo_ninjalinos-BDD\\src\\test\\resources\\testdata\\testData.xlsx";
+		String data = ExcelReaderFile.getData(path, "textEditor", 1, 0);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
 				data);
-		action.scrollToElement(textEditor).perform();
+		// action.scrollToElement(textEditor).perform();
 		action.click(runBtn).perform();
 	}
 
@@ -104,6 +109,7 @@ public class CodeEditor_pf {
 	}
 
 	public void handle_alert() {
+		wait.until(ExpectedConditions.alertIsPresent());
 		alert = driver.switchTo().alert();
 
 		alert.accept();
