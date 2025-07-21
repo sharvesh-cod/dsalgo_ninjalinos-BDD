@@ -7,10 +7,12 @@ public class Passing_Driver {
 	private WebDriver driver;
 
 	String browser;
+	String headless;
 
-	public Passing_Driver(DriverFactory obj) {
-		this.browser = obj.return_browser();
-		this.driver = obj.initBrowser(browser);
+	public Passing_Driver(DriverFactory driverObj) {
+		this.browser = driverObj.return_browser();
+		this.headless = driverObj.return_headless_option();
+		this.driver = driverObj.initBrowser(browser, headless);
 	}
 
 	public WebDriver getDriver() {
