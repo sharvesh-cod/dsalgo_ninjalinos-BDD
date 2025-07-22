@@ -6,6 +6,7 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
@@ -43,52 +44,90 @@ public class Login_sd {
 		wait.until(ExpectedConditions.urlContains(partialUrl));
 	}
 
-//	WebDriver driver = DriverFactory.getDriver();
-//	public Login1pf lg;
-//	public Launch1pf lap;
-//	public Home1pf Hm;
-
 	@Given("the user is on the Home page")
 	public void the_user_is_on_the_home_page() {
 		driver.get("https://dsportalapp.herokuapp.com/");
-
-		// lap=new Launch1pf(driver);
-		// Hm =new Home1pf(driver);
 		Launch_pf.clickgetstarted();
 
 	}
 
 	@When("user clicks on signin")
 	public void user_clicks_on_signin() {
-
 		Login_pf.clickSigninLink();
-		// Login1pf.clickSigninLink();
+
 	}
 
 	@When("the user enters valid username  password and clicks on Login")
 	public void the_user_enters_valid_username_password_and_clicks_on_login() throws IOException {
-//		Login_pf.set_username(null);
-//		Login_pf.set_password(null);
-//		Login_pf.clickLoginbutton();
 		Login_pf.setvalidDatafromExcel();
 	}
 
 	@Then("the user lands on Home page with message {string}")
-	public void the_user_lands_on_home_page_with_message(String string) {
+	public void the_user_lands_on_home_page_with_message(String expsuccessmsg) {
+		String actualsuccessfullmessage = Login_pf.loginsuccesfullmessage();
+		Assert.assertEquals(expsuccessmsg, actualsuccessfullmessage);
 
 	}
 
-	@When("the user enters   {string} and {string} and clicks on Login")
-	public void the_user_enters_and_and_clicks_on_login(String username, String password) throws IOException {
-//  lg.set_invalidusername(Username);
-//  lg.set_invalidpassword(Password);
-//  lg.clickLoginbutton();
-		Login_pf.setinvalidDatafromExcel();
-	}
-
-	@Then("the user will able to see {string} in login page")
-	public void the_user_will_able_to_see_in_login_page(String string) {
+	@When("the user clicks on Loginbutton without entering username and password")
+	public void the_user_clicks_on_loginbutton_without_entering_username_and_password() throws IOException {
+		Login_pf.setDatafromExcelwithemptyfields();
 
 	}
 
+	@Then("the user should able to see error_message {string} under usernametextbox")
+	public void the_user_should_able_to_see_error_message_under_usernametextbox(String experrormsg) {
+		String actualerrormessage = Login_pf.invalidAssertionusernamebox();
+		Assert.assertEquals(actualerrormessage, experrormsg);
+	}
+
+	@When("the user clicks on loginbutton by entering username without password")
+	public void the_user_clicks_on_loginbutton_by_entering_username_without_password() throws IOException {
+		Login_pf.setDatafromExcelwithusernameNoPassword();
+	}
+
+	@Then("the user should able to see errormessage {string} under passwordtextbox")
+	public void the_user_should_able_to_see_errormessage_under_passwordtextbox(String experrormsg) {
+		String actualerrormessage = Login_pf.invalidAssertiopasswordbox();
+		Assert.assertEquals(actualerrormessage, experrormsg);
+	}
+
+	@When("the user clicks on loginbutton by entering password without username")
+	public void the_user_clicks_on_loginbutton_by_entering_password_without_username() throws IOException {
+		Login_pf.setDatafromExcelwithPasswordnousername();
+	}
+
+	@Then("the user should able to see errormessage {string} under usernametextbox")
+	public void the_user_should_able_to_see_errormessage_under_usernametextbox(String experrormsg) {
+		String actualerrormessage = Login_pf.invalidAssertionusernamebox();
+		Assert.assertEquals(actualerrormessage, experrormsg);
+	}
+
+	@When("the user clicks on loginbutton by entering invalid username and invalid password")
+	public void the_user_clicks_on_loginbutton_by_entering_invalid_username_and_invalid_password() throws IOException {
+		Login_pf.setDatafromExcelinvalidData();
+	}
+
+	@Then("the user should able to see errormessage {string}")
+	public void the_user_should_able_to_see_errormessage(String experrormsg) {
+		String acterrormsg = Login_pf.invaliddatamessage();
+		Assert.assertEquals(experrormsg, acterrormsg);
+	}
+
+//	@When("the user enters   {string} and {string} and clicks on Login")
+//	public void the_user_enters_and_and_clicks_on_login(String username, String password) throws IOException {
+////  lg.set_invalidusername(Username);
+////  lg.set_invalidpassword(Password);
+////  lg.clickLoginbutton();
+//		System.out.println("Hello");
+//		Login_pf.setinvalidDatafromExcel();
+//	}
+//
+//	@Then("the user will able to see {string} in login page")
+//	public void the_user_will_able_to_see_in_login_page(String string) {
+//		Assert.assertEquals(Login_pf.invalidAssertion(), "Please fill out this field.",
+//				"user is not able to see error message");
+//		Assert.assertEquals(Login_pf.invalidAssertion(), "Please fill out this field.",
+//				"user is not able to see error message");
+//	}
 }

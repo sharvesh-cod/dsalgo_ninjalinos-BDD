@@ -68,11 +68,13 @@ public class Register_sd {
 //	}
 
 	@When("the user enters valid inputs and clicks on register button")
-	public void the_user_enters_valid_inputs_and_clicks_on_register_button() {
-		Register_pf.setusername(null);
-		Register_pf.setpassword(null);
-		Register_pf.setconfirmpassword(null);
-		Register_pf.clickRegisterbutton();
+	public void the_user_enters_valid_inputs_and_clicks_on_register_button() throws IOException {
+
+		Register_pf.setinvalidDatafromExcel();
+//		Register_pf.setusername(null);
+//		Register_pf.setpassword(null);
+//		Register_pf.setconfirmpassword(null);
+//		Register_pf.clickRegisterbutton();
 	}
 
 	@Then("User able to see succesfully registered  message")
@@ -81,11 +83,16 @@ public class Register_sd {
 	}
 
 	@When("the user enters {string} {string} and {string} and clicks register button")
-	public void the_user_enters_and_and_clicks_register_button(String string, String string2, String string3) {
-		Register_pf.setinvalidusername(string);
-		Register_pf.setinvalidpassword(string2);
-		Register_pf.setinvalidconfirmpassword(string3);
-		Register_pf.clickRegisterbutton();
+	public void the_user_enters_and_and_clicks_register_button(String string, String string2, String string3)
+			throws IOException {
+
+		Register_pf.setinvalidDatafromExcel();
+
+		// Register_pf.setinvalidusername(string);
+//		Register_pf.setinvalidpassword(string2);
+//		Register_pf.setinvalidconfirmpassword(string3);
+//		Register_pf.clickRegisterbutton();
+
 	}
 
 	@Then("the user be able to see error message")

@@ -26,7 +26,6 @@ public class Launch_sd {
 	String browserName;
 	ConfigReader config;
 	CommonMethods common;
-//	private Launch_pf Launch_pf;
 
 	public Launch_sd(Passing_Driver passdr) throws IOException {
 
@@ -44,17 +43,11 @@ public class Launch_sd {
 		wait.until(ExpectedConditions.urlContains(partialUrl));
 	}
 
-//WebDriver driver;
-//	WebDriver driver = DriverFactory.getDriver();
-//public Launch_pf lap;
-
-//WebDriver driver = DriverFactory.driver();
 	@Given("the user is on the Dsalgo portal after entering Url")
 	public void the_user_is_on_browser() {
-		// WebDriver driver = DriverFactory.driver;
+
 		driver.get("https://dsportalapp.herokuapp.com/");
-		// lap = new Launch_pf(driver);
-		// driver.get("https://dsportalapp.herokuapp.com/");
+
 	}
 
 	@Then("The user should be able to land on DsAlgo portal with the message {string}")

@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
+import utils.ExcelReader;
 
 public class Register_pf {
 
@@ -86,4 +88,33 @@ public class Register_pf {
 	public void missmatchPasswordMessage() {
 		missmatchPasswordMessage.getText();
 	}
+
+	public void setvalidDatafromExcel() throws IOException {
+		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
+		int rows = ExcelReader.rowCount(filepath, "validlogin");
+		String username = ExcelReader.getData(filepath, "validlogin", 1, 0);
+		String password = ExcelReader.getData(filepath, "validlogin", 1, 1);
+		String confirmpassword = ExcelReader.getData(filepath, "validlogin", 1, 2);
+
+		usernameTextbox.sendKeys(username);
+		passwordTextbox.sendKeys(password);
+		confirmpasswordTextbox.sendKeys(confirmpassword);
+		RegisterButton.click();
+	}
+
+	public void setinvalidDatafromExcel() throws IOException {
+		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
+		int rows = ExcelReader.rowCount(filepath, "invalidregister");
+		for (int i = 1; i <= rows; i++) {
+			String username = ExcelReader.getData(filepath, "invalidregister", i, 0);
+			String password = ExcelReader.getData(filepath, "invalidregister", i, 1);
+			String confirmpassword = ExcelReader.getData(filepath, "invalidregister", i, 2);
+
+			usernameTextbox.sendKeys(username);
+			passwordTextbox.sendKeys(password);
+			confirmpasswordTextbox.sendKeys(confirmpassword);
+			RegisterButton.click();
+		}
+	}
+
 }

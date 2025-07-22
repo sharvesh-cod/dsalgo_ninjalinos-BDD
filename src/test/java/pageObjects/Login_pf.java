@@ -3,6 +3,7 @@ package pageObjects;
 import java.io.IOException;
 import java.time.Duration;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -51,6 +52,10 @@ public class Login_pf {
 	@FindBy(xpath = "//*[@name='password']")
 	WebElement Passwordinvalid_textbox;
 
+	@FindBy(xpath = "//div[@role='alert'] ")
+	WebElement invaliddatamsg;
+	// div[@role='alert']
+
 	public Login_pf(Passing_Driver passdr) {
 
 		this.driver = passdr.getDriver();
@@ -93,31 +98,101 @@ public class Login_pf {
 		// loginsuccesfullmessage.getText();
 	}
 
+	public String invaliddatamessage() {
+		String msg = invaliddatamsg.getText();
+		return msg;
+		// loginsuccesfullmessage.getText();
+	}
+
 	public void setvalidDatafromExcel() throws IOException {
 		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
-		int rows = ExcelReader.rowCount(filepath, "validlogin");
+
 		String username = ExcelReader.getData(filepath, "validlogin", 1, 0);
 		String password = ExcelReader.getData(filepath, "validlogin", 1, 1);
-		Usernameinvalid_textbox.sendKeys(username);
-		Passwordinvalid_textbox.sendKeys(password);
+		Username_textbox.sendKeys(username);
+		Password_textbox.sendKeys(password);
 		Login_button.click();
 	}
 
+	public void setDatafromExcelwithemptyfields() throws IOException {
+		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
+
+		String username = ExcelReader.getData(filepath, "login", 1, 0);
+		String password = ExcelReader.getData(filepath, "login", 1, 1);
+		Username_textbox.sendKeys(username);
+		Password_textbox.sendKeys(password);
+		Login_button.click();
+	}
+
+	public void setDatafromExcelwithusernameNoPassword() throws IOException {
+		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
+
+		String username = ExcelReader.getData(filepath, "login", 2, 0);
+		String password = ExcelReader.getData(filepath, "login", 2, 1);
+		Username_textbox.sendKeys(username);
+		Password_textbox.sendKeys(password);
+		Login_button.click();
+	}
+
+	public void setDatafromExcelwithPasswordnousername() throws IOException {
+		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
+
+		String username = ExcelReader.getData(filepath, "login", 3, 0);
+		String password = ExcelReader.getData(filepath, "login", 3, 1);
+		Username_textbox.sendKeys(username);
+		Password_textbox.sendKeys(password);
+		Login_button.click();
+	}
+
+	public void setDatafromExcelinvalidData() throws IOException {
+		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
+
+		String username = ExcelReader.getData(filepath, "login", 4, 0);
+		String password = ExcelReader.getData(filepath, "login", 4, 1);
+		Username_textbox.sendKeys(username);
+		Password_textbox.sendKeys(password);
+		Login_button.click();
+	}
+
+	public String invalidAssertionusernamebox() {
+
+		// Adjust locator if needed
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		String validationMsg = (String) jse.executeScript("return arguments[0].validationMessage;", Username_textbox);
+		// System.out.println("Validation message: " + validationMsg);
+		return validationMsg;
+	}
+
+	public String invalidAssertiopasswordbox() {
+
+		// Adjust locator if needed
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		String validationMsg = (String) jse.executeScript("return arguments[0].validationMessage;", Password_textbox);
+		// System.out.println("Validation message: " + validationMsg);
+		return validationMsg;
+	}
+
 	public void setinvalidDatafromExcel() throws IOException {
+		System.out.println("hi");
 		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
 		int rows = ExcelReader.rowCount(filepath, "login");
+		System.out.println("rows=" + rows);
 
 		for (int i = 1; i <= rows; i++) {
+			// System.out.println("iteration=" + i);
 			// read data from excel
-			String username = ExcelReader.getData(filepath, "login", i, 0);
-			String password = ExcelReader.getData(filepath, "login", i, 1);
-
+			// int j = 1;
+			String uname = ExcelReader.getData(filepath, "login", i, 0);
+			System.out.println("user:" + uname);
+			String pwd = ExcelReader.getData(filepath, "login", i, 1);
+			System.out.println("pwd:" + pwd);
 			// String error_message = ExcelReader.getData(filepath, "login", i, 0);
 			// pass data to application
-			Usernameinvalid_textbox.sendKeys(username);
-			Passwordinvalid_textbox.sendKeys(password);
+			Usernameinvalid_textbox.sendKeys(uname);
+			Passwordinvalid_textbox.sendKeys(pwd);
 
 			Login_button.click();
+			// }
 		}
 	}
 }
