@@ -27,6 +27,8 @@ public class CodeEditor_pf {
 	JavascriptExecutor js;
 	WebDriverWait wait;
 	ConfigReader config;
+	ExcelReaderFile excelReader;
+	String path;
 
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]/div")
 	WebElement textEditor;
@@ -45,6 +47,8 @@ public class CodeEditor_pf {
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		PageFactory.initElements(driver, this);
 		this.config = new ConfigReader();
+		this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReaderFile(path);
 
 	}
 
@@ -54,10 +58,10 @@ public class CodeEditor_pf {
 //		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 //				+ "editor.setValue('prin(hello world\")');");
 	public void txtEditor_invalidCode() throws IOException, InterruptedException {
-		String path = config.get_prop_value("path");
+		// String path = config.get_prop_value("path");
 		// String path =
 		// "C:\\Users\\HP\\git\\dsalgo_ninjalinos-BDD\\src\\test\\resources\\testdata\\testData.xlsx";
-		String data = ExcelReaderFile.getData(path, "textEditor", 1, 1);
+		String data = excelReader.getData("textEditor", 1, 1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 
 		js.executeScript(
@@ -73,10 +77,10 @@ public class CodeEditor_pf {
 //		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 //				+ "editor.setValue('print(\"Hello World\")');");
 	public void txtEditor_correctCode() throws IOException, InterruptedException {
-		String path = config.get_prop_value("path");
+		// String path = config.get_prop_value("path");
 		// String path =
 		// "C:\\Users\\HP\\git\\dsalgo_ninjalinos-BDD\\src\\test\\resources\\testdata\\testData.xlsx";
-		String data = ExcelReaderFile.getData(path, "textEditor", 1, 0);
+		String data = excelReader.getData("textEditor", 1, 0);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 
 		js.executeScript(

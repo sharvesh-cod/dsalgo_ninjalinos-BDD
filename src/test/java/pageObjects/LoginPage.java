@@ -21,6 +21,8 @@ public class LoginPage {
 	String browser;
 	WebDriverWait wait;
 	JavascriptExecutor js;
+	ExcelReaderFile excelReader;
+	String path;
 
 	private WebDriver driver;
 	private Actions action;
@@ -51,6 +53,8 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		js = (JavascriptExecutor) driver;
+		this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReaderFile(path);
 
 	}
 
@@ -65,15 +69,15 @@ public class LoginPage {
 	}
 
 	public void user_name() throws IOException, InterruptedException {
-		String path = config.get_prop_value("path");
-		String data = ExcelReaderFile.getData(path, "credentials", 1, 0);
+		// String path = config.get_prop_value("path");
+		String data = excelReader.getData("credentials", 1, 0);
 		userName.sendKeys(data);
 
 	}
 
 	public void password() throws IOException, InterruptedException {
-		String path = config.get_prop_value("path");
-		String data = ExcelReaderFile.getData(path, "credentials", 1, 1);
+		// String path = config.get_prop_value("path");
+		String data = excelReader.getData("credentials", 1, 1);
 		pwd.sendKeys(data);
 
 	}
