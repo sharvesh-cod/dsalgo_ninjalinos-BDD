@@ -46,12 +46,6 @@ public class Register_sd {
 		wait.until(ExpectedConditions.urlContains(partialUrl));
 	}
 
-//	WebDriver driver = DriverFactory.getDriver();
-//	public Login1pf lg;
-//	public Launch1pf lap;
-//	public Home1pf Hm;
-//	public Register1pf rg;
-
 	@Given("the user is on Register page after clicking on registerlink from Home page")
 	public void the_user_is_on_register_page_after_clicking_on_registerlink_from_home_page() {
 		driver.get("https://dsportalapp.herokuapp.com/");
