@@ -47,9 +47,12 @@ public class LinkedList_sd {
 	}
 
 	@Given("The user is in linked list page after logging in") // BACKGROUND
-	public void the_user_is_in_linked_list_page_after_logging_in() {
+	public void the_user_is_in_linked_list_page_after_logging_in() throws IOException, InterruptedException {
 		loginpage.launch();
-		loginpage.login();
+		loginpage.signin_btn();
+		loginpage.user_name();
+		loginpage.password();
+		loginpage.login_btn();
 		ll_pf.clickllGetStarted();
 	}
 
@@ -113,7 +116,7 @@ public class LinkedList_sd {
 	}
 
 	@When("The user clicks run button after writing invalid code in editor in LL")
-	public void the_user_clicks_run_button_after_writing_invalid_code_in_editor_in_ll() {
+	public void the_user_clicks_run_button_after_writing_invalid_code_in_editor_in_ll() throws IOException {
 		waitForTenSec("/tryEditor");
 		tryeditorpage.tryEditor_invalidCode();
 		tryeditorpage.clickRun();
@@ -126,7 +129,8 @@ public class LinkedList_sd {
 	}
 
 	@When("The user clicks run button after writing valid code in editor in LL")
-	public void the_user_clicks_run_button_after_writing_valid_code_in_editor_in_ll() throws InterruptedException {
+	public void the_user_clicks_run_button_after_writing_valid_code_in_editor_in_ll()
+			throws InterruptedException, IOException {
 		waitForTenSec("/tryEditor");
 		tryeditorpage.tryEditor_validCode();
 		tryeditorpage.clickRun();

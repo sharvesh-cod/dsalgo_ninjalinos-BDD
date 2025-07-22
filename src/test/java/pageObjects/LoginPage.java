@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
 import utils.ConfigReader;
+import utils.ExcelReader;
 
 public class LoginPage {
 
@@ -54,18 +55,46 @@ public class LoginPage {
 	WebElement signOut;
 
 	public void launch() {
-		driver.get("https://dsportalapp.herokuapp.com/");
+		// driver.get("https://dsportalapp.herokuapp.com/");
+		driver.get(config.get_prop_value("testurl"));
 		launchBtn.click();
 
 	}
 
-	public void login() {
+	public void signin_btn() {
 		signinBtn.click();
-		userName.sendKeys("ninjalinos@work.com");
-		pwd.sendKeys("sdet218920@");
+	}
+
+	public void user_name() throws IOException, InterruptedException {
+		String path = config.get_prop_value("path");
+		ExcelReader reader = new ExcelReader(path, "credentials");
+		String data = reader.getData(1, 0);
+		// String data = ExcelReader.getData(path, "credentials", 1, 0);
+		userName.sendKeys(data);
+
+	}
+
+	public void password() throws IOException, InterruptedException {
+		String path = config.get_prop_value("path");
+		ExcelReader reader = new ExcelReader(path, "credentials");
+		String data = reader.getData(1, 1);
+		// String data = ExcelReader.getData(path, "credentials", 1, 1);
+		pwd.sendKeys(data);
+
+	}
+
+	public void login_btn() {
 		logInBtn.click();
 
 	}
+
+//	public void login() throws IOException ,InterruptedException {
+//		signinBtn.click();
+//		userName.sendKeys("ninjalinos@work.com");
+//		pwd.sendKeys("sdet218920@");
+//		logInBtn.click();
+//
+//	}
 
 	public void logout() {
 		signOut.click();

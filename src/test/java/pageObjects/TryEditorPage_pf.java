@@ -2,9 +2,11 @@
 
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -14,18 +16,23 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
+import utils.ConfigReader;
+import utils.ExcelReader;
 
 public class TryEditorPage_pf {
 
 	private WebDriver driver;
 	private Actions action;
+	JavascriptExecutor js;
 	WebDriverWait wait;
+	ConfigReader config;
 
-	public TryEditorPage_pf(Passing_Driver passdr) {
+	public TryEditorPage_pf(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		PageFactory.initElements(driver, this);
+		this.config = new ConfigReader();
 	}
 
 	// Elements
@@ -51,12 +58,29 @@ public class TryEditorPage_pf {
 	}
 
 	// Actions
-	public void tryEditor_validCode() {
-		safeType(codeEditor, "print('Hello World')");
+	public void tryEditor_validCode() throws IOException {
+		String path = config.get_prop_value("path");
+		ExcelReader reader = new ExcelReader(path, "TextEditor");
+		String data = reader.getData(1, 0);
+		// wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
+
+//		js.executeScript(
+//				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
+//				data);
+		safeType(codeEditor, data);
 	}
 
-	public void tryEditor_invalidCode() {
-		safeType(codeEditor, "abc");
+	public void tryEditor_invalidCode() throws IOException {
+		String path = config.get_prop_value("path");
+		ExcelReader reader = new ExcelReader(path, "TextEditor");
+		String data = reader.getData(1, 1);
+		// String data = ExcelReader.getData(path, "TextEditor", 1, 1);
+		// wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
+
+//		js.executeScript(
+//				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
+//				data);
+		safeType(codeEditor, data);
 	}
 
 	public void clickRun() {

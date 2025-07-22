@@ -51,9 +51,12 @@ public class Array_sd {
 	}
 
 	@Given("The user is in array page after logging in") // BACKGROUND
-	public void the_user_is_in_array_page_after_logging_in() {
+	public void the_user_is_in_array_page_after_logging_in() throws IOException, InterruptedException {
 		loginpage.launch();
-		loginpage.login();
+		loginpage.signin_btn();
+		loginpage.user_name();
+		loginpage.password();
+		loginpage.login_btn();
 		array_pf.clickArrayGetStarted();
 		System.out.println("output 1");
 
@@ -116,7 +119,7 @@ public class Array_sd {
 	}
 
 	@When("The user clicks Run button after writing invalid code in editor")
-	public void the_user_clicks_run_button_after_writing_invalid_code_in_editor() {
+	public void the_user_clicks_run_button_after_writing_invalid_code_in_editor() throws IOException {
 		waitForTenSec("/tryEditor");
 		tryeditorpage.tryEditor_invalidCode();
 		tryeditorpage.clickRun();
@@ -131,7 +134,8 @@ public class Array_sd {
 	}
 
 	@When("The user clicks Run button after writing valid code in editor")
-	public void the_user_clicks_run_button_after_writing_valid_code_in_editor() throws InterruptedException {
+	public void the_user_clicks_run_button_after_writing_valid_code_in_editor()
+			throws InterruptedException, IOException {
 		waitForTenSec("/tryEditor");
 		tryeditorpage.tryEditor_validCode();
 		tryeditorpage.clickRun();
