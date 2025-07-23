@@ -1,49 +1,9 @@
-[ERROR] 2025-07-21 18:00:45.215 [TestNG-PoolService-8] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:00:50.119 [TestNG-PoolService-3] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:02:17.464 [TestNG-PoolService-2] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:02:52.963 [TestNG-PoolService-5] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:39:24.505 [TestNG-PoolService-3] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:39:28.361 [TestNG-PoolService-8] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:39:53.873 [TestNG-PoolService-10] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:40:15.033 [TestNG-PoolService-6] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:40:42.246 [TestNG-PoolService-4] LoggerLoad - There are no practice questions available in the queue module
-[ERROR] 2025-07-21 18:40:56.299 [TestNG-PoolService-2] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-21 18:41:16.376 [TestNG-PoolService-3] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-21 18:41:31.995 [TestNG-PoolService-5] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-21 18:41:49.498 [TestNG-PoolService-9] LoggerLoad - There are no practice questions available in the stack module
-[ERROR] 2025-07-21 18:44:55.192 [TestNG-PoolService-8] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:44:57.525 [TestNG-PoolService-3] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:45:14.851 [TestNG-PoolService-4] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:45:39.526 [TestNG-PoolService-1] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:46:10.884 [TestNG-PoolService-2] LoggerLoad - There are no practice questions available in the queue module
-[ERROR] 2025-07-21 18:46:20.603 [TestNG-PoolService-7] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-21 18:46:53.323 [TestNG-PoolService-8] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-21 18:47:16.198 [TestNG-PoolService-7] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-21 18:47:36.304 [TestNG-PoolService-8] LoggerLoad - There are no practice questions available in the stack module
-[ERROR] 2025-07-21 18:51:41.975 [TestNG-PoolService-3] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:51:45.310 [TestNG-PoolService-8] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:52:30.871 [TestNG-PoolService-6] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:52:40.025 [TestNG-PoolService-4] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-21 18:53:12.669 [TestNG-PoolService-10] LoggerLoad - There are no practice questions available in the queue module
-[ERROR] 2025-07-21 18:53:39.738 [TestNG-PoolService-2] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-21 18:53:57.952 [TestNG-PoolService-6] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-21 18:54:27.955 [TestNG-PoolService-2] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-21 18:54:47.518 [TestNG-PoolService-6] LoggerLoad - There are no practice questions available in the stack module
-[ERROR] 2025-07-22 00:22:24.297 [TestNG-PoolService-3] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-22 00:22:26.956 [TestNG-PoolService-8] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-22 00:23:19.301 [TestNG-PoolService-1] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-22 00:24:00.568 [TestNG-PoolService-10] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-22 00:24:23.570 [TestNG-PoolService-6] LoggerLoad - There are no practice questions available in the queue module
-[ERROR] 2025-07-22 00:25:00.962 [TestNG-PoolService-10] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-22 00:25:29.183 [TestNG-PoolService-7] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-22 00:26:02.830 [TestNG-PoolService-10] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-22 00:26:21.452 [TestNG-PoolService-7] LoggerLoad - There are no practice questions available in the stack module
-[ERROR] 2025-07-22 00:32:05.444 [TestNG-PoolService-8] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-22 00:32:18.436 [TestNG-PoolService-3] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-22 00:32:54.360 [TestNG-PoolService-8] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-22 00:33:27.168 [TestNG-PoolService-2] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
-[ERROR] 2025-07-22 00:33:54.168 [TestNG-PoolService-9] LoggerLoad - There are no practice questions available in the queue module
-[ERROR] 2025-07-22 00:34:29.547 [TestNG-PoolService-3] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-22 00:35:00.529 [TestNG-PoolService-5] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-22 00:35:28.644 [TestNG-PoolService-2] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
-[ERROR] 2025-07-22 00:35:52.098 [TestNG-PoolService-5] LoggerLoad - There are no practice questions available in the stack module
+[ERROR] 2025-07-23 11:55:10.121 [TestNG-PoolService-3] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
+[ERROR] 2025-07-23 11:55:37.635 [TestNG-PoolService-8] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
+[ERROR] 2025-07-23 11:56:18.558 [TestNG-PoolService-5] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
+[ERROR] 2025-07-23 11:56:49.131 [TestNG-PoolService-7] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in queue module
+[ERROR] 2025-07-23 11:57:13.129 [TestNG-PoolService-6] LoggerLoad - There are no practice questions available in the queue module
+[ERROR] 2025-07-23 11:57:34.795 [TestNG-PoolService-2] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
+[ERROR] 2025-07-23 11:58:12.415 [TestNG-PoolService-3] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
+[ERROR] 2025-07-23 11:58:38.908 [TestNG-PoolService-2] LoggerLoad - There is no alert message displayed when we click on run button without entering any code in the code editor in stack module
+[ERROR] 2025-07-23 11:59:02.829 [TestNG-PoolService-3] LoggerLoad - There are no practice questions available in the stack module

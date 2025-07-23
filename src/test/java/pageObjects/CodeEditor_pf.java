@@ -33,7 +33,7 @@ public class CodeEditor_pf {
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]/div")
 	WebElement textEditor;
 
-	@FindBy(xpath = "//button[text()='Run']")
+	@FindBy(xpath = "//button[contains(text(),'Run')]")
 	WebElement runBtn;
 
 	@FindBy(id = "output")
@@ -52,54 +52,40 @@ public class CodeEditor_pf {
 
 	}
 
-//	public void txtEditor_invalidCode() {
-//		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
-//
-//		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
-//				+ "editor.setValue('prin(hello world\")');");
 	public void txtEditor_invalidCode() throws IOException, InterruptedException {
-		// String path = config.get_prop_value("path");
-		// String path =
-		// "C:\\Users\\HP\\git\\dsalgo_ninjalinos-BDD\\src\\test\\resources\\testdata\\testData.xlsx";
+
 		String data = excelReader.getData("textEditor", 1, 1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
 				data);
-		// action.scrollToElement(textEditor).perform();
+
 		action.click(runBtn).perform();
 
 	}
 
-//	public void txtEditor_correctCode() {
-//		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
-//		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
-//				+ "editor.setValue('print(\"Hello World\")');");
 	public void txtEditor_correctCode() throws IOException, InterruptedException {
-		// String path = config.get_prop_value("path");
-		// String path =
-		// "C:\\Users\\HP\\git\\dsalgo_ninjalinos-BDD\\src\\test\\resources\\testdata\\testData.xlsx";
+
 		String data = excelReader.getData("textEditor", 1, 0);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
 				data);
-		// action.scrollToElement(textEditor).perform();
+
 		action.click(runBtn).perform();
 	}
 
 	public void clickRunBtn() {
-		// ((JavascriptExecutor)
-		// driver).executeScript("arguments[0].scrollIntoView(true);", runBtn);
+
 		action.scrollToElement(runBtn).perform();
 		action.click(runBtn).perform();
 	}
 
 	public String output_text() {
-		// ((JavascriptExecutor)
-		// driver).executeScript("arguments[0].scrollIntoView(true);", outputTxt);
+
+		wait.until(ExpectedConditions.visibilityOf(outputTxt));
 		action.scrollToElement(outputTxt).perform();
 		String outputText = outputTxt.getText();
 		return outputText;
@@ -107,6 +93,7 @@ public class CodeEditor_pf {
 	}
 
 	public String alert_message() {
+
 		alert = driver.switchTo().alert();
 		String alertMsg = alert.getText();
 		return alertMsg;

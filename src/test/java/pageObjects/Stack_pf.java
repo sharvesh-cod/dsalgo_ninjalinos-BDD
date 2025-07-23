@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,6 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
+import utils.ConfigReader;
+import utils.ExcelReaderFile;
 
 public class Stack_pf {
 
@@ -18,6 +21,10 @@ public class Stack_pf {
 	private Actions action;
 	String browser;
 	WebDriverWait wait;
+	ExcelReaderFile excelReader;
+	String path;
+	ConfigReader config;
+	JavascriptExecutor js;
 
 	@FindBy(xpath = "//h5[text()='Stack']/../../..//a[text()='Get Started']")
 	WebElement stackBtn; // temporarily adding this web element
@@ -37,15 +44,46 @@ public class Stack_pf {
 	@FindBy(xpath = "//div[2]/following::*/div[2]/a")
 	WebElement tryHereStack;
 
-	public Stack_pf(Passing_Driver passdr) {
+	@FindBy(className = "btn")
+	WebElement launchBtn;
 
-//		this.browser = obj.return_browser();
-//		this.driver = obj.initBrowser(browser);
+	@FindBy(xpath = "//*[text()='Sign in']")
+	WebElement signinBtn;
+
+	@FindBy(id = "id_username")
+	WebElement userName;
+
+	@FindBy(id = "id_password")
+	WebElement pwd;
+
+	@FindBy(xpath = "//input[4]")
+	WebElement logInBtn;
+
+	@FindBy(xpath = "//*[text()='Sign out']")
+	WebElement signOut;
+
+	public Stack_pf(Passing_Driver passdr) throws IOException {
+
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
-
+		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		js = (JavascriptExecutor) driver;
+		this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReaderFile(path);
+
+	}
+
+	public void background_stack() throws IOException {
+		driver.get(config.get_prop_value("testurl"));
+		launchBtn.click();
+		signinBtn.click();
+		String data1 = excelReader.getData("credentials", 1, 0);
+		userName.sendKeys(data1);
+		String data2 = excelReader.getData("credentials", 1, 1);
+		pwd.sendKeys(data2);
+		logInBtn.click();
 
 	}
 
@@ -59,8 +97,7 @@ public class Stack_pf {
 	public void opreations_stack_btn() {
 
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", operationsStackBtn);
-		// ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,400);");
-		// operationsStackBtn.click();
+
 		action.scrollToElement(operationsStackBtn).perform();
 		action.click(operationsStackBtn).perform();
 	}
@@ -89,13 +126,9 @@ public class Stack_pf {
 		action.click(tryHereStack).perform();
 	}
 
-//	public String url() {
-//		String currentPageUrl = driver.getCurrentUrl();
-//		return currentPageUrl;
-//	}
+	public void logout_stack() {
+		signOut.click();
 
-//	public void refreshElements() {
-//		PageFactory.initElements(driver, this);
-//	}
+	}
 
 }

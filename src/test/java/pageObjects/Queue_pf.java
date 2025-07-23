@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,6 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
+import utils.ConfigReader;
+import utils.ExcelReaderFile;
 
 public class Queue_pf {
 
@@ -18,6 +21,10 @@ public class Queue_pf {
 	Actions action;
 	String browser;
 	WebDriverWait wait;
+	ExcelReaderFile excelReader;
+	String path;
+	ConfigReader config;
+	JavascriptExecutor js;
 
 	@FindBy(xpath = "//h5[text()='Queue']/../../..//a[text()='Get Started']")
 	WebElement QueueBtn; // temporarily adding this web element
@@ -39,13 +46,46 @@ public class Queue_pf {
 
 	@FindBy(xpath = "//div[2]/following::*/div[2]/a")
 	WebElement tryHereQueue;
+	@FindBy(className = "btn")
+	WebElement launchBtn;
 
-	public Queue_pf(Passing_Driver passdr) {
+	@FindBy(xpath = "//*[text()='Sign in']")
+	WebElement signinBtn;
+
+	@FindBy(id = "id_username")
+	WebElement userName;
+
+	@FindBy(id = "id_password")
+	WebElement pwd;
+
+	@FindBy(xpath = "//input[4]")
+	WebElement logInBtn;
+
+	@FindBy(xpath = "//*[text()='Sign out']")
+	WebElement signOut;
+
+	public Queue_pf(Passing_Driver passdr) throws IOException {
 
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
+		this.config = new ConfigReader();
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		js = (JavascriptExecutor) driver;
+		this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReaderFile(path);
+
+	}
+
+	public void background_queue() throws IOException {
+		driver.get(config.get_prop_value("testurl"));
+		launchBtn.click();
+		signinBtn.click();
+		String data1 = excelReader.getData("credentials", 1, 0);
+		userName.sendKeys(data1);
+		String data2 = excelReader.getData("credentials", 1, 1);
+		pwd.sendKeys(data2);
+		logInBtn.click();
 
 	}
 
@@ -98,9 +138,9 @@ public class Queue_pf {
 		action.click(tryHereQueue).perform();
 	}
 
-//	public String url() {
-//		String currentPageUrl = driver.getCurrentUrl();
-//		return currentPageUrl;
-//	}
+	public void logout_queue() {
+		signOut.click();
+
+	}
 
 }

@@ -13,19 +13,14 @@ public class CommonMethods {
 		this.driver = passdr.getDriver();
 
 	}
-//
-//	public void bug_screenshot(String screenshotName, String browser) throws IOException {
-//
-//		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//
-//		Files.copy(screenshot, new File(
-//				"src/test/resources/reports/screenshots/bugs_stack_queue/" + screenshotName + "_ " + browser + ".jpg"));
-//
-//	}
 
-	public String url() {
+	public String currentUrl() {
 		String currentPageUrl = driver.getCurrentUrl();
 		return currentPageUrl;
+	}
+
+	public String getTitle() {
+		return driver.getTitle();
 	}
 
 }
