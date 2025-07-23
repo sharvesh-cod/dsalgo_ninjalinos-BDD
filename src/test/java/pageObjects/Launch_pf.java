@@ -18,16 +18,6 @@ public class Launch_pf {
 	String browser;
 	WebDriverWait wait;
 
-//	WebDriver driver;
-//
-//	// constructor
-//	public Launch_pf(WebDriver driver) {
-//		this.driver = driver;
-//		PageFactory.initElements(driver, this);
-//	}
-
-	// Locators
-
 	@FindBy(xpath = "//*[text()='You are at the right place']")
 	WebElement message;
 
@@ -36,7 +26,7 @@ public class Launch_pf {
 	WebElement btn_getstarted;
 
 	@FindBy(xpath = "//*[text()='NumpyNinja']")
-	WebElement NumpyNinja;
+	WebElement numpyNinja;
 
 	public Launch_pf(Passing_Driver passdr) {
 
@@ -47,15 +37,12 @@ public class Launch_pf {
 
 	}
 
-//*[text()='NumpyNinja']
-//action methods
-
 	public void clickgetstarted() {
 		btn_getstarted.click();
 	}
 
-	public void NumpyNinja() {
-		NumpyNinja.isDisplayed();
+	public void numpyNinja() {
+		numpyNinja.isDisplayed();
 
 	}
 
@@ -68,4 +55,10 @@ public class Launch_pf {
 		String text = message.getText();
 		return text;
 	}
+
+	public String gettitle() {
+		String title = driver.getTitle();
+		return title;
+	}
+
 }

@@ -53,31 +53,31 @@ public class Home_pf {
 	WebElement getstartedButton_Graph;
 
 	@FindBy(xpath = "//*[@data-toggle='dropdown']")
-	WebElement Dropdownbox;
+	WebElement dropdownbox;
 
 	@FindBy(xpath = "//a[text()='Data Structures-Introduction']")
-	WebElement DropdownDataStructuresIntroduction;
+	WebElement dropdownDataStructuresIntroduction;
 
 	@FindBy(xpath = "//a[text()='Arrays']")
-	WebElement DropdownboxArrays;
+	WebElement dropdownboxArrays;
 
 	@FindBy(xpath = "//a[text()='Linked List']")
-	WebElement DropdownboxLinkedList;
+	WebElement dropdownboxLinkedList;
 
 	@FindBy(xpath = "//a[text()='Stack']")
-	WebElement DropdownboxStack;
+	WebElement dropdownboxStack;
 
 	@FindBy(xpath = "//a[text()='Queue']")
-	WebElement DropdownboxQueue;
+	WebElement dropdownboxQueue;
 
 	@FindBy(xpath = "//a[text()='Tree']")
-	WebElement DropdownboxTree;
+	WebElement dropdownboxTree;
 
 	@FindBy(xpath = "//a[text()=' Register ']")
-	WebElement Register;
+	WebElement register;
 
 	@FindBy(xpath = "//a[text()='NumpyNinja']")
-	WebElement Homepage;
+	WebElement homepage;
 
 	@FindBy(xpath = "//*[@class='alert alert-primary']")
 	WebElement notloggedinmesg;
@@ -132,36 +132,36 @@ public class Home_pf {
 	}
 
 	public void clickDropdownbox() {
-		Dropdownbox.click();
+		dropdownbox.click();
 	}
 
 	public void clickDropdownArrays() {
-		DropdownboxArrays.click();
+		dropdownboxArrays.click();
 	}
 
 	public void clickDropdownLinkedList() {
-		DropdownboxLinkedList.click();
+		dropdownboxLinkedList.click();
 	}
 
 	public void clickDropdownStack() {
-		DropdownboxStack.click();
+		dropdownboxStack.click();
 	}
 
 	public void clickDropdownQueue() {
 
-		DropdownboxQueue.click();
+		dropdownboxQueue.click();
 	}
 
 	public void clickDropdownTree() {
-		DropdownboxTree.click();
+		dropdownboxTree.click();
 	}
 
 	public void clickRegister() {
-		Register.click();
+		register.click();
 	}
 
-	public String Homepagetext() {
-		String text = Homepage.getText();
+	public String homepagetext() {
+		String text = homepage.getText();
 		return text;
 	}
 

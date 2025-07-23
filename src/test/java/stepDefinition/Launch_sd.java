@@ -21,8 +21,7 @@ public class Launch_sd {
 
 	private WebDriver driver;
 	private Launch_pf Launch_pf;
-	// private LoginPage loginpage;
-	// private CodeEditor_pf codeeditor;
+
 	String browserName;
 	ConfigReader config;
 	CommonMethods common;
@@ -51,10 +50,10 @@ public class Launch_sd {
 	}
 
 	@Then("The user should be able to land on DsAlgo portal with the message {string}")
-	public void the_user_should_be_able_to_land_on_ds_algo_portal_with_the_message(String message)
+	public void the_user_should_be_able_to_land_on_ds_algo_portal_with_the_message(String expmsg)
 			throws InterruptedException {
-		Thread.sleep(2000);
-		Assert.assertEquals(message, Launch_pf.gettextmsg());
+		String actmsg = Launch_pf.gettextmsg();
+		Assert.assertEquals(actmsg, expmsg, "user is not able see the message 'you are at rightplace' ");
 	}
 
 	@When("the user clicks Get started button")
@@ -65,7 +64,8 @@ public class Launch_sd {
 
 	@Then("the user lands on Home page")
 	public void the_user_lands_on_home_page() throws InterruptedException {
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.getTitle(), "NumpyNinja");
+		String actmsg = Launch_pf.gettitle();
+		String expmsg = "NumpyNinja";
+		Assert.assertEquals(actmsg, expmsg, "user is not on the homepage with title numpyninja");
 	}
 }

@@ -9,17 +9,38 @@ Feature: registration  page
 @register_valid
   Scenario: register with valid inputs
     When the user enters valid inputs and clicks on register button
-    Then User able to see succesfully registered  message
+    Then User able to see "user is already registered"  message
 
-@register_invalid
-  Scenario Outline: register with invalid inputs
-    When the user enters "<username>" "<password>" and "<confirm password>" and clicks register button
-    Then the user be able to see error message
- Examples:
-    
-      | username   | password   | confirm password |
-      |            |            |                  |        
-      | ninjalinos |            |                  |             
-      |            | djifejf    |                  |            
-      | dfjeifj    | jfijgisjgi |                  |    
-      | dfjeifj     | jfijgisjgi | giowehfidsjfoijd |        
+@register_Withemptyfields
+  Scenario: register with all fields empty
+  When the user clicks on register button with empty fields
+  Then the user should see error message "Please fill out this field." below usernamebox  
+  
+ @register_withonlyusername
+  Scenario: register with only username remaining all fields empty
+  When the user clicks on register button by entering username and remaining fields empty 
+  Then the user should see error message "Please fill out this field." below passwordbox
+  
+  @register_withonlypassword
+  Scenario: register with only password remaining all fields empty
+  When the user clicks on register button by entering password and reamining fields empty
+  Then the user should see error message "Please fill out this field." below usernamebox
+  
+  @register_withoutconfirmpassword
+  Scenario: register without entering confirmpassword
+  When the user clicks on register button after entering username and password with empty confirmpassword
+  Then the user should see error message "Please fill out this field." below confirmpasswordbox 
+  
+  @register_withinvaliddata
+  Scenario: register with all invalid data
+  When the user clicks on register button after entering invalid data in all fields
+  Then the user should see error message "password_mismatch:The two password fields didn’t match."
+  
+  
+  
+  
+  
+  
+  
+  
+  

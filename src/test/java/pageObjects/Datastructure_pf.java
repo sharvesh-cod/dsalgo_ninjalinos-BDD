@@ -1,8 +1,8 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
-import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
+import utils.ExcelReader;
 
 public class Datastructure_pf {
 
@@ -20,41 +21,36 @@ public class Datastructure_pf {
 	String browser;
 	WebDriverWait wait;
 
-//	WebDriver driver;
-//	Actions action;
-//	//constructor
-//	 public Datastructure_pf(WebDriver driver)
-//	{
-//		this.driver=driver;
-//		this.action = new Actions(driver);
-//		PageFactory.initElements(driver,this);
-//	}
-
 	// Locators
 
 	@FindBy(xpath = "//*[text()='Data Structures-Introduction']//../a")
 	WebElement getstartedButton_dataStructures;
 
 	@FindBy(xpath = "//*[text()='Time Complexity']")
-	WebElement TimecomplexityLink;
+	WebElement timecomplexityLink;
 
 	@FindBy(xpath = "//*[text()='Practice Questions']")
-	WebElement PracticeQuestionsLink;
+	WebElement practiceQuestionsLink;
 
 	@FindBy(xpath = "//*[text()='Try here>>>']")
-	WebElement TryhereLink;
+	WebElement tryhereLink;
 
 	@FindBy(xpath = "//div[@class='CodeMirror-lines']")
-	WebElement Tryeditorbox;
+	WebElement tryEditorbox;
 
 	@FindBy(xpath = "//*[text()='Run']")
-	WebElement RunButton;
+	WebElement runButton;
 
 	@FindBy(xpath = "//h4[text()='Data Structures-Introduction']")
-	WebElement Datastructurespagetitle;
+	WebElement datastructuresPagetitle;
 
 	@FindBy(xpath = "//p[text()='Time Complexity']")
-	WebElement Timecomplexitytitle;
+	WebElement timecomplexitytitle;
+
+	@FindBy(xpath = "//div[@align='left'] ")
+	WebElement consoleoutpt;
+
+	// div[@align='left']
 
 	public Datastructure_pf(Passing_Driver passdr) {
 
@@ -65,16 +61,13 @@ public class Datastructure_pf {
 
 	}
 
-//h4[text()='Data Structures-Introduction']
-//action methods
-
-	public String Datastructurespagetitle() {
-		String text = Datastructurespagetitle.getText();
+	public String datastructurespagetitle() {
+		String text = datastructuresPagetitle.getText();
 		return text;
 	}
 
-	public String Timecomplexitytitle() {
-		String text = Timecomplexitytitle.getText();
+	public String timecomplexitytitle() {
+		String text = timecomplexitytitle.getText();
 		return text;
 	}
 
@@ -85,59 +78,78 @@ public class Datastructure_pf {
 	public void clickTimecomplexityLink() {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("window.scrollBy(0,400)");
-		TimecomplexityLink.click();
+		timecomplexityLink.click();
 	}
 
 	public void clickPracticeQuestionsLink() {
-		PracticeQuestionsLink.click();
+		practiceQuestionsLink.click();
+	}
+
+	public void navigateback() {
+		driver.navigate().back();
 	}
 
 	public void clickTryhereLink() {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("window.scrollBy(0,400)");
-		TryhereLink.click();
+		tryhereLink.click();
 	}
 
-	public void Tryeditorboxwithinvaliddata() {
-		// Tryeditorbox.click();
+	public void tryeditorboxwithinvaliddata() {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
-
 		jse.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 				+ "editor.setValue('prin(hello world\")');");
 	}
 
-	public void Tryeditorboxvaliddata() {
+	public void tryeditorboxvaliddata() {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 				+ "editor.setValue('print(\"hello world\")');");
-		// Tryeditorbox.sendKeys("print('hello')");
+	}
+
+	public String editortxt() {
+		String txt = tryEditorbox.getText();
+		return txt;
 	}
 
 	public String tryeditorurl() {
-		String tryeditorurl;
-		@Nullable
 		String tryeditorurl1 = driver.getCurrentUrl();
 		return tryeditorurl1;
-
 	}
 
-//public void landDatastructurepage()
-//{
-//	driver.get("https://dsportalapp.herokuapp.com/");
-//	Launch_pf	lap=new Launch_pf(driver);
-//	lap.clickgetstarted();
-//	Login1pf lg=new Login1pf(driver);
-//	 lg.clickSigninLink();
-//	  lg.set_username("username");
-//	    lg.set_password("password");
-//	    lg.clickLoginbutton();
-//	   
-//}
+	public String practiceQueURl() {
+		String tryeditorurl = driver.getCurrentUrl();
+		return tryeditorurl;
+	}
+
 	public void closealert() {
 		driver.switchTo().alert().accept();
 	}
 
 	public void clickRunButton() {
-		RunButton.click();
+		runButton.click();
+	}
+
+	public String consoletxt() {
+		String msg = consoleoutpt.getText();
+		return msg;
+	}
+
+	public void setinvalidcodefromExcel() throws IOException {
+		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
+		String invalid = ExcelReader.getData(filepath, "code", 1, 0);
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
+				+ "editor.setValue('print(invalid)');");
+
+	}
+
+	public void setvalidcodefromExcel() throws IOException {
+		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
+		String valid = ExcelReader.getData(filepath, "code", 2, 0);
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript(
+				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue('print(valid)');");
+
 	}
 }

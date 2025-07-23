@@ -21,7 +21,6 @@ import utils.ConfigReader;
 
 public class Home_sd {
 	private WebDriver driver;
-	private Launch_pf queuepf;
 
 	String browserName;
 	ConfigReader config;
@@ -45,24 +44,21 @@ public class Home_sd {
 		wait.until(ExpectedConditions.urlContains(partialUrl));
 	}
 
-//	WebDriver driver = DriverFactory.driver;
-//	public Home_pf Hm;
 	@Given("the user is on DsAlgo portal")
 	public void the_user_is_on_ds_algo_portal() {
 
 		driver.get("https://dsportalapp.herokuapp.com/");
-		// Hm =new Homepf(driver);
+
 	}
 
 	@When("the user clicks on Get started button")
 	public void the_user_clicks_on_get_started_button() {
-//Launch1pf lap=new Launch1pf(driver);
 		Launch_pf.clickgetstarted();
 	}
 
 	@Given("the user is on Home page")
 	public void the_user_is_on_home_page() {
-		Assert.assertEquals(Home_pf.Homepagetext(), "NumpyNinja");
+		Assert.assertEquals(Home_pf.homepagetext(), "NumpyNinja");
 	}
 
 	@When("the user clicks on Get started button  in Data strucures-Introduction without signin")
@@ -70,9 +66,11 @@ public class Home_sd {
 		Home_pf.clickgetstartedDatastructures();
 	}
 
-	@Then("The user should able to see an warning message You are not logged in")
-	public void the_user_should_able_to_see_an_warning_message_you_are_not_logged_in() {
-		Assert.assertEquals(Home_pf.notloggedinmesg(), "You are not logged in");
+	@Then("The user should able to see an warning message {string}")
+	public void the_user_should_able_to_see_an_warning_message(String Expmsg) {
+		String actmsg = Home_pf.notloggedinmesg();
+		Assert.assertEquals(actmsg, Expmsg,
+				"the user is not able to see mesg your are not logged in because no option in the dropdown");
 	}
 
 	@When("the user clicks on Get started button in Array without signin")
@@ -108,7 +106,7 @@ public class Home_sd {
 	@When("the user clicks dropdown and select datastructures")
 	public void the_user_clicks_dropdown_and_select_datastructures() {
 		Home_pf.clickDropdownbox();
-		// Screenshot
+
 	}
 
 	@When("the user clicks dropdown and select Array")

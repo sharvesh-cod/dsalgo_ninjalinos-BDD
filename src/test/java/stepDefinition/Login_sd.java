@@ -22,8 +22,7 @@ public class Login_sd {
 	private WebDriver driver;
 	private Login_pf Login_pf;
 	private Launch_pf Launch_pf;
-	// private LoginPage loginpage;
-	// private CodeEditor_pf codeeditor;
+
 	String browserName;
 	ConfigReader config;
 	CommonMethods common;
@@ -36,7 +35,6 @@ public class Login_sd {
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
 		// this.common = new CommonMethods(passdr);
-
 	}
 
 	private void waitForTenSec(String partialUrl) {
@@ -65,7 +63,7 @@ public class Login_sd {
 	@Then("the user lands on Home page with message {string}")
 	public void the_user_lands_on_home_page_with_message(String expsuccessmsg) {
 		String actualsuccessfullmessage = Login_pf.loginsuccesfullmessage();
-		Assert.assertEquals(expsuccessmsg, actualsuccessfullmessage);
+		Assert.assertEquals(expsuccessmsg, actualsuccessfullmessage, "user is not logged in");
 
 	}
 
@@ -78,7 +76,8 @@ public class Login_sd {
 	@Then("the user should able to see error_message {string} under usernametextbox")
 	public void the_user_should_able_to_see_error_message_under_usernametextbox(String experrormsg) {
 		String actualerrormessage = Login_pf.invalidAssertionusernamebox();
-		Assert.assertEquals(actualerrormessage, experrormsg);
+		Assert.assertEquals(actualerrormessage, experrormsg,
+				"user is not able to see 'please fill out this field'message");
 	}
 
 	@When("the user clicks on loginbutton by entering username without password")
@@ -89,7 +88,8 @@ public class Login_sd {
 	@Then("the user should able to see errormessage {string} under passwordtextbox")
 	public void the_user_should_able_to_see_errormessage_under_passwordtextbox(String experrormsg) {
 		String actualerrormessage = Login_pf.invalidAssertiopasswordbox();
-		Assert.assertEquals(actualerrormessage, experrormsg);
+		Assert.assertEquals(actualerrormessage, experrormsg,
+				"user is not able to see 'please fill out this field'message");
 	}
 
 	@When("the user clicks on loginbutton by entering password without username")
@@ -100,7 +100,8 @@ public class Login_sd {
 	@Then("the user should able to see errormessage {string} under usernametextbox")
 	public void the_user_should_able_to_see_errormessage_under_usernametextbox(String experrormsg) {
 		String actualerrormessage = Login_pf.invalidAssertionusernamebox();
-		Assert.assertEquals(actualerrormessage, experrormsg);
+		Assert.assertEquals(actualerrormessage, experrormsg,
+				"user is not able to see 'please fill out this field'message");
 	}
 
 	@When("the user clicks on loginbutton by entering invalid username and invalid password")
@@ -111,23 +112,7 @@ public class Login_sd {
 	@Then("the user should able to see errormessage {string}")
 	public void the_user_should_able_to_see_errormessage(String experrormsg) {
 		String acterrormsg = Login_pf.invaliddatamessage();
-		Assert.assertEquals(experrormsg, acterrormsg);
+		Assert.assertEquals(experrormsg, acterrormsg, "user is not able to see 'please fill out this field'message");
 	}
 
-//	@When("the user enters   {string} and {string} and clicks on Login")
-//	public void the_user_enters_and_and_clicks_on_login(String username, String password) throws IOException {
-////  lg.set_invalidusername(Username);
-////  lg.set_invalidpassword(Password);
-////  lg.clickLoginbutton();
-//		System.out.println("Hello");
-//		Login_pf.setinvalidDatafromExcel();
-//	}
-//
-//	@Then("the user will able to see {string} in login page")
-//	public void the_user_will_able_to_see_in_login_page(String string) {
-//		Assert.assertEquals(Login_pf.invalidAssertion(), "Please fill out this field.",
-//				"user is not able to see error message");
-//		Assert.assertEquals(Login_pf.invalidAssertion(), "Please fill out this field.",
-//				"user is not able to see error message");
-//	}
 }
