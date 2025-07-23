@@ -2,6 +2,7 @@
 
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -15,17 +16,45 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
+import utils.ConfigReader;
+import utils.ExcelReader;
 
 public class Array_pf {
 
 	private WebDriver driver;
 	private WebDriverWait wait;
+	ExcelReader excelReader;
+	String path;
+	ConfigReader config;
 
-	public Array_pf(Passing_Driver passdr) {
+	public Array_pf(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
+		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReader(path);
 	}
+
+	// =========== LOGIN ELEMENTS ============
+
+	@FindBy(className = "btn")
+	WebElement launchBtn;
+
+	@FindBy(xpath = "//*[text()='Sign in']")
+	WebElement signinBtn;
+
+	@FindBy(id = "id_username")
+	WebElement userName;
+
+	@FindBy(id = "id_password")
+	WebElement pwd;
+
+	@FindBy(xpath = "//input[4]")
+	WebElement logInBtn;
+
+	@FindBy(xpath = "//*[text()='Sign out']")
+	WebElement signOut;
 
 	// ========== Elements ==========
 
@@ -77,6 +106,20 @@ public class Array_pf {
 	}
 
 	// ========== Actions ==========
+
+	// ============ BACKGROUND ===============
+
+	public void background_array() throws IOException {
+		driver.get(config.get_prop_value("testurl"));
+		launchBtn.click();
+		signinBtn.click();
+		String data1 = excelReader.getData("credentials", 1, 0);
+		userName.sendKeys(data1);
+		String data2 = excelReader.getData("credentials", 1, 1);
+		pwd.sendKeys(data2);
+		logInBtn.click();
+
+	}
 
 	public void clickArrayGetStarted() {
 		safeClick(arrayGetStarted);

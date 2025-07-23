@@ -15,13 +15,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.Array_pf;
 import pageObjects.CodeEditor_pf;
-import pageObjects.LoginPage_ArrayAndLinkedLists;
+//import pageObjects.LoginPage_ArrayAndLinkedLists;
 import utils.ConfigReader;
 
 public class Array_sd {
 
 	private WebDriver driver; // CODE CHANGES FOR FIREFOX
-	private LoginPage_ArrayAndLinkedLists loginpage;
+	// private LoginPage_ArrayAndLinkedLists loginpage;
 	private Array_pf array_pf;
 	private CodeEditor_pf tryeditorpage;
 	String browserName;
@@ -34,7 +34,7 @@ public class Array_sd {
 		this.array_pf = new Array_pf(passdr); // Cucumber creates a new instance of this class every time it runs a
 		// scenario,
 		// and this constructor is called automatically at that time.
-		this.loginpage = new LoginPage_ArrayAndLinkedLists(passdr);
+		// this.loginpage = new LoginPage_ArrayAndLinkedLists(passdr);
 		this.tryeditorpage = new CodeEditor_pf(passdr);
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
@@ -52,11 +52,12 @@ public class Array_sd {
 
 	@Given("The user is in array page after logging in") // BACKGROUND
 	public void the_user_is_in_array_page_after_logging_in() throws IOException, InterruptedException {
-		loginpage.launch();
-		loginpage.signin_btn();
-		loginpage.user_name();
-		loginpage.password();
-		loginpage.login_btn();
+//		loginpage.launch();
+//		loginpage.signin_btn();
+//		loginpage.user_name();
+//		loginpage.password();
+//		loginpage.login_btn();
+		array_pf.background_array();
 		array_pf.clickArrayGetStarted();
 		System.out.println("output 1");
 

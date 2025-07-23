@@ -2,6 +2,7 @@
 
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,21 +15,50 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
+import utils.ConfigReader;
+import utils.ExcelReader;
 
 public class LinkedListPage_pf {
 
 	private WebDriver driver;
 	private Actions action;
 	WebDriverWait wait;
+	ExcelReader excelReader;
+	String path;
+	ConfigReader config;
 
-	public LinkedListPage_pf(Passing_Driver passdr) {
+	public LinkedListPage_pf(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
+		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
 		this.action = new Actions(driver);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReader(path);
 	}
 
-	// WebElements
+	// =========== LOGIN ELEMENTS ============
+
+	@FindBy(className = "btn")
+	WebElement launchBtn;
+
+	@FindBy(xpath = "//*[text()='Sign in']")
+	WebElement signinBtn;
+
+	@FindBy(id = "id_username")
+	WebElement userName;
+
+	@FindBy(id = "id_password")
+	WebElement pwd;
+
+	@FindBy(xpath = "//input[4]")
+	WebElement logInBtn;
+
+	@FindBy(xpath = "//*[text()='Sign out']")
+	WebElement signOut;
+
+	// ========== ELEMENTS ==================
+
 	@FindBy(xpath = "//h5[text()='Linked List']/../a[text()='Get Started']")
 	WebElement llGetStarted; // ADDING NEW ELEMENT REMOVE IT AFTER MOCK TESTING
 
@@ -59,13 +89,29 @@ public class LinkedListPage_pf {
 	@FindBy(xpath = "//a[text()='Practice Questions']")
 	WebElement practiceQuestionsLink;
 
-	// Helper method
+	// ========== Helper method ================
+
 	private void safeClick(WebElement element) {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
 
-	// Actions
+	// ========== Actions =====================
+
+	// ============ BACKGROUND ===============
+
+	public void background_linkedList() throws IOException {
+		driver.get(config.get_prop_value("testurl"));
+		launchBtn.click();
+		signinBtn.click();
+		String data1 = excelReader.getData("credentials", 1, 0);
+		userName.sendKeys(data1);
+		String data2 = excelReader.getData("credentials", 1, 1);
+		pwd.sendKeys(data2);
+		logInBtn.click();
+
+	}
+
 	public void clickllGetStarted() {
 		safeClick(llGetStarted);
 	}
