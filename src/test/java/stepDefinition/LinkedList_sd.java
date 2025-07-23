@@ -14,16 +14,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.LinkedListPage_pf;
-import pageObjects.LoginPage;
-import pageObjects.TryEditorPage_pf;
+import pageObjects.LoginPage_ArrayAndLinkedLists;
+import pageObjects.CodeEditor_pf;
 import utils.ConfigReader;
 
 public class LinkedList_sd {
 
 	private WebDriver driver; // CODE CHANGES FOR FIREFOX
-	private LoginPage loginpage;
+	private LoginPage_ArrayAndLinkedLists loginpage;
 	private LinkedListPage_pf ll_pf;
-	private TryEditorPage_pf tryeditorpage;
+	private CodeEditor_pf tryeditorpage;
 	String browserName;
 	ConfigReader config;
 	// CommonMethods common;
@@ -33,8 +33,8 @@ public class LinkedList_sd {
 		this.driver = passdr.getDriver();
 		this.ll_pf = new LinkedListPage_pf(passdr); // Cucumber creates a new instance of this class every time it runs
 													// a
-		this.loginpage = new LoginPage(passdr);
-		this.tryeditorpage = new TryEditorPage_pf(passdr);
+		this.loginpage = new LoginPage_ArrayAndLinkedLists(passdr);
+		this.tryeditorpage = new CodeEditor_pf(passdr);
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
 		// this.common = new CommonMethods(passdr);
@@ -139,7 +139,7 @@ public class LinkedList_sd {
 
 	@Then("The user should see output in the console in LL")
 	public void the_user_should_see_output_in_the_console_in_ll() {
-		String output = tryeditorpage.outputText();
+		String output = tryeditorpage.output_text();
 		assertEquals("Hello World", output);
 	}
 

@@ -1,6 +1,7 @@
 package pageObjects;
 
 import java.io.IOException;
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +14,7 @@ import driverManager.Passing_Driver;
 import utils.ConfigReader;
 import utils.ExcelReader;
 
-public class LoginPage {
+public class LoginPage_ArrayAndLinkedLists {
 
 	ConfigReader config;
 	String browser;
@@ -21,13 +22,18 @@ public class LoginPage {
 	private WebDriver driver;
 	private Actions action;
 	WebDriverWait wait;
+	ExcelReader excelReader;
+	String path;
 
-	public LoginPage(Passing_Driver passdr) throws IOException {
+	public LoginPage_ArrayAndLinkedLists(Passing_Driver passdr) throws IOException {
 		// DsAlgoHooks hooks = new DsAlgoHooks();
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReader(path);
 	}
 
 //	public LoginPage(WebDriver driver) {
@@ -66,18 +72,18 @@ public class LoginPage {
 	}
 
 	public void user_name() throws IOException, InterruptedException {
-		String path = config.get_prop_value("path");
-		ExcelReader reader = new ExcelReader(path, "credentials");
-		String data = reader.getData(1, 0);
+		// String path = config.get_prop_value("path");
+		// ExcelReader reader = new ExcelReader(path, "credentials");
+		String data = excelReader.getData("credentials", 1, 0);
 		// String data = ExcelReader.getData(path, "credentials", 1, 0);
 		userName.sendKeys(data);
 
 	}
 
 	public void password() throws IOException, InterruptedException {
-		String path = config.get_prop_value("path");
-		ExcelReader reader = new ExcelReader(path, "credentials");
-		String data = reader.getData(1, 1);
+		// String path = config.get_prop_value("path");
+		// ExcelReader reader = new ExcelReader(path, "credentials");
+		String data = excelReader.getData("credentials", 1, 1);
 		// String data = ExcelReader.getData(path, "credentials", 1, 1);
 		pwd.sendKeys(data);
 

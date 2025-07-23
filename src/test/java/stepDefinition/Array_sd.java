@@ -14,16 +14,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.Array_pf;
-import pageObjects.LoginPage;
-import pageObjects.TryEditorPage_pf;
+import pageObjects.CodeEditor_pf;
+import pageObjects.LoginPage_ArrayAndLinkedLists;
 import utils.ConfigReader;
 
 public class Array_sd {
 
 	private WebDriver driver; // CODE CHANGES FOR FIREFOX
-	private LoginPage loginpage;
+	private LoginPage_ArrayAndLinkedLists loginpage;
 	private Array_pf array_pf;
-	private TryEditorPage_pf tryeditorpage;
+	private CodeEditor_pf tryeditorpage;
 	String browserName;
 	ConfigReader config;
 	// CommonMethods common;
@@ -34,8 +34,8 @@ public class Array_sd {
 		this.array_pf = new Array_pf(passdr); // Cucumber creates a new instance of this class every time it runs a
 		// scenario,
 		// and this constructor is called automatically at that time.
-		this.loginpage = new LoginPage(passdr);
-		this.tryeditorpage = new TryEditorPage_pf(passdr);
+		this.loginpage = new LoginPage_ArrayAndLinkedLists(passdr);
+		this.tryeditorpage = new CodeEditor_pf(passdr);
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
 		// this.common = new CommonMethods(passdr);
@@ -116,6 +116,9 @@ public class Array_sd {
 	@Then("The user should see an error message in alert window")
 	public void the_user_should_see_an_error_message_in_alert_window() {
 		tryeditorpage.getErrMsg_NoCode();
+		// tryeditorpage.alertMsg();
+		String errorMsg = tryeditorpage.alertMsg();
+		assertEquals("Enter code", errorMsg);
 	}
 
 	@When("The user clicks Run button after writing invalid code in editor")
@@ -145,7 +148,7 @@ public class Array_sd {
 
 	@Then("The user should able to see output in the console")
 	public void the_user_should_able_to_see_output_in_the_console() {
-		String output = tryeditorpage.outputText();
+		String output = tryeditorpage.output_text();
 		assertEquals("Hello World", output);
 
 	}
@@ -319,7 +322,7 @@ public class Array_sd {
 
 	@Then("The user see an error message Error occurred during submission")
 	public void the_user_see_an_error_message_error_occurred_during_submission() {
-		String output = tryeditorpage.outputText();
+		String output = tryeditorpage.output_text();
 		// assertEquals("Error occurred during submission", output);
 		System.out.println(output);
 
@@ -343,7 +346,7 @@ public class Array_sd {
 
 	@Then("The user should able to see output in the console question1")
 	public void the_user_should_able_to_see_output_in_the_console_question1() throws InterruptedException {
-		String output = tryeditorpage.outputText();
+		String output = tryeditorpage.output_text();
 		assertEquals("hello", output);
 		System.out.println(output);
 	}
@@ -364,7 +367,7 @@ public class Array_sd {
 
 	@Then("The user see success message Submission successful")
 	public void the_user_see_success_message_submission_successful() {
-		String output = tryeditorpage.outputText();
+		String output = tryeditorpage.output_text();
 		// assertEquals("Error occurred during submission", output);
 		// System.out.println(output);
 		System.out.println("It is a bug not getting success message");
@@ -401,7 +404,7 @@ public class Array_sd {
 
 	@Then("The user should able to see output in the console question2")
 	public void the_user_should_able_to_see_output_in_the_console_question2() {
-		String output = tryeditorpage.outputText();
+		String output = tryeditorpage.output_text();
 		// assertEquals("Valid code", output);
 		System.out.println(output);
 	}
@@ -443,7 +446,7 @@ public class Array_sd {
 
 	@Then("The user should able to see output in the console question3")
 	public void the_user_should_able_to_see_output_in_the_console_question3() {
-		String output = tryeditorpage.outputText();
+		String output = tryeditorpage.output_text();
 		// assertEquals("Valid code", output);
 		System.out.println(output);
 	}
@@ -486,7 +489,7 @@ public class Array_sd {
 
 	@Then("The user should able to see output in the console question4")
 	public void the_user_should_able_to_see_output_in_the_console_question4() {
-		String output = tryeditorpage.outputText();
+		String output = tryeditorpage.output_text();
 		// assertEquals("Valid code", output);
 		System.out.println(output);
 	}
