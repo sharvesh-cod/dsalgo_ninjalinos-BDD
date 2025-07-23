@@ -12,16 +12,17 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import driverManager.DriverFactory;
+import driverManager.Passing_Driver;
+import utils.ConfigReader;
 
 public class Tree_pf {
 
 	private WebDriver driver;
-	private Wait<WebDriver> wait;
 	private Actions action;
+	String browser;
+	WebDriverWait wait;
 
 	@FindBy(xpath = "//h5[text()='Tree']/../../..//a[contains(text(),'Get Started' )]")
 	WebElement treegetStartedButton;
@@ -73,28 +74,36 @@ public class Tree_pf {
 	WebElement outputTxt;
 	@FindBy(xpath = "//*[text()='Practice Questions']")
 	WebElement practQuestTree;
+	CodeEditor_pf codeEditor;
+	ConfigReader config;
 
-	CodeEditor_pf codeEditor = new CodeEditor_pf();
-
-	public Tree_pf() {
-		this.driver = DriverFactory.getDriver();
+	public Tree_pf(Passing_Driver passdr) throws IOException {
+		this.driver = passdr.getDriver();
+		this.action = new Actions(driver);
+		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
-		action = new Actions(driver);
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	// background given
 	public void background_getToTree() throws InterruptedException {
-		driver.get("https://dsportalapp.herokuapp.com/");
-		loginGetStarted.click();
-		signin.click();
-		usernameField.sendKeys("ninjalinos@work.com");
-		passwordField.sendKeys("sdet218920@");
+		driver.get(config.get_prop_value("testurl"));
+		action.scrollToElement(loginGetStarted).perform();
+		action.click(loginGetStarted).perform();
+		wait.until(ExpectedConditions.visibilityOf(signin));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", signin);
+		action.click(signin).perform();
+		wait.until(ExpectedConditions.visibilityOf(usernameField));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", usernameField);
+		action.click(usernameField).perform();
+		action.sendKeys(usernameField, config.get_prop_value("username")).perform();
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", passwordField);
+		passwordField.sendKeys(config.get_prop_value("password"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginButton);
 		loginButton.click();
 		wait.until(ExpectedConditions.visibilityOf(treegetStartedButton));
-		action.scrollToElement(treegetStartedButton).perform();
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", treegetStartedButton);
 		action.click(treegetStartedButton).perform();
-
 	}
 
 	public void practice_Tree() {
@@ -115,7 +124,6 @@ public class Tree_pf {
 	}
 
 	public void verifyLinks() {
-
 		List<String> expectedLinks = Arrays.asList("Overview of trees", "Terminologies", "Types of Tree",
 				"Tree Traversals", "Traversals-Illustration", "Binary Trees", "Types of Binary",
 				"Implementation in Python", "Binary Tree Traversals", "Applications of Binary trees",
@@ -162,18 +170,6 @@ public class Tree_pf {
 		action.scrollToElement(runButton).perform();
 		action.click(runButton).perform();
 	}
-
-	public void txtEditor_correctCode() throws IOException {
-		wait.until(ExpectedConditions.visibilityOf(textEditor));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", textEditor);
-		action.scrollToElement(textEditor).perform();
-		codeEditor.txtEditor_invalidCode();
-	}
-
-//	public void txtEditor_invalidCode() {
-//		action.scrollToElement(textEditor).perform();
-//		action.sendKeys(textEditor, "pnt('Hello World');").perform();
-//	}
 
 	public void click_Terminilogy() {
 		wait.until(ExpectedConditions.visibilityOf(terminologies));

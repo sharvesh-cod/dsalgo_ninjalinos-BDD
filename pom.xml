@@ -64,12 +64,11 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.4.1</version>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>chaintest-cucumber-jvm</artifactId>
 			<version>1.0.12</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
@@ -78,7 +77,7 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
-			<version>7.23.0</version>
+			<version>7.25.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>

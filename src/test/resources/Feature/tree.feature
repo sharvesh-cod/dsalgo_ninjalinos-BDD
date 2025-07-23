@@ -13,30 +13,30 @@ Feature: Tree Module in DsAlgo portal
     When The user scroll down the page
     Then User should view all the links available in page
 
-   @TreeOverview
+   @TreeOverview @T1
    Scenario: Verify that the user is able to navigate to Overview of Tree page
     When user clicks on overview button of Tree module
     Then user successfully navigates to the Overview of Tree page
 
-   @OverviewTreeTryHere
+   @OverviewTreeTryHere @T1
    Scenario: Verify user is able to open Try here page from operations in tree overview page
     Given The user in the overview page of tree module
     When user clicks on try here button in Overview of Tree page
     Then user successfully navigates to code editor of the Overview of Tree page
 
-  @OverviewTreeWithoutCode
+  @OverviewTreeWithoutCode @T1
   Scenario: Run without code in Overview of Trees
     Given The user in tryEditor page
     When The user clicks Run without entering code
     Then An alert message should appear
 
-  @OverviewTreeValidCode
+  @OverviewTreeValidCode @T1
   Scenario: Run with valid code in Overview of Trees
     Given The user in tryEditor page
     When The user clicks Run after entering valid code
     Then The output should be displayed in the console
 
-  @OverviewTreeInValidCode
+  @OverviewTreeInValidCode @T1
   Scenario: Run with invalid code in Overview of Trees
     Given The user in tryEditor page
     When The user clicks run after entering invalid code

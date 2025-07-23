@@ -1,6 +1,5 @@
 @NinjalinosGraph
 Feature: Tree Module in DsAlgo portal 
-
 	As a registered user,
   I want to navigate and interact with Graph module pages and editors,
   So that I can explore and practice tree-related concepts.
@@ -15,7 +14,7 @@ Scenario: Verify that the user is able to navigate to Graphlink page
 @G03	
 Scenario: Verify user is able to navigate to text editor on Graph section 
 	When user click on try here link on graph module 
-	Then user should navigate to text editor page of graph
+	Then user should navigate to text editor page of graph section
 @G04
 Scenario: Run without code on Graph text editor
   Given The user in tryEditor page of graphlink section
@@ -24,12 +23,12 @@ Scenario: Run without code on Graph text editor
 @G05	
 Scenario: Verify if running with valid input, output should be printed in console
   Given The user in tryEditor page of graphlink section  
-	When user click button after entering the valid python code on the text editor 
+	When user click button after entering the valid python code on the text editor
 	Then user should be able to see ouput in the console
 @G06
 Scenario:  After entering invalid input, user should see the alert message
   Given The user in tryEditor page of graphlink section
-	When user click button after entering the invalid python code on the text editor of graphlink 
+	When user click button after entering the invalid python code on the text editor 
 	Then user should be able to see alert message in window
 @G07
 Scenario: Navigate to Graph Representation 
@@ -42,18 +41,18 @@ Scenario: Verify user is able to navigate to text editor on Graph Representation
 @G09
 Scenario: Run without code on Graph Representation text editor
 	Given The user in tryEditor page of graph representation section
-	When The user click run button without entering code
+	When user click on run button without code
 	Then user should be able to see alert message to enter the valid code
 @G10	
 Scenario: After entering valid input, output should be printed in console
   Given The user in tryEditor page of graph representation section  
-	When user click button after entering the valid python code on the text editor 
+	When user click button after entering the valid python code on the text editor
 	Then user should be able to see ouput in the console
 @G11
 Scenario: After entering invalid input, user should see the alert message
-  Given The user in tryEditor page of graph representation section
-	When user click button after entering the invalid python code on the text editor 
-	Then user should be able to see alert message
+   Given The user in tryEditor page of graph representation section
+  When user click button after entering the invalid python code on the text editor 
+Then user should be able to see alert message in window
 	
 @G12
   Scenario: Verify that the user is able to navigate to practice questions from Graph module

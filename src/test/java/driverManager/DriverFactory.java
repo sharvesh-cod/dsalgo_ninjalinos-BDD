@@ -1,69 +1,71 @@
 package driverManager;
 
-import java.time.Duration;
-import java.util.Objects;
+import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.firefox.FirefoxOptions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import utils.ConfigReader;
 
 public class DriverFactory {
 
-	public WebDriver driver;
-	public WebDriverWait wait;
-	// ThreadLocal WebDriver for parallel testing
-	public static ThreadLocal<WebDriver> tldriver = new ThreadLocal();
+	private WebDriver driver;
+	String browser;
+	String headless;
+
+	public DriverFactory(ConfigReader config) throws IOException {
+		this.browser = config.get_prop_value("browser");
+		this.headless = config.get_prop_value("headless");
+	}
 
 	// Initialize WebDriver based on browser name
-	public WebDriver initBrowser(String browser) {
-
-		System.out.println("Initializing browser: " + browser);
-
+	public WebDriver initBrowser(String browser, String headless) {
 		if (browser.equalsIgnoreCase("chrome")) {
-			tldriver.set(new ChromeDriver());
+			if (headless.equalsIgnoreCase("true")) {
+				ChromeOptions options = new ChromeOptions();
+				// options.addArguments("--headless=new");
+				options.addArguments("--start-maximized");
+				options.addArguments("--remote-allow-origins=*");
+				driver = new ChromeDriver(options);
+				WebDriverManager.chromedriver().setup();
+			} else {
+				driver = new ChromeDriver();
+				WebDriverManager.chromedriver().setup();
+			}
+		} else if (browser.equalsIgnoreCase("firefox")) {
+			if (headless.equalsIgnoreCase("true")) {
+				FirefoxOptions options = new FirefoxOptions();
+				options.addArguments("--headless");
+				driver = new FirefoxDriver(options);
+			} else {
+				driver = new FirefoxDriver();
+			}
+		} else if (browser.equalsIgnoreCase("edge")) {
+			if (headless.equalsIgnoreCase("true")) {
+				EdgeOptions options = new EdgeOptions();
+				options.addArguments("--headless=new");
+				driver = new EdgeDriver(options);
+			} else {
+				driver = new EdgeDriver();
+			}
+		} else {
+			throw new IllegalArgumentException("Unsupported Browser:" + browser);
 		}
-
-		else if (browser.equalsIgnoreCase("Safari")) {
-			tldriver.set(new SafariDriver());
-		}
-
-		else if (browser.equalsIgnoreCase("edge")) {
-			tldriver.set(new EdgeDriver());
-		}
-
-		else if (browser.equalsIgnoreCase("firefox")) {
-			tldriver.set(new FirefoxDriver());
-		}
-		WebDriver wd = getDriver();
-		wd.manage().deleteAllCookies();
-		wd.manage().window().maximize();
-		wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
-		return wd;
+		return driver;
 	}
 
-	// used to get the driver with ThreadLocal for parallel testing
-	// thread local is used to make sure that each thread(test cases) getting its
-	// own isolated web driver instance
-
-	public static synchronized WebDriver getDriver() {
-
-		if (Objects.isNull(tldriver.get())) {
-			throw new IllegalStateException("WebDriver not initialized for the current thread.");
-		}
-		return tldriver.get();
+	public String return_browser() {
+		return browser;
 	}
 
-	// cleanup thread
-
-	public static void quitDriver() {
-		if (tldriver.get() != null) {
-			tldriver.get().quit();
-			tldriver.remove();
-		}
-
+	public String return_headless_option() {
+		return headless;
 	}
 
 }

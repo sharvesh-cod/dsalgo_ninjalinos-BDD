@@ -1,24 +1,27 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import driverManager.DriverFactory;
+import driverManager.Passing_Driver;
+import utils.ConfigReader;
 
 public class Graph_pf {
 
 	private WebDriver driver;
-	private Wait<WebDriver> wait;
+	WebDriverWait wait;
 	private Actions action;
+	String browser;
 
 	@FindBy(xpath = "//a[text()='Get Started' and @href='graph']")
 	WebElement graphGetStarted;
@@ -28,7 +31,7 @@ public class Graph_pf {
 	WebElement graphRepr;
 	@FindBy(tagName = "a")
 	List<WebElement> graphLinks;
-	@FindBy(xpath = "//a[contains(text(),'Try here')]")
+	@FindBy(xpath = "//a[@href='/tryEditor' and contains(text(),'Try here')]")
 	WebElement tryHereButton;
 	@FindBy(xpath = "//button[contains(text(),'Run')]")
 	WebElement runButton;
@@ -51,24 +54,35 @@ public class Graph_pf {
 	WebElement loginGetStarted;
 	@FindBy(id = "content")
 	WebElement practicePage;
+	CodeEditor_pf codeEditor;
+	ConfigReader config;
 
-	public Graph_pf() {
-		this.driver = DriverFactory.getDriver();
+	public Graph_pf(Passing_Driver passdr) throws IOException {
+		this.driver = passdr.getDriver();
+		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
-		action = new Actions(driver);
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		this.config = new ConfigReader();
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	// background given
 	public void background_getTograph() throws InterruptedException {
-		driver.get("https://dsportalapp.herokuapp.com/");
-		loginGetStarted.click();
-		signin.click();
-		usernameField.sendKeys("ninjalinos@work.com");
-		passwordField.sendKeys("sdet218920@");
+		driver.get(config.get_prop_value("testurl"));
+		action.scrollToElement(loginGetStarted).perform();
+		action.click(loginGetStarted).perform();
+		wait.until(ExpectedConditions.visibilityOf(signin));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", signin);
+		action.click(signin).perform();
+		wait.until(ExpectedConditions.visibilityOf(usernameField));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", usernameField);
+		action.click(usernameField).perform();
+		action.sendKeys(usernameField, config.get_prop_value("username")).perform();
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", passwordField);
+		passwordField.sendKeys(config.get_prop_value("password"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginButton);
 		loginButton.click();
 		wait.until(ExpectedConditions.visibilityOf(graphGetStarted));
-		action.scrollToElement(graphGetStarted).perform();
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", graphGetStarted);
 		action.click(graphGetStarted).perform();
 	}
 
@@ -88,8 +102,9 @@ public class Graph_pf {
 		action.click(graph).perform();
 	}
 
-	public void click_TryEditor() {
-		action.scrollToElement(tryHereButton).perform();
+	public void click_TryEditor() throws InterruptedException {
+		Thread.sleep(3000);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", tryHereButton);
 		action.click(tryHereButton).perform();
 	}
 
@@ -97,22 +112,6 @@ public class Graph_pf {
 		action.scrollToElement(runButton).perform();
 		action.click(runButton).perform();
 	}
-
-//	public void clickRun_InvalidCode() {
-//		action.scrollToElement(runButton).perform();
-//		action.click(runButton).perform();
-//		wait.until(ExpectedConditions.alertIsPresent());
-//
-//	}
-
-//	public void txtEditor_correctCode() throws IOException, InterruptedException {
-//
-//		action.scrollToElement(textEditor).perform();
-//		action.sendKeys(ExcelReaderFile.getData(path, "TextEditor", 1, 0)).perform();
-//		Thread.sleep(5000);
-//		action.click(runButton).perform();
-//		Thread.sleep(5000);
-//	}
 
 	public String outputMsgGraph() {
 		action.scrollToElement(outputTxt).perform();

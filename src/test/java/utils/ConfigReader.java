@@ -6,13 +6,18 @@ import java.util.Properties;
 
 public class ConfigReader {
 	private Properties prop;
+	FileInputStream fis;
 
-	public Properties initProp() throws IOException {
+	public ConfigReader() throws IOException {
 		prop = new Properties();
-		FileInputStream fis = new FileInputStream("./src/test/resources/config/config.properties");
-		// if possible
+		this.fis = new FileInputStream("src/test/resources/config/config.properties");
 		prop.load(fis);
-		return prop;
+
+	}
+
+	public String get_prop_value(String key) {
+		String prop_value = prop.getProperty(key);
+		return prop_value;
 	}
 
 }

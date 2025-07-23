@@ -43,7 +43,7 @@ public class ExcelReaderFile {
 
 //to get the Cell Data
 	public static String getData(String xfilePath, String sheetName, int rowNum, int cellCount) throws IOException {
-		
+
 		fis = new FileInputStream(xfilePath);
 		wb = new XSSFWorkbook(fis);
 		sheet = wb.getSheet(sheetName);
@@ -51,10 +51,9 @@ public class ExcelReaderFile {
 		cell = row.getCell(cellCount);
 		String cellData;
 		try {
-		DataFormatter df = new DataFormatter();
-		cellData = df.formatCellValue(cell);
-		}
-		catch (Exception e) {
+			DataFormatter df = new DataFormatter();
+			cellData = df.formatCellValue(cell);
+		} catch (Exception e) {
 			cellData = "";
 		}
 		return cellData;
@@ -75,9 +74,7 @@ public class ExcelReaderFile {
 		wb.close();
 		fos.close();
 		fis.close();
-		
-		
-		
+
 	}
 
 }

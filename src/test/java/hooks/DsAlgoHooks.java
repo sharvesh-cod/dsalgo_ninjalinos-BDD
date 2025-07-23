@@ -1,47 +1,40 @@
 package hooks;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Properties;
+import java.time.Duration;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import driverManager.DriverFactory;
+import driverManager.Passing_Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import utils.ConfigReader;
 
 public class DsAlgoHooks {
 
-	private DriverFactory driverFactory;
 	private WebDriver driver;
-	private ConfigReader configreader;
-	Properties prop;
 
-	@Before(order = 0)
-	public void getProperty() throws IOException {
-
-		configreader = new ConfigReader();
-		prop = configreader.initProp();
-
+	public DsAlgoHooks(Passing_Driver passdr) {
+		this.driver = passdr.getDriver();
 	}
 
-	@Before(order = 1)
-	public void launchBrowser() {
-		String browserName = prop.getProperty("browser");
-		driverFactory = new DriverFactory();
-		driver = driverFactory.initBrowser(browserName);
-
+	@Before
+	public void setup() {
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 	}
 
 	@After(order = 1)
 	public void tearDown(Scenario scenario) {
-
 		if (scenario.isFailed()) {
+			// take a screenshot
+			String screenshotName = scenario.getName().replaceAll(" ", "_");
+			byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+			scenario.attach(sourcePath, "image/png", screenshotName);
 			try {
 				// Create folder if it doesn't exist
 				String folderPath = System.getProperty("user.dir") + "/reports/screenshots/";
@@ -50,9 +43,9 @@ public class DsAlgoHooks {
 					screenshotDir.mkdirs(); // creates folder structure
 				}
 				// take a screenshot
-				String screenshotName = scenario.getName().replaceAll(" ", "_");
+				String savedScreenshot = scenario.getName().replaceAll(" ", "_");
 				File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-				File destFile = new File(folderPath + screenshotName + ".png");
+				File destFile = new File(folderPath + savedScreenshot + ".png");
 
 				// Save file
 				FileUtils.copyFile(srcFile, destFile);
@@ -65,10 +58,10 @@ public class DsAlgoHooks {
 
 	}
 
-//	@After(order = 0)
-//	public void closeBrowser() {
-//		if (driver != null) {
-//			driver.quit();
-//		}
-//	}
+	@After(order = 0)
+	public void closeBrowser() {
+		if (driver != null) {
+			driver.quit();
+		}
+	}
 }
