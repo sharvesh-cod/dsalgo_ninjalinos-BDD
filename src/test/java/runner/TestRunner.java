@@ -7,7 +7,8 @@ import io.cucumber.testng.CucumberOptions;
 
 //@RunWith(Cucumber.class) //Junit execution
 
-@CucumberOptions(plugin = { "pretty", "html:target/cucumber-reports" }, // reporting purpose
+@CucumberOptions(plugin = { "pretty", "com.aventstack.chaintest.plugins.ChainTestCucumberListener:",
+		"html:target/dsAlgo_Ninjalinos_BDD.html" }, // reporting purpose
 		glue = { "hooks", "stepDefinition" }, // location of step definition files
 		tags = "@array or @linkedList",
 		// tags = "@A1 or @A2 or @A3 or @A4 or @A5 or @A6 or @A7 or @A8 or @A9 or @A10

@@ -17,6 +17,7 @@ import pageObjects.Array_pf;
 import pageObjects.CodeEditor_pf;
 //import pageObjects.LoginPage_ArrayAndLinkedLists;
 import utils.ConfigReader;
+import utils.LoggerLoad;
 
 public class Array_sd {
 
@@ -27,6 +28,7 @@ public class Array_sd {
 	String browserName;
 	ConfigReader config;
 	// CommonMethods common;
+	LoggerLoad log;
 
 	public Array_sd(Passing_Driver passdr) throws IOException { // This is the constructor for your step definition
 																// class Array_sd.
@@ -39,6 +41,7 @@ public class Array_sd {
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
 		// this.common = new CommonMethods(passdr);
+		this.log = new LoggerLoad();
 	}
 	// NOTES: This is safe because Cucumber creates a new step definition instance
 	// per scenario by default
@@ -117,6 +120,8 @@ public class Array_sd {
 	@Then("The user should see an error message in alert window")
 	public void the_user_should_see_an_error_message_in_alert_window() {
 		tryeditorpage.getErrMsg_NoCode();
+		log.error(
+				"There is no alert message displayed when we click on run button without entering any code in the code editor in array module");
 		// tryeditorpage.alertMsg();
 		String errorMsg = tryeditorpage.alertMsg();
 		assertEquals("Enter code", errorMsg);

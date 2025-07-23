@@ -73,6 +73,19 @@
 			<artifactId>cucumber-picocontainer</artifactId>
 			<version>7.23.0</version>
 		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/com.aventstack/chaintest-cucumber-jvm -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>chaintest-cucumber-jvm</artifactId>
+			<version>1.0.12</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.34</version>
+		</dependency>
 		
 	</dependencies>
 </project>

@@ -17,6 +17,7 @@ import pageObjects.CodeEditor_pf;
 import pageObjects.LinkedListPage_pf;
 //import pageObjects.LoginPage_ArrayAndLinkedLists;
 import utils.ConfigReader;
+import utils.LoggerLoad;
 
 public class LinkedList_sd {
 
@@ -27,6 +28,7 @@ public class LinkedList_sd {
 	String browserName;
 	ConfigReader config;
 	// CommonMethods common;
+	LoggerLoad log;
 
 	public LinkedList_sd(Passing_Driver passdr) throws IOException { // This is the constructor for your step definition
 																		// class Array_sd.
@@ -38,6 +40,7 @@ public class LinkedList_sd {
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
 		// this.common = new CommonMethods(passdr);
+		this.log = new LoggerLoad();
 	}
 
 	// CODE CHANGES FOR FIREFOX
@@ -114,6 +117,11 @@ public class LinkedList_sd {
 	@Then("The user should see an error message in alert window for no code in LL")
 	public void the_user_should_see_an_error_message_in_alert_window_for_no_code_in_ll() {
 		tryeditorpage.getErrMsg_NoCode();
+		log.error(
+				"There is no alert message displayed when we click on run button without entering any code in the code editor in linked list module");
+		// tryeditorpage.alertMsg();
+		String errorMsg = tryeditorpage.alertMsg();
+		assertEquals("Enter code", errorMsg);
 	}
 
 	@When("The user clicks run button after writing invalid code in editor in LL")
@@ -376,6 +384,7 @@ public class LinkedList_sd {
 		waitForTenSec("/linked-list/practice");
 		String url = ll_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/linked-list/practice", url);
+		log.error("There are no practice questions available in the linked List module");
 	}
 
 }
