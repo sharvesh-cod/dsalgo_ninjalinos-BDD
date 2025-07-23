@@ -15,8 +15,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
-import helpers.ExcelReaderFile;
 import utils.ConfigReader;
+import utils.ExcelReaderFile;
 
 public class CodeEditor_pf {
 
@@ -27,13 +27,12 @@ public class CodeEditor_pf {
 	JavascriptExecutor js;
 	WebDriverWait wait;
 	ConfigReader config;
-
+	// ExcelReaderFile excelReader;
+	// String path
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]/div")
 	WebElement textEditor;
-
 	@FindBy(xpath = "//button[contains(text(),'Run')]")
 	WebElement runBtn;
-
 	@FindBy(id = "output")
 	WebElement outputTxt;
 
@@ -44,6 +43,8 @@ public class CodeEditor_pf {
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		PageFactory.initElements(driver, this);
 		this.config = new ConfigReader();
+		// this.path = config.get_prop_value("path");
+		// this.excelReader = new ExcelReaderFile(path);
 	}
 
 	public void txtEditor_invalidCode() throws IOException, InterruptedException {
@@ -72,7 +73,7 @@ public class CodeEditor_pf {
 		action.click(runBtn).perform();
 	}
 
-	public void run() {
+	public void clickRunBtn() {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", runBtn);
 		action.scrollToElement(runBtn).perform();
 		action.click(runBtn).perform();
@@ -81,6 +82,7 @@ public class CodeEditor_pf {
 	public String output_text() {
 		// ((JavascriptExecutor)
 		// driver).executeScript("arguments[0].scrollIntoView(true);", outputTxt);
+		wait.until(ExpectedConditions.visibilityOf(outputTxt));
 		action.scrollToElement(outputTxt).perform();
 		String outputText = outputTxt.getText();
 		return outputText;
@@ -94,6 +96,7 @@ public class CodeEditor_pf {
 	}
 
 	public void handle_alert() {
+		wait.until(ExpectedConditions.alertIsPresent());
 		alert = driver.switchTo().alert();
 		alert.accept();
 

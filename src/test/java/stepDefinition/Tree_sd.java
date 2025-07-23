@@ -79,7 +79,7 @@ public class Tree_sd {
 
 	@Then("user successfully navigates to code editor of the Overview of Tree page")
 	public void user_successfully_navigates_to_code_editor_of_the_overview_of_tree_page() throws IOException {
-		String actualUrl = common.getCurrentUrl();
+		String actualUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tryEditor";
 		Assert.assertEquals(actualUrl, expectedUrl, "Not landed in Try Editor page");
 	}
@@ -175,7 +175,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the text editor")
 	public void the_user_should_be_navigated_to_the_text_editor() throws IOException {
-		String textEditorUrl = common.getCurrentUrl();
+		String textEditorUrl = common.currentUrl();
 		System.out.println("Customer in :" + textEditorUrl + "page");
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tryEditor";
 		Assert.assertEquals(textEditorUrl, expectedUrl, "Not landed in Try Editor page");
@@ -219,7 +219,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Traversals-Illustration page")
 	public void navigate_TraversalsIllustration() {
-		String treesUrl = common.getCurrentUrl();
+		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/traversals-illustration/";
 		System.out.println("user logged into " + treesUrl + " traversalas-illustration page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on traversalas-illustaration page");
@@ -228,7 +228,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Tree Traversals page")
 	public void the_user_should_be_navigated_to_the_tree_traversals_page() {
-		String treesUrl = common.getCurrentUrl();
+		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/tree-traversals/";
 		System.out.println("user logged into " + treesUrl + "Tree Traversals page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on tree traversalas page");
@@ -306,7 +306,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Binary Trees page")
 	public void navigated_to_the_binary_trees_page() {
-		String treesUrl = common.getCurrentUrl();
+		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/binary-trees/";
 		System.out.println("user logged into " + treesUrl + "Binary Tree page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Binary Tree page");
@@ -321,7 +321,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Types of Binary Tree page")
 	public void the_user_should_be_navigated_to_the_types_of_binary_tree_page() {
-		String treesUrl = common.getCurrentUrl();
+		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/types-of-binary-trees/";
 		System.out.println("user logged into " + treesUrl + "Tyeps of Binary Tree page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Tyepes of Binary Tree page");
@@ -336,7 +336,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Implementation of Python page")
 	public void the_user_should_be_navigated_to_the_implementation_of_python_page() {
-		String treesUrl = common.getCurrentUrl();
+		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/implementation-in-python/";
 		System.out.println(
 				"user logged into " + treesUrl + "https://dsportalapp.herokuapp.com/tree/implementation-in-python/");
@@ -366,7 +366,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Applications of Binary Trees  page")
 	public void the_user_should_be_navigated_to_the_applications_of_binary_trees_page() {
-		String treesUrl = common.getCurrentUrl();
+		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/applications-of-binary-trees/";
 		System.out.println("user logged into " + treesUrl + "Applications of Binary Trees Page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Application of binary tree page");
@@ -387,7 +387,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Binary Search page")
 	public void the_user_should_be_navigated_to_the_binary_search_page() {
-		String treesUrl = common.getCurrentUrl();
+		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/binary-search-trees/";
 		System.out.println("user logged into " + treesUrl + "Binary Search Page");
 
@@ -407,7 +407,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Implementation of BST page")
 	public void the_user_should_be_navigated_to_the_implementation_of_bst_page() {
-		String treesUrl = common.getCurrentUrl();
+		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/implementation-of-bst/";
 		System.out.println("user logged into " + treesUrl + "Implementation of bst");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Implementation of bst");
@@ -453,7 +453,7 @@ public class Tree_sd {
 
 	@Then("user sucessfully navigates to practice questions of Tree module")
 	public void user_sucessfully_navigates_to_practice_questions_of_tree_module() {
-		String treesUrl = common.getCurrentUrl();
+		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/practice";
 		System.out.println("user logged into " + treesUrl + "Practice Questions page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Practice Questions page");
@@ -521,7 +521,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to Implementation of Binary Trees page")
 	public void the_user_should_be_navigated_to_implementation_of_binary_trees_page() {
-		String treesUrl = common.getCurrentUrl();
+		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/implementation-of-binary-trees/";
 		System.out.println("user logged into " + treesUrl + "Implementation of Binary Trees page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Implementation of Binary Trees page");
@@ -561,7 +561,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the text editor of Implementation of Binary Trees page")
 	public void the_user_should_be_navigated_to_the_text_editor_of_implementation_of_binary_trees_page() {
-		String actualUrl = common.getCurrentUrl();
+		String actualUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tryEditor";
 		Assert.assertEquals(actualUrl, expectedUrl, "Not landed in Try Editor page");
 
