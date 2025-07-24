@@ -81,9 +81,9 @@ public class Queue_pf {
 		driver.get(config.get_prop_value("testurl"));
 		launchBtn.click();
 		signinBtn.click();
-		String data1 = excelReader.getData("credentials", 1, 0);
+		String data1 = excelReader.getData("Credentials", 1, 0);
 		userName.sendKeys(data1);
-		String data2 = excelReader.getData("credentials", 1, 1);
+		String data2 = excelReader.getData("Credentials", 1, 1);
 		pwd.sendKeys(data2);
 		logInBtn.click();
 
