@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
+import utils.ConfigReader;
 
 public class Launch_pf {
 
@@ -28,13 +30,15 @@ public class Launch_pf {
 	@FindBy(xpath = "//*[text()='NumpyNinja']")
 	WebElement numpyNinja;
 
-	public Launch_pf(Passing_Driver passdr) {
+	ConfigReader config;
+
+	public Launch_pf(Passing_Driver passdr) throws IOException {
 
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
+		this.config = new ConfigReader();
 	}
 
 	public void clickgetstarted() {
@@ -47,7 +51,7 @@ public class Launch_pf {
 	}
 
 	public void geturl() {
-		driver.get("https://dsportalapp.herokuapp.com/");
+		driver.get(config.get_prop_value("testurl"));
 
 	}
 

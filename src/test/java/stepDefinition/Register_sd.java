@@ -48,7 +48,7 @@ public class Register_sd {
 
 	@Given("the user is on Register page after clicking on registerlink from Home page")
 	public void the_user_is_on_register_page_after_clicking_on_registerlink_from_home_page() {
-		driver.get("https://dsportalapp.herokuapp.com/");
+		Launch_pf.geturl();
 		Launch_pf.clickgetstarted();
 		Home_pf.clickRegister();
 	}

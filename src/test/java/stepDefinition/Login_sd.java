@@ -34,7 +34,7 @@ public class Login_sd {
 		this.Launch_pf = new Launch_pf(passdr);
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
-		// this.common = new CommonMethods(passdr);
+//		this.common = new CommonMethods(passdr);
 	}
 
 	private void waitForTenSec(String partialUrl) {
@@ -44,7 +44,7 @@ public class Login_sd {
 
 	@Given("the user is on the Home page")
 	public void the_user_is_on_the_home_page() {
-		driver.get("https://dsportalapp.herokuapp.com/");
+		Launch_pf.geturl();
 		Launch_pf.clickgetstarted();
 
 	}

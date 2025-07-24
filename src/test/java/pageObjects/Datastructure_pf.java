@@ -3,16 +3,19 @@ package pageObjects;
 import java.io.IOException;
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
-import utils.ExcelReader;
+import utils.ConfigReader;
+import utils.ExcelReaderFile;
 
 public class Datastructure_pf {
 
@@ -20,7 +23,12 @@ public class Datastructure_pf {
 	Actions action;
 	String browser;
 	WebDriverWait wait;
+//
+	ExcelReaderFile excelReader;
 
+	ConfigReader config;
+	JavascriptExecutor js;
+	String path;
 	// Locators
 
 	@FindBy(xpath = "//*[text()='Data Structures-Introduction']//../a")
@@ -52,12 +60,17 @@ public class Datastructure_pf {
 
 	// div[@align='left']
 
-	public Datastructure_pf(Passing_Driver passdr) {
+	public Datastructure_pf(Passing_Driver passdr) throws IOException {
 
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		this.config = new ConfigReader();
+		this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReaderFile(path);
+
+		js = (JavascriptExecutor) driver;
 
 	}
 
@@ -96,14 +109,14 @@ public class Datastructure_pf {
 	}
 
 	public void tryeditorboxwithinvaliddata() {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
+
+		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 				+ "editor.setValue('prin(hello world\")');");
 	}
 
 	public void tryeditorboxvaliddata() {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
+
+		js.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
 				+ "editor.setValue('print(\"hello world\")');");
 	}
 
@@ -136,20 +149,18 @@ public class Datastructure_pf {
 	}
 
 	public void setinvalidcodefromExcel() throws IOException {
-		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
-		String invalid = ExcelReader.getData(filepath, "code", 1, 0);
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("let editor = document.querySelector('.CodeMirror').CodeMirror;"
-				+ "editor.setValue('print(invalid)');");
-
+		String data = excelReader.getData("TextEditor", 1, 1);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
+		js.executeScript(
+				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
+				data);
 	}
 
 	public void setvalidcodefromExcel() throws IOException {
-		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
-		String valid = ExcelReader.getData(filepath, "code", 2, 0);
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript(
-				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue('print(valid)');");
-
+		String data = excelReader.getData("TextEditor", 1, 0);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
+		js.executeScript(
+				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
+				data);
 	}
 }

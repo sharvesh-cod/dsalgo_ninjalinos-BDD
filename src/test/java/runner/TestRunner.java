@@ -7,11 +7,15 @@ import io.cucumber.testng.CucumberOptions;
 
 //@RunWith(Cucumber.class) //Junit execution
 
-@CucumberOptions(plugin = { "pretty", "html:target/dsAlgo_Ninjalinos_BDD.html" }, // reporting purpose
+@CucumberOptions(plugin = { "pretty", "com.aventstack.chaintest.plugins.ChainTestCucumberListener:",
+		"html:target/dsAlgo_Ninjalinos_BDD.html", }, // reporting purpose
 		monochrome = false, // console output color
 
-		features = { "src/test/resources/Feature/Login.feature" },
-		// tags = "@URL", // location of feature files
+		features = { "src/test/resources/Feature/Datastructure.feature" }, tags = "@tryEditor_invalidcode", //
+		// location
+		// of
+		// feature
+		// files
 		glue = { "stepDefinition", "hooks" }) // location of step definition files
 
 public class TestRunner extends AbstractTestNGCucumberTests {

@@ -12,7 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
-import utils.ExcelReader;
+import utils.ConfigReader;
+import utils.ExcelReaderFile;
 
 public class Register_pf {
 
@@ -20,6 +21,10 @@ public class Register_pf {
 	Actions action;
 	String browser;
 	WebDriverWait wait;
+	ExcelReaderFile excelReader;
+	ConfigReader config;
+	JavascriptExecutor js;
+	String path;
 
 	// Locators
 
@@ -38,13 +43,17 @@ public class Register_pf {
 	@FindBy(xpath = "//div[@class=\"alert alert-primary\"]")
 	WebElement missmatchPasswordMessage;
 
-	public Register_pf(Passing_Driver passdr) {
+	public Register_pf(Passing_Driver passdr) throws IOException {
 
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		this.config = new ConfigReader();
+		this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReaderFile(path);
 
+		js = (JavascriptExecutor) driver;
 	}
 
 //action methods
@@ -88,29 +97,29 @@ public class Register_pf {
 	}
 
 	public String invalidAssertionUsernamebox() {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		String validationMsg = (String) jse.executeScript("return arguments[0].validationMessage;", usernameTextbox);
+
+		String validationMsg = (String) js.executeScript("return arguments[0].validationMessage;", usernameTextbox);
 		return validationMsg;
 	}
 
 	public String invalidAssertionconfirmpswdbox() {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		String validationMsg = (String) jse.executeScript("return arguments[0].validationMessage;",
+
+		String validationMsg = (String) js.executeScript("return arguments[0].validationMessage;",
 				confirmpasswordTextbox);
 		return validationMsg;
 	}
 
 	public String invalidAssertionPasswdnamebox() {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		String validationMsg = (String) jse.executeScript("return arguments[0].validationMessage;", passwordTextbox);
+
+		String validationMsg = (String) js.executeScript("return arguments[0].validationMessage;", passwordTextbox);
 		return validationMsg;
 	}
 
 	public void setvalidDatafromExcel() throws IOException {
-		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
-		String username = ExcelReader.getData(filepath, "validlogin", 1, 0);
-		String password = ExcelReader.getData(filepath, "validlogin", 1, 1);
-		String confirmpassword = ExcelReader.getData(filepath, "validlogin", 1, 2);
+
+		String username = excelReader.getData("validlogin", 1, 0);
+		String password = excelReader.getData("validlogin", 1, 1);
+		String confirmpassword = excelReader.getData("validlogin", 1, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);
@@ -118,10 +127,10 @@ public class Register_pf {
 	}
 
 	public void setemptydatafromExcel() throws IOException {
-		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
-		String username = ExcelReader.getData(filepath, "register", 1, 0);
-		String password = ExcelReader.getData(filepath, "register", 1, 1);
-		String confirmpassword = ExcelReader.getData(filepath, "register", 1, 2);
+
+		String username = excelReader.getData("register", 1, 0);
+		String password = excelReader.getData("register", 1, 1);
+		String confirmpassword = excelReader.getData("register", 1, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);
@@ -129,10 +138,10 @@ public class Register_pf {
 	}
 
 	public void setonlyusernamefromExcel() throws IOException {
-		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
-		String username = ExcelReader.getData(filepath, "register", 2, 0);
-		String password = ExcelReader.getData(filepath, "register", 2, 1);
-		String confirmpassword = ExcelReader.getData(filepath, "register", 2, 2);
+
+		String username = excelReader.getData("register", 2, 0);
+		String password = excelReader.getData("register", 2, 1);
+		String confirmpassword = excelReader.getData("register", 2, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);
@@ -140,10 +149,10 @@ public class Register_pf {
 	}
 
 	public void setonlypasswordfromExcel() throws IOException {
-		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
-		String username = ExcelReader.getData(filepath, "register", 3, 0);
-		String password = ExcelReader.getData(filepath, "register", 3, 1);
-		String confirmpassword = ExcelReader.getData(filepath, "register", 3, 2);
+
+		String username = excelReader.getData("register", 3, 0);
+		String password = excelReader.getData("register", 3, 1);
+		String confirmpassword = excelReader.getData("register", 3, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);
@@ -151,10 +160,10 @@ public class Register_pf {
 	}
 
 	public void setwithoutconfirmpasswordfromExcel() throws IOException {
-		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
-		String username = ExcelReader.getData(filepath, "register", 4, 0);
-		String password = ExcelReader.getData(filepath, "register", 4, 1);
-		String confirmpassword = ExcelReader.getData(filepath, "register", 4, 2);
+
+		String username = excelReader.getData("register", 4, 0);
+		String password = excelReader.getData("register", 4, 1);
+		String confirmpassword = excelReader.getData("register", 4, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);
@@ -162,10 +171,10 @@ public class Register_pf {
 	}
 
 	public void setinvaliddatafromExcel() throws IOException {
-		String filepath = System.getProperty("user.dir") + "\\testdata\\data.xlsx";
-		String username = ExcelReader.getData(filepath, "register", 5, 0);
-		String password = ExcelReader.getData(filepath, "register", 5, 1);
-		String confirmpassword = ExcelReader.getData(filepath, "register", 5, 2);
+
+		String username = excelReader.getData("register", 5, 0);
+		String password = excelReader.getData("register", 5, 1);
+		String confirmpassword = excelReader.getData("register", 5, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);

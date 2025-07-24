@@ -28,6 +28,7 @@ public class Datastructures_sd {
 	CommonMethods common;
 	private Datastructure_pf Datastructure_pf;
 	private Login_pf Login_pf;
+	// LoggerLoad log;
 
 	public Datastructures_sd(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
@@ -37,7 +38,7 @@ public class Datastructures_sd {
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
 		// this.common = new CommonMethods(passdr);
-
+		// this.log = new LoggerLoad();
 	}
 
 	private void waitForTenSec(String partialUrl) {
@@ -119,13 +120,16 @@ public class Datastructures_sd {
 	@When("The user clicks the Run button by entering the  wrong code in the Editor")
 	public void the_user_clicks_the_run_button_by_entering_the_wrong_code_in_the_editor() throws IOException {
 		Datastructure_pf.setinvalidcodefromExcel();
-		// Datastructure_pf.tryeditorboxwithinvaliddata();
 		Datastructure_pf.clickRunButton();
 	}
 
 	@Then("The user should able to see error message {string}")
 	public void the_user_should_able_to_see_error_message(String experrormsg) {
-		// String acterrormsg=
+		// log.error(
+		// "There is no alert message displayed when user clicks on run button without
+		// entering code in the code editor in Datastructures");
+//		assertEquals("Type code in the editor", codeeditor.alert_message());
+//		codeeditor.handle_alert();
 	}
 
 	@Then("The user should able to see alert popup")
@@ -134,8 +138,8 @@ public class Datastructures_sd {
 	}
 
 	@When("the user clicks the Run button by entering the correct python code")
-	public void the_user_clicks_the_run_button_by_entering_the_correct_python_code() {
-		Datastructure_pf.tryeditorboxvaliddata();
+	public void the_user_clicks_the_run_button_by_entering_the_correct_python_code() throws IOException {
+		Datastructure_pf.setvalidcodefromExcel();
 		Datastructure_pf.clickRunButton();
 	}
 
@@ -143,7 +147,7 @@ public class Datastructures_sd {
 	public void the_user_should_able_to_see_output_in_the_console_window() {
 		String actcode = Datastructure_pf.consoletxt();
 		String expcode = Datastructure_pf.consoletxt();
-		Assert.assertEquals(actcode, expcode);
+		Assert.assertEquals(actcode, expcode, "user is not able to see the output in console");
 	}
 
 }

@@ -44,8 +44,8 @@ public class Launch_sd {
 
 	@Given("the user is on the Dsalgo portal after entering Url")
 	public void the_user_is_on_browser() {
-
-		driver.get("https://dsportalapp.herokuapp.com/");
+		Launch_pf.geturl();
+		// driver.get("https://dsportalapp.herokuapp.com/");
 
 	}
 

@@ -46,8 +46,8 @@ public class Home_sd {
 
 	@Given("the user is on DsAlgo portal")
 	public void the_user_is_on_ds_algo_portal() {
-
-		driver.get("https://dsportalapp.herokuapp.com/");
+		Launch_pf.geturl();
+		// driver.get("https://dsportalapp.herokuapp.com/");
 
 	}
 
