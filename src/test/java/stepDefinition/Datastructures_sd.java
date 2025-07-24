@@ -17,7 +17,7 @@ import pageObjects.Datastructure_pf;
 import pageObjects.Launch_pf;
 import pageObjects.Login_pf;
 import utils.ConfigReader;
-//import junit.framework.Assert;
+import utils.LoggerLoad;
 
 public class Datastructures_sd {
 
@@ -28,7 +28,7 @@ public class Datastructures_sd {
 	CommonMethods common;
 	private Datastructure_pf Datastructure_pf;
 	private Login_pf Login_pf;
-	// LoggerLoad log;
+	LoggerLoad log;
 
 	public Datastructures_sd(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
@@ -37,8 +37,8 @@ public class Datastructures_sd {
 		this.Datastructure_pf = new Datastructure_pf(passdr);
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
-		// this.common = new CommonMethods(passdr);
-		// this.log = new LoggerLoad();
+
+		this.log = new LoggerLoad();
 	}
 
 	private void waitForTenSec(String partialUrl) {
@@ -85,7 +85,9 @@ public class Datastructures_sd {
 	@Then("The user should be directed to Practice Questions of Data structures-Introduction Page, again redirected to Time complexity page")
 	public void the_user_should_be_directed_to_practice_questions_of_data_structures_introduction_page_again_redirected_to_time_complexity_page() {
 		String acturl = Datastructure_pf.practiceQueURl();
-		Assert.assertEquals(acturl, "https://dsportalapp.herokuapp.com/data-structures-introduction/practice");
+		log.error("There are no practice questions available in the Datastructure module");
+		Assert.assertEquals(acturl, "https://dsportalapp.herokuapp.com/data-structures-introduction/practic",
+				"user is not able to see practice questions, the page is empty");
 	}
 
 	@When("the user clicks Try here button")
@@ -109,12 +111,11 @@ public class Datastructures_sd {
 	@When("The user clicks the Run button without entering the code in the Editor")
 	public void the_user_clicks_the_run_button_without_entering_the_code_in_the_editor() {
 		Datastructure_pf.clickRunButton();
+		String actcode = Datastructure_pf.consoletxt();
+		String expcode = "please enter the code";
+		log.error("user is should able to see error message 'Please enter the code'");
+		Assert.assertEquals(actcode, expcode, "user is should able to see error message 'Please enter the code'");
 
-	}
-
-	@Then("The user should able to see error message in alert window")
-	public void the_user_should_able_to_see_error_message_in_alert_window() {
-		Datastructure_pf.closealert();
 	}
 
 	@When("The user clicks the Run button by entering the  wrong code in the Editor")
@@ -125,16 +126,21 @@ public class Datastructures_sd {
 
 	@Then("The user should able to see error message {string}")
 	public void the_user_should_able_to_see_error_message(String experrormsg) {
-		// log.error(
-		// "There is no alert message displayed when user clicks on run button without
-		// entering code in the code editor in Datastructures");
-//		assertEquals("Type code in the editor", codeeditor.alert_message());
-//		codeeditor.handle_alert();
+		String actmsg = Datastructure_pf.alert_message();
+		String expmsg = Datastructure_pf.alertconfim();
+		log.error("There are no alert msg displayed in the page saying 'Please enter the code'");
+		Assert.assertEquals(actmsg, expmsg, "alert msg is not displayed");
+		Datastructure_pf.closealert();
 	}
 
 	@Then("The user should able to see alert popup")
 	public void the_user_should_able_to_see_alert_popup() {
+		String actmsg = Datastructure_pf.alert_message();
+		String expmsg = Datastructure_pf.alertconfim();
+		Assert.assertEquals(actmsg, expmsg, "alert msg is not displayed");
 		Datastructure_pf.closealert();
+		System.out.println("Alert handled successfully");
+
 	}
 
 	@When("the user clicks the Run button by entering the correct python code")

@@ -18,6 +18,7 @@ import pageObjects.CommonMethods;
 import pageObjects.Home_pf;
 import pageObjects.Launch_pf;
 import utils.ConfigReader;
+import utils.LoggerLoad;
 
 public class Home_sd {
 	private WebDriver driver;
@@ -27,6 +28,7 @@ public class Home_sd {
 	CommonMethods common;
 	private Launch_pf Launch_pf;
 	private Home_pf Home_pf;
+	LoggerLoad log;
 
 	public Home_sd(Passing_Driver passdr) throws IOException {
 
@@ -35,6 +37,7 @@ public class Home_sd {
 		this.Home_pf = new Home_pf(passdr);
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
+		this.log = new LoggerLoad();
 		// this.common = new CommonMethods(passdr);
 
 	}
@@ -69,6 +72,7 @@ public class Home_sd {
 	@Then("The user should able to see an warning message {string}")
 	public void the_user_should_able_to_see_an_warning_message(String Expmsg) {
 		String actmsg = Home_pf.notloggedinmesg();
+		log.error("There are no Datastructures option in dropdown box");
 		Assert.assertEquals(actmsg, Expmsg,
 				"the user is not able to see mesg your are not logged in because no option in the dropdown");
 	}

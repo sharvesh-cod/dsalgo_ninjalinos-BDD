@@ -3,6 +3,7 @@ package pageObjects;
 import java.io.IOException;
 import java.time.Duration;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -29,6 +30,7 @@ public class Datastructure_pf {
 	ConfigReader config;
 	JavascriptExecutor js;
 	String path;
+	Alert alert;
 	// Locators
 
 	@FindBy(xpath = "//*[text()='Data Structures-Introduction']//../a")
@@ -94,6 +96,13 @@ public class Datastructure_pf {
 		timecomplexityLink.click();
 	}
 
+	public String alert_message() {
+		alert = driver.switchTo().alert();
+		String alertMsg = alert.getText();
+		System.out.println(alertMsg);
+		return alertMsg;
+	}
+
 	public void clickPracticeQuestionsLink() {
 		practiceQuestionsLink.click();
 	}
@@ -141,6 +150,11 @@ public class Datastructure_pf {
 
 	public void clickRunButton() {
 		runButton.click();
+	}
+
+	public String alertconfim() {
+		String msg = "NameError: name 'DsAlgoNew' is not defined on line 1";
+		return msg;
 	}
 
 	public String consoletxt() {

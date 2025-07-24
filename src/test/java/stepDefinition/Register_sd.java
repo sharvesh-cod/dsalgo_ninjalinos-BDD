@@ -17,6 +17,7 @@ import pageObjects.Home_pf;
 import pageObjects.Launch_pf;
 import pageObjects.Register_pf;
 import utils.ConfigReader;
+import utils.LoggerLoad;
 
 public class Register_sd {
 
@@ -28,6 +29,7 @@ public class Register_sd {
 	String browserName;
 	ConfigReader config;
 	CommonMethods common;
+	LoggerLoad log;
 
 	public Register_sd(Passing_Driver passdr) throws IOException {
 
@@ -37,6 +39,7 @@ public class Register_sd {
 		this.Home_pf = new Home_pf(passdr);
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
+		this.log = new LoggerLoad();
 		// this.common = new CommonMethods(passdr);
 
 	}
@@ -61,6 +64,7 @@ public class Register_sd {
 	@Then("User able to see {string}  message")
 	public void user_able_to_see_message(String expmsg) {
 		String actmsg = Register_pf.successfulMessage();
+		log.error("user not able to see the message 'user is already registered'");
 		Assert.assertEquals(actmsg, expmsg, "user not able to see 'user is already registered'");
 	}
 
