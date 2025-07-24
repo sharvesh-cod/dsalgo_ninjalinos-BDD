@@ -55,11 +55,7 @@ public class Array_sd {
 
 	@Given("The user is in array page after logging in") // BACKGROUND
 	public void the_user_is_in_array_page_after_logging_in() throws IOException, InterruptedException {
-//		loginpage.launch();
-//		loginpage.signin_btn();
-//		loginpage.user_name();
-//		loginpage.password();
-//		loginpage.login_btn();
+
 		array_pf.background_array();
 		array_pf.clickArrayGetStarted();
 		System.out.println("output 1");
@@ -101,24 +97,22 @@ public class Array_sd {
 		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", url);
 	}
 
-	@Given("The user is in the Try here page")
-	public void the_user_is_in_the_try_here_page() {
+	@Given("The user is in the Try here page in Array")
+	public void the_user_is_in_the_try_here_page_in_array() {
 		waitForTenSec("/array");
 		array_pf.clickArraysInPython();
 		waitForTenSec("/arrays-in-python/");
 		array_pf.clickTryHere();
-
 	}
 
-	@When("The user clicks the Run button without entering the code in the Editor")
-	public void the_user_clicks_the_run_button_without_entering_the_code_in_the_editor() throws InterruptedException {
+	@When("The user clicks the Run button without entering the code in the Editor in Array")
+	public void the_user_clicks_the_run_button_without_entering_the_code_in_the_editor_in_array() {
 		waitForTenSec("/tryEditor");
 		tryeditorpage.clickRun();
-
 	}
 
-	@Then("The user should see an error message in alert window")
-	public void the_user_should_see_an_error_message_in_alert_window() {
+	@Then("The user should see an error message in alert window in Array")
+	public void the_user_should_see_an_error_message_in_alert_window_in_array() {
 		tryeditorpage.getErrMsg_NoCode();
 		log.error(
 				"There is no alert message displayed when we click on run button without entering any code in the code editor in array module");
@@ -127,36 +121,32 @@ public class Array_sd {
 		assertEquals("Enter code", errorMsg);
 	}
 
-	@When("The user clicks Run button after writing invalid code in editor")
-	public void the_user_clicks_run_button_after_writing_invalid_code_in_editor() throws IOException {
+	@When("The user clicks Run button after writing invalid code in editor in Array")
+	public void the_user_clicks_run_button_after_writing_invalid_code_in_editor_in_array() throws IOException {
 		waitForTenSec("/tryEditor");
 		tryeditorpage.tryEditor_invalidCode();
 		tryeditorpage.clickRun();
 		tryeditorpage.alertMsg();
-
 	}
 
-	@Then("The user should able to see an error message in alert window")
-	public void the_user_should_able_to_see_an_error_message_in_alert_window() {
+	@Then("The user should able to see an error message in alert window in Array")
+	public void the_user_should_able_to_see_an_error_message_in_alert_window_in_array() {
 		System.out.println("Alert Handled");
-
 	}
 
-	@When("The user clicks Run button after writing valid code in editor")
-	public void the_user_clicks_run_button_after_writing_valid_code_in_editor()
-			throws InterruptedException, IOException {
+	@When("The user clicks Run button after writing valid code in editor in Array")
+	public void the_user_clicks_run_button_after_writing_valid_code_in_editor_in_array()
+			throws IOException, InterruptedException {
 		waitForTenSec("/tryEditor");
 		tryeditorpage.tryEditor_validCode();
 		tryeditorpage.clickRun();
 		Thread.sleep(2000);
-
 	}
 
-	@Then("The user should able to see output in the console")
-	public void the_user_should_able_to_see_output_in_the_console() {
+	@Then("The user should able to see output in the console in Array")
+	public void the_user_should_able_to_see_output_in_the_console_in_array() {
 		String output = tryeditorpage.output_text();
 		assertEquals("Hello World", output);
-
 	}
 
 	@Given("The user is in the Array page after sign in")
@@ -262,20 +252,18 @@ public class Array_sd {
 
 	}
 
-	@When("The user clicks Practice Questions button")
-	public void the_user_clicks_practice_questions_button() throws InterruptedException {
+	@When("The user clicks Practice Questions button in Array")
+	public void the_user_clicks_practice_questions_button_in_array() throws InterruptedException {
 		waitForTenSec("/arrays-in-python/");
 		array_pf.clickPracticeQuestionsLink();
 		Thread.sleep(2000);
-
 	}
 
-	@Then("The user should be redirected to Practice page")
-	public void the_user_should_be_redirected_to_practice_page() {
+	@Then("The user should be redirected to Practice page in Array")
+	public void the_user_should_be_redirected_to_practice_page_in_array() {
 		waitForTenSec("/array/practice");
 		String url = array_pf.getURL();
 		assertEquals("https://dsportalapp.herokuapp.com/array/practice", url);
-
 	}
 
 	@Given("The user is on the practice question page from arrays in python")
@@ -308,14 +296,14 @@ public class Array_sd {
 		Thread.sleep(5000);
 	}
 
-	@When("The user clicks run button without writing anything in editor")
-	public void the_user_clicks_run_button_without_writing_anything_in_editor() {
+	@When("The user clicks run button without writing anything in question editor in Array")
+	public void the_user_clicks_run_button_without_writing_anything_in_question_editor_in_array() {
 		tryeditorpage.clickRun();
 		// tryeditorpage.alertMsg();
 	}
 
-	@Then("The user should be able to see an error message in alert window")
-	public void the_user_should_be_able_to_see_an_error_message_in_alert_window() {
+	@Then("The user should be able to see an error message in alert window in question editor in Array")
+	public void the_user_should_be_able_to_see_an_error_message_in_alert_window_in_question_editor_in_array() {
 		tryeditorpage.alertMsg();
 		System.out.println("Alert handled");
 	}
@@ -334,8 +322,8 @@ public class Array_sd {
 
 	}
 
-	@When("The user clicks run button after writing invalid code in editor")
-	public void user_clicks_run_button_after_writing_invalid_code_in_editor() {
+	@When("The user clicks run button after writing invalid code in  question editor in Array")
+	public void the_user_clicks_run_button_after_writing_invalid_code_in_question_editor_in_array() {
 		waitForTenSec("/question/");
 		array_pf.tryEditor_invalidCode_practiceQ();
 		tryeditorpage.clickRun();
