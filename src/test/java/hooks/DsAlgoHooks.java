@@ -1,5 +1,7 @@
 package hooks;
 
+<<<<<<< HEAD
+=======
 import java.io.File;
 import java.time.Duration;
 
@@ -13,8 +15,11 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
+>>>>>>> branch 'testingmain' of git@github.com:sharvesh-cod/dsalgo_ninjalinos-BDD.git
 public class DsAlgoHooks {
 
+<<<<<<< HEAD
+=======
 	private WebDriver driver;
 
 	public DsAlgoHooks(Passing_Driver passdr) {
@@ -64,4 +69,5 @@ public class DsAlgoHooks {
 			driver.quit();
 		}
 	}
+>>>>>>> branch 'testingmain' of git@github.com:sharvesh-cod/dsalgo_ninjalinos-BDD.git
 }

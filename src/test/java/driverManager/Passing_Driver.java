@@ -1,5 +1,8 @@
 package driverManager;
 
+<<<<<<< HEAD
+public class Passing_Driver {
+=======
 import org.openqa.selenium.WebDriver;
 
 public class Passing_Driver {
@@ -18,5 +21,6 @@ public class Passing_Driver {
 	public WebDriver getDriver() {
 		return driver;
 	}
+>>>>>>> branch 'testingmain' of git@github.com:sharvesh-cod/dsalgo_ninjalinos-BDD.git
 
 }

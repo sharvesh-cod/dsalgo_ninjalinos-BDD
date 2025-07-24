@@ -1,5 +1,8 @@
 package utils;
 
+<<<<<<< HEAD
+public class ExcelReaderFile {
+=======
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -81,5 +84,6 @@ public class ExcelReaderFile {
 		fis.close();
 
 	}
+>>>>>>> branch 'testingmain' of git@github.com:sharvesh-cod/dsalgo_ninjalinos-BDD.git
 
 }
