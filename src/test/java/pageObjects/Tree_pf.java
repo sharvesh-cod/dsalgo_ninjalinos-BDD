@@ -83,6 +83,7 @@ public class Tree_pf {
 		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
 	}
 
 	// background given

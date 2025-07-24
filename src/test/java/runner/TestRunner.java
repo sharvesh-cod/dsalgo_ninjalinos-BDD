@@ -14,7 +14,7 @@ import io.cucumber.testng.CucumberOptions;
 		glue = { "stepDefinition", "hooks" }) // location of step definition files
 public class TestRunner extends AbstractTestNGCucumberTests {
 	@Override
-	@DataProvider(parallel = false)
+	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}

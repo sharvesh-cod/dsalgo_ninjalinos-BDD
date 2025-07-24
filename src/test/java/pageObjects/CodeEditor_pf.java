@@ -27,8 +27,8 @@ public class CodeEditor_pf {
 	JavascriptExecutor js;
 	WebDriverWait wait;
 	ConfigReader config;
-	// ExcelReaderFile excelReader;
-	// String path
+	ExcelReaderFile excelReader;
+	String path;
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]/div")
 	WebElement textEditor;
 	@FindBy(xpath = "//button[contains(text(),'Run')]")
@@ -43,13 +43,12 @@ public class CodeEditor_pf {
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		PageFactory.initElements(driver, this);
 		this.config = new ConfigReader();
-		// this.path = config.get_prop_value("path");
-		// this.excelReader = new ExcelReaderFile(path);
+		this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReaderFile(path);
 	}
 
 	public void txtEditor_invalidCode() throws IOException, InterruptedException {
-		String path = config.get_prop_value("path");
-		String data = ExcelReaderFile.getData(path, "TextEditor", 1, 1);
+		String data = excelReader.getData("TextEditor", 1, 1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
@@ -62,8 +61,7 @@ public class CodeEditor_pf {
 	}
 
 	public void txtEditor_correctCode() throws IOException, InterruptedException {
-		String path = config.get_prop_value("path");
-		String data = ExcelReaderFile.getData(path, "TextEditor", 1, 0);
+		String data = excelReader.getData("TextEditor", 1, 0);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",

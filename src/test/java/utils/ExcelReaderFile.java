@@ -18,8 +18,14 @@ public class ExcelReaderFile {
 	public static XSSFSheet sheet;
 	public static XSSFRow row;
 	public static XSSFCell cell;
+	String xlfilePath;
 
-	public static int rowCount(String xlfilePath, String sheetName) throws IOException {
+	public ExcelReaderFile(String xfilePath) {
+		this.xlfilePath = xfilePath;
+
+	}
+
+	public int rowCount(String sheetName) throws IOException {
 
 		fis = new FileInputStream(xlfilePath);
 		wb = new XSSFWorkbook(fis);
@@ -30,8 +36,8 @@ public class ExcelReaderFile {
 		return rowCount;
 	}
 
-	public static int colCount(String xfilePath, String sheetName, int rowNum) throws IOException {
-		fis = new FileInputStream(xfilePath);
+	public int colCount(String sheetName, int rowNum) throws IOException {
+		fis = new FileInputStream(xlfilePath);
 		wb = new XSSFWorkbook(fis);
 		sheet = wb.getSheet(sheetName);
 		row = sheet.getRow(rowNum);
@@ -41,10 +47,10 @@ public class ExcelReaderFile {
 		return cellCount;
 	}
 
-//to get the Cell Data
-	public static String getData(String xfilePath, String sheetName, int rowNum, int cellCount) throws IOException {
+	// to get the Cell Data
+	public String getData(String sheetName, int rowNum, int cellCount) throws IOException {
 
-		fis = new FileInputStream(xfilePath);
+		fis = new FileInputStream(xlfilePath);
 		wb = new XSSFWorkbook(fis);
 		sheet = wb.getSheet(sheetName);
 		row = sheet.getRow(rowNum);
@@ -60,16 +66,15 @@ public class ExcelReaderFile {
 
 	}
 
-	public static void setCellData(String xfilepath, String sheetName, int rowNum, int colnumNum, String cellData)
-			throws IOException {
-		fis = new FileInputStream(xfilepath);
+	public void setCellData(String sheetName, int rowNum, int colnumNum, String cellData) throws IOException {
+		fis = new FileInputStream(xlfilePath);
 		wb = new XSSFWorkbook(fis);
 		sheet = wb.getSheet(sheetName);
 		row = sheet.getRow(rowNum);
 		cell = row.createCell(colnumNum);
 		cell.setCellValue(cellData);
 
-		fos = new FileOutputStream(xfilepath);
+		fos = new FileOutputStream(xlfilePath);
 		wb.write(fos);
 		wb.close();
 		fos.close();

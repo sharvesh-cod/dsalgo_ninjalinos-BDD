@@ -16,6 +16,7 @@ import io.cucumber.java.en.When;
 import pageObjects.CodeEditor_pf;
 import pageObjects.CommonMethods;
 import pageObjects.Tree_pf;
+import utils.LoggerLoad;
 
 public class Tree_sd {
 
@@ -26,6 +27,7 @@ public class Tree_sd {
 	CommonMethods common;
 	Tree_pf tf;
 	CodeEditor_pf codeEditor;
+	LoggerLoad log;
 
 	public Tree_sd(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
@@ -35,6 +37,7 @@ public class Tree_sd {
 		PageFactory.initElements(driver, this);
 		this.tf = new Tree_pf(passdr);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		this.log = new LoggerLoad();
 
 	}
 
@@ -431,6 +434,7 @@ public class Tree_sd {
 			System.out.println("Questions loaded");
 		} else
 			System.out.println("Error, Page is blank");
+		log.error("There are no practice questions available in the Tree module");
 	}
 
 	@Given("user is in Tree sections page")

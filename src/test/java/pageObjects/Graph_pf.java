@@ -87,6 +87,7 @@ public class Graph_pf {
 	}
 
 	public void practice_Grpah() {
+		wait.until(ExpectedConditions.visibilityOf(practQuestGraph));
 		action.scrollToElement(practQuestGraph).perform();
 		action.click(practQuestGraph).perform();
 	}
@@ -98,28 +99,34 @@ public class Graph_pf {
 	}
 
 	public void click_Graph() {
+		wait.until(ExpectedConditions.visibilityOf(graph));
 		action.scrollToElement(graph).perform();
 		action.click(graph).perform();
 	}
 
 	public void click_TryEditor() throws InterruptedException {
-		Thread.sleep(3000);
+		wait.until(ExpectedConditions.visibilityOf(tryHereButton));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", tryHereButton);
+		action.scrollToElement(tryHereButton).perform();
 		action.click(tryHereButton).perform();
+		wait.until(ExpectedConditions.titleContains("Assessment"));
 	}
 
 	public void clickRun_WithOutCode() {
+		wait.until(ExpectedConditions.visibilityOf(runButton));
 		action.scrollToElement(runButton).perform();
 		action.click(runButton).perform();
 	}
 
 	public String outputMsgGraph() {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", outputTxt);
 		action.scrollToElement(outputTxt).perform();
 		String text = outputTxt.getText();
 		return text;
 	}
 
 	public String practicePage() {
+		wait.until(ExpectedConditions.visibilityOf(practicePage));
 		action.scrollToElement(practicePage).perform();
 		String practiceQuestion = practicePage.getText();
 		System.out.println(practiceQuestion);
@@ -128,8 +135,10 @@ public class Graph_pf {
 	}
 
 	public void graphRepresent() throws InterruptedException {
+		wait.until(ExpectedConditions.visibilityOf(graphRepr));
 		action.scrollToElement(graphRepr).perform();
 		action.click(graphRepr).perform();
+		wait.until(ExpectedConditions.titleContains("Graph Representations"));
 
 	}
 

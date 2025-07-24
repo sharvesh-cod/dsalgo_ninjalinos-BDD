@@ -15,6 +15,7 @@ import io.cucumber.java.en.When;
 import pageObjects.CodeEditor_pf;
 import pageObjects.CommonMethods;
 import pageObjects.Graph_pf;
+import utils.LoggerLoad;
 
 public class Graph_sd {
 
@@ -25,6 +26,7 @@ public class Graph_sd {
 	CommonMethods common;
 	Graph_pf gr;
 	WebDriverWait wait;
+	LoggerLoad log;
 
 	public Graph_sd(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
@@ -33,6 +35,7 @@ public class Graph_sd {
 		this.common = new CommonMethods(passdr);
 		this.gr = new Graph_pf(passdr);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		this.log = new LoggerLoad();
 
 	}
 
@@ -74,6 +77,8 @@ public class Graph_sd {
 	public void user_should_be_able_to_see_alert_message_to_enter_the_valid_code() {
 		System.out.println("Unable to see the alert pop-up");
 		codeEditor.handle_alert();
+		log.error(
+				"There is no alert message displayed when we click on run button without entering any code in the code editor in Graph module");
 
 	}
 
@@ -148,8 +153,9 @@ public class Graph_sd {
 
 	@Then("user find blank page")
 	public void user_find_blank_page() {
-
+		log.error("There are no practice questions available in the Graph module");
 		System.out.println("Blank Page");
+		Assert.assertEquals("https://dsportalapp.herokuapp.com/graph/graph/", common.currentUrl());
 
 	}
 
