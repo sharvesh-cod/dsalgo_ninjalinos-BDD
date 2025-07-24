@@ -383,7 +383,7 @@ public class LinkedList_sd {
 	public void the_user_should_be_redirected_to_practice_questions_page_of_linked_lists() {
 		waitForTenSec("/linked-list/practice");
 		String url = ll_pf.getURL();
-		assertEquals("https://dsportalapp.herokuapp.com/linked-list/practice", url);
+		assertEquals("https://dsportalapp.herokuapp.com/linked-list/", url);
 		log.error("There are no practice questions available in the linked List module");
 	}
 

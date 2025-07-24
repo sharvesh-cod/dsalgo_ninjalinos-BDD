@@ -20,13 +20,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
 import utils.ConfigReader;
-import utils.ExcelReader;
+import utils.ExcelReaderFile;
 
 public class Array_pf {
 
 	private WebDriver driver;
 	private WebDriverWait wait;
-	ExcelReader excelReader;
+	ExcelReaderFile excelReader;
 	String path;
 	ConfigReader config;
 
@@ -36,7 +36,7 @@ public class Array_pf {
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		this.path = config.get_prop_value("path");
-		this.excelReader = new ExcelReader(path);
+		this.excelReader = new ExcelReaderFile(path);
 	}
 
 	// =========== LOGIN ELEMENTS ============
@@ -194,23 +194,23 @@ public class Array_pf {
 
 	public void tryEditor_validCode_practiceQ1() throws IOException {
 		// String validCode1 = "print('hello')";
-		String validCode1 = excelReader.getData("practiceQ", 1, 0);
+		String validCode1 = excelReader.getData("TextEditor", 1, 0);
 
 		enterValidCodeInPracticeEditor(validCode1);
 	}
 
 	public void tryEditor_validCode_practiceQ2() throws IOException {
-		String validCode2 = excelReader.getData("practiceQ", 1, 0);
+		String validCode2 = excelReader.getData("TextEditor", 1, 0);
 		enterValidCodeInPracticeEditor(validCode2);
 	}
 
 	public void tryEditor_validCode_practiceQ3() throws IOException {
-		String validCode3 = excelReader.getData("practiceQ", 1, 0);
+		String validCode3 = excelReader.getData("TextEditor", 1, 0);
 		enterValidCodeInPracticeEditor(validCode3);
 	}
 
 	public void tryEditor_validCode_practiceQ4() throws IOException {
-		String validCode4 = excelReader.getData("practiceQ", 1, 0);
+		String validCode4 = excelReader.getData("TextEditor", 1, 0);
 		enterValidCodeInPracticeEditor(validCode4);
 	}
 

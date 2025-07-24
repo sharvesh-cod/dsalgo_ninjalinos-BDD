@@ -16,14 +16,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
 import utils.ConfigReader;
-import utils.ExcelReader;
+import utils.ExcelReaderFile;
 
 public class LinkedListPage_pf {
 
 	private WebDriver driver;
 	private Actions action;
 	WebDriverWait wait;
-	ExcelReader excelReader;
+	ExcelReaderFile excelReader;
 	String path;
 	ConfigReader config;
 
@@ -34,7 +34,7 @@ public class LinkedListPage_pf {
 		this.action = new Actions(driver);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		this.path = config.get_prop_value("path");
-		this.excelReader = new ExcelReader(path);
+		this.excelReader = new ExcelReaderFile(path);
 	}
 
 	// =========== LOGIN ELEMENTS ============

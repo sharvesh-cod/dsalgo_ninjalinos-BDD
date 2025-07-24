@@ -10,7 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExcelReader {
+public class ExcelReaderFile {
 
 	public FileInputStream fis;
 	public FileOutputStream fos;
@@ -20,7 +20,7 @@ public class ExcelReader {
 	public XSSFCell cell;
 	String xlfilePath;
 
-	public ExcelReader(String xfilePath) {
+	public ExcelReaderFile(String xfilePath) {
 		this.xlfilePath = xfilePath;
 
 	}
