@@ -30,7 +30,7 @@ public class DriverFactory {
 		if (browser.equalsIgnoreCase("chrome")) {
 			if (headless.equalsIgnoreCase("true")) {
 				ChromeOptions options = new ChromeOptions();
-				// options.addArguments("--headless=new");
+				options.addArguments("--headless=new");
 				options.addArguments("--start-maximized");
 				options.addArguments("--remote-allow-origins=*");
 				driver = new ChromeDriver(options);
