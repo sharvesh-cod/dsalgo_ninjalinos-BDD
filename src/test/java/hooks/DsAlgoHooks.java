@@ -15,6 +15,7 @@ import io.cucumber.java.Scenario;
 
 public class DsAlgoHooks {
 
+	
 	private WebDriver driver;
 
 	public DsAlgoHooks(Passing_Driver passdr) {
@@ -64,4 +65,5 @@ public class DsAlgoHooks {
 			driver.quit();
 		}
 	}
+	
 }

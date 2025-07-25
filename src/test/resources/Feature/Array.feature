@@ -18,21 +18,21 @@ Feature: Testing Array data structure in DsAlgo Website
 
   @A3
   Scenario: Verify that user receives error when click on Run button without entering code for Arrays in Python page
-    Given The user is in the Try here page
-    When The user clicks the Run button without entering the code in the Editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the Try here page in Array
+    When The user clicks the Run button without entering the code in the Editor in Array
+    Then The user should see an error message in alert window in Array
 
   @A4
   Scenario: Verify that user receives error for invalid python code for Arrays in Python page
-    Given The user is in the Try here page
-    When The user clicks Run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the Try here page in Array
+    When The user clicks Run button after writing invalid code in editor in Array
+    Then The user should able to see an error message in alert window in Array
 
   @A5
   Scenario: Verify that user is able to see output for valid python code for Arrays in Python page
-    Given The user is in the Try here page
-    When The user clicks Run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is in the Try here page in Array
+    When The user clicks Run button after writing valid code in editor in Array
+    Then The user should able to see output in the console in Array
 
   @A6
   Scenario: Verify that user is able to navigate to Array Using List page
@@ -44,25 +44,25 @@ Feature: Testing Array data structure in DsAlgo Website
   Scenario: Verify that user is able to navigate to Try here page for Arrays Using List page
     Given The user is on the Arrays Using List page
     When The user clicks Try Here button in Arrays Using List page
-    Then The user should be redirected to a page having an try Editor with a Run button to test
+    Then The user should be redirected to a page having an try Editor with a Run button to test 
 
   @A8
   Scenario: Verify that user receives error when click on Run button without entering code for Arrays Using List page
-    Given The user is in the Try here page
-    When The user clicks the Run button without entering the code in the Editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the Try here page in Array
+    When The user clicks the Run button without entering the code in the Editor in Array
+    Then The user should see an error message in alert window in Array
 
   @A9
   Scenario: Verify that user receives error for invalid python code for Arrays using List page
-    Given The user is in the Try here page
-    When The user clicks Run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the Try here page in Array
+    When The user clicks Run button after writing invalid code in editor in Array
+    Then The user should able to see an error message in alert window in Array
 
   @A10
   Scenario: Verify that user is able to see output for valid python code for Arrays using List page
-    Given The user is in the Try here page
-    When The user clicks Run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is in the Try here page in Array
+    When The user clicks Run button after writing valid code in editor in Array
+    Then The user should able to see output in the console in Array
 
   @A11
   Scenario: Verify that user is able to navigate to Basic Operations in Lists page
@@ -78,21 +78,21 @@ Feature: Testing Array data structure in DsAlgo Website
 
   @A13
   Scenario: Verify that user receives error when click on Run button without entering code for Basic Operations in Lists page
-    Given The user is in the Try here page
-    When The user clicks the Run button without entering the code in the Editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the Try here page in Array
+    When The user clicks the Run button without entering the code in the Editor in Array
+    Then The user should see an error message in alert window in Array
 
   @A14
   Scenario: Verify that user receives error for invalid python code for Basic Operations in Lists page
-    Given The user is in the Try here page
-    When The user clicks Run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the Try here page in Array
+    When The user clicks Run button after writing invalid code in editor in Array
+    Then The user should able to see an error message in alert window in Array
 
   @A15
   Scenario: Verify that user is able to see output for valid python code for Basic Operations in Lists page
-    Given The user is in the Try here page
-    When The user clicks Run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is in the Try here page in Array
+    When The user clicks Run button after writing valid code in editor in Array
+    Then The user should able to see output in the console in Array
 
   @A16
   Scenario: Verify that user is able to navigate to Applications Of Array page
@@ -108,192 +108,193 @@ Feature: Testing Array data structure in DsAlgo Website
 
   @A18
   Scenario: Verify that user receives error when click on Run button without entering code for Applications of Array page
-    Given The user is in the Try here page
-    When The user clicks the Run button without entering the code in the Editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the Try here page in Array
+    When The user clicks the Run button without entering the code in the Editor in Array
+    Then The user should see an error message in alert window in Array
 
   @A19
   Scenario: Verify that user receives error for invalid python code for Applications of Array page
-    Given The user is in the Try here page
-    When The user clicks Run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the Try here page in Array
+    When The user clicks Run button after writing invalid code in editor in Array
+    Then The user should able to see an error message in alert window in Array
 
   @A20
   Scenario: Verify that user is able to see output for valid python code for Applications of Array page
-    Given The user is in the Try here page
-    When The user clicks Run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is in the Try here page in Array
+    When The user clicks Run button after writing valid code in editor in Array
+    Then The user should able to see output in the console in Array
 
   @A21
   Scenario: Verify that user is able to navigate to Practice Questions Page from Arrays in Python page
     Given The user is in the Arrays in Python page after Sign in
-    When The user clicks Practice Questions button
-    Then The user should be redirected to Practice page
+    When The user clicks Practice Questions button in Array
+    Then The user should be redirected to Practice page in Array
 
   @A22
   Scenario: Verify that user is able to navigate to Search the array Page from Practice question page of Arrays in Python page
     Given The user is on the practice question page from arrays in python
     When The user clicks the Search the array link
-    Then The user should be redirected to Question page contains a question, try Editor with Run and Submit buttons
+    Then The user should be redirected to Question1 page contains a question, try Editor with Run and Submit buttons
 
   @A23
   Scenario: Verify that user receives error for writing  nothing and running Search the array question
-    Given The user is on the practice question editor
-    When The user clicks run button without writing anything in editor
-    Then The user should be able to see an error message in alert window
+    Given The user is on the practice question1 editor
+    When The user clicks run button without writing anything in question editor in Array
+    Then The user should be able to see an error message in alert window in question editor in Array
 
   @A24
   Scenario: Verify that user receives error for writing  nothing and submitting Search the array question
-    Given The user is on the practice question editor
+    Given The user is on the practice question1 editor
     When The user clicks submit button without writing anything in editor
     Then The user see an error message Error occurred during submission
 
   @A25
   Scenario: Verify that user receives error for invalid python code on running Search the array question
-    Given The user is on the practice question editor
-    When The user clicks run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is on the practice question1 editor
+    When The user clicks run button after writing invalid code in  question editor in Array
+    Then The user should able to see an error message in alert window in Array
 
   @A26
   Scenario: Verify that user is able to run valid python code for Search the array question
-    Given The user is on the practice question editor
-    When The user clicks run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is on the practice question1 editor
+    When The user clicks run button after writing valid code in question1 editor
+    Then The user should able to see output in the console question1
 
   @A27
   Scenario: Verify that user receives error on submitting invalid python code for Search the array question
-    Given The user is on the practice question editor
+    Given The user is on the practice question1 editor
     When The user clicks Submit button after writing invalid code in editor
     Then The user see an error message Error occurred during submission
 
   @A28
   Scenario: Verify that user receives no error on submitting valid python code for Search the array question
-    Given The user is on the practice question editor
-    When The user clicks Submit button after writing valid code in editor
+    Given The user is on the practice question1 editor
+    When The user clicks Submit button after writing valid code in question1 editor
     Then The user see success message Submission successful
 
   @A29
   Scenario: Verify that user is able to navigate to Max Consecutive ones Page from Practice question page of Arrays in Python page
     Given The user is on the practice question page from arrays in python
     When The user clicks the Max Consecutive ones link
-    Then The user should be redirected to Question page contains a question, try Editor with Run and Submit buttons
+    Then The user should be redirected to Question2 page contains a question, try Editor with Run and Submit buttons
 
   @A30
   Scenario: Verify that user receives error for writing  nothing and running Max Consecutive ones question
-    Given The user is on the practice question editor
-    When The user clicks run button without writing anything in editor
-    Then The user should be able to see an error message in alert window
+    Given The user is on the practice question2 editor
+    When The user clicks run button without writing anything in question editor in Array
+    Then The user should be able to see an error message in alert window in question editor in Array
 
   @A31
   Scenario: Verify that user receives error for writing  nothing and submitting Max Consecutive ones question
-    Given The user is on the practice question editor
+    Given The user is on the practice question2 editor
     When The user clicks submit button without writing anything in editor
     Then The user see an error message Error occurred during submission
 
   @A32
   Scenario: Verify that user receives error for invalid python code on running Max Consecutive ones question
-    Given The user is on the practice question editor
-    When The user clicks run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is on the practice question2 editor
+    When The user clicks run button after writing invalid code in  question editor in Array
+    Then The user should able to see an error message in alert window in Array
 
   @A33
   Scenario: Verify that user is able to run valid python code for Max Consecutive ones question
-    Given The user is on the practice question editor
-    When The user clicks run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is on the practice question2 editor
+    When The user clicks run button after writing valid code in question2 editor
+    Then The user should able to see output in the console question2
 
   @A34
   Scenario: Verify that user receives error on submitting invalid python code for Max Consecutive ones question
-    Given The user is on the practice question editor
+    Given The user is on the practice question2 editor
     When The user clicks Submit button after writing invalid code in editor
     Then The user see an error message Error occurred during submission
 
   @A35
   Scenario: Verify that user receives no error on submitting valid python code for Max Consecutive ones question
-    Given The user is on the practice question editor
-    When The user clicks Submit button after writing valid code in editor
+    Given The user is on the practice question2 editor
+    When The user clicks Submit button after writing valid code in question2 editor
     Then The user see success message Submission successful
 
   @A36
-  Scenario: Verify that user is able to navigate to Find Numbers with even number of digits Page from Practice question page of "Arrays in Python" page
+  Scenario: Verify that user is able to navigate to Find Numbers with even number of digits Page from Practice question page of Arrays in Python page
     Given The user is on the practice question page from arrays in python
     When The user clicks the Find Numbers with even number of digits link
-    Then The user should be redirected to Question page contains a question, try Editor with Run and Submit buttons
+    Then The user should be redirected to Question3 page contains a question, try Editor with Run and Submit buttons
 
   @A37
   Scenario: Verify that user receives error for writing  nothing and running Find Numbers with even number of digits question
-    Given The user is on the practice question editor
-    When The user clicks run button without writing anything in editor
-    Then The user should be able to see an error message in alert window
+    Given The user is on the practice question3 editor
+    When The user clicks run button without writing anything in question editor in Array
+    Then The user should be able to see an error message in alert window in question editor in Array
 
   @A38
   Scenario: Verify that user receives error for writing  nothing and submitting Find Numbers with even number of digits question
-    Given The user is on the practice question editor
+    Given The user is on the practice question3 editor
     When The user clicks submit button without writing anything in editor
     Then The user see an error message Error occurred during submission
 
   @A39
   Scenario: Verify that user receives error for invalid python code on running Find Numbers with even number of digits question
-    Given The user is on the practice question editor
-    When The user clicks run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is on the practice question3 editor
+    When The user clicks run button after writing invalid code in  question editor in Array
+    Then The user should able to see an error message in alert window in Array
 
   @A40
   Scenario: Verify that user is able to run valid python code for Find Numbers with even number of digits question
-    Given The user is on the practice question editor
-    When The user clicks run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is on the practice question3 editor
+    When The user clicks run button after writing valid code in question3 editor
+    Then The user should able to see output in the console question3
 
   @A41
   Scenario: Verify that user receives error on submitting invalid python code for Max Consecutive ones question
-    Given The user is on the practice question editor
+    Given The user is on the practice question3 editor
     When The user clicks Submit button after writing invalid code in editor
     Then The user see an error message Error occurred during submission
 
   @A42
   Scenario: Verify that user receives no error on submitting valid python code for Max Consecutive ones question
-    Given The user is on the practice question editor
-    When The user clicks Submit button after writing valid code in editor
+    Given The user is on the practice question3 editor
+    When The user clicks Submit button after writing valid code in question3 editor
     Then The user see success message Submission successful
 
   @A43
   Scenario: Verify that user is able to navigate to Squares Of a Sorted Array Page from Practice question page of Arrays in Python page
     Given The user is on the practice question page from arrays in python
     When The user clicks the Squares Of a Sorted Array link
-    Then The user should be redirected to Question page contains a question, try Editor with Run and Submit buttons
+    Then The user should be redirected to Question4 page contains a question, try Editor with Run and Submit buttons
 
   @A44
   Scenario: Verify that user receives error for writing  nothing and running Squares Of a Sorted Array question
-    Given The user is on the practice question editor
-    When The user clicks run button without writing anything in editor
-    Then The user should be able to see an error message in alert window
+    Given The user is on the practice question4 editor
+    When The user clicks run button without writing anything in question editor in Array
+    Then The user should be able to see an error message in alert window in question editor in Array
 
   @A45
   Scenario: Verify that user receives error for writing  nothing and submitting Squares Of a Sorted Array question
-    Given The user is on the practice question editor
+    Given The user is on the practice question4 editor
     When The user clicks submit button without writing anything in editor
     Then The user see an error message Error occurred during submission
 
   @A46
   Scenario: Verify that user receives error for invalid python code on running Squares Of a Sorted Array question
-    Given The user is on the practice question editor
-    When The user clicks run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is on the practice question4 editor
+    When The user clicks run button after writing invalid code in  question editor in Array
+    Then The user should able to see an error message in alert window in Array
 
   @A47
   Scenario: Verify that user is able to run valid python code for Squares Of a Sorted Array question
-    Given The user is on the practice question editor
-    When The user clicks run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is on the practice question4 editor
+    When The user clicks run button after writing valid code in question4 editor
+    Then The user should able to see output in the console question4
 
   @A48
   Scenario: Verify that user receives error on submitting invalid python code for Squares Of a Sorted Array question
-    Given The user is on the practice question editor
+    Given The user is on the practice question4 editor
     When The user clicks Submit button after writing invalid code in editor
     Then The user see an error message Error occurred during submission
 
   @A49
   Scenario: Verify that user receives no error on submitting valid python code for Squares Of a Sorted Array question
-    Given The user is on the practice question editor
-    When The user clicks Submit button after writing valid code in editor
+    Given The user is on the practice question4 editor
+    When The user clicks Submit button after writing valid code in question4 editor
     Then The user see success message Submission successful
+

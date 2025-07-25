@@ -7,7 +7,7 @@ Feature: Testing linked list data structure in DsAlgo Website
 
   @L1
   Scenario: Verify that user is able to navigate to Introduction page
-    Given The user is in the Linked list page after logging in
+    Given The user is in the Linked list page after Sign in
     When The user clicks Introduction button
     Then The user should be redirected to Introduction page
 
@@ -15,29 +15,29 @@ Feature: Testing linked list data structure in DsAlgo Website
   Scenario: Verify that user is able to navigate to Try Here page for Introduction page
     Given The user is on the Introduction page
     When The user clicks Try Here button in Introduction page
-    Then The user should be redirected to a page having an try Editor with a Run button to test
+    Then The user should be redirected to a page having an try Editor with a Run button to test in LL
 
   @L3
   Scenario: Verify that user receives error when click on Run button without entering code for Introduction page
-    Given The user is in the tryEditor page
-    When The user clicks the Run button without entering the code in the Editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL Introduction
+    When The user clicks the Run button without entering the code in the Editor in LL
+    Then The user should see an error message in alert window for no code in LL
 
   @L4
   Scenario: Verify that user receives error for invalid python code for Introduction page
-    Given The user is in the tryEditor page
-    When The user clicks run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL Introduction
+    When The user clicks run button after writing invalid code in editor in LL
+    Then The user should be able to see an error message in alert window in LL
 
   @L5
   Scenario: Verify that user is able to see output for valid python code for Introduction page
-    Given The user is in the tryEditor page
-    When The user clicks run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is in the tryEditor page in LL Introduction
+    When The user clicks run button after writing valid code in editor in LL
+    Then The user should see output in the console in LL
 
   @L6
   Scenario: Verify that user is able to navigate to Creating Linked List page
-    Given The user is in the Linked list page after Sign in
+    Given The user is in the Linked list page after Sign In
     When The user clicks Creating Linked List button
     Then The user should be redirected to Creating Linked List page
 
@@ -45,25 +45,25 @@ Feature: Testing linked list data structure in DsAlgo Website
   Scenario: Verify that user is able to navigate to Try Here page for Creating Linked List page
     Given The user is on the Creating Linked List page
     When The user clicks Try Here button in Creating Linked List page
-    Then The user should be redirected to a page having an try Editor with a Run button to test
+    Then The user should be redirected to a page having an try Editor with a Run button to test in LL
 
   @L8
   Scenario: Verify that user receives error when click on Run button without entering code for Creating Linked List page
-    Given The user is in the tryEditor page
-    When The user clicks the Run button without entering the code in the Editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL via Creating Linked List page
+    When The user clicks the Run button without entering the code in the Editor in LL
+    Then The user should see an error message in alert window for no code in LL
 
   @L9
   Scenario: Verify that user receives error for invalid python code for Creating Linked List page
-    Given The user is in the tryEditor page
-    When The user clicks run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL via Creating Linked List page
+    When The user clicks run button after writing invalid code in editor in LL
+    Then The user should be able to see an error message in alert window in LL
 
   @L10
   Scenario: Verify that user is able to see output for valid python code for Creating Linked List page
-    Given The user is in the tryEditor page
-    When The user clicks run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is in the tryEditor page in LL via Creating Linked List page
+    When The user clicks run button after writing valid code in editor in LL
+    Then The user should see output in the console in LL
 
   @L11
   Scenario: Verify that user is able to navigate to Types Of Linked List page
@@ -75,25 +75,26 @@ Feature: Testing linked list data structure in DsAlgo Website
   Scenario: Verify that user is able to navigate to Try Here page for Types Of Linked List page
     Given The user is on the Types Of Linked List page
     When The user clicks Try Here button in Types of Linked List page
-    Then The user should be redirected to a page having an try Editor with a Run button to test
+    Then The user should be redirected to a page having an try Editor with a Run button to test in LL
 
   @L13
   Scenario: Verify that user receives error when click on Run button without entering code for Types Of Linked List page
-    Given The user is in the tryEditor page
-    When The user clicks the Run button without entering the code in the Editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL via Types Of Linked List page
+    When The user clicks the Run button without entering the code in the Editor in LL
+    Then The user should see an error message in alert window for no code in LL
 
   @L14
   Scenario: Verify that user receives error for invalid python code for Types Of Linked List page
-    Given The user is in the tryEditor page
-    When The user clicks Run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL via Types Of Linked List page
+    When The user clicks run button after writing invalid code in editor in LL
+    Then The user should be able to see an error message in alert window in LL
 
   @L15
   Scenario: Verify that user is able to see output for valid python code for Types Of Linked List page
-    Given The user is in the tryEditor page
-    When The user clicks Run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is in the tryEditor page in LL via Types Of Linked List page
+    When The user clicks run button after writing valid code in editor in LL
+    Then The user should see output in the console in LL
+
 
   @L16
   Scenario: Verify that user is able to navigate to Implement Linked List in Python page
@@ -105,25 +106,25 @@ Feature: Testing linked list data structure in DsAlgo Website
   Scenario: Verify that user is able to navigate to try Editor page for Implement Linked List in Python page
     Given The user is on the Implement Linked List in Python page
     When The user clicks Try Here button in Implement Linked List in Python page
-    Then The user should be redirected to a page having an try Editor with a Run button to test
+    Then The user should be redirected to a page having an try Editor with a Run button to test in LL
 
   @L18
   Scenario: Verify that user receives error when click on Run button without entering code for Implement Linked List in Python page
-    Given The user is in the tryEditor page
-    When The user clicks the Run button without entering the code in the Editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL via Implement Page
+    When TThe user clicks the Run button without entering the code in the Editor in LL
+    Then The user should see an error message in alert window for no code in LL
 
   @L19
   Scenario: Verify that user receives error for invalid python code for Implement Linked List in Python page
-    Given The user is in the tryEditor page
-    When The user clicks Run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL via Implement Page
+    When The user clicks run button after writing invalid code in editor in LL
+    Then The user should be able to see an error message in alert window in LL
 
   @L20
   Scenario: Verify that user is able to see output for valid python code for Implement Linked List in Python page
-    Given The user is in the tryEditor page
-    When The user clicks Run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is in the tryEditor page in LL via Implement Page
+    When The user clicks run button after writing valid code in editor in LL
+    Then The user should see output in the console in LL
 
   @L21
   Scenario: Verify that user is able to navigate to Traversal page
@@ -135,25 +136,26 @@ Feature: Testing linked list data structure in DsAlgo Website
   Scenario: Verify that user is able to navigate to try Editor page for Traversal page
     Given The user is on the Traversal page
     When The user clicks Try Here button in Traversal page
-    Then The user should be redirected to a page having an try Editor with a Run button to test
+    Then The user should be redirected to a page having an try Editor with a Run button to test in LL
 
   @L23
   Scenario: Verify that user receives error when click on Run button without entering code for Traversal page
-    Given The user is in the tryEditor page
-    When The user clicks the Run button without entering the code in the Editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL via Traversal
+    When The user clicks the Run button without entering the code in the Editor in LL
+    Then The user should see an error message in alert window for no code in LL
 
   @L24
   Scenario: Verify that user receives error for invalid python code for Traversal page
-    Given The user is in the tryEditor page
-    When The user clicks Run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL via Traversal
+    When The user clicks run button after writing invalid code in editor in LL
+    Then The user should be able to see an error message in alert window in LL
 
   @L25
   Scenario: Verify that user is able to see output for valid python code for Traversal page
-    Given The user is in the tryEditor page
-    When The user clicks Run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is in the tryEditor page in LL via Traversal
+    When The user clicks run button after writing valid code in editor in LL
+    Then The user should see output in the console in LL
+
 
   @L26
   Scenario: Verify that user is able to navigate to Insertion page
@@ -165,28 +167,29 @@ Feature: Testing linked list data structure in DsAlgo Website
   Scenario: Verify that user is able to navigate to try Editor page for Insertion page
     Given The user is on the Insertion page
     When The user clicks Try Here button in Insertion page
-    Then The user should be redirected to a page having an try Editor with a Run button to test
+    Then The user should be redirected to a page having an try Editor with a Run button to test in LL
 
   @L28
   Scenario: Verify that user receives error when click on Run button without entering code for Insertion page
-    Given The user is in the tryEditor page
-    When The user clicks the Run button without entering the code in the Editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL via Insertion
+    When The user clicks the Run button without entering the code in the Editor in LL
+    Then The user should see an error message in alert window for no code in LL
 
   @L29
   Scenario: Verify that user receives error for invalid python code for Insertion page
-    Given The user is in the tryEditor page
-    When The user clicks Run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL via Insertion
+    When The user clicks run button after writing invalid code in editor in LL
+    Then The user should be able to see an error message in alert window in LL
 
   @L30
   Scenario: Verify that user is able to see output for valid python code for Insertion page
-    Given The user is in the tryEditor page
-    When The user clicks Run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is in the tryEditor page in LL via Insertion
+    When The user clicks run button after writing valid code in editor in LL
+    Then The user should see output in the console in LL
+
 
   @L31
-  Scenario: Verify that user is able to navigate to Insertion page
+  Scenario: Verify that user is able to navigate to Deletion page
     Given The user is in the Linked list page after Sign in
     When The user clicks Deletion button
     Then The user should be redirected to Deletion page
@@ -195,25 +198,25 @@ Feature: Testing linked list data structure in DsAlgo Website
   Scenario: Verify that user is able to navigate to try Editor page for Deletion page
     Given The user is on the Deletion page
     When The user clicks Try Here button in Deletion page
-    Then The user should be redirected to a page having an try Editor with a Run button to test
+    Then The user should be redirected to a page having an try Editor with a Run button to test in LL
 
   @L33
   Scenario: Verify that user receives error when click on Run button without entering code for Deletion page
-    Given The user is in the tryEditor page
-    When The user clicks the Run button without entering the code in the Editor
-    Then The user should able to see an error message in alert window
+    Given The user is in the tryEditor page in LL via Deletion
+    When The user clicks the Run button without entering the code in the Editor in LL
+    Then The user should see an error message in alert window for no code in LL
 
   @L34
   Scenario: Verify that user receives error for invalid python code for Deletion page
-    Given The user is in the tryEditor page
-    When The user clicks Run button after writing invalid code in editor
-    Then The user should able to see an error message in alert window
-
+    Given The user is in the tryEditor page in LL via Deletion
+    When The user clicks run button after writing invalid code in editor in LL
+    Then The user should be able to see an error message in alert window in LL
+ 
   @L35
   Scenario: Verify that user is able to see output for valid python code for Deletion page
-    Given The user is in the tryEditor page
-    When The user clicks Run button after writing valid code in editor
-    Then The user should able to see output in the console
+    Given The user is in the tryEditor page in LL via Deletion
+    When The user clicks run button after writing valid code in editor in LL
+    Then The user should see output in the console in LL
 
   @L36
   Scenario: Verify that the user is able to navigate to practice questions from Deletion page
