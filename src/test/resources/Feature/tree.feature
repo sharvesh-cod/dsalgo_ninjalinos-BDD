@@ -28,7 +28,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Overview of Trees
     Given The user in tryEditor page
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @OverviewTreeValidCode @T1
   Scenario: Run with valid code in Overview of Trees
@@ -56,7 +56,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Terminologies
     Given The user on tryEditor page of Terminologies
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @TerminologiesValidCode @TER1
   Scenario: Run with valid code in Terminologies
@@ -84,7 +84,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Types of Tree
     Given The user on tryEditor page of Types of Tree
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @TypesofTreeValidCode @TT1
   Scenario: Run with valid code in Types of Tree
@@ -112,7 +112,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Tree Traversals
     Given The user on tryEditor page of Tree Traversals
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @TreeTraversalValidCode  @TT2
   Scenario: Run with valid code in Tree Traversals
@@ -140,7 +140,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Traversals-Illustration
     Given The user on tryEditor page of Traversals-Illustration
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @TraversalsIllustrationValidCode
   Scenario: Run with valid code in Traversals-Illustration
@@ -168,7 +168,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Binary Trees
   Given The user on tryEditor page of Binary Trees
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @BinaryTreesValidCode @BTC
   Scenario: Run with valid code in Binary Trees
@@ -196,7 +196,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Types of Binary Tree
     Given The user on tryEditor page of Types of Binary Tree
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @TypesofBinaryTreeValidCode @BTP
   Scenario: Run with valid code in Types of Binary Tree
@@ -224,7 +224,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Implementation of Python
     Given The user in tryEditor page of Implementation of Python
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @ImplementationofPythonValidCode @IP
   Scenario: Run with valid code in Implementation of Python
@@ -252,7 +252,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Binary Tree Traversals
     Given The user on tryEditor page in Binary Tree Traversals
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @BinaryTreeTraversalValidCode
   Scenario: Run with valid code in Binary Tree Traversals
@@ -280,7 +280,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Applications of Binary Trees
     Given The user on tryEditor page on Applications of Binary Trees
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @AppBinaryTreeValidCode
   Scenario: Run with valid code in Applications of Binary Trees
@@ -308,7 +308,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Implementation of Binary Trees
     Given The user on tryEditor page of Implementation of Binary Trees
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @ImplementOfBinaryTreeValidCode
   Scenario: Run with valid code in Implementation of Binary Trees
@@ -336,7 +336,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Binary Search
     Given The user on tryEditor page of Binary Search
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @BinarySearchValidCode @BS
   Scenario: Run with valid code in Binary Search
@@ -355,7 +355,7 @@ Feature: Tree Module in DsAlgo portal
     When The user clicks Implementation of BST link
     Then The user should be navigated to the Implementation of BST page
 
-  @ImplementationofBSTTryHere @IOB
+  @ImplementationofBSTTryHere @IOB2
   Scenario: Navigate to text editor on Implementation of BST page
     When The user clicks Try here on Implementation of BST
     Then The user should be navigated to the text editor
@@ -364,7 +364,7 @@ Feature: Tree Module in DsAlgo portal
   Scenario: Run without code in Implementation of BST
     Given The user on tryEditor page of Implementation of BST
     When The user clicks Run without entering code
-    Then An alert message should appear
+    Then An alert message should appear for without code
 
   @ImplementationofBSTValidCode @IOB
   Scenario: Run with valid code in Implementation of BST

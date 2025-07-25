@@ -42,7 +42,7 @@ public class Tree_sd {
 	}
 
 	@Given("the user is in Tree page after logged in")
-	public void the_user_is_in_tree_page_after_logged_in() throws InterruptedException {
+	public void the_user_is_in_tree_page_after_logged_in() throws InterruptedException, IOException {
 		tf.background_getToTree();
 	}
 
@@ -132,6 +132,14 @@ public class Tree_sd {
 
 	}
 
+	@Then("An alert message should appear for without code")
+	public void an_alert_message_withoutcode() {
+		codeEditor.alert_message();
+		log.error(
+				"There is no alert message displayed when we click on run button without entering any code in the code editor in Tree module");
+
+	}
+
 	@When("The user clicks Run after entering valid code")
 	public void the_user_clicks_run_after_entering_valid_code() throws IOException, InterruptedException {
 		codeEditor.txtEditor_correctCode();
@@ -142,15 +150,13 @@ public class Tree_sd {
 	public void the_output_should_be_displayed_in_the_console() {
 
 		String output = tf.outputText();
-
-		Assert.assertEquals(output, "Hello World", "output successfully is matched");
+		Assert.assertEquals(output, "Hello World", "output not matched");
 
 	}
 
 	@When("The user clicks run after entering invalid code")
 	public void the_user_clicks_run_after_entering_invalid_code() throws IOException, InterruptedException {
 		codeEditor.txtEditor_invalidCode();
-		// tf.clickRun_WithOutCode();
 
 	}
 
@@ -221,10 +227,10 @@ public class Tree_sd {
 	}
 
 	@Then("The user should be navigated to the Traversals-Illustration page")
-	public void navigate_TraversalsIllustration() {
-		String treesUrl = common.currentUrl();
+	public void navigate_TraversalsIllustration() throws InterruptedException {
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/traversals-illustration/";
-		System.out.println("user logged into " + treesUrl + " traversalas-illustration page");
+		tf.waitElement(expectedUrl);
+		String treesUrl = common.currentUrl();
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on traversalas-illustaration page");
 
 	}
@@ -309,8 +315,9 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Binary Trees page")
 	public void navigated_to_the_binary_trees_page() {
-		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/binary-trees/";
+		tf.waitElement(expectedUrl);
+		String treesUrl = common.currentUrl();
 		System.out.println("user logged into " + treesUrl + "Binary Tree page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Binary Tree page");
 
@@ -410,8 +417,9 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Implementation of BST page")
 	public void the_user_should_be_navigated_to_the_implementation_of_bst_page() {
-		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/implementation-of-bst/";
+		tf.waitElement(expectedUrl);
+		String treesUrl = common.currentUrl();
 		System.out.println("user logged into " + treesUrl + "Implementation of bst");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Implementation of bst");
 	}
@@ -442,15 +450,14 @@ public class Tree_sd {
 		try {
 			tf.click_Overview();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
 
 	@When("user clicks on the practice questions link in Tree module")
-	public void user_clicks_on_the_practice_questions_link_in_tree_module() {
-
+	public void user_clicks_on_the_practice_questions_link_in_tree_module() throws InterruptedException {
+		Thread.sleep(1000);
 		tf.practice_Tree();
 
 	}
@@ -525,8 +532,9 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to Implementation of Binary Trees page")
 	public void the_user_should_be_navigated_to_implementation_of_binary_trees_page() {
-		String treesUrl = common.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/implementation-of-binary-trees/";
+		tf.waitElement(expectedUrl);
+		String treesUrl = common.currentUrl();
 		System.out.println("user logged into " + treesUrl + "Implementation of Binary Trees page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Implementation of Binary Trees page");
 

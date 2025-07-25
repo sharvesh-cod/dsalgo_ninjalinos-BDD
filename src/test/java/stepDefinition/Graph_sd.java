@@ -40,7 +40,7 @@ public class Graph_sd {
 	}
 
 	@Given("the user is in Graph page after logged in")
-	public void the_user_is_in_graph_page_after_logged_in() throws InterruptedException {
+	public void the_user_is_in_graph_page_after_logged_in() throws InterruptedException, IOException {
 		gr.background_getTograph();
 
 	}
@@ -155,7 +155,9 @@ public class Graph_sd {
 	public void user_find_blank_page() {
 		log.error("There are no practice questions available in the Graph module");
 		System.out.println("Blank Page");
-		Assert.assertEquals("https://dsportalapp.herokuapp.com/graph/graph/", common.currentUrl());
+		log.error("There is no practice questions displayed on Practice Question Page");
+		Assert.assertEquals("https://dsportalapp.herokuapp.com/graph/graph/", common.currentUrl(),
+				"blank page in Practice Question section");
 
 	}
 
