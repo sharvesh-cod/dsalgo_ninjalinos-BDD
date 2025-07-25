@@ -26,7 +26,7 @@ public class Register_sd {
 	private Register_pf Register_pf;
 	private Home_pf Home_pf;
 
-	String browserName;
+	String browser;
 	ConfigReader config;
 	CommonMethods common;
 	LoggerLoad log;
@@ -38,9 +38,8 @@ public class Register_sd {
 		this.Register_pf = new Register_pf(passdr);
 		this.Home_pf = new Home_pf(passdr);
 		this.config = new ConfigReader();
-		this.browserName = config.get_prop_value("browser");
+
 		this.log = new LoggerLoad();
-		// this.common = new CommonMethods(passdr);
 
 	}
 

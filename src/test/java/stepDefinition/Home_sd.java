@@ -23,7 +23,7 @@ import utils.LoggerLoad;
 public class Home_sd {
 	private WebDriver driver;
 
-	String browserName;
+	String browser;
 	ConfigReader config;
 	CommonMethods common;
 	private Launch_pf Launch_pf;
@@ -36,9 +36,8 @@ public class Home_sd {
 		this.Launch_pf = new Launch_pf(passdr);
 		this.Home_pf = new Home_pf(passdr);
 		this.config = new ConfigReader();
-		this.browserName = config.get_prop_value("browser");
+
 		this.log = new LoggerLoad();
-		// this.common = new CommonMethods(passdr);
 
 	}
 
@@ -50,7 +49,6 @@ public class Home_sd {
 	@Given("the user is on DsAlgo portal")
 	public void the_user_is_on_ds_algo_portal() {
 		Launch_pf.geturl();
-		// driver.get("https://dsportalapp.herokuapp.com/");
 
 	}
 

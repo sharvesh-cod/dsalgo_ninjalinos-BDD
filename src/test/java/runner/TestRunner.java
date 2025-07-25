@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions;
 		"html:target/dsAlgo_Ninjalinos_BDD.html", }, // reporting purpose
 		monochrome = false, // console output color
 
-		features = { "src/test/resources/Feature/Launch.feature" }, // tags = "@Launch or @Home or @Login",
+		features = { "src/test/resources/Feature/Datastructure.feature" }, // tags = "@Launch",
 		// or
 		// @datastructures", //
 		// location

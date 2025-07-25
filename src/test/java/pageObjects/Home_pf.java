@@ -19,13 +19,6 @@ public class Home_pf {
 	String browser;
 	WebDriverWait wait;
 
-	// constructor
-//	public Home_pf(WebDriver driver) {
-//		this.driver = driver;
-//		this.action = new Actions(driver);
-//		PageFactory.initElements(driver, this);
-//	}
-
 	// Locators
 
 	@FindBy(xpath = "//*[text()='Data Structures-Introduction']//../a")

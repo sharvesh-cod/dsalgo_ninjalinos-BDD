@@ -22,7 +22,7 @@ public class Launch_sd {
 	private WebDriver driver;
 	private Launch_pf Launch_pf;
 
-	String browserName;
+	String browser;
 	ConfigReader config;
 	CommonMethods common;
 
@@ -32,8 +32,6 @@ public class Launch_sd {
 		this.Launch_pf = new Launch_pf(passdr);
 
 		this.config = new ConfigReader();
-		this.browserName = config.get_prop_value("browser");
-		// this.common = new CommonMethods(passdr);
 
 	}
 

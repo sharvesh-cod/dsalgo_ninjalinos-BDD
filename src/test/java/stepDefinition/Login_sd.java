@@ -23,7 +23,7 @@ public class Login_sd {
 	private Login_pf Login_pf;
 	private Launch_pf Launch_pf;
 
-	String browserName;
+	String browser;
 	ConfigReader config;
 	CommonMethods common;
 
@@ -33,8 +33,7 @@ public class Login_sd {
 		this.Login_pf = new Login_pf(passdr);
 		this.Launch_pf = new Launch_pf(passdr);
 		this.config = new ConfigReader();
-		this.browserName = config.get_prop_value("browser");
-//		this.common = new CommonMethods(passdr);
+
 	}
 
 	private void waitForTenSec(String partialUrl) {
