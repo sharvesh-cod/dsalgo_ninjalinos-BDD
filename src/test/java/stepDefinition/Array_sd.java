@@ -21,7 +21,6 @@ import utils.LoggerLoad;
 
 public class Array_sd {
 
-<<<<<<< HEAD
 	private WebDriver driver; // CODE CHANGES FOR FIREFOX
 	// private LoginPage_ArrayAndLinkedLists loginpage;
 	private Array_pf array_pf;
@@ -61,13 +60,6 @@ public class Array_sd {
 		array_pf.clickArrayGetStarted();
 		System.out.println("output 1");
 
-=======
-
-	@Given("The user is in array page after logging in")
-	public void the_user_is_in_array_page_after_logging_in() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
->>>>>>> branch 'development' of git@github-shared:sharvesh-cod/dsalgo_ninjalinos-BDD.git
 	}
 
 	@When("The user clicks Array in Python")

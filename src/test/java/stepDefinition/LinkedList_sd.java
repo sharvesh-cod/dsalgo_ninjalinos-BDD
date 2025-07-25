@@ -21,7 +21,6 @@ import utils.LoggerLoad;
 
 public class LinkedList_sd {
 
-<<<<<<< HEAD
 	private WebDriver driver; // CODE CHANGES FOR FIREFOX
 	// private LoginPage_ArrayAndLinkedLists loginpage;
 	private LinkedListPage_pf ll_pf;
@@ -42,13 +41,6 @@ public class LinkedList_sd {
 		this.browserName = config.get_prop_value("browser");
 		// this.common = new CommonMethods(passdr);
 		this.log = new LoggerLoad();
-=======
-
-	@Given("The user is in linked list page after logging in")
-	public void the_user_is_in_linked_list_page_after_logging_in() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
->>>>>>> branch 'development' of git@github-shared:sharvesh-cod/dsalgo_ninjalinos-BDD.git
 	}
 
 	// CODE CHANGES FOR FIREFOX
