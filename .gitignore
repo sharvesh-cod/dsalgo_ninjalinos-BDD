@@ -1,10 +1,13 @@
 /target/
 
 # Eclipse files
-.classpath
-.project
 .settings/
-
 
 #MacOS files
 .DS_Store
+
+#Testing Output files
+bin/
+reports/
+logs/
+test-output/
