@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
 import utils.ConfigReader;
+import utils.ExcelReaderFile;
 
 public class Tree_pf {
 
@@ -76,6 +77,9 @@ public class Tree_pf {
 	WebElement practQuestTree;
 	CodeEditor_pf codeEditor;
 	ConfigReader config;
+	String path;
+	JavascriptExecutor js;
+	ExcelReaderFile excelReader;
 
 	public Tree_pf(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
@@ -83,11 +87,13 @@ public class Tree_pf {
 		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReaderFile(path);
 
 	}
 
 	// background given
-	public void background_getToTree() throws InterruptedException {
+	public void background_getToTree() throws InterruptedException, IOException {
 		driver.get(config.get_prop_value("testurl"));
 		action.scrollToElement(loginGetStarted).perform();
 		action.click(loginGetStarted).perform();
@@ -97,9 +103,11 @@ public class Tree_pf {
 		wait.until(ExpectedConditions.visibilityOf(usernameField));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", usernameField);
 		action.click(usernameField).perform();
-		action.sendKeys(usernameField, config.get_prop_value("username")).perform();
+		String unameData = excelReader.getData("Credentials", 1, 0);
+		action.sendKeys(usernameField, unameData).perform();
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", passwordField);
-		passwordField.sendKeys(config.get_prop_value("password"));
+		String passwordData = excelReader.getData("Credentials", 1, 1);
+		passwordField.sendKeys(passwordData);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginButton);
 		loginButton.click();
 		wait.until(ExpectedConditions.visibilityOf(treegetStartedButton));
@@ -108,9 +116,15 @@ public class Tree_pf {
 	}
 
 	public void practice_Tree() {
-
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", practQuestTree);
 		action.scrollToElement(practQuestTree).perform();
 		action.click(practQuestTree).perform();
+	}
+
+	public String waitElement(String ele) {
+
+		wait.until(ExpectedConditions.urlToBe(ele));
+		return ele;
 	}
 
 	public String outputText() {
@@ -305,7 +319,6 @@ public class Tree_pf {
 
 	public void binary_Search() {
 		wait.until(ExpectedConditions.visibilityOf(binarySearch));
-		((JavascriptExecutor) driver).executeScript("window.scrollTo(20, 13);");
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", binarySearch);
 		action.scrollToElement(binarySearch).perform();
 		action.click(binarySearch).perform();
