@@ -65,28 +65,13 @@ public class CodeEditor_pf {
 
 	// Actions //keep this
 	public void tryEditor_validCode() throws IOException {
-		// String path = config.get_prop_value("path");
-		// ExcelReader reader = new ExcelReader(path, "TextEditor");
 		String data = excelReader.getData("textEditor", 1, 0);
-		// wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
-
-//		js.executeScript(
-//				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
-//				data);
 		safeType(textEditor, data);
 	}
 
 	// keep this
 	public void tryEditor_invalidCode() throws IOException {
-		// String path = config.get_prop_value("path");
-		// ExcelReader reader = new ExcelReader(path, "TextEditor");
 		String data = excelReader.getData("textEditor", 1, 1);
-		// String data = ExcelReader.getData(path, "TextEditor", 1, 1);
-		// wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
-
-//		js.executeScript(
-//				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
-//				data);
 		safeType(textEditor, data);
 	}
 

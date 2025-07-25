@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -30,12 +31,12 @@ public class DriverFactory {
 	// Initialize WebDriver based on browser name
 	public WebDriver initBrowser(String browser, String headless) {
 
-		// System.out.println("Initializing browser: " + browser);
-
 		if (browser.equalsIgnoreCase("chrome")) {
 			if (headless.equalsIgnoreCase("true")) {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless=new");
+				options.addArguments("--start-maximized");
+				options.addArguments("--remote-allow-origins=*");
 				driver = new ChromeDriver(options);
 				WebDriverManager.chromedriver().setup();
 			} else {
@@ -64,8 +65,6 @@ public class DriverFactory {
 				options.setProfile(profile);
 
 				driver = new FirefoxDriver(options);
-
-				// driver = new FirefoxDriver();
 			} else {
 				driver = new FirefoxDriver();
 			}
@@ -73,10 +72,13 @@ public class DriverFactory {
 		}
 
 		else if (browser.equalsIgnoreCase("edge")) {
-			// tldriver.set(new FirefoxDriver());
-			// WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
-
+			if (headless.equalsIgnoreCase("true")) {
+				EdgeOptions options = new EdgeOptions();
+				options.addArguments("--headless=new");
+				driver = new EdgeDriver(options);
+			} else {
+				driver = new EdgeDriver();
+			}
 		}
 
 		else {
@@ -96,7 +98,3 @@ public class DriverFactory {
 	}
 
 }
-
-// Notes: 1. It is used To ensure only one WebDriver instance per test.
-//  2.If you're using parallel execution, using a static WebDriver won't work because:
-//   Threads share the same driver → Tests interfere with each other.
