@@ -56,11 +56,15 @@ public class DriverFactory {
 				driver = new FirefoxDriver();
 			}
 
+<<<<<<< HEAD
 		}
 
 		else if (browser.equalsIgnoreCase("edge"))
 
 		{
+=======
+		} else if (browser.equalsIgnoreCase("edge")) {
+>>>>>>> branch 'development' of git@github.com:sharvesh-cod/dsalgo_ninjalinos-BDD.git
 			if (headless.equalsIgnoreCase("true")) {
 				EdgeOptions options = new EdgeOptions();
 				options.addArguments("--headless=new");
