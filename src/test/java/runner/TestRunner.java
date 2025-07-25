@@ -1,7 +1,9 @@
 package runner;
 
-import org.testng.annotations.DataProvider;
+public class TestRunner {
 
+<<<<<<< HEAD
+=======
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
@@ -19,4 +21,5 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 		return super.scenarios();
 	}
 
+>>>>>>> branch 'testingmain' of git@github.com:sharvesh-cod/dsalgo_ninjalinos-BDD.git
 }

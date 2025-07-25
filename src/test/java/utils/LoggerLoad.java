@@ -1,5 +1,10 @@
 package utils;
 
+<<<<<<< HEAD
+public class LoggerLoad {
+
+}
+=======
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,3 +32,4 @@ public class LoggerLoad {
 	}
 
 }
+>>>>>>> branch 'testingmain' of git@github.com:sharvesh-cod/dsalgo_ninjalinos-BDD.git
