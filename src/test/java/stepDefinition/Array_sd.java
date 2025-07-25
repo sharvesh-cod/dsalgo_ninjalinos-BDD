@@ -6,7 +6,6 @@ import io.cucumber.java.en.When;
 
 public class Array_sd {
 
-
 	@Given("The user is in array page after logging in")
 	public void the_user_is_in_array_page_after_logging_in() {
 		// Write code here that turns the phrase above into concrete actions

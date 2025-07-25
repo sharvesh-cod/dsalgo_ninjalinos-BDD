@@ -47,6 +47,8 @@ public class CodeEditor_pf {
 		this.excelReader = new ExcelReaderFile(path);
 	}
 
+	// Helper methods
+	// have to keep this
 	private void safeType(WebElement element, String code) {
 		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		wait.until(ExpectedConditions.visibilityOf(element));
@@ -79,6 +81,19 @@ public class CodeEditor_pf {
 	// keep this
 	public void getErrMsg_NoCode() {
 		System.out.println("No Error Alert Found, report bug");
+	}
+
+	// keep it
+	public String alertMsg() {
+		try {
+			Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+			String alertText = alert.getText();
+			alert.accept();
+			return alertText;
+		} catch (Exception e) {
+			System.out.println("No alert appeared: " + e.getMessage());
+			return null;
+		}
 	}
 
 	public void txtEditor_invalidCode() throws IOException, InterruptedException {
@@ -134,17 +149,4 @@ public class CodeEditor_pf {
 
 	}
 
-	// keep it
-	public String alertMsg() {
-		try {
-			Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-			String alertText = alert.getText();
-			alert.accept();
-			return alertText;
-		} catch (Exception e) {
-			System.out.println("No alert appeared: " + e.getMessage());
-			return null;
-		}
-
-	}
 }
