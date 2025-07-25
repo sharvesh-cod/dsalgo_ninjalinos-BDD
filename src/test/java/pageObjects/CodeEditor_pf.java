@@ -47,6 +47,40 @@ public class CodeEditor_pf {
 		this.excelReader = new ExcelReaderFile(path);
 	}
 
+	private void safeType(WebElement element, String code) {
+		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		wait.until(ExpectedConditions.visibilityOf(element));
+		action.moveToElement(element).click().sendKeys(code).perform();
+	}
+
+	// keep this
+	private void safeClick(WebElement element) {
+		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+	}
+
+	// Actions //keep this
+	public void tryEditor_validCode() throws IOException {
+		String data = excelReader.getData("textEditor", 1, 0);
+		safeType(textEditor, data);
+	}
+
+	// keep this
+	public void tryEditor_invalidCode() throws IOException {
+		String data = excelReader.getData("textEditor", 1, 1);
+		safeType(textEditor, data);
+	}
+
+	// keep this
+	public void clickRun() {
+		safeClick(runBtn);
+	}
+
+	// keep this
+	public void getErrMsg_NoCode() {
+		System.out.println("No Error Alert Found, report bug");
+	}
+
 	public void txtEditor_invalidCode() throws IOException, InterruptedException {
 		String data = excelReader.getData("TextEditor", 1, 1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
@@ -100,4 +134,17 @@ public class CodeEditor_pf {
 
 	}
 
+	// keep it
+	public String alertMsg() {
+		try {
+			Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+			String alertText = alert.getText();
+			alert.accept();
+			return alertText;
+		} catch (Exception e) {
+			System.out.println("No alert appeared: " + e.getMessage());
+			return null;
+		}
+
+	}
 }
