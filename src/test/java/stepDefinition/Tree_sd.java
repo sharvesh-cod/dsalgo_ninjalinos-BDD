@@ -1,297 +1,574 @@
 package stepDefinition;
 
+import java.io.IOException;
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageObjects.CodeEditor_pf;
+import pageObjects.CommonMethods;
+import pageObjects.Tree_pf;
+import utils.LoggerLoad;
 
 public class Tree_sd {
 
+	private WebDriver driver;
+	private Actions action;
+	String browser;
+	WebDriverWait wait;
+	CommonMethods common;
+	Tree_pf tf;
+	CodeEditor_pf codeEditor;
+	LoggerLoad log;
+
+	public Tree_sd(Passing_Driver passdr) throws IOException {
+		this.driver = passdr.getDriver();
+		this.action = new Actions(driver);
+		this.codeEditor = new CodeEditor_pf(passdr);
+		this.common = new CommonMethods(passdr);
+		PageFactory.initElements(driver, this);
+		this.tf = new Tree_pf(passdr);
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		this.log = new LoggerLoad();
+
+	}
+
 	@Given("the user is in Tree page after logged in")
-	public void the_user_is_in_tree_page_after_logged_in() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_is_in_tree_page_after_logged_in() throws InterruptedException {
+		tf.background_getToTree();
 	}
 
-	@When("The user scroll down in tree page")
-	public void the_user_scroll_down_in_tree_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	@When("The user scroll down the page")
+	public void the_user_scroll_down_the_page() throws InterruptedException {
+		tf.scrollDownTree();
 	}
 
-	@Then("The user should see the following links")
-	public void the_user_should_see_the_following_links(io.cucumber.datatable.DataTable dataTable) {
-		// Write code here that turns the phrase above into concrete actions
-		// For automatic transformation, change DataTable to one of
-		// E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-		// Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-		// Double, Byte, Short, Long, BigInteger or BigDecimal.
-		//
-		// For other transformations you can register a DataTableType.
-		throw new io.cucumber.java.PendingException();
+	@Then("User should view all the links available in page")
+	public void user_should_view_all_the_links_available_in_page() {
+		tf.verifyLinks();
 	}
 
-	@When("The user clicks Overview of Trees link")
-	public void the_user_clicks_overview_of_trees_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	@When("user clicks on overview button of Tree module")
+	public void user_clicks_on_overview_button_of_tree_module() throws InterruptedException {
+		tf.click_Overview();
+
 	}
 
-	@Then("The user should be navigated to the Overview of Trees page")
-	public void the_user_should_be_navigated_to_the_overview_of_trees_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	@Then("user successfully navigates to the Overview of Tree page")
+	public void navigates_to_the_overview_of_tree_page() throws InterruptedException {
+
+		String actualUrl = tf.navigate_OverviewofTree();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/overview-of-trees/";
+		Assert.assertEquals(actualUrl, expectedUrl, "You are not landed on overview page");
 	}
 
-	@When("The user clicks Try here in Overview of Trees")
-	public void the_user_clicks_try_here_in_overview_of_trees() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	@Given("The user in the overview page of tree module")
+	public void the_user_in_the_overview_page_of_tree_module() throws InterruptedException {
+		tf.click_Overview();
 	}
 
-	@Then("The user should be navigated to the text editor")
-	public void the_user_should_be_navigated_to_the_text_editor() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	@When("user clicks on try here button in Overview of Tree page")
+	public void user_clicks_on_try_here_button_in_overview_of_tree_page() {
+		tf.click_TryEditor();
+	}
+
+	@Then("user successfully navigates to code editor of the Overview of Tree page")
+	public void user_successfully_navigates_to_code_editor_of_the_overview_of_tree_page() throws IOException {
+		String actualUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tryEditor";
+		Assert.assertEquals(actualUrl, expectedUrl, "Not landed in Try Editor page");
 	}
 
 	@Given("The user in tryEditor page")
-	public void the_user_in_try_editor_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_in_try_editor_page() throws InterruptedException {
+
+		tf.click_Overview();
+		tf.click_TryEditor();
+
+	}
+
+	@Given("The user on tryEditor page of Types of Tree")
+	public void the_user_in_try_editor_page_TypesOfT() throws InterruptedException {
+
+		tf.typesOfTrees();
+		tf.click_TryEditor();
+
+	}
+
+	@Given("The user on tryEditor page of Terminologies")
+	public void the_user_in_try_editor_page_Term() {
+
+		tf.click_Terminilogy();
+		tf.click_TryEditor();
+
 	}
 
 	@When("The user clicks Run without entering code")
 	public void the_user_clicks_run_without_entering_code() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.clickRun_WithOutCode();
+
+	}
+
+	@When("The user clicks Run without entering code TTT")
+	public void the_user_clicks_run_without_entering_code_ttt() throws InterruptedException {
+
+		tf.typesOfTrees();
+		tf.click_TryEditor();
+		tf.clickRun_WithOutCode();
+
 	}
 
 	@Then("An alert message should appear")
 	public void an_alert_message_should_appear() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		codeEditor.alert_message();
+
 	}
 
 	@When("The user clicks Run after entering valid code")
-	public void the_user_clicks_run_after_entering_valid_code() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_clicks_run_after_entering_valid_code() throws IOException, InterruptedException {
+		codeEditor.txtEditor_correctCode();
+		tf.clickRun_WithOutCode();
 	}
 
 	@Then("The output should be displayed in the console")
 	public void the_output_should_be_displayed_in_the_console() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
+		String output = tf.outputText();
+
+		Assert.assertEquals(output, "Hello World", "output successfully is matched");
+
 	}
 
 	@When("The user clicks run after entering invalid code")
-	public void the_user_clicks_run_after_entering_invalid_code() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_clicks_run_after_entering_invalid_code() throws IOException, InterruptedException {
+		codeEditor.txtEditor_invalidCode();
+		// tf.clickRun_WithOutCode();
+
 	}
 
 	@When("The user clicks Terminologies link")
 	public void the_user_clicks_terminologies_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.click_Terminilogy();
+
 	}
 
 	@Then("The user should be navigated to the Terminologies page")
-	public void the_user_should_be_navigated_to_the_terminologies_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void navigated_to_the_terminologies_page() {
+		String terminilogyUrl = tf.navigate_To_Terminilogy();
+		System.out.println("Customer navigated to :" + terminilogyUrl);
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/terminologies/";
+		Assert.assertEquals(terminilogyUrl, expectedUrl, "Not landed in Terminology page");
+
 	}
 
 	@When("The user clicks Try here in Terminologies")
 	public void the_user_clicks_try_here_in_terminologies() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.click_Terminilogy();
+		tf.click_TryEditor();
+
+	}
+
+	@Then("The user should be navigated to the text editor")
+	public void the_user_should_be_navigated_to_the_text_editor() throws IOException {
+		String textEditorUrl = common.currentUrl();
+		System.out.println("Customer in :" + textEditorUrl + "page");
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tryEditor";
+		Assert.assertEquals(textEditorUrl, expectedUrl, "Not landed in Try Editor page");
+
 	}
 
 	@When("The user clicks Run after entering invalid code")
-	public void the_user_clicks_run_after_entering_invalidcode() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_clicks_run_after_entering_invalidcode() throws IOException, InterruptedException {
+		codeEditor.txtEditor_invalidCode();
+		// tf.clickRun_WithOutCode();
+
 	}
 
 	@When("The user clicks Types of Tree link")
-	public void the_user_clicks_types_of_tree_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_clicks_types_of_tree_link() throws InterruptedException {
+		tf.typesOfTrees();
+
 	}
 
 	@Then("The user should be navigated to the Types of Tree page")
 	public void the_user_should_be_navigated_to_the_types_of_tree_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String typesOfTreesUrl = tf.navigation_typeOfTrees();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/types-of-trees/";
+		System.out.println("user logged into " + typesOfTreesUrl);
+		Assert.assertEquals(typesOfTreesUrl, expectedUrl, "Not landed in Types of tree page");
+
 	}
 
 	@When("The user clicks Try here in Types of Tree")
-	public void the_user_clicks_try_here_in_types_of_tree() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_clicks_try_here_in_types_of_tree() throws InterruptedException {
+		tf.typesOfTrees();
+		tf.click_TryEditor();
+
 	}
 
 	@When("The user clicks Tree Traversals link")
 	public void the_user_clicks_tree_traversals_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.tree_Trav();
+
+	}
+
+	@Then("The user should be navigated to the Traversals-Illustration page")
+	public void navigate_TraversalsIllustration() {
+		String treesUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/traversals-illustration/";
+		System.out.println("user logged into " + treesUrl + " traversalas-illustration page");
+		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on traversalas-illustaration page");
+
 	}
 
 	@Then("The user should be navigated to the Tree Traversals page")
 	public void the_user_should_be_navigated_to_the_tree_traversals_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String treesUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/tree-traversals/";
+		System.out.println("user logged into " + treesUrl + "Tree Traversals page");
+		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on tree traversalas page");
+
 	}
 
 	@When("The user clicks Try here in Tree Traversals")
 	public void the_user_clicks_try_here_in_tree_traversals() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.tree_Trav();
+		tf.click_TryEditor();
+
+	}
+
+	@When("The user clicks Try here in BinaryTree page")
+	public void clicks_tryhere_BinaryTree() {
+		tf.binary_Tree();
+		tf.click_TryEditor();
+
+	}
+
+	@Given("The user on tryEditor page of Tree Traversals")
+	public void the_user_on_try_editor_page_of_tree_traversals() {
+		tf.tree_Trav();
+		tf.click_TryEditor();
+
 	}
 
 	@When("The user enters valid Python code, clicks Run")
-	public void the_user_enters_valid_python_code_clicks_run() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_enters_valid_python_code_clicks_run() throws IOException, InterruptedException {
+		codeEditor.txtEditor_correctCode();
+
 	}
 
 	@When("The user enters invalid Python code and clicks Run")
-	public void the_user_enters_invalid_python_code_and_clicks_run() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_enters_invalid_python_code_and_clicks_run() throws IOException, InterruptedException {
+		codeEditor.txtEditor_invalidCode();
+
 	}
 
 	@When("The user clicks Traversals-Illustration link")
-	public void the_user_clicks_traversals_illustration_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_clicks_traversals_illustration_link() throws InterruptedException {
+		tf.Traversal_Illustra();
+
+	}
+
+	@When("The user clicks Try here in Tree Traversals-Illustration")
+	public void the_user_clicks_try_here_in_tree_traversals_illustration() throws InterruptedException {
+		tf.Traversal_Illustra();
+		tf.click_TryEditor();
+
 	}
 
 	@When("The user enters valid Python code and clicks Run")
-	public void the_user_enters_valid_python_code_and_clicks_run() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void the_user_enters_valid_python_code_and_clicks_run() throws IOException, InterruptedException {
+		codeEditor.txtEditor_correctCode();
+
 	}
 
 	@When("The user clicks Binary Trees link")
 	public void the_user_clicks_binary_trees_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.binary_Tree();
+	}
+
+	@Given("The user on tryEditor page of Binary Tree")
+	public void user_is_tryEditorBinaryTree() {
+		tf.binary_Tree();
+		tf.click_TryEditor();
+	}
+
+	@Given("The user on tryEditor page of Types of Binary Tree")
+	public void user_is_tryEditorTypesBinaryTree() {
+		tf.types_ofBinary();
+		tf.click_TryEditor();
 	}
 
 	@Then("The user should be navigated to the Binary Trees page")
-	public void the_user_should_be_navigated_to_the_binary_trees_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void navigated_to_the_binary_trees_page() {
+		String treesUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/binary-trees/";
+		System.out.println("user logged into " + treesUrl + "Binary Tree page");
+		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Binary Tree page");
+
 	}
 
 	@When("The user clicks Types of Binary Tree link")
 	public void the_user_clicks_types_of_binary_tree_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
+		tf.types_ofBinary();
 	}
 
 	@Then("The user should be navigated to the Types of Binary Tree page")
 	public void the_user_should_be_navigated_to_the_types_of_binary_tree_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String treesUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/types-of-binary-trees/";
+		System.out.println("user logged into " + treesUrl + "Tyeps of Binary Tree page");
+		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Tyepes of Binary Tree page");
+
 	}
 
 	@When("The user clicks Implementation of Python link")
 	public void the_user_clicks_implementation_of_python_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
+		tf.Impl_in_Python();
 	}
 
 	@Then("The user should be navigated to the Implementation of Python page")
 	public void the_user_should_be_navigated_to_the_implementation_of_python_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String treesUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/implementation-in-python/";
+		System.out.println(
+				"user logged into " + treesUrl + "https://dsportalapp.herokuapp.com/tree/implementation-in-python/");
+		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Implementation of Python page");
+
 	}
 
 	@When("The user clicks Binary Tree Traversals link")
 	public void the_user_clicks_binary_tree_traversals_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.binary_Tree_Travers();
+
 	}
 
 	@Then("The user should be navigated to the Binary Tree Traversals page")
 	public void the_user_should_be_navigated_to_the_binary_tree_traversals_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String treeTitle = common.getTitle();
+		String expectedUrl = "Binary Tree Traversals";
+		System.out.println("user logged into " + treeTitle + "binary tree traversalas");
+		Assert.assertEquals(treeTitle, expectedUrl, "Not landed on Binary Tree Traversals page");
 	}
 
 	@When("The user clicks Applications of Binary Trees link")
 	public void the_user_clicks_applications_of_binary_trees_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.app_of_binaryTrees();
+
 	}
 
 	@Then("The user should be navigated to the Applications of Binary Trees  page")
 	public void the_user_should_be_navigated_to_the_applications_of_binary_trees_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String treesUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/applications-of-binary-trees/";
+		System.out.println("user logged into " + treesUrl + "Applications of Binary Trees Page");
+		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Application of binary tree page");
+
 	}
 
 	@When("The user clicks Try here in Applications of Binary Trees")
 	public void the_user_clicks_try_here_in_applications_of_binary_trees() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.app_of_binaryTrees();
+		tf.click_TryEditor();
 	}
 
 	@When("The user clicks Binary Search link")
 	public void the_user_clicks_binary_search_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.binary_Search();
+
 	}
 
 	@Then("The user should be navigated to the Binary Search page")
 	public void the_user_should_be_navigated_to_the_binary_search_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String treesUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/binary-search-trees/";
+		System.out.println("user logged into " + treesUrl + "Binary Search Page");
+
 	}
 
 	@When("The user clicks Try here in Binary Search")
 	public void the_user_clicks_try_here_in_binary_search() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.binary_Search();
+		tf.click_TryEditor();
+
 	}
 
 	@When("The user clicks Implementation of BST link")
 	public void the_user_clicks_implementation_of_bst_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.Implement_OfBst();
 	}
 
 	@Then("The user should be navigated to the Implementation of BST page")
 	public void the_user_should_be_navigated_to_the_implementation_of_bst_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String treesUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/implementation-of-bst/";
+		System.out.println("user logged into " + treesUrl + "Implementation of bst");
+		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Implementation of bst");
 	}
 
 	@When("The user clicks Try here in Implementation of BST")
 	public void the_user_clicks_try_here_in_implementation_of_bst() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.Implement_OfBst();
+		tf.click_TryEditor();
 	}
 
 	@When("The user clicks Practice Questions link")
 	public void the_user_clicks_practice_questions_link() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		tf.practice_Tree();
 	}
 
-	@Then("The user should be navigated to the Practice Questions page")
-	public void the_user_should_be_navigated_to_the_practice_questions_page() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("The user should see the practice questions")
+	@Then("user find blank pageTree")
 	public void the_user_should_see_the_practice_questions() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String outputText = tf.outputText();
+		if (outputText != null) {
+			System.out.println("Questions loaded");
+		} else
+			System.out.println("Error, Page is blank");
+		log.error("There are no practice questions available in the Tree module");
+	}
+
+	@Given("user is in Tree sections page")
+	public void user_is_in_tree_sections_page() throws InterruptedException {
+		try {
+			tf.click_Overview();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@When("user clicks on the practice questions link in Tree module")
+	public void user_clicks_on_the_practice_questions_link_in_tree_module() {
+
+		tf.practice_Tree();
+
+	}
+
+	@Then("user sucessfully navigates to practice questions of Tree module")
+	public void user_sucessfully_navigates_to_practice_questions_of_tree_module() {
+		String treesUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/practice";
+		System.out.println("user logged into " + treesUrl + "Practice Questions page");
+		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Practice Questions page");
+	}
+
+	@Given("The user on tryEditor page of Traversals-Illustration")
+	public void tryHereTrav_Ill() {
+		tf.clickTryHere_travIllu();
+
+	}
+
+	@When("The user clicks Try here on Types of Binary Tree link")
+	public void user_clicks_on_TryhereTypeOfBinaryTree() {
+		tf.types_ofBinary();
+		tf.click_TryEditor();
+
+	}
+
+	@Given("The user on tryEditor page of Binary Trees")
+	public void the_user_on_try_editor_page_of_binary_trees() {
+		tf.binary_Tree();
+		tf.click_TryEditor();
+
+	}
+
+	@When("The user clicks Try here in Implementation of Python page")
+	public void the_user_clicks_try_here_in_implementation_of_python_page() {
+		tf.Impl_in_Python();
+		tf.click_TryEditor();
+	}
+
+	@Given("The user in tryEditor page of Implementation of Python")
+	public void the_user_in_try_editor_page_of_implementation_of_python() {
+		tf.Impl_in_Python();
+		tf.click_TryEditor();
+	}
+
+	@When("The user clicks Try here in Binary Tree Traversals")
+	public void the_user_clicks_try_here_in_binary_tree_traversals() {
+		tf.binary_Tree_Travers();
+		tf.click_TryEditor();
+
+	}
+
+	@Given("The user on tryEditor page in Binary Tree Traversals")
+	public void the_user_on_try_editor_page_in_binary_tree_traversals() {
+		tf.binary_Tree_Travers();
+		tf.click_TryEditor();
+
+	}
+
+	@Given("The user on tryEditor page on Applications of Binary Trees")
+	public void the_user_on_try_editor_page_on_applications_of_binary_trees() {
+
+		tf.app_of_binaryTrees();
+		tf.click_TryEditor();
+
+	}
+
+	@When("The user clicks on Implementation of Binary Trees page")
+	public void the_user_clicks_on_implementation_of_binary_trees_page() {
+		tf.imp_of_binaryTrees();
+
+	}
+
+	@Then("The user should be navigated to Implementation of Binary Trees page")
+	public void the_user_should_be_navigated_to_implementation_of_binary_trees_page() {
+		String treesUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/implementation-of-binary-trees/";
+		System.out.println("user logged into " + treesUrl + "Implementation of Binary Trees page");
+		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Implementation of Binary Trees page");
+
+	}
+
+	@When("The user clicks Try here on Implementation of Binary Trees page")
+	public void the_user_clicks_try_here_on_implementation_of_binary_trees_page() {
+		tf.imp_of_binaryTrees();
+		tf.click_TryEditor();
+	}
+
+	@Given("The user on tryEditor page of Implementation of Binary Trees")
+	public void the_user_on_try_editor_page_of_implementation_of_binary_trees() {
+		tf.imp_of_binaryTrees();
+		tf.click_TryEditor();
+	}
+
+	@Given("The user on tryEditor page of Binary Search")
+	public void the_user_on_try_editor_page_of_binary_search() {
+		tf.binary_Search();
+		tf.click_TryEditor();
+	}
+
+	@When("The user clicks Try here on Implementation of BST")
+	public void the_user_clicks_try_here_on_implementation_of_bst() {
+		tf.Implement_OfBst();
+		tf.click_TryEditor();
+	}
+
+	@Given("The user on tryEditor page of Implementation of BST")
+	public void the_user_on_try_editor_page_of_implementation_of_bst() {
+		tf.Implement_OfBst();
+		tf.click_TryEditor();
+
+	}
+
+	@Then("The user should be navigated to the text editor of Implementation of Binary Trees page")
+	public void the_user_should_be_navigated_to_the_text_editor_of_implementation_of_binary_trees_page() {
+		String actualUrl = common.currentUrl();
+		String expectedUrl = "https://dsportalapp.herokuapp.com/tryEditor";
+		Assert.assertEquals(actualUrl, expectedUrl, "Not landed in Try Editor page");
+
 	}
 
 }

@@ -6,6 +6,7 @@ import io.cucumber.java.en.When;
 
 public class LinkedList_sd {
 
+
 	@Given("The user is in linked list page after logging in")
 	public void the_user_is_in_linked_list_page_after_logging_in() {
 		// Write code here that turns the phrase above into concrete actions
