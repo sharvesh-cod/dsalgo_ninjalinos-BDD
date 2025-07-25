@@ -30,6 +30,7 @@ public class DriverFactory {
 		if (browser.equalsIgnoreCase("chrome")) {
 			if (headless.equalsIgnoreCase("true")) {
 				ChromeOptions options = new ChromeOptions();
+<<<<<<< HEAD
 				// options.addArguments("--headless=new");
 				options.addArguments("--start-maximized");
 				options.addArguments("--remote-allow-origins=*");
@@ -57,6 +58,43 @@ public class DriverFactory {
 			}
 
 		} else if (browser.equalsIgnoreCase("edge")) {
+=======
+				options.addArguments("--headless=new");
+				options.addArguments("--start-maximized");
+				options.addArguments("--remote-allow-origins=*");
+				driver = new ChromeDriver(options);
+				WebDriverManager.chromedriver().setup();
+			} else {
+				driver = new ChromeDriver();
+				WebDriverManager.chromedriver().setup();
+			}
+		} else if (browser.equalsIgnoreCase("firefox")) {
+			if (headless.equalsIgnoreCase("true")) {
+				FirefoxProfile profile = new FirefoxProfile();
+				profile.setPreference("browser.sessionstore.resume_from_crash", false);
+
+				profile.setPreference("browser.sessionstore.enabled", false);
+				profile.setPreference("browser.sessionstore.max_tabs_undo", 0);
+
+				FirefoxOptions options = new FirefoxOptions();
+				options.addArguments("--headless");
+				options.setProfile(profile);
+
+				driver = new FirefoxDriver(options);
+			} else {
+				driver = new FirefoxDriver();
+			}
+
+<<<<<<< HEAD
+		}
+
+		else if (browser.equalsIgnoreCase("edge"))
+
+		{
+=======
+		} else if (browser.equalsIgnoreCase("edge")) {
+>>>>>>> branch 'development' of git@github.com:sharvesh-cod/dsalgo_ninjalinos-BDD.git
+>>>>>>> branch 'development' of git@github-shared:sharvesh-cod/dsalgo_ninjalinos-BDD.git
 			if (headless.equalsIgnoreCase("true")) {
 				EdgeOptions options = new EdgeOptions();
 				options.addArguments("--headless=new");
