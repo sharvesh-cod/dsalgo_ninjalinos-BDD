@@ -23,7 +23,7 @@ public class Stack_pf {
 	ExcelReaderFile excelReader;
 	String path;
 	JavascriptExecutor js;
-	CommonMethods common;
+	CommonMethod cmnMethod;
 
 	@FindBy(xpath = "//h5[text()='Stack']/../../..//a[text()='Get Started']")
 	WebElement stackBtn;
@@ -65,19 +65,17 @@ public class Stack_pf {
 
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
-		// this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		js = (JavascriptExecutor) driver;
-		// this.path = config.get_prop_value("path");
-		this.common = new CommonMethods(passdr);
+		this.cmnMethod = new CommonMethod(passdr);
 		this.excelReader = new ExcelReaderFile();
 		this.path = excelReader.get_xlpath();
 
 	}
 
 	public void background_stack() throws IOException {
-		common.get_testUrl();
+		cmnMethod.get_testUrl();
 		launchBtn.click();
 		signinBtn.click();
 		String data1 = excelReader.getData(path, "Credentials", 1, 0);

@@ -23,7 +23,7 @@ public class Queue_pf {
 	ExcelReaderFile excelReader;
 	String path;
 	JavascriptExecutor js;
-	CommonMethods common;
+	CommonMethod cmnMethod;
 
 	@FindBy(xpath = "//h5[text()='Queue']/../../..//a[text()='Get Started']")
 	WebElement QueueBtn; // temporarily adding this web element
@@ -70,14 +70,14 @@ public class Queue_pf {
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		js = (JavascriptExecutor) driver;
-		this.common = new CommonMethods(passdr);
+		this.cmnMethod = new CommonMethod(passdr);
 		this.excelReader = new ExcelReaderFile();
 		this.path = excelReader.get_xlpath();
 
 	}
 
 	public void background_queue() throws IOException {
-		common.get_testUrl();
+		cmnMethod.get_testUrl();
 		launchBtn.click();
 		signinBtn.click();
 		String data1 = excelReader.getData(path, "Credentials", 1, 0);

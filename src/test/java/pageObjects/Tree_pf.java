@@ -23,7 +23,7 @@ public class Tree_pf {
 	private Actions action;
 	String browser;
 	WebDriverWait wait;
-	CommonMethods common;
+	CommonMethod cmnMethod;
 
 	@FindBy(xpath = "//h5[text()='Tree']/../../..//a[contains(text(),'Get Started' )]")
 	WebElement treegetStartedButton;
@@ -86,7 +86,7 @@ public class Tree_pf {
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		this.common = new CommonMethods(passdr);
+		this.cmnMethod = new CommonMethod(passdr);
 		this.excelReader = new ExcelReaderFile();
 		this.path = excelReader.get_xlpath();
 
@@ -94,7 +94,7 @@ public class Tree_pf {
 
 	// background given
 	public void background_getToTree() throws InterruptedException, IOException {
-		common.get_testUrl();
+		cmnMethod.get_testUrl();
 		action.scrollToElement(loginGetStarted).perform();
 		action.click(loginGetStarted).perform();
 		wait.until(ExpectedConditions.visibilityOf(signin));
