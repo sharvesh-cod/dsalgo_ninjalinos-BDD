@@ -14,8 +14,7 @@ import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.CodeEditor_pf;
-import pageObjects.CommonMethods;
+import pageObjects.CommonMethod;
 import pageObjects.Queue_pf;
 import utils.LoggerLoad;
 
@@ -23,10 +22,8 @@ public class Queue_sd {
 
 	private WebDriver driver;
 	private Queue_pf queuepf;
-	private CodeEditor_pf codeeditor;
+	private CommonMethod cmnMethod;
 	String browserName;
-
-	CommonMethods common;
 
 	LoggerLoad log;
 
@@ -34,8 +31,8 @@ public class Queue_sd {
 
 		this.driver = passdr.getDriver();
 		this.queuepf = new Queue_pf(passdr);
-		this.codeeditor = new CodeEditor_pf(passdr);
-		this.common = new CommonMethods(passdr);
+		this.cmnMethod = new CommonMethod(passdr);
+
 		this.log = new LoggerLoad();
 	}
 
@@ -63,7 +60,7 @@ public class Queue_sd {
 	@Then("user successfully navigates to the Implementation of queue in python page")
 	public void user_successfully_navigates_to_the_implementation_of_queue_in_python_page() {
 		waitForTenSec("/implementation-lists/");
-		assertEquals("https://dsportalapp.herokuapp.com/queue/implementation-lists/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/queue/implementation-lists/", cmnMethod.currentUrl());
 
 	}
 
@@ -86,7 +83,7 @@ public class Queue_sd {
 	public void user_successfully_navigates_to_code_editor_of_implementation_of_queue_in_python_page() { // Write code
 																											// here that
 		waitForTenSec("/tryEditor");
-		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", cmnMethod.currentUrl());
 
 	}
 
@@ -102,7 +99,7 @@ public class Queue_sd {
 	@When("user clicks on Run button in Try here page without entering any code in the editor queue")
 	public void user_clicks_on_run_button_in_try_here_page_without_entering_any_code_in_the_editor_q() {
 		waitForTenSec("/tryEditor");
-		codeeditor.clickRunBtn();
+		cmnMethod.clickRunBtn();
 
 	}
 
@@ -111,8 +108,8 @@ public class Queue_sd {
 
 		log.error(
 				"There is no alert message displayed when we click on run button without entering any code in the code editor in queue module");
-		assertEquals("Type code in the editor", codeeditor.alert_message());
-		codeeditor.handle_alert();
+		assertEquals("Type code in the editor", cmnMethod.alert_message());
+		cmnMethod.handle_alert();
 
 	}
 
@@ -130,14 +127,14 @@ public class Queue_sd {
 			throws IOException, InterruptedException {
 
 		waitForTenSec("/tryEditor");
-		codeeditor.txtEditor_invalidCode();
+		cmnMethod.txtEditor_invalidCode();
 
 	}
 
 	@Then("user gets an alert message about the error in code queue")
 	public void user_gets_an_alert_message_about_the_error_in_code_queue() {
 
-		codeeditor.handle_alert();
+		cmnMethod.handle_alert();
 		System.out.println("Alert handled successfully");
 
 	}
@@ -146,14 +143,14 @@ public class Queue_sd {
 	public void user_clicks_on_the_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor_q()
 			throws IOException, InterruptedException {
 		waitForTenSec("/tryEditor");
-		codeeditor.txtEditor_correctCode();
+		cmnMethod.txtEditor_correctCode();
 
 	}
 
 	@Then("user is able to see the output in the queue try editor console")
 	public void user_is_able_to_see_output_in_the_console_q() {
 
-		String outTxt = codeeditor.output_text();
+		String outTxt = cmnMethod.output_text();
 		assertEquals("Hello World", outTxt);
 
 	}
@@ -175,7 +172,7 @@ public class Queue_sd {
 	@Then("user sucessfully navigates to the implementation using collections.deque page")
 	public void user_sucessfully_navigates_to_implementation_using_collections_deque_page() {
 		waitForTenSec("/implementation-collections/");
-		assertEquals("https://dsportalapp.herokuapp.com/queue/implementation-collections/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/queue/implementation-collections/", cmnMethod.currentUrl());
 
 	}
 
@@ -201,7 +198,7 @@ public class Queue_sd {
 	public void user_successfully_navigates_to_the_code_editor_of_implementation_using_collections_deque_page() {
 
 		waitForTenSec("/tryEditor");
-		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", cmnMethod.currentUrl());
 
 	}
 
@@ -226,7 +223,7 @@ public class Queue_sd {
 	@Then("user sucessfully navigates to the Implementation using array page")
 	public void user_sucessfully_navigates_to_the_implementation_using_array_page() {
 		waitForTenSec("/Implementation-array/");
-		assertEquals("https://dsportalapp.herokuapp.com/queue/Implementation-array/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/queue/Implementation-array/", cmnMethod.currentUrl());
 
 	}
 
@@ -251,7 +248,7 @@ public class Queue_sd {
 	@Then("user successfully navigates to the code editor of Implementation using array page")
 	public void user_successfully_navigates_to_the_code_editor_of_implementation_using_array_page() {
 		waitForTenSec("/tryEditor");
-		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", cmnMethod.currentUrl());
 
 	}
 
@@ -285,7 +282,7 @@ public class Queue_sd {
 	@Then("user sucessfully navigates to the queue operations page")
 	public void user_sucessfully_navigates_to_the_queue_operations_page() {
 		waitForTenSec("/QueueOp/");
-		assertEquals("https://dsportalapp.herokuapp.com/queue/QueueOp/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/queue/QueueOp/", cmnMethod.currentUrl());
 
 	}
 
@@ -308,7 +305,7 @@ public class Queue_sd {
 	@Then("user successfully navigates to the code editor of queue operations page")
 	public void user_successfully_navigates_to_the_code_editor_of_queue_operations_page_q() {
 		waitForTenSec("/tryEditor");
-		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", cmnMethod.currentUrl());
 
 	}
 
@@ -326,7 +323,7 @@ public class Queue_sd {
 	@Given("user is in queue page")
 	public void user_is_in_queue_page() {
 		waitForTenSec("/queue/");
-		assertEquals("https://dsportalapp.herokuapp.com/queue/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/queue/", cmnMethod.currentUrl());
 
 	}
 
@@ -339,7 +336,7 @@ public class Queue_sd {
 	@Then("user sucessfully navigates to the  ImplementationUsingCollections.deque page")
 	public void user_sucessfully_navigates_to_the_implementation_using_collections_deque_page() {
 		waitForTenSec("/implementation-collections/");
-		assertEquals("https://dsportalapp.herokuapp.com/queue/implementation-collections/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/queue/implementation-collections/", cmnMethod.currentUrl());
 	}
 
 	@When("user clicks on  button implementation using array")
@@ -350,7 +347,7 @@ public class Queue_sd {
 	@Then("user sucessfully navigates to the implementation using array page")
 	public void user_sucessfully_navigates_to_implementation_using_array_page() {
 		waitForTenSec("/Implementation-array/");
-		assertEquals("https://dsportalapp.herokuapp.com/queue/Implementation-array/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/queue/Implementation-array/", cmnMethod.currentUrl());
 
 	}
 
@@ -363,7 +360,7 @@ public class Queue_sd {
 	@Then("user sucessfully navigates to the  queue operations page")
 	public void user_sucessfully_navigates_to_queue_operations_page() {
 		waitForTenSec("/QueueOp/");
-		assertEquals("https://dsportalapp.herokuapp.com/queue/QueueOp/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/queue/QueueOp/", cmnMethod.currentUrl());
 
 	}
 
@@ -387,8 +384,7 @@ public class Queue_sd {
 	public void user_sucessfully_navigates_to_practice_questions_of_queue_module_however_the_page_is_empty() {
 		waitForTenSec("/practice");
 		log.error("There are no practice questions available in the queue module");
-		assertEquals("https://dsportalapp.herokuapp.com/queue/", common.currentUrl());// Failing the scenario
-																						// purposefully to
+		assertEquals("https://dsportalapp.herokuapp.com/queue/", cmnMethod.currentUrl());
 
 	}
 

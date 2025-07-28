@@ -14,7 +14,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.Array_pf;
-import pageObjects.CodeEditor_pf;
+import pageObjects.CommonMethod;
 //import pageObjects.LoginPage_ArrayAndLinkedLists;
 import utils.ConfigReader;
 import utils.LoggerLoad;
@@ -22,12 +22,11 @@ import utils.LoggerLoad;
 public class Array_sd {
 
 	private WebDriver driver; // CODE CHANGES FOR FIREFOX
-	// private LoginPage_ArrayAndLinkedLists loginpage;
 	private Array_pf array_pf;
-	private CodeEditor_pf tryeditorpage;
+	private CommonMethod cmnMethod;
 	String browserName;
 	ConfigReader config;
-	// CommonMethods common;
+
 	LoggerLoad log;
 
 	public Array_sd(Passing_Driver passdr) throws IOException { // This is the constructor for your step definition
@@ -36,11 +35,10 @@ public class Array_sd {
 		this.array_pf = new Array_pf(passdr); // Cucumber creates a new instance of this class every time it runs a
 		// scenario,
 		// and this constructor is called automatically at that time.
-		// this.loginpage = new LoginPage_ArrayAndLinkedLists(passdr);
-		this.tryeditorpage = new CodeEditor_pf(passdr);
+		this.cmnMethod = new CommonMethod(passdr);
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
-		// this.common = new CommonMethods(passdr);
+
 		this.log = new LoggerLoad();
 	}
 	// NOTES: This is safe because Cucumber creates a new step definition instance
@@ -108,25 +106,25 @@ public class Array_sd {
 	@When("The user clicks the Run button without entering the code in the Editor in Array")
 	public void the_user_clicks_the_run_button_without_entering_the_code_in_the_editor_in_array() {
 		waitForTenSec("/tryEditor");
-		tryeditorpage.clickRun();
+		cmnMethod.clickRun();
 	}
 
 	@Then("The user should see an error message in alert window in Array")
 	public void the_user_should_see_an_error_message_in_alert_window_in_array() {
-		tryeditorpage.getErrMsg_NoCode();
+		cmnMethod.getErrMsg_NoCode();
 		log.error(
 				"There is no alert message displayed when we click on run button without entering any code in the code editor in array module");
 		// tryeditorpage.alertMsg();
-		String errorMsg = tryeditorpage.alertMsg();
+		String errorMsg = cmnMethod.alertMsg();
 		assertEquals("Enter code", errorMsg);
 	}
 
 	@When("The user clicks Run button after writing invalid code in editor in Array")
 	public void the_user_clicks_run_button_after_writing_invalid_code_in_editor_in_array() throws IOException {
 		waitForTenSec("/tryEditor");
-		tryeditorpage.tryEditor_invalidCode();
-		tryeditorpage.clickRun();
-		tryeditorpage.alertMsg();
+		cmnMethod.tryEditor_invalidCode();
+		cmnMethod.clickRun();
+		cmnMethod.alertMsg();
 	}
 
 	@Then("The user should able to see an error message in alert window in Array")
@@ -138,14 +136,14 @@ public class Array_sd {
 	public void the_user_clicks_run_button_after_writing_valid_code_in_editor_in_array()
 			throws IOException, InterruptedException {
 		waitForTenSec("/tryEditor");
-		tryeditorpage.tryEditor_validCode();
-		tryeditorpage.clickRun();
+		cmnMethod.tryEditor_validCode();
+		cmnMethod.clickRun();
 		Thread.sleep(2000);
 	}
 
 	@Then("The user should able to see output in the console in Array")
 	public void the_user_should_able_to_see_output_in_the_console_in_array() {
-		String output = tryeditorpage.output_text();
+		String output = cmnMethod.output_text();
 		assertEquals("Hello World", output);
 	}
 
@@ -298,13 +296,13 @@ public class Array_sd {
 
 	@When("The user clicks run button without writing anything in question editor in Array")
 	public void the_user_clicks_run_button_without_writing_anything_in_question_editor_in_array() {
-		tryeditorpage.clickRun();
+		cmnMethod.clickRun();
 		// tryeditorpage.alertMsg();
 	}
 
 	@Then("The user should be able to see an error message in alert window in question editor in Array")
 	public void the_user_should_be_able_to_see_an_error_message_in_alert_window_in_question_editor_in_array() {
-		tryeditorpage.alertMsg();
+		cmnMethod.alertMsg();
 		System.out.println("Alert handled");
 	}
 
@@ -316,7 +314,7 @@ public class Array_sd {
 
 	@Then("The user see an error message Error occurred during submission")
 	public void the_user_see_an_error_message_error_occurred_during_submission() {
-		String output = tryeditorpage.output_text();
+		String output = cmnMethod.output_text();
 		// assertEquals("Error occurred during submission", output);
 		System.out.println(output);
 
@@ -326,8 +324,8 @@ public class Array_sd {
 	public void the_user_clicks_run_button_after_writing_invalid_code_in_question_editor_in_array() {
 		waitForTenSec("/question/");
 		array_pf.tryEditor_invalidCode_practiceQ();
-		tryeditorpage.clickRun();
-		tryeditorpage.alertMsg();
+		cmnMethod.clickRun();
+		cmnMethod.alertMsg();
 	}
 
 	@When("The user clicks run button after writing valid code in question1 editor")
@@ -335,13 +333,13 @@ public class Array_sd {
 			throws InterruptedException, IOException {
 		waitForTenSec("question/1");
 		array_pf.tryEditor_validCode_practiceQ1();
-		tryeditorpage.clickRun();
+		cmnMethod.clickRun();
 		Thread.sleep(5000);
 	}
 
 	@Then("The user should able to see output in the console question1")
 	public void the_user_should_able_to_see_output_in_the_console_question1() throws InterruptedException {
-		String output = tryeditorpage.output_text();
+		String output = cmnMethod.output_text();
 		// assertEquals("hello", output);
 		System.out.println(output);
 	}
@@ -363,9 +361,7 @@ public class Array_sd {
 
 	@Then("The user see success message Submission successful")
 	public void the_user_see_success_message_submission_successful() {
-		// String output = tryeditorpage.output_text();
-		// assertEquals("Error occurred during submission", output);
-		// System.out.println(output);
+
 		System.out.println("Submission successful");
 	}
 
@@ -394,14 +390,14 @@ public class Array_sd {
 	public void the_user_clicks_run_button_after_writing_valid_code_in_question2_editor() throws IOException {
 		waitForTenSec("question/2");
 		array_pf.tryEditor_validCode_practiceQ2();
-		tryeditorpage.clickRun();
+		cmnMethod.clickRun();
 
 	}
 
 	@Then("The user should able to see output in the console question2")
 	public void the_user_should_able_to_see_output_in_the_console_question2() {
-		String output = tryeditorpage.output_text();
-		// assertEquals("Valid code", output);
+		String output = cmnMethod.output_text();
+
 		System.out.println(output);
 	}
 
@@ -437,13 +433,13 @@ public class Array_sd {
 	public void the_user_clicks_run_button_after_writing_valid_code_in_question3_editor() throws IOException {
 		waitForTenSec("question/3");
 		array_pf.tryEditor_validCode_practiceQ3();
-		tryeditorpage.clickRun();
+		cmnMethod.clickRun();
 	}
 
 	@Then("The user should able to see output in the console question3")
 	public void the_user_should_able_to_see_output_in_the_console_question3() {
-		String output = tryeditorpage.output_text();
-		// assertEquals("Valid code", output);
+		String output = cmnMethod.output_text();
+
 		System.out.println(output);
 	}
 
@@ -480,13 +476,13 @@ public class Array_sd {
 	public void the_user_clicks_run_button_after_writing_valid_code_in_question4_editor() throws IOException {
 		waitForTenSec("question/4");
 		array_pf.tryEditor_validCode_practiceQ4();
-		tryeditorpage.clickRun();
+		cmnMethod.clickRun();
 	}
 
 	@Then("The user should able to see output in the console question4")
 	public void the_user_should_able_to_see_output_in_the_console_question4() {
-		String output = tryeditorpage.output_text();
-		// assertEquals("Valid code", output);
+		String output = cmnMethod.output_text();
+
 		System.out.println(output);
 	}
 

@@ -11,7 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
-import utils.ConfigReader;
 
 public class Launch_pf {
 
@@ -19,6 +18,7 @@ public class Launch_pf {
 	Actions action;
 	String browser;
 	WebDriverWait wait;
+	CommonMethod cmnMethod;
 
 	@FindBy(xpath = "//*[text()='You are at the right place']")
 	WebElement message;
@@ -30,15 +30,14 @@ public class Launch_pf {
 	@FindBy(xpath = "//*[text()='NumpyNinja']")
 	WebElement numpyNinja;
 
-	ConfigReader config;
-
 	public Launch_pf(Passing_Driver passdr) throws IOException {
 
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		this.config = new ConfigReader();
+		this.cmnMethod = new CommonMethod(passdr);
+
 	}
 
 	public void clickgetstarted() {
@@ -51,7 +50,7 @@ public class Launch_pf {
 	}
 
 	public void geturl() {
-		driver.get(config.get_prop_value("testurl"));
+		cmnMethod.get_testUrl();
 
 	}
 

@@ -18,12 +18,18 @@ public class ExcelReaderFile {
 	public static XSSFSheet sheet;
 	public static XSSFRow row;
 	public static XSSFCell cell;
+	ConfigReader config;
 	String xlfilePath;
 
-	public ExcelReaderFile(String xfilePath) {
-		this.xlfilePath = xfilePath;
-
+	public ExcelReaderFile() throws IOException {
+		this.config = new ConfigReader();
+		this.xlfilePath = config.get_prop_value("path");
 	}
+//
+//	public ExcelReaderFile(String xfilePath) {
+//		this.xlfilePath = xfilePath;
+//
+//	}
 
 	public int rowCount(String sheetName) throws IOException {
 
@@ -48,7 +54,7 @@ public class ExcelReaderFile {
 	}
 
 	// to get the Cell Data
-	public String getData(String sheetName, int rowNum, int cellCount) throws IOException {
+	public String getData(String xlfilePath, String sheetName, int rowNum, int cellCount) throws IOException {
 
 		fis = new FileInputStream(xlfilePath);
 		wb = new XSSFWorkbook(fis);
@@ -80,6 +86,10 @@ public class ExcelReaderFile {
 		fos.close();
 		fis.close();
 
+	}
+
+	public String get_xlpath() {
+		return xlfilePath;
 	}
 
 }

@@ -12,7 +12,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
-import utils.ConfigReader;
 import utils.ExcelReaderFile;
 
 public class Stack_pf {
@@ -23,11 +22,11 @@ public class Stack_pf {
 	WebDriverWait wait;
 	ExcelReaderFile excelReader;
 	String path;
-	ConfigReader config;
 	JavascriptExecutor js;
+	CommonMethods common;
 
 	@FindBy(xpath = "//h5[text()='Stack']/../../..//a[text()='Get Started']")
-	WebElement stackBtn; // temporarily adding this web element
+	WebElement stackBtn;
 
 	@FindBy(xpath = "//a[text()='Operations in Stack']")
 	WebElement operationsStackBtn;
@@ -66,22 +65,24 @@ public class Stack_pf {
 
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
-		this.config = new ConfigReader();
+		// this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		js = (JavascriptExecutor) driver;
-		this.path = config.get_prop_value("path");
-		this.excelReader = new ExcelReaderFile(path);
+		// this.path = config.get_prop_value("path");
+		this.common = new CommonMethods(passdr);
+		this.excelReader = new ExcelReaderFile();
+		this.path = excelReader.get_xlpath();
 
 	}
 
 	public void background_stack() throws IOException {
-		driver.get(config.get_prop_value("testurl"));
+		common.get_testUrl();
 		launchBtn.click();
 		signinBtn.click();
-		String data1 = excelReader.getData("Credentials", 1, 0);
+		String data1 = excelReader.getData(path, "Credentials", 1, 0);
 		userName.sendKeys(data1);
-		String data2 = excelReader.getData("Credentials", 1, 1);
+		String data2 = excelReader.getData(path, "Credentials", 1, 1);
 		pwd.sendKeys(data2);
 		logInBtn.click();
 

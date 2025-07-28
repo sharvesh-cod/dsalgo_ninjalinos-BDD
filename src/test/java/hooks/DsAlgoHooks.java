@@ -15,7 +15,6 @@ import io.cucumber.java.Scenario;
 
 public class DsAlgoHooks {
 
-	
 	private WebDriver driver;
 
 	public DsAlgoHooks(Passing_Driver passdr) {
@@ -34,7 +33,7 @@ public class DsAlgoHooks {
 		if (scenario.isFailed()) {
 			// take a screenshot
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
-			byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+			byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);//
 			scenario.attach(sourcePath, "image/png", screenshotName);
 			try {
 				// Create folder if it doesn't exist
@@ -65,5 +64,5 @@ public class DsAlgoHooks {
 			driver.quit();
 		}
 	}
-	
+
 }

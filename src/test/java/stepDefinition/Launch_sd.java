@@ -1,19 +1,14 @@
 package stepDefinition;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-//import junit.framework.Assert;
-import pageObjects.CommonMethods;
 import pageObjects.Launch_pf;
 import utils.ConfigReader;
 
@@ -24,7 +19,6 @@ public class Launch_sd {
 
 	String browser;
 	ConfigReader config;
-	CommonMethods common;
 
 	public Launch_sd(Passing_Driver passdr) throws IOException {
 
@@ -33,11 +27,6 @@ public class Launch_sd {
 
 		this.config = new ConfigReader();
 
-	}
-
-	private void waitForTenSec(String partialUrl) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.urlContains(partialUrl));
 	}
 
 	@Given("the user is on the Dsalgo portal after entering Url")

@@ -13,8 +13,7 @@ import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.CodeEditor_pf;
-import pageObjects.CommonMethods;
+import pageObjects.CommonMethod;
 import pageObjects.Tree_pf;
 import utils.LoggerLoad;
 
@@ -24,16 +23,14 @@ public class Tree_sd {
 	private Actions action;
 	String browser;
 	WebDriverWait wait;
-	CommonMethods common;
 	Tree_pf tf;
-	CodeEditor_pf codeEditor;
+	CommonMethod cmnMethod;
 	LoggerLoad log;
 
 	public Tree_sd(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
-		this.codeEditor = new CodeEditor_pf(passdr);
-		this.common = new CommonMethods(passdr);
+		this.cmnMethod = new CommonMethod(passdr);
 		PageFactory.initElements(driver, this);
 		this.tf = new Tree_pf(passdr);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -82,7 +79,7 @@ public class Tree_sd {
 
 	@Then("user successfully navigates to code editor of the Overview of Tree page")
 	public void user_successfully_navigates_to_code_editor_of_the_overview_of_tree_page() throws IOException {
-		String actualUrl = common.currentUrl();
+		String actualUrl = cmnMethod.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tryEditor";
 		Assert.assertEquals(actualUrl, expectedUrl, "Not landed in Try Editor page");
 	}
@@ -128,13 +125,13 @@ public class Tree_sd {
 
 	@Then("An alert message should appear")
 	public void an_alert_message_should_appear() {
-		codeEditor.alert_message();
+		cmnMethod.alert_message();
 
 	}
 
 	@Then("An alert message should appear for without code")
 	public void an_alert_message_withoutcode() {
-		codeEditor.alert_message();
+		cmnMethod.alert_message();
 		log.error(
 				"There is no alert message displayed when we click on run button without entering any code in the code editor in Tree module");
 
@@ -142,7 +139,7 @@ public class Tree_sd {
 
 	@When("The user clicks Run after entering valid code")
 	public void the_user_clicks_run_after_entering_valid_code() throws IOException, InterruptedException {
-		codeEditor.txtEditor_correctCode();
+		cmnMethod.txtEditor_correctCode();
 		tf.clickRun_WithOutCode();
 	}
 
@@ -156,7 +153,7 @@ public class Tree_sd {
 
 	@When("The user clicks run after entering invalid code")
 	public void the_user_clicks_run_after_entering_invalid_code() throws IOException, InterruptedException {
-		codeEditor.txtEditor_invalidCode();
+		cmnMethod.txtEditor_invalidCode();
 
 	}
 
@@ -184,7 +181,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the text editor")
 	public void the_user_should_be_navigated_to_the_text_editor() throws IOException {
-		String textEditorUrl = common.currentUrl();
+		String textEditorUrl = cmnMethod.currentUrl();
 		System.out.println("Customer in :" + textEditorUrl + "page");
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tryEditor";
 		Assert.assertEquals(textEditorUrl, expectedUrl, "Not landed in Try Editor page");
@@ -193,8 +190,7 @@ public class Tree_sd {
 
 	@When("The user clicks Run after entering invalid code")
 	public void the_user_clicks_run_after_entering_invalidcode() throws IOException, InterruptedException {
-		codeEditor.txtEditor_invalidCode();
-		// tf.clickRun_WithOutCode();
+		cmnMethod.txtEditor_invalidCode();
 
 	}
 
@@ -230,14 +226,14 @@ public class Tree_sd {
 	public void navigate_TraversalsIllustration() throws InterruptedException {
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/traversals-illustration/";
 		tf.waitElement(expectedUrl);
-		String treesUrl = common.currentUrl();
+		String treesUrl = cmnMethod.currentUrl();
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on traversalas-illustaration page");
 
 	}
 
 	@Then("The user should be navigated to the Tree Traversals page")
 	public void the_user_should_be_navigated_to_the_tree_traversals_page() {
-		String treesUrl = common.currentUrl();
+		String treesUrl = cmnMethod.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/tree-traversals/";
 		System.out.println("user logged into " + treesUrl + "Tree Traversals page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on tree traversalas page");
@@ -267,13 +263,13 @@ public class Tree_sd {
 
 	@When("The user enters valid Python code, clicks Run")
 	public void the_user_enters_valid_python_code_clicks_run() throws IOException, InterruptedException {
-		codeEditor.txtEditor_correctCode();
+		cmnMethod.txtEditor_correctCode();
 
 	}
 
 	@When("The user enters invalid Python code and clicks Run")
 	public void the_user_enters_invalid_python_code_and_clicks_run() throws IOException, InterruptedException {
-		codeEditor.txtEditor_invalidCode();
+		cmnMethod.txtEditor_invalidCode();
 
 	}
 
@@ -292,7 +288,7 @@ public class Tree_sd {
 
 	@When("The user enters valid Python code and clicks Run")
 	public void the_user_enters_valid_python_code_and_clicks_run() throws IOException, InterruptedException {
-		codeEditor.txtEditor_correctCode();
+		cmnMethod.txtEditor_correctCode();
 
 	}
 
@@ -317,7 +313,7 @@ public class Tree_sd {
 	public void navigated_to_the_binary_trees_page() {
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/binary-trees/";
 		tf.waitElement(expectedUrl);
-		String treesUrl = common.currentUrl();
+		String treesUrl = cmnMethod.currentUrl();
 		System.out.println("user logged into " + treesUrl + "Binary Tree page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Binary Tree page");
 
@@ -331,7 +327,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Types of Binary Tree page")
 	public void the_user_should_be_navigated_to_the_types_of_binary_tree_page() {
-		String treesUrl = common.currentUrl();
+		String treesUrl = cmnMethod.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/types-of-binary-trees/";
 		System.out.println("user logged into " + treesUrl + "Tyeps of Binary Tree page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Tyepes of Binary Tree page");
@@ -346,7 +342,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Implementation of Python page")
 	public void the_user_should_be_navigated_to_the_implementation_of_python_page() {
-		String treesUrl = common.currentUrl();
+		String treesUrl = cmnMethod.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/implementation-in-python/";
 		System.out.println(
 				"user logged into " + treesUrl + "https://dsportalapp.herokuapp.com/tree/implementation-in-python/");
@@ -362,7 +358,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Binary Tree Traversals page")
 	public void the_user_should_be_navigated_to_the_binary_tree_traversals_page() {
-		String treeTitle = common.getTitle();
+		String treeTitle = cmnMethod.getTitle();
 		String expectedUrl = "Binary Tree Traversals";
 		System.out.println("user logged into " + treeTitle + "binary tree traversalas");
 		Assert.assertEquals(treeTitle, expectedUrl, "Not landed on Binary Tree Traversals page");
@@ -376,7 +372,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Applications of Binary Trees  page")
 	public void the_user_should_be_navigated_to_the_applications_of_binary_trees_page() {
-		String treesUrl = common.currentUrl();
+		String treesUrl = cmnMethod.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/applications-of-binary-trees/";
 		System.out.println("user logged into " + treesUrl + "Applications of Binary Trees Page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Application of binary tree page");
@@ -397,7 +393,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the Binary Search page")
 	public void the_user_should_be_navigated_to_the_binary_search_page() {
-		String treesUrl = common.currentUrl();
+		String treesUrl = cmnMethod.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/binary-search-trees/";
 		System.out.println("user logged into " + treesUrl + "Binary Search Page");
 
@@ -419,7 +415,7 @@ public class Tree_sd {
 	public void the_user_should_be_navigated_to_the_implementation_of_bst_page() {
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/implementation-of-bst/";
 		tf.waitElement(expectedUrl);
-		String treesUrl = common.currentUrl();
+		String treesUrl = cmnMethod.currentUrl();
 		System.out.println("user logged into " + treesUrl + "Implementation of bst");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Implementation of bst");
 	}
@@ -464,7 +460,7 @@ public class Tree_sd {
 
 	@Then("user sucessfully navigates to practice questions of Tree module")
 	public void user_sucessfully_navigates_to_practice_questions_of_tree_module() {
-		String treesUrl = common.currentUrl();
+		String treesUrl = cmnMethod.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/practice";
 		System.out.println("user logged into " + treesUrl + "Practice Questions page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Practice Questions page");
@@ -534,7 +530,7 @@ public class Tree_sd {
 	public void the_user_should_be_navigated_to_implementation_of_binary_trees_page() {
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/implementation-of-binary-trees/";
 		tf.waitElement(expectedUrl);
-		String treesUrl = common.currentUrl();
+		String treesUrl = cmnMethod.currentUrl();
 		System.out.println("user logged into " + treesUrl + "Implementation of Binary Trees page");
 		Assert.assertEquals(treesUrl, expectedUrl, "Not landed on Implementation of Binary Trees page");
 
@@ -573,7 +569,7 @@ public class Tree_sd {
 
 	@Then("The user should be navigated to the text editor of Implementation of Binary Trees page")
 	public void the_user_should_be_navigated_to_the_text_editor_of_implementation_of_binary_trees_page() {
-		String actualUrl = common.currentUrl();
+		String actualUrl = cmnMethod.currentUrl();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tryEditor";
 		Assert.assertEquals(actualUrl, expectedUrl, "Not landed in Try Editor page");
 

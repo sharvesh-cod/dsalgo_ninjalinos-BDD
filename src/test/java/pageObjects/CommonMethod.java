@@ -19,7 +19,7 @@ import driverManager.Passing_Driver;
 import utils.ConfigReader;
 import utils.ExcelReaderFile;
 
-public class CodeEditor_pf {
+public class CommonMethod {
 
 	private WebDriver driver;
 	private Actions action;
@@ -37,7 +37,7 @@ public class CodeEditor_pf {
 	@FindBy(id = "output")
 	WebElement outputTxt;
 
-	public CodeEditor_pf(Passing_Driver passdr) throws IOException {
+	public CommonMethod(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		js = (JavascriptExecutor) driver;
@@ -45,46 +45,42 @@ public class CodeEditor_pf {
 		PageFactory.initElements(driver, this);
 		this.config = new ConfigReader();
 		this.path = config.get_prop_value("path");
-		this.excelReader = new ExcelReaderFile(path);
+		this.excelReader = new ExcelReaderFile();
+		this.path = excelReader.get_xlpath();
 	}
 
 	// Helper methods
-	// have to keep this
+
 	private void safeType(WebElement element, String code) {
 		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		wait.until(ExpectedConditions.visibilityOf(element));
 		action.moveToElement(element).click().sendKeys(code).perform();
 	}
 
-	// keep this
 	private void safeClick(WebElement element) {
 		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
 
-	// Actions //keep this
+	// Actions
 	public void tryEditor_validCode() throws IOException {
-		String data = excelReader.getData("textEditor", 1, 0);
+		String data = excelReader.getData(path, "textEditor", 1, 0);
 		safeType(textEditor, data);
 	}
 
-	// keep this
 	public void tryEditor_invalidCode() throws IOException {
-		String data = excelReader.getData("textEditor", 1, 1);
+		String data = excelReader.getData(path, "textEditor", 1, 1);
 		safeType(textEditor, data);
 	}
 
-	// keep this
 	public void clickRun() {
 		safeClick(runBtn);
 	}
 
-	// keep this
 	public void getErrMsg_NoCode() {
 		System.out.println("No Error Alert Found, report bug");
 	}
 
-	// keep it
 	public String alertMsg() {
 		try {
 			Alert alert = wait.until(ExpectedConditions.alertIsPresent());
@@ -98,7 +94,7 @@ public class CodeEditor_pf {
 	}
 
 	public void txtEditor_invalidCode() throws IOException, InterruptedException {
-		String data = excelReader.getData("TextEditor", 1, 1);
+		String data = excelReader.getData(path, "TextEditor", 1, 1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
@@ -111,7 +107,7 @@ public class CodeEditor_pf {
 	}
 
 	public void txtEditor_correctCode() throws IOException, InterruptedException {
-		String data = excelReader.getData("TextEditor", 1, 0);
+		String data = excelReader.getData(path, "TextEditor", 1, 0);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
@@ -148,6 +144,18 @@ public class CodeEditor_pf {
 		alert = driver.switchTo().alert();
 		alert.accept();
 
+	}
+
+	public String currentUrl() {
+		return driver.getCurrentUrl();
+	}
+
+	public String getTitle() {
+		return driver.getTitle();
+	}
+
+	public void get_testUrl() {
+		driver.get(config.get_prop_value("testurl"));
 	}
 
 }

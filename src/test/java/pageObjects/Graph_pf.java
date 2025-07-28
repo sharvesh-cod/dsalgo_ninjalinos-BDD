@@ -14,7 +14,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
-import utils.ConfigReader;
 import utils.ExcelReaderFile;
 
 public class Graph_pf {
@@ -55,8 +54,8 @@ public class Graph_pf {
 	WebElement loginGetStarted;
 	@FindBy(id = "content")
 	WebElement practicePage;
-	CodeEditor_pf codeEditor;
-	ConfigReader config;
+	CommonMethod cmnMethod;
+
 	ExcelReaderFile excelReader;
 	String path;
 	JavascriptExecutor js;
@@ -65,16 +64,17 @@ public class Graph_pf {
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
-		this.config = new ConfigReader();
+
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		js = (JavascriptExecutor) driver;
-		this.path = config.get_prop_value("path");
-		this.excelReader = new ExcelReaderFile(path);
+
+		this.excelReader = new ExcelReaderFile();
+		this.path = excelReader.get_xlpath();
 	}
 
 	// background given
 	public void background_getTograph() throws InterruptedException, IOException {
-		driver.get(config.get_prop_value("testurl"));
+		cmnMethod.get_testUrl();
 		action.scrollToElement(loginGetStarted).perform();
 		action.click(loginGetStarted).perform();
 		wait.until(ExpectedConditions.visibilityOf(signin));
@@ -83,10 +83,10 @@ public class Graph_pf {
 		wait.until(ExpectedConditions.visibilityOf(usernameField));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", usernameField);
 		action.click(usernameField).perform();
-		String data1 = excelReader.getData("Credentials", 1, 0);
+		String data1 = excelReader.getData(path, "Credentials", 1, 0);
 		usernameField.sendKeys(data1);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", passwordField);
-		String data2 = excelReader.getData("Credentials", 1, 1);
+		String data2 = excelReader.getData(path, "Credentials", 1, 1);
 		passwordField.sendKeys(data2);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginButton);
 		loginButton.click();

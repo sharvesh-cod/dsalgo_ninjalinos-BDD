@@ -1,18 +1,14 @@
 package stepDefinition;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.CommonMethods;
 import pageObjects.Launch_pf;
 import pageObjects.Login_pf;
 import utils.ConfigReader;
@@ -25,7 +21,6 @@ public class Login_sd {
 
 	String browser;
 	ConfigReader config;
-	CommonMethods common;
 
 	public Login_sd(Passing_Driver passdr) throws IOException {
 
@@ -34,11 +29,6 @@ public class Login_sd {
 		this.Launch_pf = new Launch_pf(passdr);
 		this.config = new ConfigReader();
 
-	}
-
-	private void waitForTenSec(String partialUrl) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.urlContains(partialUrl));
 	}
 
 	@Given("the user is on the Home page")

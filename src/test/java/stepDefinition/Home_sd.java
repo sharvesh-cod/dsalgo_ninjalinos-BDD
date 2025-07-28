@@ -2,11 +2,8 @@
 package stepDefinition;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import driverManager.Passing_Driver;
@@ -14,7 +11,6 @@ import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.CommonMethods;
 import pageObjects.Home_pf;
 import pageObjects.Launch_pf;
 import utils.ConfigReader;
@@ -25,7 +21,7 @@ public class Home_sd {
 
 	String browser;
 	ConfigReader config;
-	CommonMethods common;
+
 	private Launch_pf Launch_pf;
 	private Home_pf Home_pf;
 	LoggerLoad log;
@@ -39,11 +35,6 @@ public class Home_sd {
 
 		this.log = new LoggerLoad();
 
-	}
-
-	private void waitForTenSec(String partialUrl) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.urlContains(partialUrl));
 	}
 
 	@Given("the user is on DsAlgo portal")
@@ -70,7 +61,6 @@ public class Home_sd {
 	@Then("The user should able to see an warning message {string}")
 	public void the_user_should_able_to_see_an_warning_message(String Expmsg) {
 		String actmsg = Home_pf.notloggedinmesg();
-		log.error("There are no Datastructures option in dropdown box");
 		Assert.assertEquals(actmsg, Expmsg,
 				"the user is not able to see mesg your are not logged in because no option in the dropdown");
 	}
@@ -108,7 +98,7 @@ public class Home_sd {
 	@When("the user clicks dropdown and select datastructures")
 	public void the_user_clicks_dropdown_and_select_datastructures() {
 		Home_pf.clickDropdownbox();
-
+		log.error("There are no Datastructures option in dropdown box");
 	}
 
 	@When("the user clicks dropdown and select Array")

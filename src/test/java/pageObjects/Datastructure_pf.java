@@ -15,7 +15,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
-import utils.ConfigReader;
 import utils.ExcelReaderFile;
 
 public class Datastructure_pf {
@@ -24,10 +23,9 @@ public class Datastructure_pf {
 	Actions action;
 	String browser;
 	WebDriverWait wait;
-//
+
 	ExcelReaderFile excelReader;
 
-	ConfigReader config;
 	JavascriptExecutor js;
 	String path;
 	Alert alert;
@@ -68,10 +66,9 @@ public class Datastructure_pf {
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		this.config = new ConfigReader();
-		this.path = config.get_prop_value("path");
-		this.excelReader = new ExcelReaderFile(path);
 
+		this.excelReader = new ExcelReaderFile();
+		this.path = excelReader.get_xlpath();
 		js = (JavascriptExecutor) driver;
 
 	}
@@ -163,7 +160,7 @@ public class Datastructure_pf {
 	}
 
 	public void setinvalidcodefromExcel() throws IOException {
-		String data = excelReader.getData("TextEditor", 1, 1);
+		String data = excelReader.getData(path, "TextEditor", 1, 1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
@@ -171,7 +168,7 @@ public class Datastructure_pf {
 	}
 
 	public void setvalidcodefromExcel() throws IOException {
-		String data = excelReader.getData("TextEditor", 1, 0);
+		String data = excelReader.getData(path, "TextEditor", 1, 0);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",

@@ -1,18 +1,13 @@
 package stepDefinition;
 
 import java.io.IOException;
-import java.time.Duration;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.CommonMethods;
 import pageObjects.Home_pf;
 import pageObjects.Launch_pf;
 import pageObjects.Register_pf;
@@ -21,19 +16,17 @@ import utils.LoggerLoad;
 
 public class Register_sd {
 
-	private WebDriver driver;
 	private Launch_pf Launch_pf;
 	private Register_pf Register_pf;
 	private Home_pf Home_pf;
 
 	String browser;
 	ConfigReader config;
-	CommonMethods common;
+
 	LoggerLoad log;
 
 	public Register_sd(Passing_Driver passdr) throws IOException {
 
-		this.driver = passdr.getDriver();
 		this.Launch_pf = new Launch_pf(passdr);
 		this.Register_pf = new Register_pf(passdr);
 		this.Home_pf = new Home_pf(passdr);
@@ -41,11 +34,6 @@ public class Register_sd {
 
 		this.log = new LoggerLoad();
 
-	}
-
-	private void waitForTenSec(String partialUrl) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.urlContains(partialUrl));
 	}
 
 	@Given("the user is on Register page after clicking on registerlink from Home page")

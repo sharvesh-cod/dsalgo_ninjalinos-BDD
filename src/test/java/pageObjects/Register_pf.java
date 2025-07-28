@@ -12,7 +12,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
-import utils.ConfigReader;
 import utils.ExcelReaderFile;
 
 public class Register_pf {
@@ -22,7 +21,7 @@ public class Register_pf {
 	String browser;
 	WebDriverWait wait;
 	ExcelReaderFile excelReader;
-	ConfigReader config;
+	// ConfigReader config;
 	JavascriptExecutor js;
 	String path;
 
@@ -49,9 +48,10 @@ public class Register_pf {
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		this.config = new ConfigReader();
-		this.path = config.get_prop_value("path");
-		this.excelReader = new ExcelReaderFile(path);
+		// this.config = new ConfigReader();
+		// this.path = config.get_prop_value("path");
+		this.excelReader = new ExcelReaderFile();
+		this.path = excelReader.get_xlpath();
 
 		js = (JavascriptExecutor) driver;
 	}
@@ -117,9 +117,9 @@ public class Register_pf {
 
 	public void setvalidDatafromExcel() throws IOException {
 
-		String username = excelReader.getData("validlogin", 1, 0);
-		String password = excelReader.getData("validlogin", 1, 1);
-		String confirmpassword = excelReader.getData("validlogin", 1, 2);
+		String username = excelReader.getData(path, "validlogin", 1, 0);
+		String password = excelReader.getData(path, "validlogin", 1, 1);
+		String confirmpassword = excelReader.getData(path, "validlogin", 1, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);
@@ -128,9 +128,9 @@ public class Register_pf {
 
 	public void setemptydatafromExcel() throws IOException {
 
-		String username = excelReader.getData("register", 1, 0);
-		String password = excelReader.getData("register", 1, 1);
-		String confirmpassword = excelReader.getData("register", 1, 2);
+		String username = excelReader.getData(path, "register", 1, 0);
+		String password = excelReader.getData(path, "register", 1, 1);
+		String confirmpassword = excelReader.getData(path, "register", 1, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);
@@ -139,9 +139,9 @@ public class Register_pf {
 
 	public void setonlyusernamefromExcel() throws IOException {
 
-		String username = excelReader.getData("register", 2, 0);
-		String password = excelReader.getData("register", 2, 1);
-		String confirmpassword = excelReader.getData("register", 2, 2);
+		String username = excelReader.getData(path, "register", 2, 0);
+		String password = excelReader.getData(path, "register", 2, 1);
+		String confirmpassword = excelReader.getData(path, "register", 2, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);
@@ -150,9 +150,9 @@ public class Register_pf {
 
 	public void setonlypasswordfromExcel() throws IOException {
 
-		String username = excelReader.getData("register", 3, 0);
-		String password = excelReader.getData("register", 3, 1);
-		String confirmpassword = excelReader.getData("register", 3, 2);
+		String username = excelReader.getData(path, "register", 3, 0);
+		String password = excelReader.getData(path, "register", 3, 1);
+		String confirmpassword = excelReader.getData(path, "register", 3, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);
@@ -161,9 +161,9 @@ public class Register_pf {
 
 	public void setwithoutconfirmpasswordfromExcel() throws IOException {
 
-		String username = excelReader.getData("register", 4, 0);
-		String password = excelReader.getData("register", 4, 1);
-		String confirmpassword = excelReader.getData("register", 4, 2);
+		String username = excelReader.getData(path, "register", 4, 0);
+		String password = excelReader.getData(path, "register", 4, 1);
+		String confirmpassword = excelReader.getData(path, "register", 4, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);
@@ -172,9 +172,9 @@ public class Register_pf {
 
 	public void setinvaliddatafromExcel() throws IOException {
 
-		String username = excelReader.getData("register", 5, 0);
-		String password = excelReader.getData("register", 5, 1);
-		String confirmpassword = excelReader.getData("register", 5, 2);
+		String username = excelReader.getData(path, "register", 5, 0);
+		String password = excelReader.getData(path, "register", 5, 1);
+		String confirmpassword = excelReader.getData(path, "register", 5, 2);
 		usernameTextbox.sendKeys(username);
 		passwordTextbox.sendKeys(password);
 		confirmpasswordTextbox.sendKeys(confirmpassword);

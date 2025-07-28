@@ -15,7 +15,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
-import utils.ConfigReader;
 import utils.ExcelReaderFile;
 
 public class Tree_pf {
@@ -24,6 +23,7 @@ public class Tree_pf {
 	private Actions action;
 	String browser;
 	WebDriverWait wait;
+	CommonMethods common;
 
 	@FindBy(xpath = "//h5[text()='Tree']/../../..//a[contains(text(),'Get Started' )]")
 	WebElement treegetStartedButton;
@@ -75,8 +75,8 @@ public class Tree_pf {
 	WebElement outputTxt;
 	@FindBy(xpath = "//*[text()='Practice Questions']")
 	WebElement practQuestTree;
-	CodeEditor_pf codeEditor;
-	ConfigReader config;
+	CommonMethod codeEditor;
+	// ConfigReader config;
 	String path;
 	JavascriptExecutor js;
 	ExcelReaderFile excelReader;
@@ -84,17 +84,17 @@ public class Tree_pf {
 	public Tree_pf(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
-		this.config = new ConfigReader();
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		this.path = config.get_prop_value("path");
-		this.excelReader = new ExcelReaderFile(path);
+		this.common = new CommonMethods(passdr);
+		this.excelReader = new ExcelReaderFile();
+		this.path = excelReader.get_xlpath();
 
 	}
 
 	// background given
 	public void background_getToTree() throws InterruptedException, IOException {
-		driver.get(config.get_prop_value("testurl"));
+		common.get_testUrl();
 		action.scrollToElement(loginGetStarted).perform();
 		action.click(loginGetStarted).perform();
 		wait.until(ExpectedConditions.visibilityOf(signin));
@@ -103,10 +103,10 @@ public class Tree_pf {
 		wait.until(ExpectedConditions.visibilityOf(usernameField));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", usernameField);
 		action.click(usernameField).perform();
-		String unameData = excelReader.getData("Credentials", 1, 0);
+		String unameData = excelReader.getData(path, "Credentials", 1, 0);
 		action.sendKeys(usernameField, unameData).perform();
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", passwordField);
-		String passwordData = excelReader.getData("Credentials", 1, 1);
+		String passwordData = excelReader.getData(path, "Credentials", 1, 1);
 		passwordField.sendKeys(passwordData);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginButton);
 		loginButton.click();

@@ -13,7 +13,7 @@ import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.CodeEditor_pf;
+import pageObjects.CommonMethod;
 import pageObjects.LinkedListPage_pf;
 //import pageObjects.LoginPage_ArrayAndLinkedLists;
 import utils.ConfigReader;
@@ -24,10 +24,10 @@ public class LinkedList_sd {
 	private WebDriver driver; // CODE CHANGES FOR FIREFOX
 	// private LoginPage_ArrayAndLinkedLists loginpage;
 	private LinkedListPage_pf ll_pf;
-	private CodeEditor_pf tryeditorpage;
+	private CommonMethod cmnMethod;
 	String browserName;
 	ConfigReader config;
-	// CommonMethods common;
+
 	LoggerLoad log;
 
 	public LinkedList_sd(Passing_Driver passdr) throws IOException { // This is the constructor for your step definition
@@ -35,11 +35,11 @@ public class LinkedList_sd {
 		this.driver = passdr.getDriver();
 		this.ll_pf = new LinkedListPage_pf(passdr); // Cucumber creates a new instance of this class every time it runs
 													// a
-		// this.loginpage = new LoginPage_ArrayAndLinkedLists(passdr);
-		this.tryeditorpage = new CodeEditor_pf(passdr);
+
+		this.cmnMethod = new CommonMethod(passdr);
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
-		// this.common = new CommonMethods(passdr);
+
 		this.log = new LoggerLoad();
 	}
 
@@ -51,11 +51,7 @@ public class LinkedList_sd {
 
 	@Given("The user is in linked list page after logging in") // BACKGROUND
 	public void the_user_is_in_linked_list_page_after_logging_in() throws IOException, InterruptedException {
-//		loginpage.launch();
-//		loginpage.signin_btn();
-//		loginpage.user_name();
-//		loginpage.password();
-//		loginpage.login_btn();
+
 		ll_pf.background_linkedList();
 		ll_pf.clickllGetStarted();
 	}
@@ -111,25 +107,25 @@ public class LinkedList_sd {
 	@When("The user clicks the Run button without entering the code in the Editor in LL")
 	public void the_user_clicks_the_run_button_without_entering_the_code_in_the_editor_in_ll() {
 		waitForTenSec("/tryEditor");
-		tryeditorpage.clickRun();
+		cmnMethod.clickRun();
 	}
 
 	@Then("The user should see an error message in alert window for no code in LL")
 	public void the_user_should_see_an_error_message_in_alert_window_for_no_code_in_ll() {
-		tryeditorpage.getErrMsg_NoCode();
+		cmnMethod.getErrMsg_NoCode();
 		log.error(
 				"There is no alert message displayed when we click on run button without entering any code in the code editor in linked list module");
-		// tryeditorpage.alertMsg();
-		String errorMsg = tryeditorpage.alertMsg();
+
+		String errorMsg = cmnMethod.alertMsg();
 		assertEquals("Enter code", errorMsg);
 	}
 
 	@When("The user clicks run button after writing invalid code in editor in LL")
 	public void the_user_clicks_run_button_after_writing_invalid_code_in_editor_in_ll() throws IOException {
 		waitForTenSec("/tryEditor");
-		tryeditorpage.tryEditor_invalidCode();
-		tryeditorpage.clickRun();
-		tryeditorpage.alertMsg();
+		cmnMethod.tryEditor_invalidCode();
+		cmnMethod.clickRun();
+		cmnMethod.alertMsg();
 	}
 
 	@Then("The user should be able to see an error message in alert window in LL")
@@ -141,14 +137,14 @@ public class LinkedList_sd {
 	public void the_user_clicks_run_button_after_writing_valid_code_in_editor_in_ll()
 			throws InterruptedException, IOException {
 		waitForTenSec("/tryEditor");
-		tryeditorpage.tryEditor_validCode();
-		tryeditorpage.clickRun();
+		cmnMethod.tryEditor_validCode();
+		cmnMethod.clickRun();
 		Thread.sleep(2000);
 	}
 
 	@Then("The user should see output in the console in LL")
 	public void the_user_should_see_output_in_the_console_in_ll() {
-		String output = tryeditorpage.output_text();
+		String output = cmnMethod.output_text();
 		assertEquals("Hello World", output);
 	}
 
@@ -260,7 +256,7 @@ public class LinkedList_sd {
 	@When("TThe user clicks the Run button without entering the code in the Editor in LL")
 	public void t_the_user_clicks_the_run_button_without_entering_the_code_in_the_editor_in_ll() {
 		waitForTenSec("/tryEditor");
-		tryeditorpage.clickRun();
+		cmnMethod.clickRun();
 	}
 
 	@When("The user clicks Traversal button")

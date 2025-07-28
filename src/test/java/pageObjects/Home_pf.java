@@ -75,8 +75,6 @@ public class Home_pf {
 	@FindBy(xpath = "//*[@class='alert alert-primary']")
 	WebElement notloggedinmesg;
 
-//a[text()='NumpyNinja']
-//action methods
 	public Home_pf(Passing_Driver passdr) {
 
 		this.driver = passdr.getDriver();

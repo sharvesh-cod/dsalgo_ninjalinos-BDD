@@ -1,18 +1,14 @@
 package stepDefinition;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.CommonMethods;
 import pageObjects.Datastructure_pf;
 import pageObjects.Launch_pf;
 import pageObjects.Login_pf;
@@ -25,7 +21,7 @@ public class Datastructures_sd {
 	private Launch_pf Launch_pf;
 	String browserName;
 	ConfigReader config;
-	CommonMethods common;
+
 	private Datastructure_pf Datastructure_pf;
 	private Login_pf Login_pf;
 	LoggerLoad log;
@@ -39,11 +35,6 @@ public class Datastructures_sd {
 		this.browserName = config.get_prop_value("browser");
 
 		this.log = new LoggerLoad();
-	}
-
-	private void waitForTenSec(String partialUrl) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.urlContains(partialUrl));
 	}
 
 	@Given("the user is on the homepage after loggedin with valid data")

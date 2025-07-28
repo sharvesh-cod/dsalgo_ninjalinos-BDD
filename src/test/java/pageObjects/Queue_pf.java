@@ -12,7 +12,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverManager.Passing_Driver;
-import utils.ConfigReader;
 import utils.ExcelReaderFile;
 
 public class Queue_pf {
@@ -23,8 +22,8 @@ public class Queue_pf {
 	WebDriverWait wait;
 	ExcelReaderFile excelReader;
 	String path;
-	ConfigReader config;
 	JavascriptExecutor js;
+	CommonMethods common;
 
 	@FindBy(xpath = "//h5[text()='Queue']/../../..//a[text()='Get Started']")
 	WebElement QueueBtn; // temporarily adding this web element
@@ -69,21 +68,21 @@ public class Queue_pf {
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
-		this.config = new ConfigReader();
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		js = (JavascriptExecutor) driver;
-		this.path = config.get_prop_value("path");
-		this.excelReader = new ExcelReaderFile(path);
+		this.common = new CommonMethods(passdr);
+		this.excelReader = new ExcelReaderFile();
+		this.path = excelReader.get_xlpath();
 
 	}
 
 	public void background_queue() throws IOException {
-		driver.get(config.get_prop_value("testurl"));
+		common.get_testUrl();
 		launchBtn.click();
 		signinBtn.click();
-		String data1 = excelReader.getData("Credentials", 1, 0);
+		String data1 = excelReader.getData(path, "Credentials", 1, 0);
 		userName.sendKeys(data1);
-		String data2 = excelReader.getData("Credentials", 1, 1);
+		String data2 = excelReader.getData(path, "Credentials", 1, 1);
 		pwd.sendKeys(data2);
 		logInBtn.click();
 

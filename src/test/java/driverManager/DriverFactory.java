@@ -9,7 +9,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import utils.ConfigReader;
@@ -31,8 +30,6 @@ public class DriverFactory {
 			if (headless.equalsIgnoreCase("true")) {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless=new");
-				options.addArguments("--start-maximized");
-				options.addArguments("--remote-allow-origins=*");
 				driver = new ChromeDriver(options);
 				WebDriverManager.chromedriver().setup();
 			} else {
@@ -41,19 +38,13 @@ public class DriverFactory {
 			}
 		} else if (browser.equalsIgnoreCase("firefox")) {
 			if (headless.equalsIgnoreCase("true")) {
-				FirefoxProfile profile = new FirefoxProfile();
-				profile.setPreference("browser.sessionstore.resume_from_crash", false);
-
-				profile.setPreference("browser.sessionstore.enabled", false);
-				profile.setPreference("browser.sessionstore.max_tabs_undo", 0);
-
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
-				options.setProfile(profile);
-
 				driver = new FirefoxDriver(options);
+				WebDriverManager.firefoxdriver().setup();
 			} else {
 				driver = new FirefoxDriver();
+				WebDriverManager.firefoxdriver().setup();
 			}
 
 		} else if (browser.equalsIgnoreCase("edge")) {

@@ -13,26 +13,24 @@ import driverManager.Passing_Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.CodeEditor_pf;
-import pageObjects.CommonMethods;
+import pageObjects.CommonMethod;
 import pageObjects.Stack_pf;
 import utils.LoggerLoad;
 
 public class Stack_sd {
 	private WebDriver driver;
 	private Stack_pf stackpf;
-	private CodeEditor_pf codeeditor;
+	private CommonMethod cmnMethod;
 	String browserName;
 
-	CommonMethods common;
 	LoggerLoad log;
 
 	public Stack_sd(Passing_Driver passdr) throws IOException {
 
 		this.driver = passdr.getDriver();
 		this.stackpf = new Stack_pf(passdr);
-		this.codeeditor = new CodeEditor_pf(passdr);
-		this.common = new CommonMethods(passdr);
+		this.cmnMethod = new CommonMethod(passdr);
+
 		this.log = new LoggerLoad();
 
 	}
@@ -63,7 +61,7 @@ public class Stack_sd {
 	public void user_successfully_navigates_to_the_operations_in_stack_page() {
 		waitForTenSec("/operations-in-stack/");
 
-		assertEquals("https://dsportalapp.herokuapp.com/stack/operations-in-stack/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/operations-in-stack/", cmnMethod.currentUrl());
 
 	}
 
@@ -84,7 +82,7 @@ public class Stack_sd {
 	@Then("user successfully navigates to code editor of the operations in stack page")
 	public void user_successfully_navigates_to_code_editor_of_the_operations_in_stack_page() {
 		waitForTenSec("/tryEditor");
-		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", cmnMethod.currentUrl());
 
 	}
 
@@ -100,7 +98,7 @@ public class Stack_sd {
 	@When("user clicks on Run button in Try here page without entering any code in the editor")
 	public void user_clicks_on_run_button_in_try_here_page_without_entering_any_code_in_the_editor() {
 		waitForTenSec("/tryEditor");
-		codeeditor.clickRunBtn();
+		cmnMethod.clickRunBtn();
 
 	}
 
@@ -109,8 +107,8 @@ public class Stack_sd {
 
 		log.error(
 				"There is no alert message displayed when we click on run button without entering any code in the code editor in stack module");
-		assertEquals("Type code in the editor", codeeditor.alert_message());
-		codeeditor.handle_alert();
+		assertEquals("Type code in the editor", cmnMethod.alert_message());
+		cmnMethod.handle_alert();
 
 	}
 
@@ -118,14 +116,14 @@ public class Stack_sd {
 	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_code_with_error_in_the_editor()
 			throws IOException, InterruptedException {
 		waitForTenSec("/tryEditor");
-		codeeditor.txtEditor_invalidCode();
+		cmnMethod.txtEditor_invalidCode();
 
 	}
 
 	@Then("user gets an alert message about the error in code")
 	public void user_gets_an_alert_message_about_the_error_in_code() {
 
-		codeeditor.handle_alert();
+		cmnMethod.handle_alert();
 		System.out.println("Alert handled successfully");
 
 	}
@@ -134,14 +132,14 @@ public class Stack_sd {
 	public void user_clicks_on_run_button_in_try_here_page_after_entering_a_correct_code_in_the_editor()
 			throws IOException, InterruptedException {
 		waitForTenSec("/tryEditor");
-		codeeditor.txtEditor_correctCode();
+		cmnMethod.txtEditor_correctCode();
 
 	}
 
 	@Then("user is able to see the output in the console")
 	public void user_is_able_to_see_the_output_in_the_console() {
 
-		String outTxt = codeeditor.output_text();
+		String outTxt = cmnMethod.output_text();
 		assertEquals("Hello World", outTxt);
 
 	}
@@ -156,7 +154,7 @@ public class Stack_sd {
 	@Then("user sucessfully navigates to the Implementation page")
 	public void user_sucessfully_navigates_to_the_implementation_page() {
 		waitForTenSec("/implementation/");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/implementation/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/implementation/", cmnMethod.currentUrl());
 
 	}
 
@@ -180,7 +178,7 @@ public class Stack_sd {
 	@Then("user successfully navigates to the code editor of implementation page")
 	public void user_successfully_navigates_to_the_code_editor_of_implementation_page() {
 		waitForTenSec("/tryEditor");
-		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", cmnMethod.currentUrl());
 
 	}
 
@@ -216,7 +214,7 @@ public class Stack_sd {
 	@Then("user sucessfully navigates to the applicaiton page")
 	public void user_sucessfully_navigates_to_the_applicaiton_page() {
 		waitForTenSec("/stack-applications/");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/stack-applications/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/stack-applications/", cmnMethod.currentUrl());
 
 	}
 
@@ -239,7 +237,7 @@ public class Stack_sd {
 	@Then("user successfully navigates to the code editor of application page")
 	public void user_successfully_navigates_to_the_code_editor_of_application_page() {
 		waitForTenSec("/tryEditor");
-		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/tryEditor", cmnMethod.currentUrl());
 
 	}
 
@@ -264,7 +262,7 @@ public class Stack_sd {
 	@Given("user is in stack page")
 	public void user_is_in_stack_page() {
 		waitForTenSec("/stack");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/", cmnMethod.currentUrl());
 
 	}
 
@@ -278,7 +276,7 @@ public class Stack_sd {
 	@Then("user sucessfully navigates to the  Implementation page")
 	public void user_sucessfully_navigates_to_implementation_page() {
 		waitForTenSec("/implementation");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/implementation/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/implementation/", cmnMethod.currentUrl());
 
 	}
 
@@ -292,7 +290,7 @@ public class Stack_sd {
 	@Then("user sucessfully navigates to the Application page")
 	public void user_sucessfully_navigates_to_the_application_page() {
 		waitForTenSec("/stack-applications/");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/stack-applications/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/stack-applications/", cmnMethod.currentUrl());
 
 	}
 
@@ -315,7 +313,7 @@ public class Stack_sd {
 			throws IOException {
 		waitForTenSec("/practice");
 		log.error("There are no practice questions available in the stack module");
-		assertEquals("https://dsportalapp.herokuapp.com/stack/", common.currentUrl());
+		assertEquals("https://dsportalapp.herokuapp.com/stack/", cmnMethod.currentUrl());
 	}
 
 }
