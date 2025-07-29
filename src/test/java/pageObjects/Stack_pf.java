@@ -21,7 +21,6 @@ public class Stack_pf {
 	String browser;
 	WebDriverWait wait;
 	ExcelReaderFile excelReader;
-	String path;
 	JavascriptExecutor js;
 	CommonMethod cmnMethod;
 
@@ -70,7 +69,6 @@ public class Stack_pf {
 		js = (JavascriptExecutor) driver;
 		this.cmnMethod = new CommonMethod(passdr);
 		this.excelReader = new ExcelReaderFile();
-		this.path = excelReader.get_xlpath();
 
 	}
 
@@ -78,9 +76,9 @@ public class Stack_pf {
 		cmnMethod.get_testUrl();
 		launchBtn.click();
 		signinBtn.click();
-		String data1 = excelReader.getData(path, "Credentials", 1, 0);
+		String data1 = excelReader.getData("Credentials", 1, 0);
 		userName.sendKeys(data1);
-		String data2 = excelReader.getData(path, "Credentials", 1, 1);
+		String data2 = excelReader.getData("Credentials", 1, 1);
 		pwd.sendKeys(data2);
 		logInBtn.click();
 

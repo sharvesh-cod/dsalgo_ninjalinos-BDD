@@ -1,11 +1,8 @@
 package stepDefinition;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import driverManager.Passing_Driver;
@@ -19,23 +16,16 @@ import utils.LoggerLoad;
 public class Graph_sd {
 
 	private WebDriver driver;
-	private Actions action;
 	CommonMethod cmnMethod;
 	String browser;
-
 	Graph_pf gr;
-	WebDriverWait wait;
 	LoggerLoad log;
 
 	public Graph_sd(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
-		this.action = new Actions(driver);
 		this.cmnMethod = new CommonMethod(passdr);
-
 		this.gr = new Graph_pf(passdr);
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		this.log = new LoggerLoad();
-
 	}
 
 	@Given("the user is in Graph page after logged in")
@@ -67,7 +57,6 @@ public class Graph_sd {
 
 	@When("user click on run button without code")
 	public void user_click_on_run_button_without_code() {
-
 		gr.clickRun_WithOutCode();
 
 	}
@@ -84,14 +73,15 @@ public class Graph_sd {
 	@When("user click button after entering the valid python code on the text editor")
 	public void user_click_button_after_entering_the_valid_python_code_on_the_text_editor()
 			throws IOException, InterruptedException {
-
 		cmnMethod.txtEditor_correctCode();
 
 	}
 
 	@Then("user should be able to see ouput in the console")
-	public void user_should_be_able_to_see_ouput_in_the_console() {
-		cmnMethod.output_text();
+	public void user_should_be_able_to_see_ouput_in_the_console() throws IOException {
+		String acutalOutput = cmnMethod.output_text();
+		String expectedOutput = cmnMethod.getExcelExpOutput();
+		Assert.assertEquals(expectedOutput, acutalOutput, "Not matched");
 
 	}
 

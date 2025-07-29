@@ -31,7 +31,6 @@ public class Register_sd {
 		this.Register_pf = new Register_pf(passdr);
 		this.Home_pf = new Home_pf(passdr);
 		this.config = new ConfigReader();
-
 		this.log = new LoggerLoad();
 
 	}

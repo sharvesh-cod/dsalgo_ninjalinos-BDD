@@ -16,15 +16,12 @@ public class Launch_sd {
 
 	private WebDriver driver;
 	private Launch_pf Launch_pf;
-
 	String browser;
 	ConfigReader config;
 
 	public Launch_sd(Passing_Driver passdr) throws IOException {
-
 		this.driver = passdr.getDriver();
 		this.Launch_pf = new Launch_pf(passdr);
-
 		this.config = new ConfigReader();
 
 	}
@@ -32,7 +29,6 @@ public class Launch_sd {
 	@Given("the user is on the Dsalgo portal after entering Url")
 	public void the_user_is_on_browser() {
 		Launch_pf.geturl();
-		// driver.get("https://dsportalapp.herokuapp.com/");
 
 	}
 
@@ -45,7 +41,6 @@ public class Launch_sd {
 
 	@When("the user clicks Get started button")
 	public void the_user_clicks_get_started_button() {
-
 		Launch_pf.clickgetstarted();
 	}
 

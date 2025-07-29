@@ -22,8 +22,6 @@ public class Login_pf {
 	WebDriverWait wait;
 	ExcelReaderFile excelReader;
 	JavascriptExecutor js;
-	String path;
-	// Locators
 
 	@FindBy(xpath = "//*[text()='Sign in']")
 	WebElement signinLink;
@@ -50,8 +48,6 @@ public class Login_pf {
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		this.excelReader = new ExcelReaderFile();
-		this.path = excelReader.get_xlpath();
-
 		js = (JavascriptExecutor) driver;
 
 	}
@@ -76,8 +72,8 @@ public class Login_pf {
 
 	public void setvalidDatafromExcel() throws IOException {
 
-		String username = excelReader.getData(path, "validlogin", 1, 0);
-		String password = excelReader.getData(path, "validlogin", 1, 1);
+		String username = excelReader.getData("validlogin", 1, 0);
+		String password = excelReader.getData("validlogin", 1, 1);
 		username_textbox.sendKeys(username);
 		password_textbox.sendKeys(password);
 		login_button.click();
@@ -85,8 +81,8 @@ public class Login_pf {
 
 	public void setDatafromExcelwithemptyfields() throws IOException {
 
-		String username = excelReader.getData(path, "login", 1, 0);
-		String password = excelReader.getData(path, "login", 1, 1);
+		String username = excelReader.getData("login", 1, 0);
+		String password = excelReader.getData("login", 1, 1);
 		username_textbox.sendKeys(username);
 		password_textbox.sendKeys(password);
 		login_button.click();
@@ -94,8 +90,8 @@ public class Login_pf {
 
 	public void setDatafromExcelwithusernameNoPassword() throws IOException {
 
-		String username = excelReader.getData(path, "login", 2, 0);
-		String password = excelReader.getData(path, "login", 2, 1);
+		String username = excelReader.getData("login", 2, 0);
+		String password = excelReader.getData("login", 2, 1);
 		username_textbox.sendKeys(username);
 		password_textbox.sendKeys(password);
 		login_button.click();
@@ -103,8 +99,8 @@ public class Login_pf {
 
 	public void setDatafromExcelwithPasswordnousername() throws IOException {
 
-		String username = excelReader.getData(path, "login", 3, 0);
-		String password = excelReader.getData(path, "login", 3, 1);
+		String username = excelReader.getData("login", 3, 0);
+		String password = excelReader.getData("login", 3, 1);
 		username_textbox.sendKeys(username);
 		password_textbox.sendKeys(password);
 		login_button.click();
@@ -112,8 +108,8 @@ public class Login_pf {
 
 	public void setDatafromExcelinvalidData() throws IOException {
 
-		String username = excelReader.getData(path, "login", 4, 0);
-		String password = excelReader.getData(path, "login", 4, 1);
+		String username = excelReader.getData("login", 4, 0);
+		String password = excelReader.getData("login", 4, 1);
 		username_textbox.sendKeys(username);
 		password_textbox.sendKeys(password);
 		login_button.click();

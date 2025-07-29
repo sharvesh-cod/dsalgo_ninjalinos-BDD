@@ -23,7 +23,6 @@ public class Login_sd {
 	ConfigReader config;
 
 	public Login_sd(Passing_Driver passdr) throws IOException {
-
 		this.driver = passdr.getDriver();
 		this.Login_pf = new Login_pf(passdr);
 		this.Launch_pf = new Launch_pf(passdr);

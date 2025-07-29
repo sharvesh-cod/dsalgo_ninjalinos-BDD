@@ -33,7 +33,6 @@ public class Datastructures_sd {
 		this.Datastructure_pf = new Datastructure_pf(passdr);
 		this.config = new ConfigReader();
 		this.browserName = config.get_prop_value("browser");
-
 		this.log = new LoggerLoad();
 	}
 

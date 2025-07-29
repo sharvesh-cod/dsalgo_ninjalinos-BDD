@@ -18,23 +18,18 @@ import utils.LoggerLoad;
 
 public class Home_sd {
 	private WebDriver driver;
-
 	String browser;
 	ConfigReader config;
-
 	private Launch_pf Launch_pf;
 	private Home_pf Home_pf;
 	LoggerLoad log;
 
 	public Home_sd(Passing_Driver passdr) throws IOException {
-
 		this.driver = passdr.getDriver();
 		this.Launch_pf = new Launch_pf(passdr);
 		this.Home_pf = new Home_pf(passdr);
 		this.config = new ConfigReader();
-
 		this.log = new LoggerLoad();
-
 	}
 
 	@Given("the user is on DsAlgo portal")

@@ -57,19 +57,16 @@ public class Graph_pf {
 	CommonMethod cmnMethod;
 
 	ExcelReaderFile excelReader;
-	String path;
 	JavascriptExecutor js;
 
 	public Graph_pf(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
 		this.action = new Actions(driver);
 		PageFactory.initElements(driver, this);
-
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		js = (JavascriptExecutor) driver;
-
+		this.cmnMethod = new CommonMethod(passdr);
 		this.excelReader = new ExcelReaderFile();
-		this.path = excelReader.get_xlpath();
 	}
 
 	// background given
@@ -83,10 +80,10 @@ public class Graph_pf {
 		wait.until(ExpectedConditions.visibilityOf(usernameField));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", usernameField);
 		action.click(usernameField).perform();
-		String data1 = excelReader.getData(path, "Credentials", 1, 0);
+		String data1 = excelReader.getData("Credentials", 1, 0);
 		usernameField.sendKeys(data1);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", passwordField);
-		String data2 = excelReader.getData(path, "Credentials", 1, 1);
+		String data2 = excelReader.getData("Credentials", 1, 1);
 		passwordField.sendKeys(data2);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginButton);
 		loginButton.click();

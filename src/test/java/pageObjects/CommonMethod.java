@@ -29,7 +29,7 @@ public class CommonMethod {
 	WebDriverWait wait;
 	ConfigReader config;
 	ExcelReaderFile excelReader;
-	String path;
+//	String path;
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div[6]/div")
 	WebElement textEditor;
 	@FindBy(xpath = "//button[contains(text(),'Run')]")
@@ -44,12 +44,15 @@ public class CommonMethod {
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		PageFactory.initElements(driver, this);
 		this.config = new ConfigReader();
-		this.path = config.get_prop_value("path");
 		this.excelReader = new ExcelReaderFile();
-		this.path = excelReader.get_xlpath();
 	}
 
 	// Helper methods
+
+	public void waitForTenSec(String partialUrl) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.urlContains(partialUrl));
+	}
 
 	private void safeType(WebElement element, String code) {
 		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
@@ -64,12 +67,12 @@ public class CommonMethod {
 
 	// Actions
 	public void tryEditor_validCode() throws IOException {
-		String data = excelReader.getData(path, "textEditor", 1, 0);
+		String data = excelReader.getData("textEditor", 1, 0);
 		safeType(textEditor, data);
 	}
 
 	public void tryEditor_invalidCode() throws IOException {
-		String data = excelReader.getData(path, "textEditor", 1, 1);
+		String data = excelReader.getData("textEditor", 1, 1);
 		safeType(textEditor, data);
 	}
 
@@ -94,7 +97,7 @@ public class CommonMethod {
 	}
 
 	public void txtEditor_invalidCode() throws IOException, InterruptedException {
-		String data = excelReader.getData(path, "TextEditor", 1, 1);
+		String data = excelReader.getData("TextEditor", 1, 1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
@@ -107,7 +110,7 @@ public class CommonMethod {
 	}
 
 	public void txtEditor_correctCode() throws IOException, InterruptedException {
-		String data = excelReader.getData(path, "TextEditor", 1, 0);
+		String data = excelReader.getData("TextEditor", 1, 0);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
@@ -124,8 +127,6 @@ public class CommonMethod {
 	}
 
 	public String output_text() {
-		// ((JavascriptExecutor)
-		// driver).executeScript("arguments[0].scrollIntoView(true);", outputTxt);
 		wait.until(ExpectedConditions.visibilityOf(outputTxt));
 		action.scrollToElement(outputTxt).perform();
 		String outputText = outputTxt.getText();
@@ -156,6 +157,13 @@ public class CommonMethod {
 
 	public void get_testUrl() {
 		driver.get(config.get_prop_value("testurl"));
+	}
+
+	// This method is to read the expected output from the excel reader
+	public String getExcelExpOutput() throws IOException {
+		String data = excelReader.getData("TextEditor", 1, 2);
+		return data;
+
 	}
 
 }

@@ -35,7 +35,6 @@ public class Tree_sd {
 		this.tf = new Tree_pf(passdr);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		this.log = new LoggerLoad();
-
 	}
 
 	@Given("the user is in Tree page after logged in")
@@ -61,7 +60,6 @@ public class Tree_sd {
 
 	@Then("user successfully navigates to the Overview of Tree page")
 	public void navigates_to_the_overview_of_tree_page() throws InterruptedException {
-
 		String actualUrl = tf.navigate_OverviewofTree();
 		String expectedUrl = "https://dsportalapp.herokuapp.com/tree/overview-of-trees/";
 		Assert.assertEquals(actualUrl, expectedUrl, "You are not landed on overview page");
@@ -144,10 +142,10 @@ public class Tree_sd {
 	}
 
 	@Then("The output should be displayed in the console")
-	public void the_output_should_be_displayed_in_the_console() {
-
-		String output = tf.outputText();
-		Assert.assertEquals(output, "Hello World", "output not matched");
+	public void the_output_should_be_displayed_in_the_console() throws IOException {
+		String actualOutput = tf.outputText();
+		String expectedOutput = cmnMethod.getExcelExpOutput();
+		Assert.assertEquals(expectedOutput, actualOutput, "Not matched");
 
 	}
 

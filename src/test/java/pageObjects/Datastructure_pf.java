@@ -27,9 +27,7 @@ public class Datastructure_pf {
 	ExcelReaderFile excelReader;
 
 	JavascriptExecutor js;
-	String path;
 	Alert alert;
-	// Locators
 
 	@FindBy(xpath = "//*[text()='Data Structures-Introduction']//../a")
 	WebElement getstartedButton_dataStructures;
@@ -58,8 +56,6 @@ public class Datastructure_pf {
 	@FindBy(xpath = "//div[@align='left'] ")
 	WebElement consoleoutpt;
 
-	// div[@align='left']
-
 	public Datastructure_pf(Passing_Driver passdr) throws IOException {
 
 		this.driver = passdr.getDriver();
@@ -68,7 +64,6 @@ public class Datastructure_pf {
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 		this.excelReader = new ExcelReaderFile();
-		this.path = excelReader.get_xlpath();
 		js = (JavascriptExecutor) driver;
 
 	}
@@ -160,7 +155,7 @@ public class Datastructure_pf {
 	}
 
 	public void setinvalidcodefromExcel() throws IOException {
-		String data = excelReader.getData(path, "TextEditor", 1, 1);
+		String data = excelReader.getData("TextEditor", 1, 1);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",
@@ -168,7 +163,7 @@ public class Datastructure_pf {
 	}
 
 	public void setvalidcodefromExcel() throws IOException {
-		String data = excelReader.getData(path, "TextEditor", 1, 0);
+		String data = excelReader.getData("TextEditor", 1, 0);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".CodeMirror")));
 		js.executeScript(
 				"let editor = document.querySelector('.CodeMirror').CodeMirror;" + "editor.setValue(arguments[0]);",

@@ -76,7 +76,6 @@ public class Tree_pf {
 	@FindBy(xpath = "//*[text()='Practice Questions']")
 	WebElement practQuestTree;
 	CommonMethod codeEditor;
-	// ConfigReader config;
 	String path;
 	JavascriptExecutor js;
 	ExcelReaderFile excelReader;
@@ -88,7 +87,6 @@ public class Tree_pf {
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		this.cmnMethod = new CommonMethod(passdr);
 		this.excelReader = new ExcelReaderFile();
-		this.path = excelReader.get_xlpath();
 
 	}
 
@@ -103,10 +101,10 @@ public class Tree_pf {
 		wait.until(ExpectedConditions.visibilityOf(usernameField));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", usernameField);
 		action.click(usernameField).perform();
-		String unameData = excelReader.getData(path, "Credentials", 1, 0);
+		String unameData = excelReader.getData("Credentials", 1, 0);
 		action.sendKeys(usernameField, unameData).perform();
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", passwordField);
-		String passwordData = excelReader.getData(path, "Credentials", 1, 1);
+		String passwordData = excelReader.getData("Credentials", 1, 1);
 		passwordField.sendKeys(passwordData);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginButton);
 		loginButton.click();

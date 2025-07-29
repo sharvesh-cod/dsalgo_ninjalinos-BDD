@@ -26,7 +26,6 @@ public class Array_pf {
 	private WebDriver driver;
 	private WebDriverWait wait;
 	ExcelReaderFile excelReader;
-	String path;
 	private CommonMethod cmnMethod;
 
 	public Array_pf(Passing_Driver passdr) throws IOException {
@@ -37,7 +36,6 @@ public class Array_pf {
 		this.cmnMethod = new CommonMethod(passdr);
 
 		this.excelReader = new ExcelReaderFile();
-		this.path = excelReader.get_xlpath();
 	}
 
 	// =========== LOGIN ELEMENTS ============
@@ -109,17 +107,15 @@ public class Array_pf {
 		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
 
-	// ========== Actions ==========
-
 	// ============ BACKGROUND ===============
 
 	public void background_array() throws IOException {
 		cmnMethod.get_testUrl();
 		launchBtn.click();
 		signinBtn.click();
-		String data1 = excelReader.getData(path, "credentials", 1, 0);
+		String data1 = excelReader.getData("credentials", 1, 0);
 		userName.sendKeys(data1);
-		String data2 = excelReader.getData(path, "credentials", 1, 1);
+		String data2 = excelReader.getData("credentials", 1, 1);
 		pwd.sendKeys(data2);
 		logInBtn.click();
 
@@ -182,23 +178,23 @@ public class Array_pf {
 
 	public void tryEditor_validCode_practiceQ1() throws IOException {
 
-		String validCode1 = excelReader.getData(path, "TextEditor", 1, 0);
+		String validCode1 = excelReader.getData("TextEditor", 1, 0);
 
 		enterValidCodeInPracticeEditor(validCode1);
 	}
 
 	public void tryEditor_validCode_practiceQ2() throws IOException {
-		String validCode2 = excelReader.getData(path, "TextEditor", 1, 0);
+		String validCode2 = excelReader.getData("TextEditor", 1, 0);
 		enterValidCodeInPracticeEditor(validCode2);
 	}
 
 	public void tryEditor_validCode_practiceQ3() throws IOException {
-		String validCode3 = excelReader.getData(path, "TextEditor", 1, 0);
+		String validCode3 = excelReader.getData("TextEditor", 1, 0);
 		enterValidCodeInPracticeEditor(validCode3);
 	}
 
 	public void tryEditor_validCode_practiceQ4() throws IOException {
-		String validCode4 = excelReader.getData(path, "TextEditor", 1, 0);
+		String validCode4 = excelReader.getData("TextEditor", 1, 0);
 		enterValidCodeInPracticeEditor(validCode4);
 	}
 
