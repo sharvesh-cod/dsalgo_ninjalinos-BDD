@@ -23,6 +23,7 @@ public class DsAlgoHooks {
 
 	@Before
 	public void setup() {
+		// remove this, move to DriverFactory
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));

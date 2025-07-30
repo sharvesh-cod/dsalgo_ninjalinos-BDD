@@ -120,6 +120,7 @@ public class Array_sd {
 		cmnMethod.waitForTenSec("/tryEditor");
 		cmnMethod.tryEditor_validCode();
 		cmnMethod.clickRun();
+		Thread.sleep(2000);
 	}
 
 	@Then("The user should able to see output in the console in Array")
@@ -190,6 +191,7 @@ public class Array_sd {
 	public void the_user_clicks_try_here_button_in_basic_operations_in_lists_page() throws InterruptedException {
 		cmnMethod.waitForTenSec("/basic-operations-in-lists/");
 		array_pf.clickTryHere();
+		Thread.sleep(2000);
 
 	}
 
@@ -219,6 +221,7 @@ public class Array_sd {
 	public void the_user_clicks_try_here_button_in_applications_of_array_page() throws InterruptedException {
 		cmnMethod.waitForTenSec("/applications-of-array/");
 		array_pf.clickTryHere();
+		Thread.sleep(2000);
 
 	}
 
@@ -233,7 +236,7 @@ public class Array_sd {
 	public void the_user_clicks_practice_questions_button_in_array() throws InterruptedException {
 		cmnMethod.waitForTenSec("/arrays-in-python/");
 		array_pf.clickPracticeQuestionsLink();
-
+		Thread.sleep(2000);
 	}
 
 	@Then("The user should be redirected to Practice page in Array")
@@ -254,6 +257,7 @@ public class Array_sd {
 	public void the_user_clicks_the_search_the_array_link() throws InterruptedException {
 		cmnMethod.waitForTenSec("/array/practice");
 		array_pf.clickSearchTheArray();
+		Thread.sleep(2000);
 	}
 
 	@Then("The user should be redirected to Question1 page contains a question, try Editor with Run and Submit buttons")
@@ -287,6 +291,7 @@ public class Array_sd {
 	@When("The user clicks submit button without writing anything in editor")
 	public void the_user_clicks_submit_button_without_writing_anything_in_editor() throws InterruptedException {
 		array_pf.clickSubmit();
+		Thread.sleep(2000);
 
 	}
 
@@ -298,11 +303,13 @@ public class Array_sd {
 	}
 
 	@When("The user clicks run button after writing invalid code in  question editor in Array")
-	public void the_user_clicks_run_button_after_writing_invalid_code_in_question_editor_in_array() {
+	public void the_user_clicks_run_button_after_writing_invalid_code_in_question_editor_in_array()
+			throws InterruptedException {
 		cmnMethod.waitForTenSec("/question/");
 		array_pf.tryEditor_invalidCode_practiceQ();
 		cmnMethod.clickRun();
 		cmnMethod.alertMsg();
+
 	}
 
 	@When("The user clicks run button after writing valid code in question1 editor")
@@ -311,6 +318,7 @@ public class Array_sd {
 		cmnMethod.waitForTenSec("question/1");
 		array_pf.tryEditor_validCode_practiceQ1();
 		cmnMethod.clickRun();
+		Thread.sleep(2000);
 
 	}
 

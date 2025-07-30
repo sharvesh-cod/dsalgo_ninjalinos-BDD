@@ -1,4 +1,3 @@
-// SUGGESTED BY CHATGPT FOR FIREFOX
 
 package pageObjects;
 

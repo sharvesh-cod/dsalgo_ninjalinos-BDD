@@ -61,6 +61,7 @@ public class Register_sd {
 
 	@Then("the user should see error message {string} below usernamebox")
 	public void the_user_should_see_error_message_below_usernamebox(String Experrormsg) {
+		// missed to check the expected string
 		String acterrormsg = Register_pf.invalidAssertionUsernamebox();
 		Assert.assertEquals(acterrormsg, acterrormsg, "user is not able to see 'please fill out this field'message");
 	}

@@ -5,6 +5,7 @@ Feature: registration  page
   Background: Home page
     Given the user is on Register page after clicking on registerlink from Home page
    # When  the user clicks on Register
+#Try with more data for credentails
 
 @register_valid
   Scenario: register with valid inputs

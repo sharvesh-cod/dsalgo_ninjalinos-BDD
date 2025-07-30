@@ -52,9 +52,9 @@ public class Register_pf {
 
 //action methods
 
-	public void setusername(String username) {
-		usernameTextbox.sendKeys("ninjalinos@work.com");
-	}
+//	public void setusername(String username) {
+//		usernameTextbox.sendKeys("ninjalinos@work.com");
+//	}
 
 	public void setinvalidusername(String username) {
 		usernameTextbox.sendKeys(username);
@@ -68,13 +68,13 @@ public class Register_pf {
 		confirmpasswordTextbox.sendKeys(confirmpassword);
 	}
 
-	public void setpassword(String password) {
-		passwordTextbox.sendKeys("sdet218920@");
-	}
+//	public void setpassword(String password) {
+//		passwordTextbox.sendKeys("sdet218920@");
+//	}
 
-	public void setconfirmpassword(String confirmpassword) {
-		confirmpasswordTextbox.sendKeys("sdet218920@");
-	}
+//	public void setconfirmpassword(String confirmpassword) {
+//		confirmpasswordTextbox.sendKeys("sdet218920@");
+//	}
 
 	public void clickRegisterbutton() {
 		registerButton.click();

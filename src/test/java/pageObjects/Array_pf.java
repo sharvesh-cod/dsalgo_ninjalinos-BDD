@@ -1,8 +1,3 @@
-
-//============  FINAL WORKING CODE ==============================
-
-//AS SUGGESTED BY CHATGPT FOR FIREFOX
-
 package pageObjects;
 
 import java.io.IOException;
@@ -30,14 +25,11 @@ public class Array_pf {
 
 	public Array_pf(Passing_Driver passdr) throws IOException {
 		this.driver = passdr.getDriver();
-
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		this.cmnMethod = new CommonMethod(passdr);
-
 		this.excelReader = new ExcelReaderFile();
 	}
-
 	// =========== LOGIN ELEMENTS ============
 
 	@FindBy(className = "btn")
@@ -169,7 +161,6 @@ public class Array_pf {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", practiceQuestionEditor);
 		wait.until(ExpectedConditions.visibilityOf(practiceQuestionEditor));
 		practiceQuestionEditor.click();
-
 		// Use Actions to clear and type code like a user
 		Actions actions = new Actions(driver);
 		actions.moveToElement(practiceQuestionEditor).click().keyDown(Keys.COMMAND).sendKeys("a").keyUp(Keys.COMMAND)
@@ -177,9 +168,7 @@ public class Array_pf {
 	}
 
 	public void tryEditor_validCode_practiceQ1() throws IOException {
-
 		String validCode1 = excelReader.getData("TextEditor", 1, 0);
-
 		enterValidCodeInPracticeEditor(validCode1);
 	}
 

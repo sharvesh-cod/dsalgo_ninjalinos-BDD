@@ -50,6 +50,7 @@ public class CommonMethod {
 	// Helper methods
 
 	public void waitForTenSec(String partialUrl) {
+		// duplicate remove this
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.urlContains(partialUrl));
 	}
@@ -60,13 +61,16 @@ public class CommonMethod {
 		action.moveToElement(element).click().sendKeys(code).perform();
 	}
 
+	// try this
 	private void safeClick(WebElement element) {
+		// js shdnt use for wait (webdriver load)
 		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
 
 	// Actions
 	public void tryEditor_validCode() throws IOException {
+		// dynamic from excelRed
 		String data = excelReader.getData("textEditor", 1, 0);
 		safeType(textEditor, data);
 	}
