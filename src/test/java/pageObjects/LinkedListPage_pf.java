@@ -91,7 +91,6 @@ public class LinkedListPage_pf {
 	}
 
 	// ============ BACKGROUND ===============
-
 	public void background_linkedList() throws IOException {
 		cmnMethod.get_testUrl();
 		launchBtn.click();
